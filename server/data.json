@@ -1,0 +1,865 @@
+[
+  {
+    "name": "Fubar",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/Fubar/image.webp",
+      "thumbnail": "./images/videos/Fubar/thumbnail.jpg",
+      "title": "./images/videos/Fubar/title.webp"
+    },
+    "description": "When a father and daughter discover they both secretly work for the CIA, an already dicey undercover mission turns into a dysfunctional family affair.",
+    "episodes": [
+      {
+        "seasons": {
+          "1": [
+            {
+              "id": 1,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_1.jpg",
+              "title": "Take Your Daughter to Work Day",
+              "description": "With his retirement from the CIA imminent, Luke prepares for his next adventure, but revelations at home and an urgent matter at work upend his plans.",
+              "duration": 55
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_2.jpg",
+              "title": "Stole Train",
+              "description": "Forced to team up in order to take down Boro, Luke and Emma realize their newly strained relationship is only the start of their problems.",
+              "duration": 46
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_3.jpg",
+              "title": "Honeyplot",
+              "description": "The team goes from averting an international crisis to seeking sensitive intel in Moldova, where Emma offers to lure a target when complications arise.",
+              "duration": 55
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_4.jpg",
+              "title": "Armed & Dane-gerous",
+              "description": "After receiving reassurance from Luke, Emma comes home to a startling surprise. In Greece, the team takes on a risky mission to break out a trusted ally.",
+              "duration": 57
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_5.jpg",
+              "title": "Here Today, Gone To-Marrow",
+              "description": "Amid a devastating family emergency, Luke finds the lines of his double life becoming blurry as he deals with a distracted Emma and a demanding Boro.",
+              "duration": 57
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_6.jpg",
+              "title": "Royally Flushed",
+              "description": "Barry and Tina infiltrate a private, high-stakes card game in hopes of inching closer to Boro. Emotions boil over when the team gets trapped in a bunker.",
+              "duration": 59
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_7.jpg",
+              "title": "Urine Luck",
+              "description": "While closing in on Boro, Luke and Emma juggle relationship drama and a highly delicate situation. A life-or-death matter forces Roo to find a release.",
+              "duration": 51
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "./images/videos/Fubar/episodes/season_1/episode_8.jpg",
+              "title": "That's It and That's All",
+              "description": "With the clock ticking, Luke and Emma make tough choices to finish the mission and stay alive. A big day for the Brunner family spirals out of control.",
+              "duration": 45
+            }
+          ]
+        }
+      }
+    ],
+    "match": 99,
+    "productionYear": 2023,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [
+      {
+        "trailers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/Fubar/trailers_more/trailers/season_1-trailer_1.webp"
+          }
+        ],
+        "teasers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/Fubar/trailers_more/teasers/season_1-teaser_1.webp"
+          },
+          {
+            "id": 2,
+            "thumbnailLink": "./images/videos/Fubar/trailers_more/teasers/season_1-teaser_2.webp"
+          },
+          {
+            "id": 3,
+            "thumbnailLink": "./images/videos/Fubar/trailers_more/teasers/season_1-teaser_3.webp"
+          }
+        ]
+      }
+    ],
+    "creators": ["Nick Santora"],
+    "cast": [
+      "Arnold Schwarzenegger",
+      "Monica Barbaro",
+      "Milan Carter",
+      "Gabriel Luna",
+      "Jay Baruchel",
+      "Fortune Feimster",
+      "Travis Van Winkle",
+      "Fabiana Udenio",
+      "Barbara Eve Harris",
+      "Aparna Brielle",
+      "Andy Buckley"
+    ],
+    "genres": ["TV Dramas", "TV Comedies", "TV Action & Adventure", "US TV Shows"],
+    "showIs": ["irreverent", "exciting"],
+    "maturityRating": {
+      "badge": "16+",
+      "description": ["violence", "language"],
+      "recommendation": "Recommended for ages 16 and up"
+    }
+  },
+
+  {
+    "name": "Bridgerton",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/Bridgerton/image.webp",
+      "thumbnail": "./images/videos/Bridgerton/thumbnail.jpg",
+      "title": "./images/videos/Bridgerton/title.webp"
+    },
+    "description": "Daphne debuts on London's marriage market as a new gossip sheet sets high society atwitter and Simon, the eligible Duke of Hastings, returns to town.",
+    "episodes": [
+      {
+        "seasons": {
+          "1": [
+            {
+              "id": 1,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_1.jpg",
+              "title": "Diamond of the First Water",
+              "description": "Daphne debuts on London's marriage market as a new gossip sheet sets high society atwitter and Simon, the eligible Duke of Hastings, returns to town.",
+              "duration": 58
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_2.jpg",
+              "title": "Shock and Delight",
+              "description": "Simon’s apparent courtship of Daphne angers her brother Anthony and threatens to ruin the arrangements he made. Marina opens up to a curious Penelope.",
+              "duration": 61
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_3.jpg",
+              "title": "Art of the Swoon",
+              "description": "After Daphne catches the eye of a royal suitor, she turns to Simon for relationship advice. Lady Featherington tries to browbeat Marina into marriage.",
+              "duration": 57
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_4.jpg",
+              "title": "An Affair of Honor",
+              "description": "Daphne receives a stunning gift from Prince Friedrich but soon courts scandal at a ball. Eloise searches for clues to Lady Whistledown's identity.",
+              "duration": 61
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_5.jpg",
+              "title": "The Duke and I",
+              "description": "To fend off rumors about their garden escapade, Simon and Daphne must make a personal appeal to the queen. Marina's wedlock scheme dismays Penelope.",
+              "duration": 61
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_6.jpg",
+              "title": "Swish",
+              "description": "On her honeymoon, Daphne discovers just how uninformed she is about the physical aspects of the marital bed. Colin comes to a decision about Marina.",
+              "duration": 57
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_7.jpg",
+              "title": "Oceans Apart",
+              "description": "Amid accusations of lies and betrayal, a rift forms between the newlyweds, while a deception of another kind could besmirch the Bridgerton family name.",
+              "duration": 61
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_1/episode_8.jpg",
+              "title": "After the Rain",
+              "description": "The duke and duchess's season-ending ball signals a turning point for their marriage — and ushers in changes of fortune and fate to those around them.",
+              "duration": 72
+            }
+          ],
+          "2": [
+            {
+              "id": 1,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_1.jpg",
+              "title": "Capital R Rake",
+              "description": "Anthony begins his search for a wife, Eloise braves her society debut, and Lady Danbury helps the queen choose a diamond among the season's debutantes.",
+              "duration": 70
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_2.jpg",
+              "title": "Off to the Races",
+              "description": "Facing heated competition and a prickly foe, Anthony steps up his courtship game. Eloise makes a Lady Whistledown discovery as a family member returns.",
+              "duration": 53
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_3.jpg",
+              "title": "A Bee in Your Bonnet",
+              "description": "The Sharmas arrive at the Bridgerton's country estate, where Anthony seeks to win Kate's good opinion amid bad memories and a ruthless game of pall-mall.",
+              "duration": 68
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_4.jpg",
+              "title": "Victory",
+              "description": "As guests gather for the Bridgerton's ball, Anthony and Kate clash during a hunting party, Colin revisits the past, and Lady Featherington sets a trap.",
+              "duration": 58
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_5.jpg",
+              "title": "An Unthinkable Fate",
+              "description": "Rattled by Anthony's hasty nuptial plans, Kate receives advice from Lady Danbury. Eloise spars with a new ally. Emotions run high during a dinner party.",
+              "duration": 58
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_6.jpg",
+              "title": "The Choice",
+              "description": "Anthony's duty to his family wars with his desire for Kate. Edwina ponders her future — and impresses the queen. Eloise's rendezvous stirs suspicion.",
+              "duration": 69
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_7.jpg",
+              "title": "Harmony",
+              "description": "Scandalous rumors swirl around the Bridgertons and the Sharmas. The queen’s ire over Lady Whistledown lands Eloise and Penelope in a quandary.",
+              "duration": 59
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "./images/videos/Bridgerton/episodes/season_2/episode_8.jpg",
+              "title": "The Viscount Who Loved Me",
+              "description": "Anthony lashes out as he awaits news of Kate, while Eloise turns to Theo for help in her Lady Whistledown hunt and Lady Featherington plans a grand ball.",
+              "duration": 72
+            }
+          ]
+        }
+      }
+    ],
+    "match": 97,
+    "productionYear": 2022,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [
+      {
+        "trailers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/Bridgerton/trailers_more/trailers/season_1-trailer_1.webp"
+          },
+          {
+            "id": 2,
+            "thumbnailLink": "./images/videos/Bridgerton/trailers_more/trailers/season_2-trailer_1.webp"
+          },
+          {
+            "id": 3,
+            "thumbnailLink": "./images/videos/Bridgerton/trailers_more/trailers/season_2-trailer_2.webp"
+          }
+        ],
+        "teasers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/Bridgerton/trailers_more/teasers/season_1-teaser_1.webp"
+          },
+          {
+            "id": 2,
+            "thumbnailLink": "./images/videos/Bridgerton/trailers_more/teasers/season_2-teaser_1.webp"
+          }
+        ],
+        "recap": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/Bridgerton/trailers_more/recap/season_1-recap.webp"
+          }
+        ]
+      }
+    ],
+    "creators": ["Chris Van Dusen"],
+    "cast": [
+      "Adjoa Andoh",
+      "Julie Andrews",
+      "Lorraine Ashbourne",
+      "Jonathan Bailey",
+      "Ruby Barker",
+      "Sabrina Bartlett",
+      "Harriet Cains",
+      "Bessie Carter",
+      "Nicola Coughlan",
+      "Pheobe Dynevor",
+      "Ruth Gemmell",
+      "Florence Hunt",
+      "Claudia Jessie",
+      "Ben Miller",
+      "Luke Newton",
+      "Regé-Jean Page",
+      "Golda Rosheuvel",
+      "Luke Thompson",
+      "Will Tilston",
+      "Polly Walker",
+      "Simone Ashley",
+      "Charithra Chandran",
+      "Shelley Conn",
+      "Martins Imhangbe",
+      "Calam Lynch",
+      "Rupert Young"
+    ],
+    "genres": [
+      "Romantic TV Dramas",
+      "TV Dramas",
+      "TV Shows Based on Books",
+      "Period Pieces",
+      "US TV Shows"
+    ],
+    "showIs": ["swoonworthy", "witty", "emotional"],
+    "maturityRating": {
+      "badge": "16+",
+      "description": ["sex", "nudity", "sexual violence"],
+      "recommendation": "Recommended for ages 16 and up"
+    }
+  },
+
+  {
+    "name": "Wednesday",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/Wednesday/image.webp",
+      "thumbnail": "./images/videos/Wednesday/thumbnail.jpg",
+      "title": "./images/videos/Wednesday/title.webp"
+    },
+    "description": "Kooky Uncle Fester pays a visit and shares his theory about the monster. Wednesday begrudgingly agrees to a date with Tyler at Crackstone's crypt.",
+    "episodes": [
+      {
+        "seasons": {
+          "1": [
+            {
+              "id": 1,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_1.jpg",
+              "title": "Wednesday's Child Is Full of Woe",
+              "description": "When a deliciously wicked prank gets Wednesday expelled, her parents ship her off to Nevermore Academy, the boarding school where they fell in love.",
+              "duration": 59
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_2.jpg",
+              "title": "Woe Is the Loneliest Number",
+              "description": "The sheriff questions Wednesday about the night's strange happenings. Later, Wednesday faces off against a fierce rival in the cutthroat Poe Cup race.",
+              "duration": 48
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_3.jpg",
+              "title": "Friend or Woe",
+              "description": "Wednesday stumbles on a secret society. During Outreach Day, Nevermore's outcasts mingle with Jericho's normies in Pilgrim World. Fudge, anyone?",
+              "duration": 48
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_4.jpg",
+              "title": "Woe What a Night",
+              "description": "Wednesday asks Xavier to the Rave'N dance, sparking Tyler's jealousy — but Thing's got something up his sleeve. Meanwhile, Eugene stakes out the cave.",
+              "duration": 49
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_5.jpg",
+              "title": "You Reap What You Woe",
+              "description": "During Parents Weekend, Wednesday digs into her family's past — and accidentally gets her dad arrested. Enid feels the pressure to 'wolf out.'",
+              "duration": 52
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_6.jpg",
+              "title": "Quid Pro Woe",
+              "description": "Wednesday's friends throw her a surprise birthday party. They mean well... but she'd much rather mark the miserable occasion by solving the murders.",
+              "duration": 50
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_7.jpg",
+              "title": "If You Don't Woe Me by Now",
+              "description": "Kooky Uncle Fester pays a visit and shares his theory about the monster. Wednesday begrudgingly agrees to a date with Tyler at Crackstone's crypt.",
+              "duration": 47
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "./images/videos/Wednesday/episodes/season_1/episode_8.jpg",
+              "title": "A Murder of Woes",
+              "description": "Wednesday lands in trouble with Principal Weems, but that's just the start of her problems. To fight an ancient evil, she'll need all her friends’ help.",
+              "duration": 52
+            }
+          ]
+        }
+      }
+    ],
+    "match": 95,
+    "productionYear": 2022,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [
+      {
+        "trailers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/Wednesday/trailers_more/trailers/season_1-trailer_1.webp"
+          }
+        ],
+        "teasers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/Wednesday/trailers_more/teasers/season_1-teaser_1.webp"
+          },
+          {
+            "id": 2,
+            "thumbnailLink": "./images/videos/Wednesday/trailers_more/teasers/season_1-teaser_2.webp"
+          },
+          {
+            "id": 3,
+            "thumbnailLink": "./images/videos/Wednesday/trailers_more/teasers/season_1-teaser_3.webp"
+          }
+        ]
+      }
+    ],
+    "creators": ["Alfred Gough", "Miles Millar"],
+    "cast": [
+      "Jenna Ortega",
+      "Gwendoline Christie",
+      "Riki Lindhome",
+      "Christina Ricci",
+      "Jamie McShane",
+      "Hunter Doohan",
+      "Percy Hynes White",
+      "Emma Myers",
+      "Joy Sunday",
+      "Moosa Mostafa",
+      "Georgie Farmer",
+      "Naomi J. Ogawa",
+      "Catherine Zeta-Jones",
+      "Luis Guzmán"
+    ],
+    "genres": ["Teen TV Shows", "TV Mysteries", "TV Comedies", "Crime TV Shows", "US TV Shows"],
+    "showIs": ["deadpan"],
+    "maturityRating": {
+      "badge": "13+",
+      "description": [],
+      "recommendation": "Recommended for ages 13 and up"
+    }
+  },
+
+  {
+    "name": "The Mother",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/TheMother/image.webp",
+      "thumbnail": "./images/videos/TheMother/thumbnail.jpg",
+      "title": "./images/videos/TheMother/title.webp"
+    },
+    "description": "A military-trained assassin comes out of hiding to protect the daughter she's never met from ruthless criminals gunning for revenge.",
+    "episodes": [],
+    "movie": {
+      "id": 1,
+      "duration": 117
+    },
+    "match": 90,
+    "productionYear": 2023,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [
+      {
+        "trailers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/TheMother/trailers_more/trailers/trailer_1.webp"
+          }
+        ],
+        "teasers": [
+          {
+            "id": 1,
+            "thumbnailLink": "./images/videos/TheMother/trailers_more/teasers/teaser_1.webp"
+          }
+        ]
+      }
+    ],
+    "creators": ["Niki Caro"],
+    "cast": [
+      "Jennifer Lopez",
+      "Joseph Fiennes",
+      "Gael García Bernal",
+      "Lucy Paez",
+      "Omari Hardwick",
+      "Paul Raci",
+      "Jesse Garcia",
+      "Yvonne Senat Jones",
+      "Edie Falco"
+    ],
+    "writer": ["Misha Green", "Andrea Berloff", "Peter Craig"],
+    "genres": ["Drama Movies", "Action & Adventure Movies"],
+    "showIs": ["gritty", "understated", "suspenseful"],
+    "maturityRating": {
+      "badge": "16+",
+      "description": ["violence"],
+      "recommendation": "Recommended for ages 16 and up"
+    }
+  },
+
+  {
+    "name": "Shrek",
+    "collection": "Shrek",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/Shrek/image.webp",
+      "thumbnail": "./images/videos/Shrek/thumbnail.webp",
+      "title": "./images/videos/Shrek/title.webp"
+    },
+    "description": "On a mission to retrieve a princess from a fire-breathing dragon, gruff ogre Shrek teams up with an unlikely compatriot — a wisecracking donkey.",
+    "episodes": [],
+    "movie": {
+      "id": 1,
+      "duration": 90
+    },
+    "match": 96,
+    "productionYear": 2001,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [],
+    "creators": ["Andrew Adamson", "Vicky Jenson"],
+    "cast": [
+      "Mike Myers",
+      "Eddie Murphy",
+      "Cameron Diaz",
+      "John Lithgow",
+      "Vincent Cassel",
+      "Conrad Vernon",
+      "Chris Miller",
+      "Cody Cameron",
+      "Simon J. Smith",
+      "Christopher Knights",
+      "Jim Cummings",
+      "Kathleen Freeman",
+      "Bobby Block",
+      "Michael Galasso"
+    ],
+    "writer": ["Ted Elliott", "Terry Rossio", "Joe Stillman", "Roger S.H. Schulman"],
+    "genres": [
+      "Family Movies",
+      "Kids & Family Movies",
+      "Satires",
+      "Comedy Movies",
+      "Movies Based on Books"
+    ],
+    "showIs": ["witty", "feel-good"],
+    "maturityRating": {
+      "badge": "7+",
+      "description": [],
+      "recommendation": "Recommended for ages 7 and up"
+    }
+  },
+
+  {
+    "name": "Shrek 2",
+    "collection": "Shrek",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/Shrek2/image.webp",
+      "thumbnail": "./images/videos/Shrek2/thumbnail.webp",
+      "title": "./images/videos/Shrek2/title.webp"
+    },
+    "description": "Back in Far Far Away, Shrek and Fiona share news of their marriage. But a sinister plan involving Prince Charming threatens their \"happily ever after.\"",
+    "episodes": [],
+    "movie": {
+      "id": 1,
+      "duration": 92
+    },
+    "match": 94,
+    "productionYear": 2004,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [],
+    "creators": ["Andrew Adamson", "Kelly Asbury", "Conrad Vernon"],
+    "cast": [
+      "Mike Myers",
+      "Eddie Murphy",
+      "Cameron Diaz",
+      "Julie Andrews",
+      "Antonio Banderas",
+      "John Cleese",
+      "Rupert Everett",
+      "Jennifer Saunders"
+    ],
+    "writer": ["Andrew Adamson", "Joe Stillman", "J. David Stem", "David N. Weiss"],
+    "genres": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
+    "showIs": ["witty", "feel-good"],
+    "maturityRating": {
+      "badge": "7+",
+      "description": [],
+      "recommendation": "Recommended for ages 7 and up"
+    }
+  },
+
+  {
+    "name": "Shrek The Third",
+    "collection": "Shrek",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/Shrek3/image.webp",
+      "thumbnail": "./images/videos/Shrek3/thumbnail.webp",
+      "title": "./images/videos/Shrek3/title.webp"
+    },
+    "description": "With the kingdom in need of an heir, Shrek, Donkey and Puss set sail on a search to find one — just as Shrek learns he's about to become a father.",
+    "episodes": [],
+    "movie": {
+      "id": 1,
+      "duration": 93
+    },
+    "match": 96,
+    "productionYear": 2007,
+    "hdBadge": true,
+    "spatialAudioBadge": false,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [],
+    "creators": ["Chris Miller", "Raman Hui"],
+    "cast": [
+      "Mike Myers",
+      "Eddie Murphy",
+      "Cameron Diaz",
+      "Antonio Banderas",
+      "Julie Andrews",
+      "John Cleese",
+      "Rupert Everett",
+      "Regis Philbin",
+      "Justin Timberlake",
+      "Eric Idle",
+      "Ian McShane",
+      "Cheri Oteri"
+    ],
+    "writer": [],
+    "genres": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
+    "showIs": ["witty", "feel-good"],
+    "maturityRating": {
+      "badge": "7+",
+      "description": [],
+      "recommendation": "Recommended for ages 7 and up"
+    }
+  },
+
+  {
+    "name": "Shrek The Halls",
+    "collection": "Shrek",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/ShrekTheHalls/image.webp",
+      "thumbnail": "./images/videos/ShrekTheHalls/thumbnail.webp",
+      "title": "./images/videos/ShrekTheHalls/title.webp"
+    },
+    "description": "Just when Shrek thought he could finally relax and enjoy his happily-ever-after with his new family, the most joyous of all holidays arrives.",
+    "episodes": [],
+    "movie": {
+      "id": 1,
+      "duration": 28
+    },
+    "match": "",
+    "productionYear": 2008,
+    "hdBadge": true,
+    "spatialAudioBadge": false,
+    "audioDescriptionBadge": false,
+    "subtitlesBadge": true,
+    "trailers_more": [],
+    "creators": ["Gary Trousdale"],
+    "cast": ["Mike Myers", "Eddie Murphy", "Cameron Diaz", "Antonio Banderas"],
+    "writer": [],
+    "genres": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
+    "showIs": ["heartfelt", "feel-good", "goofy"],
+    "maturityRating": {
+      "badge": "7+",
+      "description": [],
+      "recommendation": "Recommended for ages 7 and up"
+    }
+  },
+
+  {
+    "name": "Shrek's Swamp Stories",
+    "collection": "Shrek",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/ShreksSwampStories/image.webp",
+      "thumbnail": "./images/videos/ShreksSwampStories/thumbnail.webp",
+      "title": "./images/videos/ShreksSwampStories/title.webp"
+    },
+    "description": "Shrek celebrates Halloween, Puss in Boots is captured by soldiers, and the gang participates in a kingdom-wide singing competition.",
+    "episodes": [
+      {
+        "seasons": {
+          "1": [
+            {
+              "id": 1,
+              "thumbnailLink": "./images/videos/ShreksSwampStories/episodes/season_1/episode_1.webp",
+              "title": "Play All Three: Shrek's Swamp Stories",
+              "description": "Shrek celebrates Halloween with his friends, Puss in Boots is sent on a mission to recover a stolen ruby, and the gang competes in a singing contest.",
+              "duration": 48
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "./images/videos/ShreksSwampStories/episodes/season_1/episode_2.webp",
+              "title": "Scared Shrekless",
+              "description": "When Halloween arrives, Shrek challenges the gang to spend the night in Lord Farquaad's haunted castle telling spooky stories.",
+              "duration": 25
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "./images/videos/ShreksSwampStories/episodes/season_1/episode_3.webp",
+              "title": "Puss in Boots: The Three Diablos",
+              "description": "After Puss in Boots is captured by soldiers, he is enlisted to recover a priceless ruby stolen by the notorious villain known as the Whisperer.",
+              "duration": 13
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "./images/videos/ShreksSwampStories/episodes/season_1/episode_4.webp",
+              "title": "Far Far Away Idol",
+              "description": "Puss in Boots, Donkey and the rest of the Far Far Away kingdom battle it out in a singers' showdown.",
+              "duration": 9
+            }
+          ]
+        }
+      }
+    ],
+    "match": "",
+    "productionYear": 2008,
+    "hdBadge": true,
+    "spatialAudioBadge": false,
+    "audioDescriptionBadge": false,
+    "subtitlesBadge": true,
+    "trailers_more": [],
+    "creators": [],
+    "cast": [
+      "Mike Myers",
+      "Eddie Murphy",
+      "Cameron Diaz",
+      "Antonio Banderas",
+      "Kristen Schaal",
+      "Simon Cowell",
+      "Gilles Marini",
+      "Charlotte Newhouse",
+      "Dean Edwards",
+      "Cody Cameron",
+      "Christopher Knights",
+      "Conrad Vernon"
+    ],
+    "writer": [],
+    "genres": [
+      "Kid's TV",
+      "Family Watch Together TV",
+      "TV Shows Based on Books",
+      "TV Comedies",
+      "TV Cartoons"
+    ],
+    "showIs": ["heartfelt", "feel-good", "goofy"],
+    "maturityRating": {
+      "badge": "7+",
+      "description": [],
+      "recommendation": "Recommended for ages 7 and up"
+    }
+  },
+
+  {
+    "name": "Spooky Stories",
+    "collection": "Shrek",
+    "videoLink": "./images/videos/*******",
+    "videoImageLink": {
+      "webp": "./images/videos/ShrekSpookyStories/image.webp",
+      "thumbnail": "./images/videos/ShrekSpookyStories/thumbnail.webp",
+      "title": "./images/videos/ShrekSpookyStories/title.webp"
+    },
+    "description": "Shrek dares his friends to bring on the scary with ghost stories told in a haunted castle. Later, Ginormica and the Monsters face alien pumpkins.",
+    "episodes": [
+      {
+        "seasons": {
+          "1": [
+            {
+              "id": 1,
+              "thumbnailLink": "./images/videos/ShrekSpookyStories/episodes/season_1/episode_1.webp",
+              "title": "Play All Three: DreamWorks Spooky Stories",
+              "description": "In three Halloween tales, Shrek and his friends tell scary stories, Ginormica and the Monsters fight mutant alien pumpkins, and Shrek battles a ghost.",
+              "duration": 65
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "./images/videos/ShrekSpookyStories/episodes/season_1/episode_2.webp",
+              "title": "Scared Shrekless",
+              "description": "Shrek challenges Fiona, Donkey, Puss in Boots and the others to spend the night in Lord Farquaad's haunted castle telling scary stories.",
+              "duration": 25
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "./images/videos/ShrekSpookyStories/episodes/season_1/episode_3.webp",
+              "title": "The Ghost of Lord Farquaad",
+              "description": "Join Donkey and Shrek as they rescue Fiona from the evil ghost of Lord Farquaad and embark on a bone-chilling adventure.",
+              "duration": 12
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "./images/videos/ShrekSpookyStories/episodes/season_1/episode_4.webp",
+              "title": "Monsters vs. Aliens: Mutant Pumpkins from Outer Space",
+              "description": "When an alien presence is detected in Susan Murphy's hometown right before Halloween, she and the Monsters are dispatched to investigate.",
+              "duration": 27
+            }
+          ]
+        }
+      }
+    ],
+    "match": "",
+    "productionYear": 2009,
+    "hdBadge": true,
+    "spatialAudioBadge": false,
+    "audioDescriptionBadge": false,
+    "subtitlesBadge": true,
+    "trailers_more": [],
+    "creators": [],
+    "cast": [
+      "Antonio Banderas",
+      "Hugh Laurie",
+      "Mike Myers",
+      "Reese Witherspoon",
+      "Seth Rogen",
+      "Kristen Schaal",
+      "Dean Edwards"
+    ],
+    "writer": [],
+    "genres": ["Kid's TV", "Family Watch Together TV", "TV Comedies", "TV Cartoons"],
+    "showIs": ["goofy"],
+    "maturityRating": {
+      "badge": "7+",
+      "description": [],
+      "recommendation": "Recommended for ages 7 and up"
+    }
+  }
+]

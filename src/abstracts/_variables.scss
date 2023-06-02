@@ -1,0 +1,10 @@
+@use "../base/functions" as func;
+
+$main-transition: 300ms ease-in-out;
+
+//* Fonts
+$font-size-body: func.rem(13);
+$font-size-navbar: func.rem(14);
+$font-size-main-description: 1.2vw;
+$font-size-header: 1.4vw;
+$font-size-header-mobile: func.rem(12);

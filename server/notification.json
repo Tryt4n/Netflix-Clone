@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Fubar",
+    "text": "New Arrival",
+    "time": "1 day ago",
+    "image": "./images/notifications/fubar.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Mother's Day",
+    "text": "New Arrival",
+    "time": "1 week ago",
+    "image": "./images/notifications/mother's_day.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Muted",
+    "text": "New Arrival",
+    "time": "1 week ago",
+    "image": "./images/notifications/muted.jpg"
+  },
+  {
+    "id": 4,
+    "name": "The Mother",
+    "text": "New Arrival",
+    "time": "2 weeks ago",
+    "image": "./images/notifications/the_mother.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Welcome to Eden",
+    "text": "Now Available",
+    "time": "1 month ago",
+    "image": "./images/notifications/welcome_to_eden.jpg",
+    "season": 2
+  }
+]

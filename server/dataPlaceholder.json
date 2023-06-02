@@ -1,0 +1,381 @@
+[
+  {
+    "name": "Fubar",
+    "videoImageLink": {
+      "webp": "https://placehold.co/625x250",
+      "thumbnail": "https://placehold.co/850x480"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere sapiente dolores molestias architecto illo quo voluptatibus cum, distinctio neque inventore tenetur fugit, fuga sit odio.",
+    "episodes": [
+      {
+        "seasons": {
+          "1": [
+            {
+              "id": 1,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 55
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 46
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 55
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 57
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 57
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 59
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 51
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 45
+            }
+          ]
+        }
+      }
+    ],
+    "match": 82,
+    "productionYear": 2021,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": false,
+    "subtitlesBadge": true,
+    "trailers_more": [
+      {
+        "trailers": [
+          {
+            "id": 1,
+            "thumbnailLink": "https://placehold.co/341x192"
+          }
+        ],
+        "teasers": [
+          {
+            "id": 1,
+            "thumbnailLink": "https://placehold.co/341x192"
+          },
+          {
+            "id": 2,
+            "thumbnailLink": "https://placehold.co/341x192"
+          },
+          {
+            "id": 3,
+            "thumbnailLink": "https://placehold.co/341x192"
+          }
+        ]
+      }
+    ],
+    "creators": ["placeholder"],
+    "cast": [
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum"
+    ],
+    "genres": ["placeholder1", "placeholder2", "placeholder3"],
+    "showIs": ["placeholder", "placeholder2"],
+    "maturityRating": {
+      "badge": "16+",
+      "description": ["placeholder1", "placeholder2"],
+      "recommendation": "Recommended for ages 16 and up"
+    }
+  },
+
+  {
+    "name": "Bridgerton",
+    "videoImageLink": {
+      "webp": "https://placehold.co/625x250",
+      "thumbnail": "https://placehold.co/850x480"
+    },
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere sapiente dolores molestias architecto illo quo voluptatibus cum, distinctio neque inventore tenetur fugit, fuga sit odio.",
+    "episodes": [
+      {
+        "seasons": {
+          "1": [
+            {
+              "id": 1,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 58
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 57
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 57
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 72
+            }
+          ],
+          "2": [
+            {
+              "id": 1,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 70
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 53
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 68
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 58
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 58
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 69
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 59
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 72
+            }
+          ],
+          "3": [
+            {
+              "id": 1,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 58
+            },
+            {
+              "id": 2,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 3,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 57
+            },
+            {
+              "id": 4,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 5,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 6,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 57
+            },
+            {
+              "id": 7,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 61
+            },
+            {
+              "id": 8,
+              "thumbnailLink": "https://placehold.co/341x192",
+              "title": "Lorem, ipsum dolor",
+              "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur ut molestiae animi eaque cupiditate harum.",
+              "duration": 72
+            }
+          ]
+        }
+      }
+    ],
+    "match": 97,
+    "productionYear": 2022,
+    "hdBadge": true,
+    "spatialAudioBadge": true,
+    "audioDescriptionBadge": true,
+    "subtitlesBadge": true,
+    "trailers_more": [
+      {
+        "trailers": [
+          {
+            "id": 1,
+            "thumbnailLink": "https://placehold.co/341x192"
+          },
+          {
+            "id": 2,
+            "thumbnailLink": "https://placehold.co/341x192"
+          },
+          {
+            "id": 3,
+            "thumbnailLink": "https://placehold.co/341x192"
+          }
+        ],
+        "teasers": [
+          {
+            "id": 1,
+            "thumbnailLink": "https://placehold.co/341x192"
+          },
+          {
+            "id": 2,
+            "thumbnailLink": "https://placehold.co/341x192"
+          }
+        ],
+        "recap": [
+          {
+            "id": 1,
+            "thumbnailLink": "https://placehold.co/341x192"
+          }
+        ]
+      }
+    ],
+    "creators": ["placeholder1", "placeholder2"],
+    "cast": [
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum",
+      "Lorem, ipsum"
+    ],
+    "genres": ["placeholder1", "placeholder2", "placeholder3", "placeholder4"],
+    "showIs": ["placeholder", "placeholder2", "placeholder3"],
+    "maturityRating": {
+      "badge": "13+",
+      "description": ["placeholder1", "placeholder2", "placeholder3"],
+      "recommendation": "Recommended for ages 13 and up"
+    }
+  }
+]

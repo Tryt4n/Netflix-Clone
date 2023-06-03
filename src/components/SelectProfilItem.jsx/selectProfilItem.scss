@@ -1,0 +1,67 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
+@use "../../base/breakpoints" as b;
+@use "../../base/functions" as func;
+
+.select-profil-item {
+  @include flex(column, space-between, center);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  margin-top: 0.5em;
+  & .edit {
+    opacity: 0.5;
+  }
+
+  &__img-wrapper {
+    position: relative;
+    border-radius: 0.25em;
+    overflow: hidden;
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      border: 0.2em solid transparent;
+    }
+    & .edit-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      color: c.$white;
+    }
+  }
+
+  &__profile-img {
+    position: relative;
+    width: 10vw;
+    max-width: func.rem(200);
+    min-width: func.rem(84);
+    aspect-ratio: 1/1;
+  }
+
+  &__username {
+    color: c.$gray-text;
+    margin-top: 0.6em;
+    margin-bottom: 1em;
+    @media screen and (width > b.$mobile) {
+      font-size: 1.3vw;
+    }
+    @media screen and (width <= b.$mobile) {
+      font-size: v.$font-size-header-mobile;
+    }
+  }
+}
+
+.select-profil-item:where(:hover, :focus-visible) .select-profil-item__img-wrapper::after,
+.select-profil-item:where(:hover, :focus-visible) .select-profil-item__username {
+  border-color: c.$main-text-color;
+  color: c.$main-text-color;
+}
+
+.select-profil-item:where(:hover, :focus-visible) .select-profil-item__username {
+  color: c.$white;
+}

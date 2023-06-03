@@ -1,7 +1,14 @@
+@use "../abstracts/colors" as c;
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+body {
+  background-color: c.$bg-color;
+  color: c.$main-text-color;
 }
 
 body,

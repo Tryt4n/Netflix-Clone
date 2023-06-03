@@ -1,0 +1,54 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/breakpoints" as b;
+@use "../../base/functions" as func;
+
+.choose-profile {
+  min-height: 100dvh;
+  max-width: 80%;
+  margin-inline: auto;
+  display: grid;
+  place-content: center;
+  place-items: center;
+
+  &__header {
+    margin-bottom: 0.5em;
+    color: c.$white;
+    font-weight: 400;
+    text-align: center;
+    @media screen and (width > b.$mobile) {
+      font-size: 3.5vw;
+    }
+    @media screen and (width <= b.$mobile) {
+      font-size: func.rem(30);
+    }
+  }
+
+  &__list {
+    @include flex(row, center);
+    flex-wrap: wrap;
+    & > * {
+      margin-right: 2vw;
+    }
+  }
+
+  &__manage-profiles {
+    border: func.rem(1) solid c.$gray-text;
+    padding: 0.5em 1.5em;
+    margin-block: 2em 1em;
+    color: c.$gray-text;
+    font-weight: 500;
+    outline: none;
+    @media screen and (width > b.$mobile) {
+      font-size: 1.2vw;
+    }
+    @media screen and (width <= b.$mobile) {
+      font-size: v.$font-size-body;
+    }
+    &:where(:hover, :focus-visible) {
+      color: c.$main-text-color;
+      border-color: c.$main-text-color;
+    }
+  }
+}

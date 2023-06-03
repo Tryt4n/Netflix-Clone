@@ -1,3 +1,4 @@
 @use "./functions" as func;
 
 $mobile: func.rem(800);
+$mobile-small: func.rem(400);

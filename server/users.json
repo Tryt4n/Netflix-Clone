@@ -1,0 +1,537 @@
+[
+  {
+    "id": 1,
+    "username": "John",
+    "profilImage": "/images/profiles/profil_1.png",
+    "notifications": [
+      {
+        "id": 1,
+        "name": "Fubar",
+        "text": "New Arrival",
+        "time": "1 day ago",
+        "image": "./images/notifications/fubar.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Mother's Day",
+        "text": "New Arrival",
+        "time": "1 week ago",
+        "image": "./images/notifications/mother's_day.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Muted",
+        "text": "New Arrival",
+        "time": "1 week ago",
+        "image": "./images/notifications/muted.jpg"
+      },
+      {
+        "id": 4,
+        "name": "The Mother",
+        "text": "New Arrival",
+        "time": "2 weeks ago",
+        "image": "./images/notifications/the_mother.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Welcome to Eden",
+        "text": "Now Available",
+        "time": "1 month ago",
+        "image": "./images/notifications/welcome_to_eden.jpg",
+        "season": 2
+      }
+    ],
+    "movies": [
+      {
+        "name": "The Mother",
+        "watched": true,
+        "watchTime": 117
+      },
+      {
+        "name": "Shrek",
+        "watched": false,
+        "watchTime": 32
+      }
+    ],
+    "series": [
+      {
+        "name": "Shrek's Swamp Stories",
+        "seasons": {
+          "1": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 48
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 25
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 13
+            },
+            {
+              "seriesNumber": 4,
+              "watched": true,
+              "watchTime": 9
+            }
+          ]
+        }
+      },
+      {
+        "name": "Bridgerton",
+        "seasons": {
+          "1": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 58
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 57
+            },
+            {
+              "seriesNumber": 4,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 5,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 6,
+              "watched": true,
+              "watchTime": 57
+            },
+            {
+              "seriesNumber": 7,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 8,
+              "watched": true,
+              "watchTime": 72
+            }
+          ],
+          "2": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 70
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 53
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 68
+            },
+            {
+              "seriesNumber": 4,
+              "watched": true,
+              "watchTime": 58
+            },
+            {
+              "seriesNumber": 5,
+              "watched": true,
+              "watchTime": 58
+            },
+            {
+              "seriesNumber": 6,
+              "watched": true,
+              "watchTime": 69
+            },
+            {
+              "seriesNumber": 7,
+              "watched": true,
+              "watchTime": 59
+            },
+            {
+              "seriesNumber": 8,
+              "watched": true,
+              "watchTime": 72
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 2,
+    "username": "Sally",
+    "profilImage": "/images/profiles/profil_2.png",
+    "notifications": [
+      {
+        "id": 1,
+        "name": "Fubar",
+        "text": "New Arrival",
+        "time": "1 day ago",
+        "image": "./images/notifications/fubar.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Muted",
+        "text": "New Arrival",
+        "time": "1 week ago",
+        "image": "./images/notifications/muted.jpg"
+      },
+      {
+        "id": 3,
+        "name": "The Mother",
+        "text": "New Arrival",
+        "time": "2 weeks ago",
+        "image": "./images/notifications/the_mother.jpg"
+      }
+    ],
+    "movies": [
+      {
+        "name": "The Mother",
+        "watched": true,
+        "watchTime": 117
+      }
+    ],
+    "series": [
+      {
+        "name": "Bridgerton",
+        "seasons": {
+          "1": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 58
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 57
+            },
+            {
+              "seriesNumber": 4,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 5,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 6,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 7,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 8,
+              "watched": false,
+              "watchTime": 0
+            }
+          ],
+          "2": [
+            {
+              "seriesNumber": 1,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 2,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 3,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 4,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 5,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 6,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 7,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 8,
+              "watched": false,
+              "watchTime": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "username": "Kyle",
+    "profilImage": "/images/profiles/profil_3.png",
+    "notifications": [
+      {
+        "id": 2,
+        "name": "Mother's Day",
+        "text": "New Arrival",
+        "time": "1 week ago",
+        "image": "./images/notifications/mother's_day.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Welcome to Eden",
+        "text": "Now Available",
+        "time": "1 month ago",
+        "image": "./images/notifications/welcome_to_eden.jpg",
+        "season": 2
+      }
+    ],
+    "movies": [
+      {
+        "name": "The Mother",
+        "watched": true,
+        "watchTime": 117
+      },
+      {
+        "name": "Shrek",
+        "watched": false,
+        "watchTime": 32
+      }
+    ],
+    "series": [
+      {
+        "name": "Shrek's Swamp Stories",
+        "seasons": {
+          "1": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 48
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 25
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 13
+            },
+            {
+              "seriesNumber": 4,
+              "watched": true,
+              "watchTime": 9
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 4,
+    "username": "Anna",
+    "profilImage": "/images/profiles/profil_4.png",
+    "notifications": [
+      {
+        "id": 1,
+        "name": "The Mother",
+        "text": "New Arrival",
+        "time": "2 weeks ago",
+        "image": "./images/notifications/the_mother.jpg"
+      }
+    ],
+    "movies": [
+      {
+        "name": "The Mother",
+        "watched": true,
+        "watchTime": 117
+      },
+      {
+        "name": "Shrek",
+        "watched": false,
+        "watchTime": 32
+      }
+    ],
+    "series": [
+      {
+        "name": "Bridgerton",
+        "seasons": {
+          "1": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 58
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 57
+            },
+            {
+              "seriesNumber": 4,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 5,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 6,
+              "watched": true,
+              "watchTime": 57
+            },
+            {
+              "seriesNumber": 7,
+              "watched": true,
+              "watchTime": 61
+            },
+            {
+              "seriesNumber": 8,
+              "watched": true,
+              "watchTime": 72
+            }
+          ],
+          "2": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 70
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 53
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 68
+            },
+            {
+              "seriesNumber": 4,
+              "watched": true,
+              "watchTime": 58
+            },
+            {
+              "seriesNumber": 5,
+              "watched": false,
+              "watchTime": 32
+            },
+            {
+              "seriesNumber": 6,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 7,
+              "watched": false,
+              "watchTime": 0
+            },
+            {
+              "seriesNumber": 8,
+              "watched": false,
+              "watchTime": 0
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  {
+    "id": 5,
+    "username": "Kids",
+    "profilImage": "/images/profiles/profil_kids.png",
+    "notifications": [],
+    "movies": [
+      {
+        "name": "Shrek",
+        "watched": true,
+        "watchTime": 90
+      },
+      {
+        "name": "Shrek 2",
+        "watched": true,
+        "watchTime": 92
+      },
+      {
+        "name": "Shrek The Third",
+        "watched": true,
+        "watchTime": 93
+      }
+    ],
+    "series": [
+      {
+        "name": "Spooky Stories",
+        "seasons": {
+          "1": [
+            {
+              "seriesNumber": 1,
+              "watched": true,
+              "watchTime": 65
+            },
+            {
+              "seriesNumber": 2,
+              "watched": true,
+              "watchTime": 25
+            },
+            {
+              "seriesNumber": 3,
+              "watched": true,
+              "watchTime": 12
+            },
+            {
+              "seriesNumber": 4,
+              "watched": false,
+              "watchTime": 12
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

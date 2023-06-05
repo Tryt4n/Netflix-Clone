@@ -73,17 +73,19 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
             ></path>
           </svg>
         </button>
-        <section>
+        <section className="learn-more-modal__step-container">
           {/* //* Step 1 */}
           {modalStep === 1 && (
             <>
               <img
+                className="learn-more-modal__profil-img"
                 src="/images/profiles/sassyCat-img.jpg"
                 alt="SassyCat Profil Avatar"
               />
               <span>Alex</span>
-              <span>
+              <span className="learn-more-modal__nick-wrapper">
                 <svg
+                  className="learn-more-modal__nick-icon"
                   aria-hidden="true"
                   width="24"
                   height="24"
@@ -97,16 +99,18 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
                 </svg>
                 SassyCat
               </span>
-              <h4>Your name in games</h4>
-              <p>Your game handle represents you across Netflix Games.</p>
+              <h4 className="learn-more-modal__header">Your name in games</h4>
+              <p className="learn-more-modal__text">
+                Your game handle represents you across Netflix Games.
+              </p>
             </>
           )}
 
           {/* //* Step  */}
           {modalStep === 2 && (
             <>
-              <ul>
-                <li>
+              <ul className="learn-more-modal__actions-list">
+                <li className="learn-more-modal__actions-list-item">
                   <svg
                     width="24"
                     height="24"
@@ -120,7 +124,7 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
                   </svg>
                   <span>SassyCat wants to play</span>
                 </li>
-                <li>
+                <li className="learn-more-modal__actions-list-item">
                   <svg
                     width="24"
                     height="24"
@@ -134,7 +138,7 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
                   </svg>
                   <span>Sr1acha sent an invite</span>
                 </li>
-                <li>
+                <li className="learn-more-modal__actions-list-item">
                   <svg
                     width="24"
                     height="24"
@@ -149,16 +153,18 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
                   <span>S0uless currently online</span>
                 </li>
               </ul>
-              <h4>Play with others</h4>
-              <p>Your unique game handle will be used when you play with other members.</p>
+              <h4 className="learn-more-modal__header">Play with others</h4>
+              <p className="learn-more-modal__text">
+                Your unique game handle will be used when you play with other members.
+              </p>
             </>
           )}
 
           {/* //* Step 3 */}
           {modalStep === 3 && (
             <>
-              <ul>
-                <li>
+              <ul className="learn-more-modal__place-list">
+                <li className="learn-more-modal__place-list-item learn-more-modal__place-list-item--first">
                   <svg
                     width="32"
                     height="32"
@@ -297,7 +303,7 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
                   </svg>
                   <span>SassyCat</span>
                 </li>
-                <li>
+                <li className="learn-more-modal__place-list-item learn-more-modal__place-list-item--second">
                   <svg
                     width="32"
                     height="32"
@@ -459,7 +465,7 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
                   </svg>
                   <span>Sr1acha</span>
                 </li>
-                <li>
+                <li className="learn-more-modal__place-list-item learn-more-modal__place-list-item--third">
                   <svg
                     width="32"
                     height="32"
@@ -578,8 +584,10 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
                   <span>S0uless</span>
                 </li>
               </ul>
-              <h4>Climb the leaderboards</h4>
-              <p>Your game handle will allow you to see where you are on leaderboards.</p>
+              <h4 className="learn-more-modal__header">Climb the leaderboards</h4>
+              <p className="learn-more-modal__text">
+                Your game handle will allow you to see where you are on leaderboards.
+              </p>
             </>
           )}
         </section>

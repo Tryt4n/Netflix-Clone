@@ -1,25 +1,27 @@
 import { createContext, useEffect, useState } from "react";
 
-import users from "../../server/users.json";
+import usersData from "../../server/users.json";
 
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
+  const [users, setUsers] = useState(usersData);
   const [user, setUser] = useState("");
-  const [userSettings, setUserSettings] = useState([]);
+  const [editingProfile, setEditingProfile] = useState({});
 
   // useEffect(() => {
-  //   console.log(userSettings);
-  // }, [userSettings]);
+  //   console.log(users);
+  // }, [users]);
 
   return (
     <UserContext.Provider
       value={{
         users: users,
+        setUsers: setUsers,
         user: user,
-        userSettings: userSettings,
-        setUserSettings: setUserSettings,
         setUser: setUser,
+        editingProfile: editingProfile,
+        setEditingProfile: setEditingProfile,
       }}
     >
       {children}

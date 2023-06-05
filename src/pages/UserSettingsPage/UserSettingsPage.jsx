@@ -1,10 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 
-// import "./manageProfilesPage.scss";
 import "../ManageProfilesPage/manageProfilesPage.scss";
+
+import languageOptions from "../../../server/languageOptions.json";
+import MoreInfoModal from "../../components/MoreInfoModal/MoreInfoModal";
 
 const editIcon = (
   <svg
@@ -23,34 +25,79 @@ const editIcon = (
     ></path>
   </svg>
 );
+const warningIcon = (
+  <svg
+    aria-hidden="true"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    data-name="Warning"
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M9.22353 1.60522C8.67651 0.670007 7.32485 0.67 6.77783 1.60522L0.190097 12.8681C-0.3623 13.8125 0.318834 15 1.41295 15H14.5884C15.6825 15 16.3637 13.8125 15.8113 12.8681L9.22353 1.60522ZM1.55823 13.5L8.00068 2.48553L14.4431 13.5H1.55823ZM9.00132 6.66677H7.00132L7.33465 9.33344H8.66799L9.00132 6.66677ZM9.00132 11.0002C9.00132 10.4479 8.5536 10.0002 8.00132 10.0002C7.44903 10.0002 7.00132 10.4479 7.00132 11.0002C7.00132 11.5524 7.44903 12.0002 8.00132 12.0002C8.5536 12.0002 9.00132 11.5524 9.00132 11.0002Z"
+      fill="currentColor"
+    ></path>
+  </svg>
+);
 
 export default function UserSettingsPage() {
   const params = useParams();
 
-  const { users, setUserSettings } = useContext(UserContext);
+  const { users, setUsers } = useContext(UserContext);
 
   const currentUser = users.find((user) => user.username === params.id);
-  console.log(currentUser);
-  //   const [editProfile, setEditProfile] = useState(false);
-  const [editingProfile, setEditingProfile] = useState(currentUser);
 
   const [isNameValid, setIsNameValid] = useState(true);
-  //   const nameRef = useRef(null);
+  const [isGameHandleValid, setIsGameHandleValid] = useState(true);
 
-  //   function handleInputName(e) {
-  //     setEditingProfile((prevState) => ({
-  //       ...prevState,
-  //       username: e.target.value,
-  //     }));
-  //   }
+  const [username, setUsername] = useState(currentUser.username);
+  const [userLanguage, setUserLanguage] = useState(currentUser.language);
+  const [gameHandle, setGameHandle] = useState(currentUser.gameHandle);
+  const [isGameHandleExist, setIsGameHandleExist] = useState(false);
+  const [showGameHandleLength, setShowGameHandleLength] = useState(false);
+  const [showGameHandleWarningInfo, setShowGameHandleWarningInfo] = useState(false);
 
-  //   function changeUserSettings() {
-  //     const id = editingProfile.id;
-  //     const index = id - 1;
+  function handleUsernameChange(e) {
+    setUsername(e.target.value);
+  }
+  useEffect(() => {
+    username === "" || username.length > 50 ? setIsNameValid(false) : setIsNameValid(true);
+  }, [username]);
 
-  //     setUserSettings(editingProfile);
-  //     console.log(users[index]);
-  //   }
+  function handleGameHandleChange(e) {
+    setGameHandle(e.target.value);
+  }
+  useEffect(() => {
+    if (!isGameHandleExist) {
+      setIsGameHandleValid(true);
+    } else if (gameHandle.length <= 2 || gameHandle.length > 16 || /\W/.test(gameHandle)) {
+      setIsGameHandleValid(false);
+    } else {
+      setIsGameHandleValid(true);
+    }
+  }, [isGameHandleExist, gameHandle, isGameHandleValid]);
+
+  function handleSave() {
+    if (!isNameValid || !isGameHandleValid) {
+      setIsNameValid(username.trim() !== "");
+      return;
+    } else {
+      const updatedUsers = users.map((user) => {
+        if (user.username === params.id) {
+          return { ...user, username, gameHandle };
+        }
+        return user;
+      });
+      setShowGameHandleWarningInfo(false);
+      setUsers(updatedUsers);
+    }
+  }
+
+  const [isLearnMoreModalOpen, setIsLearnMoreModalOpen] = useState(false);
 
   return (
     <main className="manage-profile__wrapper">
@@ -60,12 +107,13 @@ export default function UserSettingsPage() {
 
       <div className="manage-profile__container">
         <aside className="manage-profile__image-edit">
-          <h2 className="visually-hidden">Profil Image Edition</h2>
+          <h2 className="visually-hidden">Profile Image Edition</h2>
           <img
             className="manage-profile__img"
-            src={editingProfile.profilImage}
-            alt={editingProfile.username}
+            src={currentUser.profilImage}
+            alt={currentUser.username}
           />
+          {/* //! Change for link */}
           <button
             className="manage-profile__edit-btn"
             aria-label="Change profile image"
@@ -75,7 +123,7 @@ export default function UserSettingsPage() {
         </aside>
 
         <article>
-          <h2 className="visually-hidden">Profil Settings</h2>
+          <h2 className="visually-hidden">Profile Settings</h2>
           <section>
             <label
               htmlFor="profile-name-entry"
@@ -89,11 +137,17 @@ export default function UserSettingsPage() {
               className={`manage-profile__input ${isNameValid ? "" : " invalid"}`}
               type="text"
               placeholder="Name"
-              //   value={editingProfile.username}
-              //   ref={nameRef}
-              //   onChange={handleInputName}
+              value={username}
+              onChange={handleUsernameChange}
+              autoFocus
             />
-            {!isNameValid && <p className="manage-profile__invalid-message">Please enter a name</p>}
+            {!isNameValid && (
+              <p className="manage-profile__invalid-message">
+                {username.length > 50
+                  ? "Sorry, names must be less than 50 characters"
+                  : "Please enter a name"}
+              </p>
+            )}
           </section>
 
           <section className="manage-profile__language-select-container">
@@ -104,42 +158,15 @@ export default function UserSettingsPage() {
               name="language-select"
               id="language-select"
             >
-              <option value="Bahasa Indonesia">Bahasa Indonesia</option>
-              <option value="Bahasa Melayu">Bahasa Melayu</option>
-              <option value="Dansk">Dansk</option>
-              <option value="Deutsch">Deutsch</option>
-              <option
-                // selected
-                value="English"
-              >
-                English
-              </option>
-              <option value="Español">Español</option>
-              <option value="Filipino">Filipino</option>
-              <option value="Français">Français</option>
-              <option value="Hrvatski">Hrvatski</option>
-              <option value="Italiano">Italiano</option>
-              <option value="Magyar">Magyar</option>
-              <option value="Nederlands">Nederlands</option>
-              <option value="Norsk bokmål">Norsk bokmål</option>
-              <option value="Polski">Polski</option>
-              <option value="Português">Português</option>
-              <option value="Română">Română</option>
-              <option value="Suomi">Suomi</option>
-              <option value="Svenska">Svenska</option>
-              <option value="Tiếng Việt">Tiếng Việt</option>
-              <option value="Türkçe">Türkçe</option>
-              <option value="Čeština">Čeština</option>
-              <option value="Ελληνικά">Ελληνικά</option>
-              <option value="Русский">Русский</option>
-              <option value="Українська">Українська</option>
-              <option value="עברית">עברית</option>
-              <option value="العربية">العربية</option>
-              <option value="हिन्दी">हिन्दी</option>
-              <option value="ไทย">ไทย</option>
-              <option value="中文">中文</option>
-              <option value="日本語">日本語</option>
-              <option value="한국어">한국어</option>
+              {languageOptions.map((language) => (
+                <option
+                  key={language}
+                  value={language}
+                  selected={userLanguage === language}
+                >
+                  {language}
+                </option>
+              ))}
             </select>
           </section>
 
@@ -150,7 +177,7 @@ export default function UserSettingsPage() {
             <p id="gamesHandleDescription">
               Your handle is a unique name that&apos;ll be used for playing with other Netflix
               members across all Netflix Games.
-              <button>Learn more</button>
+              <button onClick={() => setIsLearnMoreModalOpen(true)}>Learn more</button>
             </p>
             <input
               id="game-handle"
@@ -159,32 +186,57 @@ export default function UserSettingsPage() {
               placeholder="Create Game Handle"
               aria-describedby="gamesHandleDescription"
               aria-invalid="false"
-              aria-errormessage="gamesHandleMessageText"
+              aria-errormessage="gameHandleMessageText"
+              value={gameHandle}
+              onChange={(e) => {
+                handleGameHandleChange(e);
+                setIsGameHandleExist(true);
+              }}
+              onFocus={() => {
+                setShowGameHandleLength(true);
+                setShowGameHandleWarningInfo(true);
+              }}
             />
-            <div>
-              <p
-                aria-live="assertive"
-                id="gamesHandleMessageText"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  data-name="Warning"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M9.22353 1.60522C8.67651 0.670007 7.32485 0.67 6.77783 1.60522L0.190097 12.8681C-0.3623 13.8125 0.318834 15 1.41295 15H14.5884C15.6825 15 16.3637 13.8125 15.8113 12.8681L9.22353 1.60522ZM1.55823 13.5L8.00068 2.48553L14.4431 13.5H1.55823ZM9.00132 6.66677H7.00132L7.33465 9.33344H8.66799L9.00132 6.66677ZM9.00132 11.0002C9.00132 10.4479 8.5536 10.0002 8.00132 10.0002C7.44903 10.0002 7.00132 10.4479 7.00132 11.0002C7.00132 11.5524 7.44903 12.0002 8.00132 12.0002C8.5536 12.0002 9.00132 11.5524 9.00132 11.0002Z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-                Must be shorter than 16 characters
-              </p>
-              <p>0/16</p>
-            </div>
+            {showGameHandleWarningInfo && (
+              <div>
+                {isGameHandleValid && gameHandle !== "" && (
+                  <p
+                    id="gameHandleMessageText"
+                    className={`${!isGameHandleValid ? "invalid" : ""}`}
+                    aria-live="assertive"
+                  >
+                    Available
+                  </p>
+                )}
+                {!isGameHandleValid && gameHandle !== "" && (
+                  <p
+                    id="gameHandleMessageText"
+                    className={`${!isGameHandleValid ? "invalid" : ""}`}
+                    aria-live="assertive"
+                  >
+                    {gameHandle.length <= 2 && <>{warningIcon}Must be longer than 2 characters</>}
+                    {gameHandle.length > 16 && <>{warningIcon}Must be shorter than 16 characters</>}
+                    {/\W/.test(gameHandle) && gameHandle.length > 2 && gameHandle.length <= 16 && (
+                      <>{warningIcon}Use only numbers or letters</>
+                    )}
+                  </p>
+                )}
+                {isGameHandleExist && gameHandle.length === 0 && (
+                  <p
+                    id="gameHandleMessageText"
+                    className={`${!isGameHandleValid ? "invalid" : ""}`}
+                    aria-live="assertive"
+                  >
+                    Create new Game Handle
+                  </p>
+                )}
+                {showGameHandleLength && <p>{gameHandle.length}/16</p>}
+              </div>
+            )}
+            <MoreInfoModal
+              isLearnMoreModalOpen={isLearnMoreModalOpen}
+              setIsLearnMoreModalOpen={setIsLearnMoreModalOpen}
+            />
           </section>
 
           <hr />
@@ -235,15 +287,17 @@ export default function UserSettingsPage() {
 
       <section>
         <h2 className="visually-hidden">Confirmation</h2>
-        {/* <button onClick={changeUserSettings}>Save</button>
-        <button>Cancel</button> */}
-        <Link
-          to={"/ManageProfiles"}
-          //   onClick={changeUserSettings}
-        >
-          Save
-        </Link>
-        <Link to={"/ManageProfiles"}>Cancel</Link>
+        {!isNameValid || !isGameHandleValid ? (
+          <a href="#">Save</a>
+        ) : (
+          <Link
+            to="/ManageProfiles"
+            onClick={handleSave}
+          >
+            Save
+          </Link>
+        )}
+        <Link to="/ManageProfiles">Cancel</Link>
       </section>
     </main>
   );

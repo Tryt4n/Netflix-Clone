@@ -3,6 +3,8 @@
     "id": 1,
     "username": "John",
     "profilImage": "/images/profiles/profil_1.png",
+    "language": "English",
+    "gameHandle": "",
     "notifications": [
       {
         "id": 1,
@@ -177,6 +179,8 @@
     "id": 2,
     "username": "Sally",
     "profilImage": "/images/profiles/profil_2.png",
+    "language": "English",
+    "gameHandle": "",
     "notifications": [
       {
         "id": 1,
@@ -304,6 +308,8 @@
     "id": 3,
     "username": "Kyle",
     "profilImage": "/images/profiles/profil_3.png",
+    "language": "English",
+    "gameHandle": "",
     "notifications": [
       {
         "id": 2,
@@ -368,6 +374,8 @@
     "id": 4,
     "username": "Anna",
     "profilImage": "/images/profiles/profil_4.png",
+    "language": "English",
+    "gameHandle": "",
     "notifications": [
       {
         "id": 1,
@@ -486,6 +494,8 @@
     "id": 5,
     "username": "Kids",
     "profilImage": "/images/profiles/profil_kids.png",
+    "language": "English",
+    "gameHandle": "",
     "notifications": [],
     "movies": [
       {

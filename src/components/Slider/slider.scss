@@ -1,0 +1,68 @@
+@use "../../base/functions" as func;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+
+.slider-btn {
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 150px;
+
+  &:where(:hover, :focus-visible) > img {
+    border-color: c.$white;
+  }
+}
+
+.margin-left {
+  margin-left: v.$edit-profile-slider-margin-left;
+}
+
+.slider-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 0.5rem;
+  border: func.rem(2) solid transparent;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  height: 100%;
+  width: v.$edit-profile-slider-margin-left;
+  margin-top: 0;
+}
+
+.swiper-button-prev {
+  inset: 0;
+  background: linear-gradient(90deg, #141414 0, hsla(0, 0%, 8%, 0.4));
+}
+.swiper-button-next {
+  top: 0;
+  right: 0;
+  background: linear-gradient(270deg, #141414 0, hsla(0, 0%, 8%, 0.4));
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: c.$white;
+  scale: 0.75;
+  opacity: 0;
+  transition: 250ms ease-in-out;
+}
+
+.swiper-button-prev:where(:hover, :focus-visible):after,
+.swiper-button-next:where(:hover, :focus-visible):after {
+  scale: 0.85;
+  opacity: 1;
+}
+
+.swiper-notification {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.swiper-wrapper .swiper .swiper-button-prev {
+  display: none;
+}

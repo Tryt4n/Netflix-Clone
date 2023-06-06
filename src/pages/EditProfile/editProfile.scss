@@ -1,0 +1,58 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.edit-profile {
+  max-width: func.rem(1470);
+  margin-inline: auto;
+  margin-top: 4rem;
+  padding-inline: 2rem;
+  color: c.$white;
+
+  &__header {
+    @include flex(row, space-between, center);
+  }
+
+  &__heading-wrapper {
+    @include flex(row, center, center);
+    gap: 1rem;
+  }
+
+  &__go-back-link {
+    scale: 1.65;
+  }
+
+  &__heading {
+    font-size: 2.35rem;
+  }
+
+  &__subheading {
+    font-size: 1.85rem;
+  }
+
+  &__username-text {
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  &__user-img {
+    width: 6vw;
+    max-width: 90px;
+    min-width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 0.25rem;
+  }
+
+  &__list {
+    // margin-top: 4rem;
+    margin-block: 4rem;
+  }
+
+  &__slider-heading {
+    margin-left: v.$edit-profile-slider-margin-left;
+    font-size: 2.75rem;
+    margin-bottom: 0.4em;
+  }
+}

@@ -47,12 +47,9 @@ const warningIcon = (
 export default function UserSettingsPage() {
   const params = useParams();
 
-  const { users, setUsers, editingProfile, setEditingProfile } = useContext(UserContext);
+  const { users, setUsers } = useContext(UserContext);
 
   const currentUser = users.find((user) => user.username === params.id);
-  // useEffect(() => {
-  //   setEditingProfile(currentUser);
-  // }, [currentUser, setEditingProfile, editingProfile]);
 
   const [isNameValid, setIsNameValid] = useState(true);
   const [isGameHandleValid, setIsGameHandleValid] = useState(true);
@@ -116,12 +113,9 @@ export default function UserSettingsPage() {
             src={currentUser.profilImage}
             alt={currentUser.username}
           />
-          {/* //! Change for link */}
           <Link
-            // to={`/ManageProfiles/${params.id}/EditProfile`}
             to={{
               pathname: `/ManageProfiles/${params.id}/EditProfile`,
-              // state: { editingProfile: editingProfile },
               state: { currentUser: currentUser },
             }}
             className="manage-profile__edit-btn"

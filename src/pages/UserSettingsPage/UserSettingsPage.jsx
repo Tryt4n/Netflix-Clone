@@ -47,7 +47,8 @@ const warningIcon = (
 export default function UserSettingsPage() {
   const params = useParams();
 
-  const { users, setUsers } = useContext(UserContext);
+  const { users, setUsers, editingProfilePictureSrc, setEditingProfilePictureSrc } =
+    useContext(UserContext);
 
   const currentUser = users.find((user) => user.username === params.id);
 
@@ -88,11 +89,12 @@ export default function UserSettingsPage() {
     } else {
       const updatedUsers = users.map((user) => {
         if (user.username === params.id) {
-          return { ...user, username, gameHandle };
+          return { ...user, username, gameHandle, profilImage: editingProfilePictureSrc };
         }
         return user;
       });
       setShowGameHandleWarningInfo(false);
+      setEditingProfilePictureSrc(null);
       setUsers(updatedUsers);
     }
   }
@@ -110,13 +112,12 @@ export default function UserSettingsPage() {
           <h2 className="visually-hidden">Profile Image Edition</h2>
           <img
             className="manage-profile__img"
-            src={currentUser.profilImage}
+            src={(currentUser && editingProfilePictureSrc) || currentUser.profilImage}
             alt={currentUser.username}
           />
           <Link
             to={{
               pathname: `/ManageProfiles/${params.id}/EditProfile`,
-              state: { currentUser: currentUser },
             }}
             className="manage-profile__edit-btn"
             aria-label="Change profile image"
@@ -300,7 +301,12 @@ export default function UserSettingsPage() {
             Save
           </Link>
         )}
-        <Link to="/ManageProfiles">Cancel</Link>
+        <Link
+          to="/ManageProfiles"
+          onClick={() => setEditingProfilePictureSrc(null)}
+        >
+          Cancel
+        </Link>
       </section>
     </main>
   );

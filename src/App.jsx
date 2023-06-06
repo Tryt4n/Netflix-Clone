@@ -1,6 +1,3 @@
-// import { useContext } from "react";
-// import UserContext from "./context/UserContext";
-
 import { Route, Routes } from "react-router-dom";
 
 // import Navbar from "./layout/Navbar/Navbar";
@@ -17,8 +14,6 @@ import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
 import EditProfile from "./pages/EditProfile/EditProfile";
 
 export default function App() {
-  // const { user, setUser } = useContext(UserContext);
-
   return (
     <>
       {/* <Navbar /> */}

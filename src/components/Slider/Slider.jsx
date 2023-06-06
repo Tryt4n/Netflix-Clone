@@ -1,23 +1,23 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+// import required modules
+import { Navigation, A11y } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { useContext, useState } from "react";
+import UserContext from "../../context/UserContext";
+
 import "./slider.scss";
 
-// import required modules
-import { Navigation, A11y } from "swiper";
-import { useState } from "react";
-
 export default function Slider({ data }) {
+  const { handleProfilePictureChange } = useContext(UserContext);
   const [activeSlider, setActiveSlider] = useState(false);
 
   let displayedNumberOfSlides = 8;
   //* Calculates the remaining number of components up to a whole number of multiples of 8
   const remainingSlides = displayedNumberOfSlides - (data.icons.length % displayedNumberOfSlides);
-
   //* Creates an array of additional components, if any
   const additionalSlides = Array.from({ length: remainingSlides }, (_, index) => index);
 
@@ -65,14 +65,20 @@ export default function Slider({ data }) {
           const iconIndex = index % data.icons.length;
           const updatedIcon = data.icons[iconIndex];
           const isAdditionalSlide = index >= data.icons.length;
+          const newSrc = isAdditionalSlide ? updatedIcon.src : item.src;
 
           return (
             <SwiperSlide key={isAdditionalSlide ? `additional-${index}` : updatedIcon.id}>
-              <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
+              <div
+                className={`slider-btn${activeSlider ? "" : " margin-left"}`}
+                onClick={() => {
+                  handleProfilePictureChange(newSrc);
+                }}
+              >
                 <img
                   className="slider-img"
-                  src={isAdditionalSlide ? updatedIcon.src : item.src}
-                  alt=""
+                  src={newSrc}
+                  alt={`${data.name} Icon ${item.id}`}
                 />
               </div>
             </SwiperSlide>

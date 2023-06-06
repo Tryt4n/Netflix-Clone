@@ -9,7 +9,7 @@ import Slider from "../../components/Slider/Slider";
 export default function EditProfile() {
   const params = useParams();
 
-  const { users, iconsData } = useContext(UserContext);
+  const { users, iconsData, editingProfilePictureSrc } = useContext(UserContext);
   const currentUser = users.find((user) => user.username === params.id);
 
   return (
@@ -56,7 +56,7 @@ export default function EditProfile() {
           <em className="edit-profile__username-text">{currentUser.username}</em>
           <img
             className="edit-profile__user-img"
-            src={currentUser.profilImage}
+            src={editingProfilePictureSrc || currentUser.profilImage}
             alt={`${currentUser.username} Profile Image`}
           />
         </div>
@@ -85,7 +85,10 @@ export default function EditProfile() {
                   list.name
                 )}
               </h3>
-              <Slider data={list} />
+              <Slider
+                data={list}
+                currentUser={currentUser}
+              />
             </li>
           ))}
         </ul>

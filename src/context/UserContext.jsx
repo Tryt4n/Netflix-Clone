@@ -1,8 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 import usersData from "../../server/users.json";
-import globalIcons from "../../server/editProfileData.json";
-// import globalIcons from "../server/editProfileData.json";
+import iconsData from "../../server/editProfileData.json";
 
 const UserContext = createContext();
 
@@ -11,11 +10,15 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState("");
   const [editingProfile, setEditingProfile] = useState({});
 
-  const iconsData = globalIcons;
+  const [editingProfilePictureSrc, setEditingProfilePictureSrc] = useState(null);
 
   // useEffect(() => {
   //   console.log(editingProfile);
   // }, [editingProfile]);
+
+  function handleProfilePictureChange(src) {
+    setEditingProfilePictureSrc(src);
+  }
 
   return (
     <UserContext.Provider
@@ -26,6 +29,9 @@ export function UserProvider({ children }) {
         setUser: setUser,
         editingProfile: editingProfile,
         setEditingProfile: setEditingProfile,
+        editingProfilePictureSrc: editingProfilePictureSrc,
+        setEditingProfilePictureSrc: setEditingProfilePictureSrc,
+        handleProfilePictureChange: handleProfilePictureChange,
         iconsData: iconsData,
       }}
     >

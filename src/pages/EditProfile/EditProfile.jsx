@@ -6,12 +6,10 @@ import UserContext from "../../context/UserContext";
 import "./editProfile.scss";
 import Slider from "../../components/Slider/Slider";
 
-import iconsData from "../../../server/editProfileData.json";
-
 export default function EditProfile() {
   const params = useParams();
 
-  const { users } = useContext(UserContext);
+  const { users, iconsData } = useContext(UserContext);
   const currentUser = users.find((user) => user.username === params.id);
 
   return (

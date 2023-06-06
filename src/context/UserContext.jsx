@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 import usersData from "../../server/users.json";
+import iconsData from "../../server/editProfileData.json";
 
 const UserContext = createContext();
 
@@ -22,6 +23,7 @@ export function UserProvider({ children }) {
         setUser: setUser,
         editingProfile: editingProfile,
         setEditingProfile: setEditingProfile,
+        iconsData: iconsData,
       }}
     >
       {children}

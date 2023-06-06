@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
 import usersData from "../../server/users.json";
-// import globalIcons from "../../server/editProfileData.json";
-import globalIcons from "../server/editProfileData.json";
+import globalIcons from "../../server/editProfileData.json";
+// import globalIcons from "../server/editProfileData.json";
 
 const UserContext = createContext();
 

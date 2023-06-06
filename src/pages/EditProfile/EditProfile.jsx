@@ -6,7 +6,7 @@ import UserContext from "../../context/UserContext";
 import "./editProfile.scss";
 import Slider from "../../components/Slider/Slider";
 
-import iconsData from "../../../server/edit-profile-data.json";
+import iconsData from "../../../server/editProfileData.json";
 
 export default function EditProfile() {
   const params = useParams();
@@ -72,7 +72,6 @@ export default function EditProfile() {
               className="edit-profile__list-item"
               key={list.name}
             >
-              {console.log(list)}
               <h3
                 className="edit-profile__slider-heading"
                 aria-label={list.titleSrc && `${list.name}`}

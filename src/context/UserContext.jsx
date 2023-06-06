@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 
 import usersData from "../../server/users.json";
-import iconsData from "../../server/editProfileData.json";
+import globalIcons from "../../server/editProfileData.json";
+// import globalIcons from "../server/editProfileData.json";
 
 const UserContext = createContext();
 
@@ -9,6 +10,8 @@ export function UserProvider({ children }) {
   const [users, setUsers] = useState(usersData);
   const [user, setUser] = useState("");
   const [editingProfile, setEditingProfile] = useState({});
+
+  const iconsData = globalIcons;
 
   // useEffect(() => {
   //   console.log(editingProfile);

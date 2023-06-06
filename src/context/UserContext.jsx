@@ -10,8 +10,8 @@ export function UserProvider({ children }) {
   const [editingProfile, setEditingProfile] = useState({});
 
   // useEffect(() => {
-  //   console.log(users);
-  // }, [users]);
+  //   console.log(editingProfile);
+  // }, [editingProfile]);
 
   return (
     <UserContext.Provider

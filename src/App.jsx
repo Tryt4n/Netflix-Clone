@@ -14,6 +14,7 @@ import Kids from "./pages/Kids";
 import UserSelectPage from "./pages/UserSelectPage/UserSelectPage";
 import ManageProfilesPage from "./pages/ManageProfilesPage/ManageProfilesPage";
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
+import EditProfile from "./pages/EditProfile/EditProfile";
 
 export default function App() {
   const { user, setUser } = useContext(UserContext);
@@ -63,56 +64,11 @@ export default function App() {
           path="/ManageProfiles/:id"
           element={<UserSettingsPage />}
         />
+        <Route
+          path="/ManageProfiles/:id/EditProfile"
+          element={<EditProfile />}
+        />
       </Routes>
     </>
   );
-  // return (
-  //   <>
-  //     {user === "" ? (
-  //       <>
-  //         <UserSelectPage setUser={setUser} />
-  //         {/* <ManageProfilesPage setUser={setUser} /> */}
-  //       </>
-  //     ) : (
-  //       <>
-  //         <Navbar />
-  //         <Routes>
-  //           <Route
-  //             // path="/"
-  //             index={true}
-  //             element={<Home />}
-  //           />
-  //           <Route
-  //             path="/series"
-  //             element={<TVShows />}
-  //           />
-  //           <Route
-  //             path="/movies"
-  //             element={<Movies />}
-  //           />
-  //           <Route
-  //             path="/latest"
-  //             element={<NewPopular />}
-  //           />
-  //           <Route
-  //             path="/my-list"
-  //             element={<MyList />}
-  //           />
-  //           <Route
-  //             path="/original-audio"
-  //             element={<BrowseLanguage />}
-  //           />
-  //           <Route
-  //             path="/Kids"
-  //             element={<Kids />}
-  //           />
-  //           <Route
-  //             path="ManageProfiles"
-  //             element={<ManageProfilesPage />}
-  //           />
-  //         </Routes>
-  //       </>
-  //     )}
-  //   </>
-  // );
 }

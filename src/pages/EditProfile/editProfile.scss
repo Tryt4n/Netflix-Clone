@@ -46,13 +46,27 @@
   }
 
   &__list {
-    // margin-top: 4rem;
     margin-block: 4rem;
+  }
+
+  &__list-item:not(:first-of-type) {
+    margin-top: 3rem;
   }
 
   &__slider-heading {
     margin-left: v.$edit-profile-slider-margin-left;
     font-size: 2.75rem;
     margin-bottom: 0.4em;
+  }
+
+  &__title-img {
+    display: grid;
+    align-items: end;
+    max-width: func.rem(300);
+    height: func.rem(60);
+
+    & img {
+      max-width: 100%;
+    }
   }
 }

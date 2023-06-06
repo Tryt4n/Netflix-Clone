@@ -11,12 +11,19 @@ import "./slider.scss";
 import { Navigation, A11y } from "swiper";
 import { useState } from "react";
 
-export default function Slider() {
+export default function Slider({ data }) {
   const [activeSlider, setActiveSlider] = useState(false);
+
+  let displayedNumberOfSlides = 8;
+  //* Calculates the remaining number of components up to a whole number of multiples of 8
+  const remainingSlides = displayedNumberOfSlides - (data.icons.length % displayedNumberOfSlides);
+
+  //* Creates an array of additional components, if any
+  const additionalSlides = Array.from({ length: remainingSlides }, (_, index) => index);
 
   return (
     <div
-      className={`${activeSlider ? null : "swiper-wrapper"}`}
+      className={`${activeSlider ? "" : "swiper-wrapper"}`}
       onClickCapture={() => setActiveSlider(true)}
       onTouchStart={() => setActiveSlider(true)}
     >
@@ -25,181 +32,52 @@ export default function Slider() {
         modules={[Navigation, A11y]}
         spaceBetween={30}
         loop={true}
-        slidesPerView={8}
-        slidesPerGroup={8}
-        className={`mySwiper`}
+        slidesPerView={displayedNumberOfSlides}
+        slidesPerGroup={displayedNumberOfSlides}
+        className={`mySwiper${data.id === 1 ? "" : data.id}`}
       >
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/1.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/2.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/3.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/4.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/5.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/6.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/7.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/8.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/9.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/10.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/11.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/12.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/13.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/14.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/15.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/16.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/17.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/18.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-            <img
-              className="slider-img"
-              src="/images/profiles/profile-images_edit/Classic/19.png"
-              alt="saf"
-            />
-          </div>
-        </SwiperSlide>
+        {/* {data.icons.map((icon) => (
+          <SwiperSlide key={icon.id}>
+            <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
+              <img
+                className="slider-img"
+                src={icon.src}
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+
+        {additionalSlides.map((index) => (
+          <SwiperSlide key={`additional-${index}`}>
+            <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
+              <img
+                className="slider-img"
+                src={data.icons[index].src}
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+        ))} */}
+
+        {/* //! Causes that when the carousel slider comes to an end, the first slide will be in the first position again */}
+        {[...data.icons, ...additionalSlides].map((item, index) => {
+          const iconIndex = index % data.icons.length;
+          const updatedIcon = data.icons[iconIndex];
+          const isAdditionalSlide = index >= data.icons.length;
+
+          return (
+            <SwiperSlide key={isAdditionalSlide ? `additional-${index}` : updatedIcon.id}>
+              <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
+                <img
+                  className="slider-img"
+                  src={isAdditionalSlide ? updatedIcon.src : item.src}
+                  alt=""
+                />
+              </div>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

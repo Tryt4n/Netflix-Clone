@@ -6,6 +6,8 @@ import UserContext from "../../context/UserContext";
 import "./editProfile.scss";
 import Slider from "../../components/Slider/Slider";
 
+import iconsData from "../../../server/edit-profile-data.json";
+
 export default function EditProfile() {
   const params = useParams();
 
@@ -64,29 +66,31 @@ export default function EditProfile() {
 
       <main>
         <h2 className="visually-hidden">Select Profile Image</h2>
-        {/* <ul>
-          <h3>
-            <img
-              src="/images/profiles/profile-images_edit/Wednesday/title.png"
-              alt="Wednesday"
-            />
-          </h3>
-        </ul> */}
         <ul className="edit-profile__list">
-          <li>
-            <h3 className="edit-profile__slider-heading">The Classics</h3>
-            <Slider />
-          </li>
-
-          <li>
-            <h3 className="edit-profile__slider-heading">The Classics</h3>
-            <Slider />
-          </li>
-
-          <li>
-            <h3 className="edit-profile__slider-heading">The Classics</h3>
-            <Slider />
-          </li>
+          {iconsData.map((list) => (
+            <li
+              className="edit-profile__list-item"
+              key={list.name}
+            >
+              {console.log(list)}
+              <h3
+                className="edit-profile__slider-heading"
+                aria-label={list.titleSrc && `${list.name}`}
+              >
+                {list.titleSrc ? (
+                  <div className="edit-profile__title-img">
+                    <img
+                      src={list.titleSrc}
+                      alt={list.name}
+                    />
+                  </div>
+                ) : (
+                  list.name
+                )}
+              </h3>
+              <Slider data={list} />
+            </li>
+          ))}
         </ul>
       </main>
     </div>

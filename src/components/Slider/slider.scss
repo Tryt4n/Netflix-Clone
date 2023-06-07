@@ -1,12 +1,16 @@
 @use "../../base/functions" as func;
 @use "../../abstracts/colors" as c;
 @use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
 
 .slider-btn {
   border: none;
   padding: 0;
   cursor: pointer;
-  width: 150px;
+  width: v.$edit-profile-icon-size;
+  // max-width: 150px;
+  // min-width: 100px;
+  // aspect-ratio: 1/1;
 
   &:where(:hover, :focus-visible) > img {
     border-color: c.$white;
@@ -20,7 +24,7 @@
 .slider-img {
   width: 100%;
   aspect-ratio: 1/1;
-  border-radius: 0.5rem;
+  border-radius: v.$edit-profile-icon-border-radius;
   border: func.rem(2) solid transparent;
 }
 
@@ -65,4 +69,87 @@
 
 .swiper-wrapper .swiper .swiper-button-prev {
   display: none;
+}
+
+.edit-profile-confirmation-modal {
+  $fs: func.rem(14);
+  $margin: 4rem;
+
+  background-color: c.$bg-color;
+  padding: 0;
+  border: none;
+  color: c.$white;
+  text-align: center;
+  &::backdrop {
+    background-color: c.$bg-color;
+  }
+
+  &__heading {
+    font-size: 1.75rem;
+  }
+
+  &__img-wrapper {
+    @include flex(row, center, center);
+
+    figure {
+      margin-inline: 0;
+      margin-block: $margin;
+      font-size: $fs;
+    }
+
+    img {
+      width: v.$edit-profile-icon-size;
+      aspect-ratio: 1/1;
+      border-radius: v.$edit-profile-icon-border-radius;
+    }
+
+    figcaption {
+      margin-top: $fs;
+    }
+
+    & svg {
+      width: func.rem(40);
+      rotate: 180deg;
+      margin-inline: 1rem;
+      margin-bottom: $fs;
+    }
+  }
+
+  &__btn-wrapper {
+    @include flex();
+    gap: 2rem;
+    margin-inline: 2rem;
+    font-weight: 500;
+  }
+
+  &__btn {
+    font-size: 1.75rem;
+    padding: func.rem(15) func.rem(46);
+    cursor: pointer;
+    &--confirm {
+      background-color: c.$white;
+      color: c.$black;
+      &:where(:hover, :focus-visible) {
+        background-color: c.$netflix-red;
+      }
+    }
+    &--cancel {
+      background-color: transparent;
+      color: c.$gray-text;
+      border: func.rem(1) solid c.$gray-text;
+      &:where(:hover, :focus-visible) {
+        border-color: c.$white;
+      }
+    }
+    &:where(:hover, :focus-visible) {
+      color: c.$white;
+    }
+  }
+
+  hr:first-of-type {
+    margin-top: 1.5rem;
+  }
+  hr:last-of-type {
+    margin-bottom: $margin;
+  }
 }

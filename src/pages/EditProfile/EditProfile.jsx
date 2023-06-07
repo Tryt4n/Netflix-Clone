@@ -75,12 +75,15 @@ export default function EditProfile() {
                 aria-label={list.titleSrc && `${list.name}`}
               >
                 {list.titleSrc ? (
-                  <div className="edit-profile__title-img">
-                    <img
-                      src={list.titleSrc}
-                      alt={list.name}
-                    />
-                  </div>
+                  <>
+                    <span className="visually-hidden">Title: {list.name}</span>
+                    <div className="edit-profile__title-img">
+                      <img
+                        src={list.titleSrc}
+                        alt={list.name}
+                      />
+                    </div>
+                  </>
                 ) : (
                   list.name
                 )}

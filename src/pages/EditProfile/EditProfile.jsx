@@ -6,7 +6,7 @@ import UserContext from "../../context/UserContext";
 import "./editProfile.scss";
 import Slider from "../../components/Slider/Slider";
 import { useTranslation } from "react-i18next";
-import GoBackIcon from "../../icons/goBackIcon";
+import GoBackIcon from "../../icons/GoBackIcon";
 
 export default function EditProfile() {
   const { t } = useTranslation();

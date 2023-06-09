@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import useWindowSize from "../../../Frontend/custom_React_Hooks/src/15-useWindowSize/useWindowSize";
+import useWindowSize from "../hooks/useWindowsSize";
 
 import usersData from "../../server/users.json";
 import iconsData from "../../server/editProfileData.json";
@@ -13,14 +13,7 @@ export function UserProvider({ children }) {
 
   const [editingProfilePictureSrc, setEditingProfilePictureSrc] = useState(null);
 
-  // useEffect(() => {
-  //   console.log(editingProfile);
-  // }, [editingProfile]);
-
   const { width, height } = useWindowSize();
-  // useEffect(() => {
-  //   console.log(width);
-  // }, [width]);
 
   function handleProfilePictureChange(src) {
     setEditingProfilePictureSrc(src);

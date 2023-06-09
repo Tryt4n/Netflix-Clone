@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 
-import "../ManageProfilesPage/manageProfilesPage.scss";
+import "../UserSettingsPage/userSettingsPage.scss";
 
 import languageOptions from "../../../server/languageOptions.json";
 import MoreInfoModal from "../../components/MoreInfoModal/MoreInfoModal";
@@ -12,8 +12,6 @@ const editIcon = (
   <svg
     aria-label="Edit Icon"
     className="edit-icon"
-    width="24"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
   >
@@ -102,16 +100,16 @@ export default function UserSettingsPage() {
   const [isLearnMoreModalOpen, setIsLearnMoreModalOpen] = useState(false);
 
   return (
-    <main className="manage-profile__wrapper">
-      <h1 className="manage-profile__header">Edit Profile</h1>
+    <main className="user-settings__wrapper">
+      <h1 className="user-settings__header">Edit Profile</h1>
 
       <hr />
 
-      <div className="manage-profile__container">
-        <aside className="manage-profile__image-edit">
+      <div className="user-settings__container">
+        <aside className="user-settings__image-edit">
           <h2 className="visually-hidden">Profile Image Edition</h2>
           <img
-            className="manage-profile__img"
+            className="user-settings__img"
             src={(currentUser && editingProfilePictureSrc) || currentUser.profilImage}
             alt={currentUser.username}
           />
@@ -119,7 +117,7 @@ export default function UserSettingsPage() {
             to={{
               pathname: `/ManageProfiles/${params.id}/EditProfile`,
             }}
-            className="manage-profile__edit-btn"
+            className="user-settings__edit-btn"
             aria-label="Change profile image"
           >
             {editIcon}
@@ -138,7 +136,7 @@ export default function UserSettingsPage() {
             </label>
             <input
               id="profile-name-entry"
-              className={`manage-profile__input ${isNameValid ? "" : " invalid"}`}
+              className={`user-settings__input ${isNameValid ? "" : " invalid"}`}
               type="text"
               placeholder="Name"
               value={username}
@@ -146,7 +144,7 @@ export default function UserSettingsPage() {
               autoFocus
             />
             {!isNameValid && (
-              <p className="manage-profile__invalid-message">
+              <p className="user-settings__invalid-message">
                 {username.length > 50
                   ? "Sorry, names must be less than 50 characters"
                   : "Please enter a name"}
@@ -154,9 +152,9 @@ export default function UserSettingsPage() {
             )}
           </section>
 
-          <section className="manage-profile__language-select-container">
+          <section className="user-settings__language-select-container">
             <label htmlFor="language-select">
-              <h3 className="manage-profile__language-select-header">Language:</h3>
+              <h3 className="user-settings__language-select-header">Language:</h3>
             </label>
             <select
               name="language-select"
@@ -185,7 +183,7 @@ export default function UserSettingsPage() {
             </p>
             <input
               id="game-handle"
-              className="manage-profile__input"
+              className="user-settings__input"
               type="text"
               placeholder="Create Game Handle"
               aria-describedby="gamesHandleDescription"

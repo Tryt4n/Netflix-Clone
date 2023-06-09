@@ -4,14 +4,37 @@
 @use "../../base/functions" as func;
 
 .edit-profile {
+  $space-top: 4rem;
+
   max-width: func.rem(1470);
   margin-inline: auto;
   margin-top: 4rem;
   padding-inline: 2rem;
   color: c.$white;
+  margin-top: $space-top;
+
+  &__margin-top {
+    height: 4rem;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: c.$bg-color;
+    z-index: 100;
+  }
 
   &__header {
     @include flex(row, space-between, center);
+    gap: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: func.rem(1470);
+    padding: inherit;
+    margin: inherit;
+    background-color: hsla(0, 0%, 8%, 0.9);
+    z-index: 2;
   }
 
   &__heading-wrapper {
@@ -32,6 +55,9 @@
   &__heading {
     @media screen and (width > func.rem(500)) {
       font-size: 2.35rem;
+    }
+    @media screen and (width <= func.rem(360)) {
+      font-size: 1.3rem;
     }
   }
 
@@ -57,6 +83,7 @@
 
   &__main-section {
     margin-left: 2rem;
+    padding-top: $space-top;
   }
 
   &__list {

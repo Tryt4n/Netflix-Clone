@@ -14,6 +14,10 @@ export default function EditProfile() {
 
   return (
     <div className="edit-profile">
+      <div
+        className="edit-profile__margin-top"
+        aria-hidden="true"
+      ></div>
       <header className="edit-profile__header">
         <div className="edit-profile__heading-wrapper">
           <Link

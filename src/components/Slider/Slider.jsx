@@ -11,14 +11,17 @@ import { useContext, useRef, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import "./slider.scss";
+import useWindowSize from "../../hooks/useWindowSize";
 
 export default function Slider({ data, currentUser }) {
   const params = useParams();
 
-  const { editingProfilePictureSrc, setEditingProfilePictureSrc, width } = useContext(UserContext);
+  const { users, editingProfilePictureSrc, setEditingProfilePictureSrc } = useContext(UserContext);
   const [activeSlider, setActiveSlider] = useState(false);
 
   const editProfileConfirmationModal = useRef(null);
+
+  const { width } = useWindowSize();
 
   let displayedNumberOfSlides;
   switch (true) {
@@ -45,6 +48,13 @@ export default function Slider({ data, currentUser }) {
       break;
   }
 
+  const alreadyUsedProfileIcons = users.map((user) => {
+    return user.profilImage;
+  });
+  const availableIcons = [...data.icons].filter(
+    (icon) => !alreadyUsedProfileIcons.includes(icon.src)
+  );
+
   //* Calculates the remaining number of components up to a whole number of multiples of 8
   const remainingSlides = displayedNumberOfSlides - (data.icons.length % displayedNumberOfSlides);
   //* Creates an array of additional components, if any
@@ -66,10 +76,10 @@ export default function Slider({ data, currentUser }) {
         className={`mySwiper${data.id === 1 ? "" : data.id}`}
       >
         {/* //! Causes that when the carousel slider comes to an end, the first slide will be in the first position again */}
-        {[...data.icons, ...additionalSlides].map((item, index) => {
-          const iconIndex = index % data.icons.length;
-          const updatedIcon = data.icons[iconIndex];
-          const isAdditionalSlide = index >= data.icons.length;
+        {[...availableIcons, ...additionalSlides].map((item, index) => {
+          const iconIndex = index % availableIcons.length;
+          const updatedIcon = availableIcons[iconIndex];
+          const isAdditionalSlide = index >= availableIcons.length;
           const newSrc = isAdditionalSlide ? updatedIcon.src : item.src;
 
           return (

@@ -31,7 +31,7 @@ export default function SelectProfilItem({
             <img
               className={`select-profil-item__profile-img${isEdit ? " edit" : ""}`}
               src={user.profilImage}
-              alt=""
+              alt={`${user.username} Avatar`}
               aria-hidden="true"
             />
             {isEdit && <>{editIcon}</>}

@@ -10,8 +10,6 @@ const editIcon = (
   <svg
     aria-label="Edit Icon"
     className="edit-icon"
-    width="24"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
   >
@@ -28,11 +26,11 @@ export default function ManageProfilesPage() {
   const { users } = useContext(UserContext);
 
   return (
-    <main className="choose-profile manage-profile">
+    <main className="choose-profile">
       <h1 className="choose-profile__header">Manage Profiles:</h1>
 
       <ul
-        className="choose-profile__list manage-profile__list"
+        className="choose-profile__list"
         aria-label="Choose Profile"
       >
         {users.map((user) => (
@@ -51,6 +49,7 @@ export default function ManageProfilesPage() {
 
       <Link
         to="/"
+        // className="choose-profile__manage-profiles manage-profile__done"
         className="choose-profile__manage-profiles manage-profile__done"
       >
         Done

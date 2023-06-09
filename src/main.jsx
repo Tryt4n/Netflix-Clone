@@ -7,6 +7,8 @@ import App from "./App";
 import "./style.scss";
 import { UserProvider } from "./context/UserContext";
 
+import "./i18next";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <UserProvider>

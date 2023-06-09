@@ -7,42 +7,13 @@ import "../UserSettingsPage/userSettingsPage.scss";
 
 import languageOptions from "../../../server/languageOptions.json";
 import MoreInfoModal from "../../components/MoreInfoModal/MoreInfoModal";
-
-const editIcon = (
-  <svg
-    aria-label="Edit Icon"
-    className="edit-icon"
-    viewBox="0 0 24 24"
-    fill="none"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M22.2071 7.79285L15.2071 0.792847L13.7929 2.20706L20.7929 9.20706L22.2071 7.79285ZM13.2071 3.79285C12.8166 3.40232 12.1834 3.40232 11.7929 3.79285L2.29289 13.2928C2.10536 13.4804 2 13.7347 2 14V20C2 20.5522 2.44772 21 3 21H9C9.26522 21 9.51957 20.8946 9.70711 20.7071L19.2071 11.2071C19.5976 10.8165 19.5976 10.1834 19.2071 9.79285L13.2071 3.79285ZM17.0858 10.5L8.58579 19H4V14.4142L12.5 5.91417L17.0858 10.5Z"
-      fill="currentColor"
-    ></path>
-  </svg>
-);
-const warningIcon = (
-  <svg
-    aria-hidden="true"
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    data-name="Warning"
-  >
-    <path
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M9.22353 1.60522C8.67651 0.670007 7.32485 0.67 6.77783 1.60522L0.190097 12.8681C-0.3623 13.8125 0.318834 15 1.41295 15H14.5884C15.6825 15 16.3637 13.8125 15.8113 12.8681L9.22353 1.60522ZM1.55823 13.5L8.00068 2.48553L14.4431 13.5H1.55823ZM9.00132 6.66677H7.00132L7.33465 9.33344H8.66799L9.00132 6.66677ZM9.00132 11.0002C9.00132 10.4479 8.5536 10.0002 8.00132 10.0002C7.44903 10.0002 7.00132 10.4479 7.00132 11.0002C7.00132 11.5524 7.44903 12.0002 8.00132 12.0002C8.5536 12.0002 9.00132 11.5524 9.00132 11.0002Z"
-      fill="currentColor"
-    ></path>
-  </svg>
-);
+import { useTranslation } from "react-i18next";
+import EditIcon from "../../icons/editIcon";
+import WarningIcon from "../../icons/warningIcon";
 
 export default function UserSettingsPage() {
+  const { t } = useTranslation();
+
   const params = useParams();
 
   const { users, setUsers, editingProfilePictureSrc, setEditingProfilePictureSrc } =
@@ -101,38 +72,38 @@ export default function UserSettingsPage() {
 
   return (
     <main className="user-settings__wrapper">
-      <h1 className="user-settings__header">Edit Profile</h1>
+      <h1 className="user-settings__header">{t("editProfile")}</h1>
 
       <hr />
 
       <div className="user-settings__container">
         <aside className="user-settings__image-edit">
-          <h2 className="visually-hidden">Profile Image Edition</h2>
+          <h2 className="visually-hidden">{t("profileImageEdition")}</h2>
           <img
             className="user-settings__img"
             src={(currentUser && editingProfilePictureSrc) || currentUser.profilImage}
-            alt={currentUser.username}
+            alt={`${currentUser.username} ${t("profileAvatar")}`}
           />
           <Link
             to={{
               pathname: `/ManageProfiles/${params.id}/EditProfile`,
             }}
             className="user-settings__edit-btn"
-            aria-label="Change profile image"
+            aria-label={t("changeProfileImage")}
           >
-            {editIcon}
+            <EditIcon />
           </Link>
         </aside>
 
         <article>
-          <h2 className="visually-hidden">Profile Settings</h2>
+          <h2 className="visually-hidden">{t("profileSettings")}</h2>
           <section>
             <label
               htmlFor="profile-name-entry"
               id="profile-name-entry-label"
               className="visually-hidden"
             >
-              <h3>Profile Name</h3>
+              <h3>{t("profileName")}</h3>
             </label>
             <input
               id="profile-name-entry"
@@ -145,16 +116,14 @@ export default function UserSettingsPage() {
             />
             {!isNameValid && (
               <p className="user-settings__invalid-message">
-                {username.length > 50
-                  ? "Sorry, names must be less than 50 characters"
-                  : "Please enter a name"}
+                {username.length > 50 ? t("nameWarningCharacters") : t("nameWarningEmpty")}
               </p>
             )}
           </section>
 
           <section className="user-settings__language-select-container">
             <label htmlFor="language-select">
-              <h3 className="user-settings__language-select-header">Language:</h3>
+              <h3 className="user-settings__language-select-header">{t("language")}:</h3>
             </label>
             <select
               name="language-select"
@@ -174,18 +143,17 @@ export default function UserSettingsPage() {
 
           <section>
             <label htmlFor="game-handle">
-              <h3>Game Handle:</h3>
+              <h3>{t("gameHandle")}:</h3>
             </label>
             <p id="gamesHandleDescription">
-              Your handle is a unique name that&apos;ll be used for playing with other Netflix
-              members across all Netflix Games.
-              <button onClick={() => setIsLearnMoreModalOpen(true)}>Learn more</button>
+              {t("gameHandleDescription")}
+              <button onClick={() => setIsLearnMoreModalOpen(true)}>{t("learnMore")}</button>
             </p>
             <input
               id="game-handle"
               className="user-settings__input"
               type="text"
-              placeholder="Create Game Handle"
+              placeholder={t("gameHandlePlaceholder")}
               aria-describedby="gamesHandleDescription"
               aria-invalid="false"
               aria-errormessage="gameHandleMessageText"
@@ -207,7 +175,7 @@ export default function UserSettingsPage() {
                     className={`${!isGameHandleValid ? "invalid" : ""}`}
                     aria-live="assertive"
                   >
-                    Available
+                    {t("available")}
                   </p>
                 )}
                 {!isGameHandleValid && gameHandle !== "" && (
@@ -216,10 +184,23 @@ export default function UserSettingsPage() {
                     className={`${!isGameHandleValid ? "invalid" : ""}`}
                     aria-live="assertive"
                   >
-                    {gameHandle.length <= 2 && <>{warningIcon}Must be longer than 2 characters</>}
-                    {gameHandle.length > 16 && <>{warningIcon}Must be shorter than 16 characters</>}
+                    {gameHandle.length <= 2 && (
+                      <>
+                        <WarningIcon />
+                        {t("gameHandleWarningShort")}
+                      </>
+                    )}
+                    {gameHandle.length > 16 && (
+                      <>
+                        <WarningIcon />
+                        {t("gameHandleWarningLong")}
+                      </>
+                    )}
                     {/\W/.test(gameHandle) && gameHandle.length > 2 && gameHandle.length <= 16 && (
-                      <>{warningIcon}Use only numbers or letters</>
+                      <>
+                        <WarningIcon />
+                        {t("gameHandleWarningSpecial")}
+                      </>
                     )}
                   </p>
                 )}
@@ -229,7 +210,7 @@ export default function UserSettingsPage() {
                     className={`${!isGameHandleValid ? "invalid" : ""}`}
                     aria-live="assertive"
                   >
-                    Create new Game Handle
+                    {t("createNewGameHandle")}
                   </p>
                 )}
                 {showGameHandleLength && <p>{gameHandle.length}/16</p>}
@@ -244,19 +225,19 @@ export default function UserSettingsPage() {
           <hr />
 
           <section>
-            <h3>Maturity Settings:</h3>
-            <strong>All Maturity Ratings</strong>
+            <h3>{t("maturitySettings")}:</h3>
+            <strong>{t("allMaturityRatings")}</strong>
             <p>
-              Show titles of <b>all maturity ratings</b> for this profile.
+              {t("showTitlesOf")} <b>{t("allMaturityRatings")}</b> {t("forThisProfile")}.
             </p>
             {/* //! Change for <Link/> */}
-            <button aria-label="Edit maturity settings">Edit</button>
+            <button aria-label={t("editLabel")}>{t("edit")}</button>
           </section>
 
           <hr />
 
           <section>
-            <h3>Autoplay controls</h3>
+            <h3>{t("autoplayControls")}</h3>
             <div>
               <input
                 type="checkbox"
@@ -265,9 +246,7 @@ export default function UserSettingsPage() {
                 //! change for checked
                 defaultChecked
               />
-              <label htmlFor="autoplay-next-episode">
-                Autoplay next episode in a series on all devices.
-              </label>
+              <label htmlFor="autoplay-next-episode">{t("autoplayControlsNext")}</label>
             </div>
             <div>
               <input
@@ -277,9 +256,7 @@ export default function UserSettingsPage() {
                 //! change for checked
                 defaultChecked
               />
-              <label htmlFor="autoplay-previews">
-                Autoplay previews while browsing on all devices.
-              </label>
+              <label htmlFor="autoplay-previews">{t("autoplayControlsPrev")}</label>
             </div>
           </section>
         </article>
@@ -288,22 +265,22 @@ export default function UserSettingsPage() {
       <hr />
 
       <section>
-        <h2 className="visually-hidden">Confirmation</h2>
+        <h2 className="visually-hidden">{t("confirmation")}</h2>
         {!isNameValid || !isGameHandleValid ? (
-          <a href="#">Save</a>
+          <a href="#">{t("save")}</a>
         ) : (
           <Link
             to="/ManageProfiles"
             onClick={handleSave}
           >
-            Save
+            {t("save")}
           </Link>
         )}
         <Link
           to="/ManageProfiles"
           onClick={() => setEditingProfilePictureSrc(null)}
         >
-          Cancel
+          {t("cancel")}
         </Link>
       </section>
     </main>

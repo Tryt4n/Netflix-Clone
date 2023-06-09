@@ -90,6 +90,7 @@
 
   &__heading {
     font-size: 1.75rem;
+    font-weight: bold;
   }
 
   &__img-wrapper {
@@ -122,6 +123,12 @@
       rotate: 180deg;
       margin-inline: 1rem;
       margin-bottom: $fs;
+      @media screen and (width <= func.rem(1024)) {
+        width: func.rem(30);
+      }
+      @media screen and (width <= func.rem(500)) {
+        width: func.rem(20);
+      }
     }
   }
 

@@ -12,8 +12,12 @@ import UserContext from "../../context/UserContext";
 
 import "./slider.scss";
 import useWindowSize from "../../hooks/useWindowSize.js";
+import { useTranslation } from "react-i18next";
+import ArrowIndicatorIcon from "../../icons/ArrowIndicatorIcon";
 
 export default function Slider({ data, currentUser }) {
+  const { t } = useTranslation();
+
   const params = useParams();
 
   const { users, editingProfilePictureSrc, setEditingProfilePictureSrc } = useContext(UserContext);
@@ -46,6 +50,16 @@ export default function Slider({ data, currentUser }) {
     case width <= 600:
       displayedNumberOfSlides = 4;
       break;
+  }
+
+  function handleModalOpen(newSrc) {
+    setEditingProfilePictureSrc(newSrc);
+    editProfileConfirmationModal.current.showModal();
+  }
+
+  function handleModalClose() {
+    setEditingProfilePictureSrc(null);
+    editProfileConfirmationModal.current.close();
   }
 
   const alreadyUsedProfileIcons = users.map((user) => {
@@ -86,48 +100,43 @@ export default function Slider({ data, currentUser }) {
             <SwiperSlide key={isAdditionalSlide ? `additional-${index}` : updatedIcon.id}>
               <div
                 className="slider-btn"
-                onClick={() => {
-                  setEditingProfilePictureSrc(newSrc);
-                  editProfileConfirmationModal.current.showModal();
-                }}
+                onClick={() => handleModalOpen(newSrc)}
               >
                 <img
                   className="slider-img"
                   src={newSrc}
-                  alt={`${data.name} Icon ${item.id}`}
+                  alt={`${data.name} ${t("icon")} ${item.id}`}
                   loading="lazy"
                 />
               </div>
+
               <dialog
                 className="edit-profile-confirmation-modal"
                 ref={editProfileConfirmationModal}
               >
-                <h3 className="edit-profile-confirmation-modal__heading">Change profile icon?</h3>
+                <span
+                  className="edit-profile-confirmation-modal__heading"
+                  aria-label={t("changeProfileLabel")}
+                >
+                  {t("changeProfileIcon")}
+                </span>
                 <hr />
 
                 <div className="edit-profile-confirmation-modal__img-wrapper">
                   <figure>
                     <img
                       src={currentUser.profilImage}
-                      alt={`${currentUser.username} Current Profile Image`}
+                      alt={`${currentUser.username} ${t("currentProfileImage")}`}
                     />
-                    <figcaption>Current</figcaption>
+                    <figcaption>{t("current")}</figcaption>
                   </figure>
-                  <svg
-                    aria-label="Arrow Indicator Right Icon"
-                    fill="currentColor"
-                    viewBox="0 0 490 490"
-                  >
-                    <g>
-                      <polygon points="332.668,490 82.631,244.996 332.668,0 407.369,76.493 235.402,244.996 407.369,413.507 		" />
-                    </g>
-                  </svg>
+                  <ArrowIndicatorIcon />
                   <figure>
                     <img
                       src={editingProfilePictureSrc}
-                      alt="Chosen Profile Image"
+                      alt={t("chosenProfileAvatar")}
                     />
-                    <figcaption>New</figcaption>
+                    <figcaption>{t("new")}</figcaption>
                   </figure>
                 </div>
 
@@ -137,16 +146,13 @@ export default function Slider({ data, currentUser }) {
                     to={`/ManageProfiles/${params.id}`}
                     className="edit-profile-confirmation-modal__btn edit-profile-confirmation-modal__btn--confirm"
                   >
-                    Let&apos;s Do It
+                    {t("letsDoIt")}
                   </Link>
                   <button
                     className="edit-profile-confirmation-modal__btn edit-profile-confirmation-modal__btn--cancel"
-                    onClick={() => {
-                      setEditingProfilePictureSrc(null);
-                      editProfileConfirmationModal.current.close();
-                    }}
+                    onClick={handleModalClose}
                   >
-                    Not Yet
+                    {t("notYet")}
                   </button>
                 </div>
               </dialog>

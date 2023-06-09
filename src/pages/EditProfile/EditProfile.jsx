@@ -5,8 +5,12 @@ import UserContext from "../../context/UserContext";
 
 import "./editProfile.scss";
 import Slider from "../../components/Slider/Slider";
+import { useTranslation } from "react-i18next";
+import GoBackIcon from "../../icons/goBackIcon";
 
 export default function EditProfile() {
+  const { t } = useTranslation();
+
   const params = useParams();
 
   const { users, iconsData, editingProfilePictureSrc } = useContext(UserContext);
@@ -25,35 +29,11 @@ export default function EditProfile() {
             to={`/ManageProfiles/${params.id}`}
             aria-label="Go Back"
           >
-            <svg
-              aria-hidden="true"
-              width="13.496"
-              height="11.21"
-              fill="currentColor"
-            >
-              <g
-                id="Arrow_Icon"
-                data-name="Arrow Icon"
-                transform="translate(0 -41.674)"
-              >
-                <g
-                  id="Group_7"
-                  data-name="Group 7"
-                  transform="translate(0 41.674)"
-                >
-                  <path
-                    id="Path_21"
-                    data-name="Path 21"
-                    d="M12.737,46.22l.021,0H3.727L6.566,43.38a.746.746,0,0,0,0-1.048l-.442-.442a.739.739,0,0,0-1.043,0L.215,46.755a.744.744,0,0,0,0,1.047l4.867,4.867a.74.74,0,0,0,1.043,0l.442-.442a.731.731,0,0,0,.215-.521.709.709,0,0,0-.215-.512L3.7,48.332h9.052a.765.765,0,0,0,.749-.757V46.95A.75.75,0,0,0,12.737,46.22Z"
-                    transform="translate(0 -41.674)"
-                  />
-                </g>
-              </g>
-            </svg>
+            <GoBackIcon />
           </Link>
           <hgroup>
-            <h1 className="edit-profile__heading">Edit Profile</h1>
-            <p className="edit-profile__subheading">Choose a profile icon.</p>
+            <h1 className="edit-profile__heading">{t("editProfile")}</h1>
+            <p className="edit-profile__subheading">{t("chooseProfilIcon")}</p>
           </hgroup>
         </div>
         <div className="edit-profile__heading-wrapper">
@@ -61,13 +41,13 @@ export default function EditProfile() {
           <img
             className="edit-profile__user-img"
             src={editingProfilePictureSrc || currentUser.profilImage}
-            alt={`${currentUser.username} Profile Image`}
+            alt={`${currentUser.username} ${t("profileAvatar")}`}
           />
         </div>
       </header>
 
       <main className="edit-profile__main-section">
-        <h2 className="visually-hidden">Select Profile Image</h2>
+        <h2 className="visually-hidden">{t("selectProfileImage")}</h2>
         <ul className="edit-profile__list">
           {iconsData.map((list) => (
             <li
@@ -80,7 +60,9 @@ export default function EditProfile() {
               >
                 {list.titleSrc ? (
                   <>
-                    <span className="visually-hidden">Title: {list.name}</span>
+                    <span className="visually-hidden">
+                      {t("title")}: {list.name}
+                    </span>
                     <div className="edit-profile__title-img">
                       <img
                         src={list.titleSrc}

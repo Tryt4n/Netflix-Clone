@@ -5,12 +5,16 @@ import { useContext } from "react";
 import UserContext from "../../context/UserContext";
 import SelectProfilItem from "../../components/SelectProfilItem.jsx/SelectProfilItem";
 
+import { useTranslation } from "react-i18next";
+
 export default function UserSelectPage() {
+  const { t } = useTranslation();
+
   const { users } = useContext(UserContext);
 
   return (
     <main className="choose-profile">
-      <h1 className="choose-profile__header">Who&apos;s watching?</h1>
+      <h1 className="choose-profile__header">{t("whosWatching")}</h1>
 
       <ul
         className="choose-profile__list"
@@ -28,7 +32,7 @@ export default function UserSelectPage() {
         to="/ManageProfiles"
         className="choose-profile__manage-profiles"
       >
-        Manage Profiles
+        {t("manageProfiles")}
       </Link>
     </main>
   );

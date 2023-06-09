@@ -11,8 +11,7 @@ import { useContext, useRef, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import "./slider.scss";
-// import useWindowSize from "../../hooks/useWindowSize.js";
-import useWindowSize from "/src/hooks/useWindowSize.js";
+import useWindowSize from "../../hooks/useWindowSize.js";
 
 export default function Slider({ data, currentUser }) {
   const params = useParams();

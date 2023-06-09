@@ -3,7 +3,7 @@
 
 import { useTranslation } from "react-i18next";
 import "./selectProfilItem.scss";
-import EditIcon from "../../icons/editIcon";
+import EditIcon from "../../icons/EditIcon";
 
 export default function SelectProfilItem({
   user,

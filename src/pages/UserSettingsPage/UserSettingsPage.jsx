@@ -8,8 +8,8 @@ import "../UserSettingsPage/userSettingsPage.scss";
 import languageOptions from "../../../server/languageOptions.json";
 import MoreInfoModal from "../../components/MoreInfoModal/MoreInfoModal";
 import { useTranslation } from "react-i18next";
-import EditIcon from "../../icons/editIcon";
-import WarningIcon from "../../icons/warningIcon";
+import EditIcon from "../../icons/EditIcon";
+import WarningIcon from "../../icons/WarningIcon";
 
 export default function UserSettingsPage() {
   const { t } = useTranslation();

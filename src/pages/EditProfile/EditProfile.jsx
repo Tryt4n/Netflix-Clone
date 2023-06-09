@@ -62,7 +62,7 @@ export default function EditProfile() {
         </div>
       </header>
 
-      <main>
+      <main className="edit-profile__main-section">
         <h2 className="visually-hidden">Select Profile Image</h2>
         <ul className="edit-profile__list">
           {iconsData.map((list) => (

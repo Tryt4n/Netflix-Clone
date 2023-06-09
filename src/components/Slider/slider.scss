@@ -8,17 +8,15 @@
   padding: 0;
   cursor: pointer;
   width: v.$edit-profile-icon-size;
-  // max-width: 150px;
-  // min-width: 100px;
-  // aspect-ratio: 1/1;
-
+  @media screen and (width <= func.rem(1024)) {
+    width: v.$edit-profile-icon-size-mobile;
+  }
+  @media screen and (width <= func.rem(500)) {
+    width: v.$edit-profile-icon-size-sm-mobile;
+  }
   &:where(:hover, :focus-visible) > img {
     border-color: c.$white;
   }
-}
-
-.margin-left {
-  margin-left: v.$edit-profile-slider-margin-left;
 }
 
 .slider-img {
@@ -31,8 +29,14 @@
 .swiper-button-prev,
 .swiper-button-next {
   height: 100%;
-  width: v.$edit-profile-slider-margin-left;
+  width: func.rem(60);
   margin-top: 0;
+  @media screen and (width <= func.rem(1024)) {
+    width: func.rem(40);
+  }
+  @media screen and (width <= func.rem(500)) {
+    width: func.rem(25);
+  }
 }
 
 .swiper-button-prev {
@@ -101,6 +105,12 @@
       width: v.$edit-profile-icon-size;
       aspect-ratio: 1/1;
       border-radius: v.$edit-profile-icon-border-radius;
+      @media screen and (width <= func.rem(1024)) {
+        width: v.$edit-profile-icon-size-mobile;
+      }
+      @media screen and (width <= func.rem(500)) {
+        width: v.$edit-profile-icon-size-sm-mobile;
+      }
     }
 
     figcaption {
@@ -126,6 +136,10 @@
     font-size: 1.75rem;
     padding: func.rem(15) func.rem(46);
     cursor: pointer;
+    @media screen and (width <= func.rem(540)) {
+      padding: func.rem(7.5) func.rem(23);
+      font-size: 1rem;
+    }
     &--confirm {
       background-color: c.$white;
       color: c.$black;

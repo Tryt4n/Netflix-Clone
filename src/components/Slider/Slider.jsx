@@ -14,14 +14,37 @@ import "./slider.scss";
 
 export default function Slider({ data, currentUser }) {
   const params = useParams();
-  console.log(currentUser);
 
-  const { editingProfilePictureSrc, setEditingProfilePictureSrc } = useContext(UserContext);
+  const { editingProfilePictureSrc, setEditingProfilePictureSrc, width } = useContext(UserContext);
   const [activeSlider, setActiveSlider] = useState(false);
 
   const editProfileConfirmationModal = useRef(null);
 
-  let displayedNumberOfSlides = 8;
+  let displayedNumberOfSlides;
+  switch (true) {
+    case width > 1375:
+      displayedNumberOfSlides = 8;
+      break;
+    case width <= 1375 && width > 1200:
+      displayedNumberOfSlides = 7;
+      break;
+    case width <= 1200 && width > 1024:
+      displayedNumberOfSlides = 6;
+      break;
+    case width <= 1024 && width > 915:
+      displayedNumberOfSlides = 7;
+      break;
+    case width <= 915 && width > 700:
+      displayedNumberOfSlides = 6;
+      break;
+    case width <= 700 && width > 600:
+      displayedNumberOfSlides = 5;
+      break;
+    case width <= 600:
+      displayedNumberOfSlides = 4;
+      break;
+  }
+
   //* Calculates the remaining number of components up to a whole number of multiples of 8
   const remainingSlides = displayedNumberOfSlides - (data.icons.length % displayedNumberOfSlides);
   //* Creates an array of additional components, if any
@@ -42,30 +65,6 @@ export default function Slider({ data, currentUser }) {
         slidesPerGroup={displayedNumberOfSlides}
         className={`mySwiper${data.id === 1 ? "" : data.id}`}
       >
-        {/* {data.icons.map((icon) => (
-          <SwiperSlide key={icon.id}>
-            <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-              <img
-                className="slider-img"
-                src={icon.src}
-                alt=""
-              />
-            </div>
-          </SwiperSlide>
-        ))}
-
-        {additionalSlides.map((index) => (
-          <SwiperSlide key={`additional-${index}`}>
-            <div className={`slider-btn${activeSlider ? "" : " margin-left"}`}>
-              <img
-                className="slider-img"
-                src={data.icons[index].src}
-                alt=""
-              />
-            </div>
-          </SwiperSlide>
-        ))} */}
-
         {/* //! Causes that when the carousel slider comes to an end, the first slide will be in the first position again */}
         {[...data.icons, ...additionalSlides].map((item, index) => {
           const iconIndex = index % data.icons.length;
@@ -76,7 +75,7 @@ export default function Slider({ data, currentUser }) {
           return (
             <SwiperSlide key={isAdditionalSlide ? `additional-${index}` : updatedIcon.id}>
               <div
-                className={`slider-btn${activeSlider ? "" : " margin-left"}`}
+                className="slider-btn"
                 onClick={() => {
                   setEditingProfilePictureSrc(newSrc);
                   editProfileConfirmationModal.current.showModal();

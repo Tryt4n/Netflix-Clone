@@ -104,11 +104,11 @@ export default function Slider({ data, currentUser }) {
       >
         <button
           className="slider-navigation-btn--prev"
-          aria-label="See previous icons"
+          aria-label={t("seePreviousIcons")}
           ref={navigationPrevRef}
           onClick={handlePrevSlide}
         >
-          <LeftArrow label="left" />
+          <LeftArrow label={t("arrowLeft")} />
         </button>
         {/* //! Causes that when the carousel slider comes to an end, the first slide will be in the first position again */}
         {[...availableIcons, ...additionalSlides].map((item, index) => {
@@ -185,11 +185,11 @@ export default function Slider({ data, currentUser }) {
         })}
         <button
           className="slider-navigation-btn--next"
-          aria-label="See more icons"
+          aria-label={t("seeMoreIcons")}
           ref={navigationNextRef}
           onClick={handleNextSlide}
         >
-          <LeftArrow label="right" />
+          <LeftArrow label={t("arrowRight")} />
         </button>
       </Swiper>
     </div>

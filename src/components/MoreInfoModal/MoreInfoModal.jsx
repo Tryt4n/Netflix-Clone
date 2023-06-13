@@ -47,17 +47,17 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
     }
   }
 
-  const handleBackClick = () => {
+  function handleBackClick() {
     if (modalStep > 1) {
       setModalStep(modalStep - 1);
     }
-  };
+  }
 
-  const handleNextClick = () => {
+  function handleNextClick() {
     if (modalStep < 3) {
       setModalStep(modalStep + 1);
     }
-  };
+  }
 
   return (
     <dialog

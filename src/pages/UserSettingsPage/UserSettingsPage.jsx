@@ -26,6 +26,7 @@ export default function UserSettingsPage() {
 
   const [username, setUsername] = useState(currentUser.username);
   const [userLanguage, setUserLanguage] = useState(currentUser.language);
+  const [isLearnMoreModalOpen, setIsLearnMoreModalOpen] = useState(false);
   const [gameHandle, setGameHandle] = useState(currentUser.gameHandle);
   const [isGameHandleExist, setIsGameHandleExist] = useState(false);
   const [showGameHandleLength, setShowGameHandleLength] = useState(false);
@@ -37,6 +38,10 @@ export default function UserSettingsPage() {
   useEffect(() => {
     username === "" || username.length > 50 ? setIsNameValid(false) : setIsNameValid(true);
   }, [username]);
+
+  function handleLanguageChange(e) {
+    setUserLanguage(e.target.value);
+  }
 
   function handleGameHandleChange(e) {
     setGameHandle(e.target.value);
@@ -58,7 +63,13 @@ export default function UserSettingsPage() {
     } else {
       const updatedUsers = users.map((user) => {
         if (user.username === params.id) {
-          return { ...user, username, gameHandle, profilImage: editingProfilePictureSrc };
+          return {
+            ...user,
+            username,
+            language: userLanguage,
+            gameHandle,
+            profilImage: editingProfilePictureSrc || currentUser.profilImage,
+          };
         }
         return user;
       });
@@ -67,8 +78,6 @@ export default function UserSettingsPage() {
       setUsers(updatedUsers);
     }
   }
-
-  const [isLearnMoreModalOpen, setIsLearnMoreModalOpen] = useState(false);
 
   return (
     <main className="user-settings__wrapper">
@@ -121,19 +130,22 @@ export default function UserSettingsPage() {
             )}
           </section>
 
-          <section className="user-settings__language-select-container">
+          <section>
             <label htmlFor="language-select">
-              <h3 className="user-settings__language-select-header">{t("language")}:</h3>
+              <h3 className="user-settings__section-heading user-settings__language-select-heading">
+                {t("language")}:
+              </h3>
             </label>
             <select
               name="language-select"
               id="language-select"
+              value={userLanguage}
+              onChange={handleLanguageChange}
             >
               {languageOptions.map((language) => (
                 <option
                   key={language}
                   value={language}
-                  selected={userLanguage === language}
                 >
                   {language}
                 </option>
@@ -143,19 +155,30 @@ export default function UserSettingsPage() {
 
           <section>
             <label htmlFor="game-handle">
-              <h3>{t("gameHandle")}:</h3>
+              <h3 className="user-settings__section-heading">{t("gameHandle")}:</h3>
             </label>
-            <p id="gamesHandleDescription">
+            <p
+              id="gamesHandleDescription"
+              className="user-settings__game-handle-text"
+            >
               {t("gameHandleDescription")}
-              <button onClick={() => setIsLearnMoreModalOpen(true)}>{t("learnMore")}</button>
+              &nbsp;
+              <button
+                className="user-settings__learn-more-btn"
+                onClick={() => setIsLearnMoreModalOpen(true)}
+              >
+                {t("learnMore")}
+              </button>
             </p>
             <input
               id="game-handle"
-              className="user-settings__input"
+              className={`user-settings__input${
+                isGameHandleValid && gameHandle.length !== 0 ? " available" : ""
+              } ${!isGameHandleValid ? " invalid" : ""}`}
               type="text"
               placeholder={t("gameHandlePlaceholder")}
               aria-describedby="gamesHandleDescription"
-              aria-invalid="false"
+              aria-invalid={!isGameHandleValid}
               aria-errormessage="gameHandleMessageText"
               value={gameHandle}
               onChange={(e) => {
@@ -168,11 +191,11 @@ export default function UserSettingsPage() {
               }}
             />
             {showGameHandleWarningInfo && (
-              <div>
+              <div className="user-settings__game-handle-warning-info-container">
                 {isGameHandleValid && gameHandle !== "" && (
                   <p
                     id="gameHandleMessageText"
-                    className={`${!isGameHandleValid ? "invalid" : ""}`}
+                    className={`${!isGameHandleValid ? "invalid" : "available"}`}
                     aria-live="assertive"
                   >
                     {t("available")}
@@ -181,7 +204,9 @@ export default function UserSettingsPage() {
                 {!isGameHandleValid && gameHandle !== "" && (
                   <p
                     id="gameHandleMessageText"
-                    className={`${!isGameHandleValid ? "invalid" : ""}`}
+                    className={`user-settings__game-handle-warning-info-wrapper user-settings__invalid-message${
+                      !isGameHandleValid ? " invalid" : ""
+                    }`}
                     aria-live="assertive"
                   >
                     {gameHandle.length <= 2 && (
@@ -207,13 +232,17 @@ export default function UserSettingsPage() {
                 {isGameHandleExist && gameHandle.length === 0 && (
                   <p
                     id="gameHandleMessageText"
-                    className={`${!isGameHandleValid ? "invalid" : ""}`}
+                    className={`user-settings__invalid-message${
+                      !isGameHandleValid ? " invalid" : ""
+                    }`}
                     aria-live="assertive"
                   >
                     {t("createNewGameHandle")}
                   </p>
                 )}
-                {showGameHandleLength && <p>{gameHandle.length}/16</p>}
+                {showGameHandleLength && (
+                  <p className="user-settings__game-handle-length">{gameHandle.length}/16</p>
+                )}
               </div>
             )}
             <MoreInfoModal
@@ -224,39 +253,53 @@ export default function UserSettingsPage() {
 
           <hr />
 
-          <section>
-            <h3>{t("maturitySettings")}:</h3>
-            <strong>{t("allMaturityRatings")}</strong>
-            <p>
+          <section className="user-settings__maturity-section">
+            <h3 className="user-settings__section-heading">{t("maturitySettings")}:</h3>
+            <strong className="user-settings__text-box">{t("allMaturityRatings")}</strong>
+            <p className="user-settings__maturity-text">
               {t("showTitlesOf")} <b>{t("allMaturityRatings")}</b> {t("forThisProfile")}.
             </p>
-            {/* //! Change for <Link/> */}
-            <button aria-label={t("editLabel")}>{t("edit")}</button>
+            <Link
+              className="user-settings__maturity-edit-btn"
+              aria-label={t("editLabel")}
+            >
+              {t("edit")}
+            </Link>
           </section>
 
           <hr />
 
           <section>
-            <h3>{t("autoplayControls")}</h3>
-            <div>
+            <h3 className="user-settings__section-heading">{t("autoplayControls")}</h3>
+            <div className="user-settings__autoplay-wrapper">
               <input
                 type="checkbox"
                 name="autoplay-next-episode"
                 id="autoplay-next-episode"
-                //! change for checked
+                className="user-settings__autoplay-checkbox"
                 defaultChecked
               />
-              <label htmlFor="autoplay-next-episode">{t("autoplayControlsNext")}</label>
+              <label
+                htmlFor="autoplay-next-episode"
+                className="user-settings__autoplay-checkbox-label"
+              >
+                {t("autoplayControlsNext")}
+              </label>
             </div>
-            <div>
+            <div className="user-settings__autoplay-wrapper">
               <input
                 type="checkbox"
                 name="autoplay-previews"
                 id="autoplay-previews"
-                //! change for checked
+                className="user-settings__autoplay-checkbox"
                 defaultChecked
               />
-              <label htmlFor="autoplay-previews">{t("autoplayControlsPrev")}</label>
+              <label
+                htmlFor="autoplay-previews"
+                className="user-settings__autoplay-checkbox-label"
+              >
+                {t("autoplayControlsPrev")}
+              </label>
             </div>
           </section>
         </article>
@@ -264,13 +307,14 @@ export default function UserSettingsPage() {
 
       <hr />
 
-      <section>
+      <section className="user-settings__confirmation-section">
         <h2 className="visually-hidden">{t("confirmation")}</h2>
         {!isNameValid || !isGameHandleValid ? (
           <a href="#">{t("save")}</a>
         ) : (
           <Link
             to="/ManageProfiles"
+            className="user-settings__confirmation-btn user-settings__confirmation-btn--accent"
             onClick={handleSave}
           >
             {t("save")}
@@ -278,10 +322,12 @@ export default function UserSettingsPage() {
         )}
         <Link
           to="/ManageProfiles"
+          className="user-settings__confirmation-btn"
           onClick={() => setEditingProfilePictureSrc(null)}
         >
           {t("cancel")}
         </Link>
+        {currentUser.id !== 1 && <button>{t("deleteProfile")}</button>}
       </section>
     </main>
   );

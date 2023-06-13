@@ -97,6 +97,7 @@
 
   &__list-item:not(:first-of-type) {
     margin-top: 3rem;
+    margin-inline: 0.1rem;
     @media screen and (width <= func.rem(500)) {
       margin-top: 1.5rem;
     }

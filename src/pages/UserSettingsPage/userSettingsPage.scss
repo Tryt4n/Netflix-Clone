@@ -2,12 +2,14 @@
 @use "../../abstracts/variables" as v;
 @use "../../base/breakpoints" as b;
 @use "../../base/functions" as func;
+@use "../../abstracts/mixins" as *;
 
 .user-settings {
   &__wrapper {
     max-width: 720px;
     margin-inline: auto;
-    margin-block: 4.5rem 1rem;
+    margin-block: 4.5rem 2.5rem;
+    font-size: v.$font-size-user-settings-page-text;
     @media screen and (width <= b.$mobile-small) {
       padding-inline: 1rem;
     }
@@ -20,16 +22,14 @@
   }
 
   &__header {
-    font-size: 4vw;
-    color: c.$white;
+    font-size: clamp(2rem, (0.4rem + 8vw), 4rem);
     font-weight: 500;
-    @media (width <= b.$mobile) {
-      font-size: 2rem;
-    }
+    color: c.$white;
+    margin-bottom: 0.1em;
   }
 
   &__container {
-    margin-block: 1rem;
+    margin-block: v.$font-size-user-settings-page-section-heading;
     display: flex;
     gap: 1rem;
   }
@@ -56,6 +56,7 @@
     background-color: transparent;
     color: c.$white;
     border-radius: 50%;
+    outline: none;
     cursor: pointer;
     & svg {
       width: 100%;
@@ -64,6 +65,10 @@
       background-color: c.$black;
       border-radius: 50%;
       padding: 0.1rem;
+      outline-offset: 0.15rem;
+    }
+    &:focus svg {
+      outline: auto;
     }
   }
 
@@ -74,7 +79,7 @@
     padding-inline: 0.6em;
     padding-block: 0.4em 0.2em;
     background-color: c.$profile-edit-create-game-handle-bg;
-    font-size: 1.3vw;
+    font-size: v.$font-size-user-settings-page-section-heading;
     color: c.$white;
     line-height: 1.5em;
     &::placeholder {
@@ -84,19 +89,155 @@
     &.invalid {
       border-color: c.$error-message;
     }
+    &.available {
+      border-color: c.$available-color;
+    }
   }
   &__invalid-message {
     color: c.$error-message;
-    font-size: func.rem(12);
+    font-size: v.$font-size-user-settings-page-warning-text;
   }
 
-  &__language-select-container {
-    margin-top: 1em;
-  }
-
-  &__language-select-header {
+  &__section-heading {
+    font-size: v.$font-size-user-settings-page-section-heading;
     font-weight: 500;
-    margin-block: 1.5em 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: c.$bg;
+  }
+
+  &__language-select-heading {
+    margin-bottom: 0.25em;
+  }
+
+  &__learn-more-btn {
+    font: inherit;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    font-weight: 500;
+    outline-offset: 0.25em;
+  }
+
+  &__game-handle-text {
+    margin-bottom: 1em;
+  }
+
+  &__game-handle-warning-info-container {
+    @include flex(row, space-between, center);
+    gap: 0.5rem;
+    font-size: v.$font-size-user-settings-page-warning-text;
+    margin-bottom: v.$font-size-user-settings-page-section-heading;
+    color: c.$white;
+    & > * {
+      flex-grow: 1;
+    }
+    & .available {
+      color: c.$available-color;
+    }
+  }
+
+  &__game-handle-length {
+    text-align: end;
+  }
+
+  &__game-handle-warning-info-wrapper {
+    @include flex(row, flex-start, center);
+    gap: 0.5em;
+  }
+
+  &__maturity-section {
+    margin-bottom: calc(v.$font-size-user-settings-page-section-heading * 2);
+  }
+
+  &__text-box {
+    background-color: c.$profile-edit-maturity-ratings-bg;
+    padding: func.rem(7) func.rem(10);
+    margin-bottom: 1em;
+    text-transform: capitalize;
+  }
+
+  &__maturity-text {
+    margin-top: v.$font-size-user-settings-page-section-heading;
+    margin-bottom: calc(v.$font-size-user-settings-page-section-heading * 2);
+  }
+
+  &__autoplay-wrapper {
+    position: relative;
+    @include flex(row, flex-start, center);
+    &:not(:first-child) {
+      margin-top: v.$user-settings-checkbox-gap;
+    }
+  }
+
+  &__autoplay-checkbox {
+    appearance: none;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 40px;
+      translate: 0 -50%;
+      aspect-ratio: 1/1;
+      background-color: transparent;
+      border: 1px solid c.$gray-text;
+    }
+    &::after {
+      position: absolute;
+      content: "\2713";
+      width: 40px;
+      aspect-ratio: 1/1;
+      translate: 5% -55%;
+      font-size: 3rem;
+      color: c.$gray-text;
+      display: none;
+    }
+    &:checked::after {
+      display: block;
+    }
+    &:focus-visible::before {
+      outline: auto;
+    }
+  }
+
+  &__autoplay-checkbox-label {
+    margin-left: calc(40px + v.$user-settings-checkbox-gap);
+  }
+
+  &__confirmation-section {
+    margin-top: calc(v.$font-size-user-settings-page-section-heading * 1.5);
+  }
+
+  &__confirmation-btn,
+  &__maturity-edit-btn {
+    color: c.$gray-text;
+    border: 1px solid c.$gray-text;
+    padding: 0.5em 1.5em;
+    outline: none;
+    &:where(:hover, :focus-visible) {
+      color: c.$white;
+      border-color: c.$white;
+    }
+  }
+  &__confirmation-btn {
+    font-size: v.$font-size-user-settings-page-section-heading;
+    margin-right: 1em;
+  }
+  &__confirmation-btn--accent {
+    background-color: c.$white;
+    border-color: c.$white;
+    font-weight: 500;
+    color: c.$black;
+    &:where(:hover, :focus-visible) {
+      color: c.$white;
+      background-color: c.$netflix-red;
+      border-color: c.$netflix-red;
+    }
+    &:focus {
+      outline: auto;
+      outline-color: c.$black;
+      outline-offset: 0;
+    }
   }
 }
 

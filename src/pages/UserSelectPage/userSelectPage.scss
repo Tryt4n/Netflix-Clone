@@ -39,7 +39,7 @@
     margin-block: 2em 1em;
     color: c.$gray-text;
     font-weight: 500;
-    outline: none;
+    outline-color: transparent;
     @media screen and (width > b.$mobile) {
       font-size: 1.2vw;
     }
@@ -49,6 +49,11 @@
     &:where(:hover, :focus-visible) {
       color: c.$main-text-color;
       border-color: c.$main-text-color;
+    }
+    &:where(:focus) {
+      outline-color: inherit;
+      outline-style: dotted;
+      outline-offset: 1rem;
     }
   }
 }

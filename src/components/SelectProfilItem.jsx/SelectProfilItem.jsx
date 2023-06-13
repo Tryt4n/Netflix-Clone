@@ -17,7 +17,7 @@ export default function SelectProfilItem({
   return (
     <>
       <li key={user.id}>
-        <button
+        <div
           className="select-profil-item"
           aria-label={`${user.username} ${t("profile")}`}
           // onClick={() => {
@@ -39,7 +39,7 @@ export default function SelectProfilItem({
             {isEdit && <EditIcon />}
           </div>
           <span className="select-profil-item__username">{user.username}</span>
-        </button>
+        </div>
       </li>
     </>
   );

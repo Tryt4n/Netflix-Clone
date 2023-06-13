@@ -4,7 +4,8 @@
 @use "../../abstracts/mixins" as *;
 
 .swiper-wrapper {
-  margin-block: 0.25rem;
+  margin-block: v.$edit-profile-slider-margin-block;
+  margin-inline: v.$edit-profile-slider-margin-inline;
 }
 
 .slider-btn {
@@ -44,6 +45,7 @@
   padding: 0;
   cursor: pointer;
   color: c.$white;
+  margin-left: v.$edit-profile-slider-margin-inline;
   & > svg {
     height: 22.5%;
     margin-inline: auto;
@@ -93,6 +95,29 @@
 .edit-profile-confirmation-modal {
   $fs: func.rem(14);
   $margin: 4rem;
+
+  scroll-behavior: smooth;
+  scroll-margin-block: auto;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0, 0%, 60%) transparent;
+  &::-webkit-scrollbar {
+    width: 0.75em;
+    height: 0.75em;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100vw;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: hsl(0, 0%, 60%);
+    border-radius: 100vw;
+  }
+  &::-webkit-scrollbar-track:hover {
+    background-color: hsl(0, 0%, 60%, 0.25);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(0, 0%, 50%);
+  }
 
   background-color: c.$bg-color;
   padding: 0;
@@ -152,6 +177,7 @@
     gap: 2rem;
     margin-inline: 2rem;
     font-weight: 500;
+    margin-bottom: 1rem;
   }
 
   &__btn {

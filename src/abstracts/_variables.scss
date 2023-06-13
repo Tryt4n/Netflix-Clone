@@ -8,8 +8,15 @@ $font-size-navbar: func.rem(14);
 $font-size-main-description: 1.2vw;
 $font-size-header: 1.4vw;
 $font-size-header-mobile: func.rem(12);
+$font-size-user-settings-page-section-heading: clamp(0.81rem, calc(0.26rem + 2.75vw), 1.5rem);
+$font-size-user-settings-page-text: clamp(0.88rem, calc(0.78rem + 0.5vw), 1rem);
+$font-size-user-settings-page-warning-text: clamp(0.75rem, calc(0.55rem + 1vw), 1rem);
 
 $edit-profile-icon-size: func.rem(150);
 $edit-profile-icon-size-mobile: func.rem(100);
 $edit-profile-icon-size-sm-mobile: func.rem(60);
 $edit-profile-icon-border-radius: 0.5rem;
+$edit-profile-slider-margin-block: 0.25rem;
+$edit-profile-slider-margin-inline: 0.1rem;
+
+$user-settings-checkbox-gap: 0.5em;

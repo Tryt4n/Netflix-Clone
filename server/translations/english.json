@@ -60,5 +60,11 @@
   "climbLeaderboardsDescription": "Your game handle will allow you to see where you are on leaderboards.",
   "modalNavigation": "Modal Navigation",
   "back": "Back",
-  "next": "Next"
+  "next": "Next",
+  "theClassic": "The Classic",
+  "seePreviousIcons": "See previous icons",
+  "seeMoreIcons": "See more icons",
+  "arrowRight": "Arrow Right",
+  "arrowLeft": "Arrow Left",
+  "deleteProfile": "Delete Profile"
 }

@@ -71,7 +71,7 @@ export default function EditProfile() {
                     </div>
                   </>
                 ) : (
-                  list.name
+                  t("theClassic")
                 )}
               </h3>
               <Slider

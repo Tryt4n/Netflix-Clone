@@ -6,14 +6,15 @@ import { Navigation, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { Link, useParams } from "react-router-dom";
 import { useContext, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 
 import "./slider.scss";
 import useWindowSize from "../../hooks/useWindowSize.js";
 import { useTranslation } from "react-i18next";
 import ArrowIndicatorIcon from "../../icons/ArrowIndicatorIcon";
+import LeftArrow from "../../icons/LeftArrow";
 
 export default function Slider({ data, currentUser }) {
   const { t } = useTranslation();
@@ -22,8 +23,11 @@ export default function Slider({ data, currentUser }) {
 
   const { users, editingProfilePictureSrc, setEditingProfilePictureSrc } = useContext(UserContext);
   const [activeSlider, setActiveSlider] = useState(false);
+  const [firstVisibleIndex, setFirstVisibleIndex] = useState(0);
 
   const editProfileConfirmationModal = useRef(null);
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
 
   const { width } = useWindowSize();
 
@@ -52,6 +56,14 @@ export default function Slider({ data, currentUser }) {
       break;
   }
 
+  const handlePrevSlide = () => {
+    setFirstVisibleIndex((prevIndex) => prevIndex - displayedNumberOfSlides);
+  };
+
+  const handleNextSlide = () => {
+    setFirstVisibleIndex((prevIndex) => prevIndex + displayedNumberOfSlides);
+  };
+
   function handleModalOpen(newSrc) {
     setEditingProfilePictureSrc(newSrc);
     editProfileConfirmationModal.current.showModal();
@@ -62,9 +74,7 @@ export default function Slider({ data, currentUser }) {
     editProfileConfirmationModal.current.close();
   }
 
-  const alreadyUsedProfileIcons = users.map((user) => {
-    return user.profilImage;
-  });
+  const alreadyUsedProfileIcons = users.map((user) => user.profilImage);
   const availableIcons = [...data.icons].filter(
     (icon) => !alreadyUsedProfileIcons.includes(icon.src)
   );
@@ -81,7 +91,10 @@ export default function Slider({ data, currentUser }) {
       onTouchStart={() => setActiveSlider(true)}
     >
       <Swiper
-        navigation={true}
+        navigation={{
+          prevEl: navigationPrevRef.current,
+          nextEl: navigationNextRef.current,
+        }}
         modules={[Navigation, A11y]}
         spaceBetween={30}
         loop={true}
@@ -89,6 +102,14 @@ export default function Slider({ data, currentUser }) {
         slidesPerGroup={displayedNumberOfSlides}
         className={`mySwiper${data.id === 1 ? "" : data.id}`}
       >
+        <button
+          className="slider-navigation-btn--prev"
+          aria-label="See previous icons"
+          ref={navigationPrevRef}
+          onClick={handlePrevSlide}
+        >
+          <LeftArrow label="left" />
+        </button>
         {/* //! Causes that when the carousel slider comes to an end, the first slide will be in the first position again */}
         {[...availableIcons, ...additionalSlides].map((item, index) => {
           const iconIndex = index % availableIcons.length;
@@ -98,9 +119,12 @@ export default function Slider({ data, currentUser }) {
 
           return (
             <SwiperSlide key={isAdditionalSlide ? `additional-${index}` : updatedIcon.id}>
-              <div
+              <button
                 className="slider-btn"
                 onClick={() => handleModalOpen(newSrc)}
+                disabled={
+                  index < firstVisibleIndex || index >= firstVisibleIndex + displayedNumberOfSlides
+                }
               >
                 <img
                   className="slider-img"
@@ -108,7 +132,7 @@ export default function Slider({ data, currentUser }) {
                   alt={`${data.name} ${t("icon")} ${item.id}`}
                   loading="lazy"
                 />
-              </div>
+              </button>
 
               <dialog
                 className="edit-profile-confirmation-modal"
@@ -159,6 +183,14 @@ export default function Slider({ data, currentUser }) {
             </SwiperSlide>
           );
         })}
+        <button
+          className="slider-navigation-btn--next"
+          aria-label="See more icons"
+          ref={navigationNextRef}
+          onClick={handleNextSlide}
+        >
+          <LeftArrow label="right" />
+        </button>
       </Swiper>
     </div>
   );

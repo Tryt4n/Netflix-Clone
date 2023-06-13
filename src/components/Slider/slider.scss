@@ -3,8 +3,16 @@
 @use "../../abstracts/variables" as v;
 @use "../../abstracts/mixins" as *;
 
+.swiper-wrapper {
+  margin-block: 0.25rem;
+}
+
 .slider-btn {
-  border: none;
+  border-radius: v.$edit-profile-icon-border-radius;
+  border-color: transparent;
+  overflow: hidden;
+  background: transparent;
+
   padding: 0;
   cursor: pointer;
   width: v.$edit-profile-icon-size;
@@ -14,7 +22,7 @@
   @media screen and (width <= func.rem(500)) {
     width: v.$edit-profile-icon-size-sm-mobile;
   }
-  &:where(:hover, :focus-visible) > img {
+  &:where(:hover, :focus-visible) {
     border-color: c.$white;
   }
 }
@@ -22,15 +30,26 @@
 .slider-img {
   width: 100%;
   aspect-ratio: 1/1;
-  border-radius: v.$edit-profile-icon-border-radius;
-  border: func.rem(2) solid transparent;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  height: 100%;
+.slider-navigation-btn--prev,
+.slider-navigation-btn--next {
+  position: absolute;
+  height: calc(100% - 0.5rem);
   width: func.rem(60);
-  margin-top: 0;
+  translate: 0 0.25rem;
+  z-index: 1;
+  background: linear-gradient(90deg, #141414 0, hsla(0, 0%, 8%, 0.4));
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: c.$white;
+  & > svg {
+    height: 22.5%;
+    margin-inline: auto;
+    opacity: 0;
+    transition: 250ms ease-in-out;
+  }
   @media screen and (width <= func.rem(1024)) {
     width: func.rem(40);
   }
@@ -39,28 +58,24 @@
   }
 }
 
-.swiper-button-prev {
+.slider-navigation-btn--prev {
   inset: 0;
-  background: linear-gradient(90deg, #141414 0, hsla(0, 0%, 8%, 0.4));
+  left: 0;
 }
-.swiper-button-next {
-  top: 0;
+
+.slider-navigation-btn--next {
   right: 0;
-  background: linear-gradient(270deg, #141414 0, hsla(0, 0%, 8%, 0.4));
+  top: 0;
+  rotate: 180deg;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  color: c.$white;
-  scale: 0.75;
-  opacity: 0;
-  transition: 250ms ease-in-out;
-}
-
-.swiper-button-prev:where(:hover, :focus-visible):after,
-.swiper-button-next:where(:hover, :focus-visible):after {
-  scale: 0.85;
-  opacity: 1;
+.edit-profile__list-item:where(:hover, :focus-visible) .slider-navigation-btn--prev,
+.edit-profile__list-item:where(:hover, :focus-visible) .slider-navigation-btn--next,
+.slider-navigation-btn--prev:focus-visible,
+.slider-navigation-btn--next:focus-visible {
+  & > svg {
+    opacity: 1;
+  }
 }
 
 .swiper-notification {
@@ -71,7 +86,7 @@
   visibility: hidden;
 }
 
-.swiper-wrapper .swiper .swiper-button-prev {
+.swiper-wrapper .slider-navigation-btn--prev {
   display: none;
 }
 

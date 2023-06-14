@@ -5,6 +5,7 @@
     "profilImage": "/images/profiles/Classic/17.png",
     "language": "English",
     "gameHandle": "",
+    "maturityRating": "18+",
     "notifications": [
       {
         "id": 1,
@@ -181,6 +182,7 @@
     "profilImage": "/images/profiles/Classic/18.png",
     "language": "Polski",
     "gameHandle": "",
+    "maturityRating": "16+",
     "notifications": [
       {
         "id": 1,
@@ -310,6 +312,7 @@
     "profilImage": "/images/profiles/Classic/21.png",
     "language": "English",
     "gameHandle": "",
+    "maturityRating": "13+",
     "notifications": [
       {
         "id": 2,
@@ -376,6 +379,7 @@
     "profilImage": "/images/profiles/Classic/19.png",
     "language": "English",
     "gameHandle": "",
+    "maturityRating": "18+",
     "notifications": [
       {
         "id": 1,
@@ -496,6 +500,8 @@
     "profilImage": "/images/profiles/Classic/profil_kids.png",
     "language": "English",
     "gameHandle": "",
+    "maturityRating": "10+",
+    "kidsProfile": true,
     "notifications": [],
     "movies": [
       {

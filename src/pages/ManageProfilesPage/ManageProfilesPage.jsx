@@ -8,9 +8,9 @@ import "./manageProfilesPage.scss";
 import { useTranslation } from "react-i18next";
 
 export default function ManageProfilesPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const { users } = useContext(UserContext);
+  const { users, currentLanguageCode, setEditingProfilePictureSrc } = useContext(UserContext);
 
   return (
     <main className="choose-profile">
@@ -36,6 +36,10 @@ export default function ManageProfilesPage() {
       <Link
         to="/"
         className="choose-profile__manage-profiles manage-profile__done"
+        onClick={() => {
+          i18n.changeLanguage(currentLanguageCode);
+          setEditingProfilePictureSrc(null);
+        }}
       >
         {t("done")}
       </Link>

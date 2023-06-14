@@ -50,7 +50,7 @@
       color: c.$main-text-color;
       border-color: c.$main-text-color;
     }
-    &:where(:focus) {
+    &:where(:focus-visible) {
       outline-color: inherit;
       outline-style: dotted;
       outline-offset: 1rem;

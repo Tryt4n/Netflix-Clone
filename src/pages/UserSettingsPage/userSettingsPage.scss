@@ -6,7 +6,7 @@
 
 .user-settings {
   &__wrapper {
-    max-width: 720px;
+    max-width: func.rem(720);
     margin-inline: auto;
     margin-block: 4.5rem 2.5rem;
     font-size: v.$font-size-user-settings-page-text;
@@ -110,6 +110,46 @@
     margin-bottom: 0.25em;
   }
 
+  &__language-label-btn {
+    position: relative;
+    background-color: c.$black;
+    color: c.$white;
+    border-color: c.$white;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    padding-left: 0.65em;
+    padding-right: calc(0.65em * 5);
+    line-height: 1.5em;
+    margin-bottom: v.$font-size-user-settings-page-section-heading;
+    &:where(:hover, :focus-visible) {
+      background-color: hsla(0, 0%, 100%, 0.1);
+    }
+  }
+
+  &__language-select-list {
+    position: absolute;
+    translate: 0 calc(v.$font-size-user-settings-page-section-heading * -1);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.5em;
+    row-gap: 0.35em;
+    margin-right: 1rem;
+    padding-block: 6px;
+    padding-inline: 10px;
+    background-color: c.$language-select-bg;
+    border: 1px solid c.$language-select-border;
+    color: c.$white;
+  }
+
+  &__language-select-list-item {
+    word-wrap: break-word;
+    cursor: pointer;
+    &:where(:hover, :focus-visible) {
+      text-decoration: underline;
+    }
+  }
+
   &__learn-more-btn {
     font: inherit;
     background: none;
@@ -118,6 +158,10 @@
     padding: 0;
     font-weight: 500;
     outline-offset: 0.25em;
+  }
+
+  &__game-handle-section {
+    margin-bottom: calc(v.$font-size-user-settings-page-section-heading * 2);
   }
 
   &__game-handle-text {
@@ -158,6 +202,10 @@
     text-transform: capitalize;
   }
 
+  &__kids-badge {
+    margin-right: 0.5em;
+  }
+
   &__maturity-text {
     margin-top: v.$font-size-user-settings-page-section-heading;
     margin-bottom: calc(v.$font-size-user-settings-page-section-heading * 2);
@@ -167,7 +215,7 @@
     position: relative;
     @include flex(row, flex-start, center);
     &:not(:first-child) {
-      margin-top: v.$user-settings-checkbox-gap;
+      margin-top: calc(v.$user-settings-checkbox-gap * 2);
     }
   }
 
@@ -176,7 +224,7 @@
     &::before {
       position: absolute;
       content: "";
-      width: 40px;
+      width: v.$user-settings-checkbox-size;
       translate: 0 -50%;
       aspect-ratio: 1/1;
       background-color: transparent;
@@ -185,10 +233,10 @@
     &::after {
       position: absolute;
       content: "\2713";
-      width: 40px;
+      width: v.$user-settings-checkbox-size;
       aspect-ratio: 1/1;
       translate: 5% -55%;
-      font-size: 3rem;
+      font-size: v.$user-settings-checkbox-mark-size;
       color: c.$gray-text;
       display: none;
     }
@@ -201,11 +249,14 @@
   }
 
   &__autoplay-checkbox-label {
-    margin-left: calc(40px + v.$user-settings-checkbox-gap);
+    margin-left: calc(v.$user-settings-checkbox-size + v.$user-settings-checkbox-gap);
   }
 
   &__confirmation-section {
     margin-top: calc(v.$font-size-user-settings-page-section-heading * 1.5);
+    @include flex();
+    flex-wrap: wrap;
+    row-gap: 1rem;
   }
 
   &__confirmation-btn,
@@ -248,4 +299,15 @@ hr {
   border-left: 0;
   border-color: c.$gray-text;
   border-radius: 100vw;
+}
+
+.arrow {
+  position: absolute;
+  height: 0;
+  width: 0;
+  right: 10px;
+  top: 44%;
+  border-color: #fff transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
 }

@@ -16,8 +16,13 @@ export default function UserSettingsPage() {
 
   const params = useParams();
 
-  const { users, setUsers, editingProfilePictureSrc, setEditingProfilePictureSrc } =
-    useContext(UserContext);
+  const {
+    users,
+    setUsers,
+    setEditingUserLanguage,
+    editingProfilePictureSrc,
+    setEditingProfilePictureSrc,
+  } = useContext(UserContext);
 
   const currentUser = users.find((user) => user.username === params.id);
 
@@ -26,6 +31,7 @@ export default function UserSettingsPage() {
 
   const [username, setUsername] = useState(currentUser.username);
   const [userLanguage, setUserLanguage] = useState(currentUser.language);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isLearnMoreModalOpen, setIsLearnMoreModalOpen] = useState(false);
   const [gameHandle, setGameHandle] = useState(currentUser.gameHandle);
   const [isGameHandleExist, setIsGameHandleExist] = useState(false);
@@ -39,8 +45,16 @@ export default function UserSettingsPage() {
     username === "" || username.length > 50 ? setIsNameValid(false) : setIsNameValid(true);
   }, [username]);
 
-  function handleLanguageChange(e) {
-    setUserLanguage(e.target.value);
+  function handleLanguageChange(selectedLanguage) {
+    setUserLanguage(selectedLanguage);
+    setIsLanguageMenuOpen(false);
+  }
+
+  function handleLanguageChangeOnKeyDown(e, selectedLanguage) {
+    if (e.keyCode === 32 || e.keyCode === 13) {
+      e.preventDefault();
+      handleLanguageChange(selectedLanguage);
+    }
   }
 
   function handleGameHandleChange(e) {
@@ -74,9 +88,15 @@ export default function UserSettingsPage() {
         return user;
       });
       setShowGameHandleWarningInfo(false);
+      setEditingUserLanguage(userLanguage);
       setEditingProfilePictureSrc(null);
       setUsers(updatedUsers);
     }
+  }
+
+  function deleteUser() {
+    const updatedUsers = users.filter((user) => user !== currentUser);
+    setUsers(updatedUsers);
   }
 
   return (
@@ -119,7 +139,7 @@ export default function UserSettingsPage() {
               className={`user-settings__input ${isNameValid ? "" : " invalid"}`}
               type="text"
               placeholder="Name"
-              value={username}
+              value={username === "Kids" ? t("Kids") : username}
               onChange={handleUsernameChange}
               autoFocus
             />
@@ -130,132 +150,169 @@ export default function UserSettingsPage() {
             )}
           </section>
 
-          <section>
-            <label htmlFor="language-select">
-              <h3 className="user-settings__section-heading user-settings__language-select-heading">
-                {t("language")}:
-              </h3>
-            </label>
-            <select
-              name="language-select"
-              id="language-select"
-              value={userLanguage}
-              onChange={handleLanguageChange}
-            >
-              {languageOptions.map((language) => (
-                <option
-                  key={language}
-                  value={language}
-                >
-                  {language}
-                </option>
-              ))}
-            </select>
-          </section>
+          <hr className="visually-hidden" />
 
           <section>
-            <label htmlFor="game-handle">
-              <h3 className="user-settings__section-heading">{t("gameHandle")}:</h3>
-            </label>
-            <p
-              id="gamesHandleDescription"
-              className="user-settings__game-handle-text"
+            <h3
+              id="user-settings-language"
+              className="user-settings__section-heading user-settings__language-select-heading"
             >
-              {t("gameHandleDescription")}
-              &nbsp;
-              <button
-                className="user-settings__learn-more-btn"
-                onClick={() => setIsLearnMoreModalOpen(true)}
+              {t("language")}:
+            </h3>
+            <button
+              className="user-settings__language-label-btn"
+              aria-haspopup="true"
+              aria-expanded={isLanguageMenuOpen}
+              aria-labelledby="user-settings-language"
+              onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+            >
+              {userLanguage}
+              <span
+                className="arrow"
+                aria-hidden="true"
+              ></span>
+            </button>
+            {isLanguageMenuOpen && (
+              <ul
+                className="user-settings__language-select-list"
+                role="menu"
               >
-                {t("learnMore")}
-              </button>
-            </p>
-            <input
-              id="game-handle"
-              className={`user-settings__input${
-                isGameHandleValid && gameHandle.length !== 0 ? " available" : ""
-              } ${!isGameHandleValid ? " invalid" : ""}`}
-              type="text"
-              placeholder={t("gameHandlePlaceholder")}
-              aria-describedby="gamesHandleDescription"
-              aria-invalid={!isGameHandleValid}
-              aria-errormessage="gameHandleMessageText"
-              value={gameHandle}
-              onChange={(e) => {
-                handleGameHandleChange(e);
-                setIsGameHandleExist(true);
-              }}
-              onFocus={() => {
-                setShowGameHandleLength(true);
-                setShowGameHandleWarningInfo(true);
-              }}
-            />
-            {showGameHandleWarningInfo && (
-              <div className="user-settings__game-handle-warning-info-container">
-                {isGameHandleValid && gameHandle !== "" && (
-                  <p
-                    id="gameHandleMessageText"
-                    className={`${!isGameHandleValid ? "invalid" : "available"}`}
-                    aria-live="assertive"
+                {languageOptions.map((language) => (
+                  <li
+                    key={language}
+                    className="user-settings__language-select-list-item"
+                    role="menuitem"
+                    tabIndex={0}
+                    onClick={() => handleLanguageChange(language)}
+                    onKeyDown={(e) => handleLanguageChangeOnKeyDown(e, language)}
                   >
-                    {t("available")}
-                  </p>
-                )}
-                {!isGameHandleValid && gameHandle !== "" && (
-                  <p
-                    id="gameHandleMessageText"
-                    className={`user-settings__game-handle-warning-info-wrapper user-settings__invalid-message${
-                      !isGameHandleValid ? " invalid" : ""
-                    }`}
-                    aria-live="assertive"
-                  >
-                    {gameHandle.length <= 2 && (
-                      <>
-                        <WarningIcon />
-                        {t("gameHandleWarningShort")}
-                      </>
-                    )}
-                    {gameHandle.length > 16 && (
-                      <>
-                        <WarningIcon />
-                        {t("gameHandleWarningLong")}
-                      </>
-                    )}
-                    {/\W/.test(gameHandle) && gameHandle.length > 2 && gameHandle.length <= 16 && (
-                      <>
-                        <WarningIcon />
-                        {t("gameHandleWarningSpecial")}
-                      </>
-                    )}
-                  </p>
-                )}
-                {isGameHandleExist && gameHandle.length === 0 && (
-                  <p
-                    id="gameHandleMessageText"
-                    className={`user-settings__invalid-message${
-                      !isGameHandleValid ? " invalid" : ""
-                    }`}
-                    aria-live="assertive"
-                  >
-                    {t("createNewGameHandle")}
-                  </p>
-                )}
-                {showGameHandleLength && (
-                  <p className="user-settings__game-handle-length">{gameHandle.length}/16</p>
-                )}
-              </div>
+                    {language}
+                  </li>
+                ))}
+              </ul>
             )}
-            <MoreInfoModal
-              isLearnMoreModalOpen={isLearnMoreModalOpen}
-              setIsLearnMoreModalOpen={setIsLearnMoreModalOpen}
-            />
           </section>
+
+          {!currentUser.kidsProfile && (
+            <>
+              <hr />
+
+              <section className="user-settings__game-handle-section">
+                <label htmlFor="game-handle">
+                  <h3 className="user-settings__section-heading">{t("gameHandle")}:</h3>
+                </label>
+                <p
+                  id="gamesHandleDescription"
+                  className="user-settings__game-handle-text"
+                >
+                  {t("gameHandleDescription")}
+                  &nbsp;
+                  <button
+                    className="user-settings__learn-more-btn"
+                    onClick={() => setIsLearnMoreModalOpen(true)}
+                  >
+                    {t("learnMore")}
+                  </button>
+                </p>
+                <input
+                  id="game-handle"
+                  className={`user-settings__input${
+                    isGameHandleValid && gameHandle.length !== 0 ? " available" : ""
+                  } ${!isGameHandleValid ? " invalid" : ""}`}
+                  type="text"
+                  placeholder={t("gameHandlePlaceholder")}
+                  aria-describedby="gamesHandleDescription"
+                  aria-invalid={!isGameHandleValid}
+                  aria-errormessage="gameHandleMessageText"
+                  value={gameHandle}
+                  onChange={(e) => {
+                    handleGameHandleChange(e);
+                    setIsGameHandleExist(true);
+                  }}
+                  onFocus={() => {
+                    setShowGameHandleLength(true);
+                    setShowGameHandleWarningInfo(true);
+                  }}
+                />
+                {showGameHandleWarningInfo && (
+                  <div className="user-settings__game-handle-warning-info-container">
+                    {isGameHandleValid && gameHandle !== "" && (
+                      <p
+                        id="gameHandleMessageText"
+                        className={`${!isGameHandleValid ? "invalid" : "available"}`}
+                        aria-live="assertive"
+                      >
+                        {t("available")}
+                      </p>
+                    )}
+                    {!isGameHandleValid && gameHandle !== "" && (
+                      <p
+                        id="gameHandleMessageText"
+                        className={`user-settings__game-handle-warning-info-wrapper user-settings__invalid-message${
+                          !isGameHandleValid ? " invalid" : ""
+                        }`}
+                        aria-live="assertive"
+                      >
+                        {gameHandle.length <= 2 && (
+                          <>
+                            <WarningIcon />
+                            {t("gameHandleWarningShort")}
+                          </>
+                        )}
+                        {gameHandle.length > 16 && (
+                          <>
+                            <WarningIcon />
+                            {t("gameHandleWarningLong")}
+                          </>
+                        )}
+                        {/\W/.test(gameHandle) &&
+                          gameHandle.length > 2 &&
+                          gameHandle.length <= 16 && (
+                            <>
+                              <WarningIcon />
+                              {t("gameHandleWarningSpecial")}
+                            </>
+                          )}
+                      </p>
+                    )}
+                    {isGameHandleExist && gameHandle.length === 0 && (
+                      <p
+                        id="gameHandleMessageText"
+                        className={`user-settings__invalid-message${
+                          !isGameHandleValid ? " invalid" : ""
+                        }`}
+                        aria-live="assertive"
+                      >
+                        {t("createNewGameHandle")}
+                      </p>
+                    )}
+                    {showGameHandleLength && (
+                      <p className="user-settings__game-handle-length">{gameHandle.length}/16</p>
+                    )}
+                  </div>
+                )}
+                <MoreInfoModal
+                  isLearnMoreModalOpen={isLearnMoreModalOpen}
+                  setIsLearnMoreModalOpen={setIsLearnMoreModalOpen}
+                />
+              </section>
+            </>
+          )}
 
           <hr />
 
           <section className="user-settings__maturity-section">
             <h3 className="user-settings__section-heading">{t("maturitySettings")}:</h3>
-            <strong className="user-settings__text-box">{t("allMaturityRatings")}</strong>
+            {currentUser.kidsProfile && (
+              <strong className="user-settings__text-box user-settings__kids-badge">
+                {t("Kids")}
+              </strong>
+            )}
+            <strong className="user-settings__text-box">
+              {currentUser.maturityRating === "18+"
+                ? t("allMaturityRatings")
+                : currentUser.maturityRating}
+            </strong>
             <p className="user-settings__maturity-text">
               {t("showTitlesOf")} <b>{t("allMaturityRatings")}</b> {t("forThisProfile")}.
             </p>
@@ -327,7 +384,15 @@ export default function UserSettingsPage() {
         >
           {t("cancel")}
         </Link>
-        {currentUser.id !== 1 && <button>{t("deleteProfile")}</button>}
+        {currentUser.id !== 1 && (
+          <Link
+            to="/ManageProfiles"
+            className="user-settings__confirmation-btn"
+            onClick={deleteUser}
+          >
+            {t("deleteProfile")}
+          </Link>
+        )}
       </section>
     </main>
   );

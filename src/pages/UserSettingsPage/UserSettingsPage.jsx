@@ -1,9 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import UserContext from "../../context/UserContext";
 
-import "../UserSettingsPage/userSettingsPage.scss";
+import "./userSettingsPage.scss";
 
 import languageOptions from "../../../server/languageOptions.json";
 import MoreInfoModal from "../../components/MoreInfoModal/MoreInfoModal";
@@ -22,9 +22,13 @@ export default function UserSettingsPage() {
     setEditingUserLanguage,
     editingProfilePictureSrc,
     setEditingProfilePictureSrc,
+    setCurrentEditingProfile,
   } = useContext(UserContext);
 
   const currentUser = users.find((user) => user.username === params.id);
+  useEffect(() => {
+    setCurrentEditingProfile(currentUser);
+  }, [currentUser, setCurrentEditingProfile]);
 
   const [isNameValid, setIsNameValid] = useState(true);
   const [isNameAlreadyExist, setIsNameAlreadyExist] = useState(false);
@@ -32,12 +36,22 @@ export default function UserSettingsPage() {
 
   const [username, setUsername] = useState(currentUser.username);
   const [userLanguage, setUserLanguage] = useState(currentUser.language);
+  const [gameHandle, setGameHandle] = useState(currentUser.gameHandle);
+  const [autoplayNextInputChecked, setAutoplayNextInputChecked] = useState(
+    currentUser.autoplayNext !== undefined ? currentUser.autoplayNext : true
+  );
+  const [autoplayPreviousInputChecked, setAutoplayPreviousInputChecked] = useState(
+    currentUser.autoplayPrevious !== undefined ? currentUser.autoplayPrevious : true
+  );
+
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isLearnMoreModalOpen, setIsLearnMoreModalOpen] = useState(false);
-  const [gameHandle, setGameHandle] = useState(currentUser.gameHandle);
   const [isGameHandleExist, setIsGameHandleExist] = useState(false);
   const [showGameHandleLength, setShowGameHandleLength] = useState(false);
   const [showGameHandleWarningInfo, setShowGameHandleWarningInfo] = useState(false);
+
+  const autoplayNextInputRef = useRef(true);
+  const autoplayPreviousInputRef = useRef(true);
 
   const isDuplicate = users.some((user) => user.username.toLowerCase() === username.toLowerCase());
 
@@ -91,6 +105,8 @@ export default function UserSettingsPage() {
             language: userLanguage,
             gameHandle: gameHandle,
             profilImage: editingProfilePictureSrc || currentUser.profilImage,
+            autoplayNext: autoplayNextInputChecked,
+            autoplayPrevious: autoplayPreviousInputChecked,
           };
         }
         return user;
@@ -99,12 +115,19 @@ export default function UserSettingsPage() {
       setEditingUserLanguage(userLanguage);
       setEditingProfilePictureSrc(null);
       setUsers(updatedUsers);
+      setCurrentEditingProfile(null);
     }
+  }
+
+  function handleCancel() {
+    setEditingProfilePictureSrc(null);
+    setCurrentEditingProfile(null);
   }
 
   function deleteUser() {
     const updatedUsers = users.filter((user) => user !== currentUser);
     setUsers(updatedUsers);
+    setCurrentEditingProfile(null);
   }
 
   return (
@@ -147,6 +170,7 @@ export default function UserSettingsPage() {
               className={`user-settings__input ${isNameValid ? "" : " invalid"}`}
               type="text"
               placeholder="Name"
+              autoComplete="off"
               value={username === "Kids" ? t("Kids") : username}
               onChange={handleUsernameChange}
               autoFocus
@@ -232,6 +256,7 @@ export default function UserSettingsPage() {
                   } ${!isGameHandleValid ? " invalid" : ""}`}
                   type="text"
                   placeholder={t("gameHandlePlaceholder")}
+                  autoComplete="off"
                   aria-describedby="gamesHandleDescription"
                   aria-invalid={!isGameHandleValid}
                   aria-errormessage="gameHandleMessageText"
@@ -346,7 +371,9 @@ export default function UserSettingsPage() {
                 name="autoplay-next-episode"
                 id="autoplay-next-episode"
                 className="user-settings__autoplay-checkbox"
-                defaultChecked
+                ref={autoplayNextInputRef}
+                checked={autoplayNextInputChecked}
+                onChange={() => setAutoplayNextInputChecked(!autoplayNextInputChecked)}
               />
               <label
                 htmlFor="autoplay-next-episode"
@@ -361,7 +388,9 @@ export default function UserSettingsPage() {
                 name="autoplay-previews"
                 id="autoplay-previews"
                 className="user-settings__autoplay-checkbox"
-                defaultChecked
+                ref={autoplayPreviousInputRef}
+                checked={autoplayPreviousInputChecked}
+                onChange={() => setAutoplayPreviousInputChecked(!autoplayPreviousInputChecked)}
               />
               <label
                 htmlFor="autoplay-previews"
@@ -397,7 +426,7 @@ export default function UserSettingsPage() {
         <Link
           to="/ManageProfiles"
           className="user-settings__confirmation-btn"
-          onClick={() => setEditingProfilePictureSrc(null)}
+          onClick={handleCancel}
         >
           {t("cancel")}
         </Link>

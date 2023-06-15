@@ -47,7 +47,7 @@
   "new": "Nowa",
   "letsDoIt": "Tak",
   "notYet": "Nie",
-  "profile": "Profil",
+  "profile": "profil",
   "closeModal": "Zamknij Okno",
   "yourNameInGames": "Twój pseudonim w grach",
   "yourNameInGamesDescription": "Twój pseudonim gracza będzie używany we wszystkich Grach Netflix",
@@ -67,5 +67,22 @@
   "arrowRight": "Strzałka w prawo",
   "arrowLeft": "Strzałka w lewo",
   "deleteProfile": "Usuń Profil",
-  "Kids": "Dzieci"
+  "Kids": "Dzieci",
+  "viewingRestrictions": "Ograniczenia oglądania",
+  "viewingRestrictionsDescription": "Wprowadź hasło do konta, aby edytować profilowe kategorie wiekowe i ograniczenia tytułów dla profilu użytkownika",
+  "passwordConfirmation": "Potwierdzenie hasła",
+  "passwordRequired": "Hasło jest wymagane.",
+  "forgotPassword": "Nie pamiętasz hasła?",
+  "continue": "Kontynuuj",
+
+  "contactUs": "Masz pytania? Skontaktuj się z nami.",
+  "audioAndSubtitle": "Dźwięk i napisy",
+  "privacyStatement": "Zasady zachowania poufności informacji",
+  "helpCenter": "Centrum pomocy",
+  "jobs": "Praca",
+  "giftCards": "Karty podarunkowe",
+  "cookiePreferences": "Ustawienia plików cookie",
+  "investorRelations": "Relacje z inwestorami",
+  "termsOfUse": "Warunki korzystania",
+  "serviceCode": "Kod serwisowy"
 }

@@ -1,53 +1,54 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import "../AccountFooter/accountFooter.scss";
 
 export default function AccountFooter() {
+  const { t } = useTranslation();
+
   const [serviceCodeText, setServiceCodeText] = useState("Service Code");
 
   return (
     <footer className="account-footer">
       <h2 className="account-footer__heading">
-        <a href="#">Questions? Contact us.</a>
+        <a href="#">{t("contactUs")}</a>
       </h2>
       <ul className="account-footer__list">
         <li className="account-footer__list-item">
-          <a href="#">Audio and Subtitles</a>
+          <a href="#">{t("audioAndSubtitle")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Media Center</a>
+          <a href="#">{t("helpCenter")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Privacy Statement</a>
+          <a href="#">{t("giftCards")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Help Center</a>
+          <a href="#">{t("investorRelations")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Jobs</a>
+          <a href="#">{t("mediaCenter")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Gift Cards</a>
+          <a href="#">{t("jobs")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Cookie Preferences</a>
+          <a href="#">{t("cookiePreferences")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Investor Relations</a>
+          <a href="#">{t("termsOfUse")}</a>
         </li>
         <li className="account-footer__list-item">
-          <a href="#">Terms of Use</a>
-        </li>
-        <li className="account-footer__list-item">
-          <a href="#">Privacy Statement</a>
+          <a href="#">{t("privacyStatement")}</a>
         </li>
       </ul>
       <button
         className="account-footer__service-code"
-        aria-label="Service Code"
+        aria-label={t("serviceCode")}
         disabled={serviceCodeText === "Service Code" ? false : true}
         onClick={() => setServiceCodeText("565682")}
       >
-        {serviceCodeText}
+        {t("serviceCode")}
       </button>
     </footer>
   );

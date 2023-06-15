@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import "../NavbarShort/navbarShort.scss";
+import "./navbarShort.scss";
 
 export default function NavbarShort() {
   return (

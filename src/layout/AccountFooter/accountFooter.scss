@@ -50,7 +50,7 @@
     max-width: func.rem(1000);
     font-size: v.$font-size-body;
     margin-bottom: calc($footer-main-gap * 1.5);
-    @include flex(row, flex-start, center);
+    @include flex(row, flex-start, flex-start);
     flex-wrap: wrap;
   }
 

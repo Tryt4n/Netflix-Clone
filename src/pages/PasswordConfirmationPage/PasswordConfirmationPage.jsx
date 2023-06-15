@@ -1,12 +1,26 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 
-import "../PasswordConfirmationPage/passwordConfirmationPage.scss";
+import UserContext from "../../context/UserContext";
+
+import "./passwordConfirmationPage.scss";
+import { useTranslation } from "react-i18next";
+import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 
 export default function PasswordConfirmationPage() {
+  const { t, i18n } = useTranslation();
+
+  const { currentEditingProfile } = useContext(UserContext);
+
   const [isConfirmationPasswordValid, setIsConfirmationPasswordValid] = useState(false);
   const confirmationPasswordInputRef = useRef(null);
+
+  function goNext() {
+    confirmationPasswordInputRef.current.value !== ""
+      ? setIsConfirmationPasswordValid(false)
+      : setIsConfirmationPasswordValid(true);
+  }
 
   return (
     <div className="password-confirmation">
@@ -14,19 +28,17 @@ export default function PasswordConfirmationPage() {
 
       <div className="password-confirmation__content-container">
         <header className="password-confirmation__header">
-          <h1 className="password-confirmation__heading">Viewing Restrictions</h1>
+          <h1 className="password-confirmation__heading">{t("viewingRestrictions")}</h1>
           <img
             className="password-confirmation__profile-img"
-            //? Change src and alt for current profile data
-            src="/images/profiles/Classic/17.png"
-            alt="Profile Avatar"
+            src={currentEditingProfile.profilImage}
+            alt={`${currentEditingProfile.username} ${t("profileAvatar")}`}
           />
         </header>
         <main>
           <h2 className="password-confirmation__text">
-            Enter your account password to edit Profile Maturity Rating and Title Restrictions for{" "}
-            {/* //? Change profile name */}
-            Marcin's profile.
+            {t("viewingRestrictionsDescription")} {currentEditingProfile.username}
+            {i18n.language === "en" ? `'s ${t("profile")}` : ""}.
           </h2>
 
           <div className="password-confirmation__input-wrapper">
@@ -38,7 +50,7 @@ export default function PasswordConfirmationPage() {
                 htmlFor="confirmation-password"
                 className="visually-hidden"
               >
-                Confirmation Password
+                {t("passwordConfirmation")}
               </label>
               <input
                 className={`password-confirmation__password-input${
@@ -58,7 +70,7 @@ export default function PasswordConfirmationPage() {
                   className="password-confirmation__warning-message"
                   aria-live="assertive"
                 >
-                  Password is required.
+                  {t("passwordRequired")}
                 </span>
               )}
             </form>
@@ -66,25 +78,21 @@ export default function PasswordConfirmationPage() {
               href="#"
               className="password-confirmation__forgot-link"
             >
-              Forgot password?
+              {t("forgotPassword")}
             </a>
           </div>
 
           <div className="password-confirmation__buttons-container">
             {/* //? ADD LINKS */}
-            <button
-              className="password-confirmation__btn password-confirmation__btn--accent"
-              onClick={() =>
-                confirmationPasswordInputRef.current.value !== ""
-                  ? setIsConfirmationPasswordValid(false)
-                  : setIsConfirmationPasswordValid(true)
-              }
-            >
-              Continue
-            </button>
-            <button className="password-confirmation__btn password-confirmation__btn--light">
-              Cancel
-            </button>
+            <AccountSettingsBtn
+              text={t("continue")}
+              currentClass="accent"
+              onClickFunction={goNext}
+            />
+            <AccountSettingsBtn
+              text={t("cancel")}
+              currentClass="light"
+            />
           </div>
         </main>
       </div>

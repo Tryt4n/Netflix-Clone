@@ -216,7 +216,7 @@
     position: relative;
     @include flex(row, flex-start, center);
     &:not(:first-child) {
-      margin-top: calc(v.$user-settings-checkbox-gap * 2);
+      margin-top: calc(v.$user-settings-checkbox-gap * 3);
     }
   }
 

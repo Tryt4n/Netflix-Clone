@@ -12,6 +12,7 @@ export function UserProvider({ children }) {
 
   const [editingUserLanguage, setEditingUserLanguage] = useState(null);
   const [editingProfilePictureSrc, setEditingProfilePictureSrc] = useState(null);
+  const [currentEditingProfile, setCurrentEditingProfile] = useState(null);
 
   const languageCodes = {
     "Bahasa Indonesia": "id",
@@ -53,8 +54,9 @@ export function UserProvider({ children }) {
   }
 
   // useEffect(() => {
-  //   console.log(users);
-  // }, [users]);
+  //   // console.log(users);
+  //   console.log(currentEditingProfile);
+  // }, [users, currentEditingProfile]);
 
   return (
     <UserContext.Provider
@@ -71,6 +73,8 @@ export function UserProvider({ children }) {
         editingProfilePictureSrc: editingProfilePictureSrc,
         setEditingProfilePictureSrc: setEditingProfilePictureSrc,
         handleProfilePictureChange: handleProfilePictureChange,
+        currentEditingProfile: currentEditingProfile,
+        setCurrentEditingProfile: setCurrentEditingProfile,
         iconsData: iconsData,
       }}
     >

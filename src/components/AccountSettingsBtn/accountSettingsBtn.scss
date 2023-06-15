@@ -1,0 +1,39 @@
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.account-settings-btn {
+  font-size: v.$font-size-body;
+  line-height: 1em;
+  padding: func.rem(12) 1em;
+  min-height: func.rem(37);
+  min-width: func.rem(98);
+  border: none;
+  cursor: pointer;
+  @media screen and (width < b.$mobile-medium) {
+    width: 100%;
+    margin-bottom: calc(v.$confirmation-gap * 0.5);
+  }
+
+  &--light {
+    background-color: #e6e6e6;
+    background-image: linear-gradient(180deg, #e6e6e6, #ddd);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    color: #000;
+    &:where(:hover, :focus-visible) {
+      background: #eaeaea;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &--accent {
+    background-color: #0080ff;
+    background-image: linear-gradient(180deg, #0080ff, #0277ec);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+    color: #fff;
+    &:where(:hover, :focus-visible) {
+      background: #2490fd;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+    }
+  }
+}

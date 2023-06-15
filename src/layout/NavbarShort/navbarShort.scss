@@ -1,0 +1,9 @@
+@use "../../abstracts/colors" as c;
+
+.navbar-bg {
+  background-color: c.$bg-color;
+
+  .netflix-logo {
+    height: 70px;
+  }
+}

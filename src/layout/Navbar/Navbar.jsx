@@ -11,13 +11,13 @@ export default function Navbar() {
 
   return (
     <nav>
+      <h1 className="visually-hidden">Netflix Clone</h1>
       <NavLink to="/">
         <img
           className="netflix-logo"
           src="./images/logos/netflix-logo.svg"
           alt="Netflix Logo"
         />
-        <h1 className="visually-hidden">Netflix Clone</h1>
       </NavLink>
       <ul aria-label="Main Navigation">
         <li>

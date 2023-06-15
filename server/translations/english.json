@@ -12,6 +12,7 @@
   "profileAvatar": "Profile Avatar",
   "nameWarningEmpty": "Please enter a name",
   "nameWarningCharacters": "Sorry, names must be less than 50 characters",
+  "nameWarningAlreadyExist": "Name already exist. Please try again.",
   "language": "Language",
   "gameHandle": "Game Handle",
   "gameHandleDescription": "Your handle is a unique name that'll be used for playing with other Netflix members across all Netflix Games.",

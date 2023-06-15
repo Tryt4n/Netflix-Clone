@@ -38,7 +38,9 @@ export default function SelectProfilItem({
             />
             {isEdit && <EditIcon />}
           </div>
-          <span className="select-profil-item__username">{user.username}</span>
+          <span className="select-profil-item__username">
+            {user.username === "Kids" ? t("Kids") : user.username}
+          </span>
         </div>
       </li>
     </>

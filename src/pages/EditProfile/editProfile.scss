@@ -2,6 +2,7 @@
 @use "../../abstracts/colors" as c;
 @use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .edit-profile {
   $space-top: 4rem;
@@ -43,17 +44,17 @@
   }
 
   &__go-back-link {
-    @media screen and (width > func.rem(500)) {
+    @media screen and (width > b.$mobile-medium) {
       margin-right: 1rem;
       scale: 3;
     }
-    @media screen and (width <=func.rem(500)) {
+    @media screen and (width <=b.$mobile-medium) {
       scale: 1.75;
     }
   }
 
   &__heading {
-    @media screen and (width > func.rem(500)) {
+    @media screen and (width > b.$mobile-medium) {
       font-size: 2.35rem;
     }
     @media screen and (width <= func.rem(360)) {
@@ -62,7 +63,7 @@
   }
 
   &__subheading {
-    @media screen and (width > func.rem(500)) {
+    @media screen and (width > b.$mobile-medium) {
       font-size: 1.85rem;
     }
   }
@@ -87,10 +88,10 @@
   }
 
   &__list {
-    @media screen and (width > func.rem(500)) {
+    @media screen and (width > b.$mobile-medium) {
       margin-block: 4rem;
     }
-    @media screen and (width <=func.rem(500)) {
+    @media screen and (width <=b.$mobile-medium) {
       margin-block: 2rem;
     }
   }
@@ -98,7 +99,7 @@
   &__list-item:not(:first-of-type) {
     margin-top: 3rem;
     margin-inline: 0.1rem;
-    @media screen and (width <= func.rem(500)) {
+    @media screen and (width <= b.$mobile-medium) {
       margin-top: 1.5rem;
     }
   }
@@ -106,7 +107,7 @@
   &__slider-heading {
     font-size: 2.75rem;
     margin-bottom: 0.4em;
-    @media screen and (width <= func.rem(500)) {
+    @media screen and (width <= b.$mobile-medium) {
       font-size: 1.5rem;
     }
   }
@@ -116,14 +117,14 @@
     align-items: end;
     max-width: func.rem(300);
     height: func.rem(60);
-    @media (width <= func.rem(500)) {
+    @media (width <= b.$mobile-medium) {
       height: func.rem(16);
     }
 
     & img {
       max-width: 100%;
       height: 100%;
-      @media screen and (width <= func.rem(500)) {
+      @media screen and (width <= b.$mobile-medium) {
         height: func.rem(16);
       }
     }

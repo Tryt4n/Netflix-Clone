@@ -1,6 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
-// import Navbar from "./layout/Navbar/Navbar";
+import Navbar from "./layout/Navbar/Navbar";
 import Home from "./pages/Home";
 import TVShows from "./pages/TVShows";
 import Movies from "./pages/Movies";
@@ -12,15 +12,19 @@ import UserSelectPage from "./pages/UserSelectPage/UserSelectPage";
 import ManageProfilesPage from "./pages/ManageProfilesPage/ManageProfilesPage";
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
 import EditProfile from "./pages/EditProfile/EditProfile";
+import PasswordConfirmationPage from "./pages/PasswordConfirmationPage/PasswordConfirmationPage";
 
 export default function App() {
+  const location = useLocation();
+  const allowedPaths = ["/home", "/movies", "/latest", "/my-list", "/original-audio"];
+  const showNavbar = allowedPaths.includes(location.pathname);
+
   return (
     <>
-      {/* <Navbar /> */}
+      {showNavbar && <Navbar />}
       <Routes>
         <Route
-          // index={true}
-          path="/"
+          index={true}
           element={<UserSelectPage />}
         />
         <Route
@@ -62,6 +66,10 @@ export default function App() {
         <Route
           path="/ManageProfiles/:id/EditProfile"
           element={<EditProfile />}
+        />
+        <Route
+          path="/Confirmation"
+          element={<PasswordConfirmationPage />}
         />
       </Routes>
     </>

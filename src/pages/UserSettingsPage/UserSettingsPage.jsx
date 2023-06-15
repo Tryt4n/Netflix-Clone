@@ -27,6 +27,7 @@ export default function UserSettingsPage() {
   const currentUser = users.find((user) => user.username === params.id);
 
   const [isNameValid, setIsNameValid] = useState(true);
+  const [isNameAlreadyExist, setIsNameAlreadyExist] = useState(false);
   const [isGameHandleValid, setIsGameHandleValid] = useState(true);
 
   const [username, setUsername] = useState(currentUser.username);
@@ -38,12 +39,19 @@ export default function UserSettingsPage() {
   const [showGameHandleLength, setShowGameHandleLength] = useState(false);
   const [showGameHandleWarningInfo, setShowGameHandleWarningInfo] = useState(false);
 
+  const isDuplicate = users.some((user) => user.username.toLowerCase() === username.toLowerCase());
+
   function handleUsernameChange(e) {
     setUsername(e.target.value);
   }
   useEffect(() => {
     username === "" || username.length > 50 ? setIsNameValid(false) : setIsNameValid(true);
   }, [username]);
+  useEffect(() => {
+    username !== currentUser.username && isDuplicate
+      ? setIsNameAlreadyExist(false)
+      : setIsNameAlreadyExist(true);
+  }, [username, isDuplicate, currentUser.username]);
 
   function handleLanguageChange(selectedLanguage) {
     setUserLanguage(selectedLanguage);
@@ -81,7 +89,7 @@ export default function UserSettingsPage() {
             ...user,
             username,
             language: userLanguage,
-            gameHandle,
+            gameHandle: gameHandle,
             profilImage: editingProfilePictureSrc || currentUser.profilImage,
           };
         }
@@ -147,6 +155,9 @@ export default function UserSettingsPage() {
               <p className="user-settings__invalid-message">
                 {username.length > 50 ? t("nameWarningCharacters") : t("nameWarningEmpty")}
               </p>
+            )}
+            {!isNameAlreadyExist && (
+              <p className="user-settings__invalid-message">{t("nameWarningAlreadyExist")}</p>
             )}
           </section>
 
@@ -317,6 +328,7 @@ export default function UserSettingsPage() {
               {t("showTitlesOf")} <b>{t("allMaturityRatings")}</b> {t("forThisProfile")}.
             </p>
             <Link
+              to={"/Confirmation"}
               className="user-settings__maturity-edit-btn"
               aria-label={t("editLabel")}
             >
@@ -366,8 +378,13 @@ export default function UserSettingsPage() {
 
       <section className="user-settings__confirmation-section">
         <h2 className="visually-hidden">{t("confirmation")}</h2>
-        {!isNameValid || !isGameHandleValid ? (
-          <a href="#">{t("save")}</a>
+        {!isNameValid || !isGameHandleValid || !isNameAlreadyExist ? (
+          <a
+            href="#"
+            className="user-settings__confirmation-btn user-settings__confirmation-btn--accent"
+          >
+            {t("save")}
+          </a>
         ) : (
           <Link
             to="/ManageProfiles"

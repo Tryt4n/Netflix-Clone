@@ -1,0 +1,82 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.account-footer {
+  $footer-main-gap: 2em;
+
+  position: relative;
+  background-color: c.$account-bg;
+  color: c.$account-text;
+  font-weight: normal;
+  margin-bottom: $footer-main-gap;
+  @media screen and (width >= b.$mobile-medium) {
+    margin-top: calc($footer-main-gap * 7);
+    margin-inline: 3rem;
+  }
+  @media screen and (width < b.$mobile-medium) {
+    margin-top: calc($footer-main-gap * 5);
+    margin-inline: 1rem;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 1px;
+    margin-block: calc($footer-main-gap * -1);
+    background-color: c.$main-text-color;
+    @media screen and (width >= b.$mobile-medium) {
+      width: calc(100% + 6rem);
+      translate: -3rem;
+    }
+    @media screen and (width < b.$mobile-medium) {
+      width: calc(100% + 2rem);
+      translate: -2rem;
+    }
+  }
+
+  &__heading {
+    font-size: func.rem(16);
+    font-weight: inherit;
+    margin-bottom: $footer-main-gap;
+    a {
+      font: inherit;
+    }
+  }
+
+  &__list {
+    max-width: func.rem(1000);
+    font-size: v.$font-size-body;
+    margin-bottom: calc($footer-main-gap * 1.5);
+    @include flex(row, flex-start, center);
+    flex-wrap: wrap;
+  }
+
+  &__list-item {
+    display: inline-block;
+    margin-bottom: func.rem(16);
+    padding-right: func.rem(12);
+    min-width: func.rem(100);
+    width: 25%;
+    @media screen and (width <= b.$mobile-medium) {
+      margin-bottom: func.rem(8);
+    }
+  }
+
+  &__service-code {
+    display: inline-block;
+    min-width: func.rem(90);
+    padding: func.rem(8);
+    border: 1px solid;
+    font-size: v.$font-size-navbar;
+    text-align: center;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  a:where(:hover, :focus-visible) {
+    text-decoration: underline;
+  }
+}

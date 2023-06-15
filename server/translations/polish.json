@@ -11,6 +11,7 @@
   "profileAvatar": "Avatar Profilu",
   "nameWarningEmpty": "Proszę podać nazwę",
   "nameWarningCharacters": "Przepraszamy, nazwy muszą być krótsze niż 50 znaków",
+  "nameWarningAlreadyExist": "Nazwa już istnieje. Spróbuj jeszcze raz.",
   "language": "Język",
   "gameHandle": "Pseudonim Gracza",
   "gameHandleDescription": "Twój pseudonim to unikalna nazwa, która będzie używana do grania z innymi użytkownikami serwisu Netflix we wszystkich grach serwisu Netflix.",

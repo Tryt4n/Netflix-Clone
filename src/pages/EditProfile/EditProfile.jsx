@@ -40,7 +40,7 @@ export default function EditProfile() {
           <em className="edit-profile__username-text">{currentUser.username}</em>
           <img
             className="edit-profile__user-img"
-            src={editingProfilePictureSrc || currentUser.profilImage}
+            src={editingProfilePictureSrc || currentUser.profileImage}
             alt={`${currentUser.username} ${t("profileAvatar")}`}
           />
         </div>

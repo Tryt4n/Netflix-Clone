@@ -74,7 +74,6 @@
   "passwordRequired": "Hasło jest wymagane.",
   "forgotPassword": "Nie pamiętasz hasła?",
   "continue": "Kontynuuj",
-
   "contactUs": "Masz pytania? Skontaktuj się z nami.",
   "audioAndSubtitle": "Dźwięk i napisy",
   "privacyStatement": "Zasady zachowania poufności informacji",
@@ -84,5 +83,19 @@
   "cookiePreferences": "Ustawienia plików cookie",
   "investorRelations": "Relacje z inwestorami",
   "termsOfUse": "Warunki korzystania",
-  "serviceCode": "Kod serwisowy"
+  "serviceCode": "Kod serwisowy",
+  "profileMaturityRatingFor": "Profilowe kategorie wiekowe dla:",
+  "showTitlesRated": "W tym profilu będą wyświetlane tylko tytuły o kategorii wiekowej nie wyższej niż",
+  "andBelow": "",
+  "showTitles-18+": "Wyświetlaj w tym profilu tytuły z wszystkich kategorii wiekowych.",
+  "all": "Dla każdego",
+  "recommendedFor": "Zalecane dla widzów od",
+  "allAudiences": "",
+  "withoutRestrictions": "Bez ograniczeń wiekowych",
+  "ages": "",
+  "andUp": "roku życia",
+  "titlesRestrictionFor": "Ograniczenia tytułów dla:",
+  "titlesRestrictionForDescription": "W tym profilu niektóre tytuły nie będą wyświetlane, niezależnie od kategorii wiekowej.",
+  "titlesRestrictionInputLabel": "Wprowadź tytuł filmu, serialu lub programu, który chcesz zablokować.",
+  "titlesRestrictionInputPlaceholder": "Wpisz tytuł filmu, serialu lub programu"
 }

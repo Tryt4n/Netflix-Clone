@@ -1,0 +1,295 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.restriction-confirmation {
+  min-height: 100dvh;
+  background-color: c.$account-bg;
+  color: c.$black;
+
+  &__content-container {
+    margin-inline: auto;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: c.$profile-edit-maturity-ratings-bg;
+    @media screen and (width >= b.$mobile-medium) {
+      max-width: func.rem(1024);
+      margin-block: 2rem;
+      padding-inline: 3rem;
+    }
+    @media screen and (width < b.$mobile-medium) {
+      margin: 1rem;
+    }
+  }
+
+  &__header {
+    @include flex(row, space-between, center);
+    margin-bottom: v.$confirmation-gap;
+  }
+
+  &__heading {
+    font-size: 2rem;
+    font-weight: inherit;
+    @media screen and (width <= func.rem(740)) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__profile-img {
+    width: func.rem(50);
+    border-radius: 7.5%;
+    aspect-ratio: 1/1;
+  }
+
+  &__password-subheading {
+    font: inherit;
+  }
+
+  &__input-wrapper {
+    @include flex(row, flex-start, center);
+    gap: 1em;
+    margin-top: v.$confirmation-gap;
+  }
+
+  &__password-form {
+    position: relative;
+  }
+
+  &__password-input,
+  &__blocked-videos-input {
+    font: inherit;
+    font-size: func.rem(16);
+    font-weight: normal;
+    padding: func.rem(10) func.rem(11);
+    border-width: 1px;
+    border-color: hsl(0, 0%, 70%);
+    &:focus {
+      border-color: c.$gray-text;
+      outline: none;
+    }
+    &.invalid {
+      border-color: c.$error-message-2;
+    }
+    @media screen and (width >= b.$mobile-medium) {
+      width: func.rem(300);
+    }
+    @media screen and (width < b.$mobile-medium) {
+      width: max(func.rem(175), 100%);
+    }
+  }
+
+  &__password-warning-message {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: v.$font-size-header-mobile;
+    color: c.$error-message-2;
+    translate: 0 100%;
+  }
+
+  &__password-forgot-link {
+    font-size: 1rem;
+    font-weight: normal;
+    color: hsl(210, 100%, 50%);
+    &:where(:hover, :focus-visible) {
+      text-decoration: underline;
+    }
+  }
+
+  &__buttons-container {
+    margin-top: calc(v.$confirmation-gap * 2);
+    margin-bottom: calc(v.$confirmation-gap * 4);
+    margin-inline: v.$confirmation-gap;
+    @media screen and (width > b.$mobile-medium) {
+      @include flex(row, center, center);
+      gap: 0.5em;
+    }
+  }
+
+  &__subheading {
+    margin-block: 0.75em func.rem(20);
+    font-size: func.rem(24);
+    font-weight: 500;
+  }
+
+  &__description-text {
+    margin-block: 1em;
+    font-size: func.rem(16);
+    font-weight: normal;
+  }
+
+  &__divider {
+    margin-block: func.rem(30);
+    border-color: c.$white;
+  }
+
+  &__blocked-videos-input {
+    @media screen and (width >= b.$mobile-account) {
+      width: 50%;
+      min-width: func.rem(464);
+    }
+    @media screen and (width < b.$mobile-account) {
+      width: 100%;
+    }
+    @media screen and (width <= func.rem(350)) {
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__inputs-container {
+    margin-top: 2em;
+    margin-bottom: 5em;
+    @media screen and (width >= b.$mobile-account) {
+      @include flex(row, space-around, center);
+    }
+    @media screen and (width < b.$mobile-account) {
+      @include flex(column, space-around, flex-start);
+      margin-left: 1rem;
+    }
+  }
+
+  &__restriction-input-wrapper {
+    position: relative;
+  }
+
+  &__restriction-label {
+    position: absolute;
+    padding: func.rem(5) func.rem(7);
+    font-size: func.rem(11);
+    font-weight: 500;
+    white-space: nowrap;
+    color: c.$viewing-restriction-label-inactive-text;
+    background-color: c.$viewing-restriction-label-inactive-bg;
+    border-radius: func.rem(2);
+    cursor: pointer;
+    @media screen and (width >= b.$mobile-account) {
+      top: 50%;
+      left: 50%;
+      translate: -50% 125%;
+    }
+    @media screen and (width < b.$mobile-account) {
+      right: 0;
+      translate: 100% calc(v.$restrictions-border-width * 2);
+    }
+    &.active {
+      background-color: c.$viewing-restriction-input-line;
+      color: c.$white;
+    }
+    &::after {
+      position: absolute;
+      content: attr(data-tooltip);
+      background: #e6e6e6;
+      bottom: -3em;
+      padding: 7px 10px;
+      translate: -50%;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+      font-size: 1.2em;
+      font-weight: normal;
+      color: c.$language-select-bg;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: 250ms ease-in-out;
+      @media screen and (width < b.$mobile-account) {
+        margin-left: 2rem;
+      }
+    }
+    &.active::after {
+      font-weight: 500;
+    }
+    &:hover.restriction-confirmation__restriction-label::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__restriction-input {
+    position: relative;
+    display: block;
+    appearance: none;
+    width: 30px;
+    aspect-ratio: 1/1;
+    background-color: c.$white;
+    border: v.$restrictions-border-width solid c.$viewing-restriction-label-inactive-text;
+    border-radius: 50%;
+    cursor: pointer;
+    outline-offset: 0.1em;
+    @media screen and (width < b.$mobile-account) {
+      translate: calc(-50% + (v.$restrictions-border-width * 2));
+    }
+    &::before {
+      position: absolute;
+      content: "";
+      width: 60%;
+      aspect-ratio: 1/1;
+      top: 0;
+      left: 0;
+      translate: 35% 35%;
+      background-color: transparent;
+      border-radius: 50%;
+    }
+    &.active::before {
+      background: c.$viewing-restriction-input-blue;
+    }
+  }
+
+  &__line {
+    $mobile-line-height: 60px;
+
+    background-color: c.$viewing-restriction-input-line-inactive;
+    @media screen and (width >= b.$mobile-account) {
+      width: 100%;
+      height: func.rem(4);
+    }
+    @media screen and (width < b.$mobile-account) {
+      width: func.rem(4);
+      height: $mobile-line-height;
+    }
+
+    &--first,
+    &--last {
+      position: relative;
+      @media screen and (width >= b.$mobile-account) {
+        width: 50%;
+      }
+      @media screen and (width < b.$mobile-account) {
+        height: calc($mobile-line-height / 2);
+      }
+    }
+    &--first::before,
+    &--last::after {
+      position: absolute;
+      content: "";
+      width: func.rem(12);
+      aspect-ratio: 1/1;
+      translate: 0 -50%;
+      background-color: inherit;
+      border-radius: 50%;
+      @media screen and (width >= b.$mobile-account) {
+        top: 50%;
+      }
+    }
+    &--first::before {
+      left: 0;
+      @media screen and (width < b.$mobile-account) {
+        left: -100%;
+      }
+    }
+    &--last::after {
+      right: 0;
+      @media screen and (width < b.$mobile-account) {
+        right: -100%;
+        bottom: 0;
+        translate: 0 50%;
+      }
+    }
+    &.active {
+      background: c.$viewing-restriction-input-line;
+    }
+  }
+}

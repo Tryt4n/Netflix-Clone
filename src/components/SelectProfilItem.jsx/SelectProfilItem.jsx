@@ -32,7 +32,7 @@ export default function SelectProfilItem({
           <div className="select-profil-item__img-wrapper">
             <img
               className={`select-profil-item__profile-img${isEdit ? " edit" : ""}`}
-              src={user.profilImage}
+              src={user.profileImage}
               alt={`${user.username} ${t("avatar")}`}
               aria-hidden="true"
             />

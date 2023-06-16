@@ -26,8 +26,14 @@ export default function UserSettingsPage() {
   } = useContext(UserContext);
 
   const currentUser = users.find((user) => user.username === params.id);
+  const sessionStorageUserData = {
+    username: currentUser.username,
+    profileImage: currentUser.profileImage,
+    language: currentUser.language,
+    maturityRating: currentUser.maturityRating,
+  };
   useEffect(() => {
-    setCurrentEditingProfile(currentUser);
+    setCurrentEditingProfile(sessionStorageUserData);
   }, [currentUser, setCurrentEditingProfile]);
 
   const [isNameValid, setIsNameValid] = useState(true);
@@ -104,7 +110,7 @@ export default function UserSettingsPage() {
             username,
             language: userLanguage,
             gameHandle: gameHandle,
-            profilImage: editingProfilePictureSrc || currentUser.profilImage,
+            profileImage: editingProfilePictureSrc || currentUser.profileImage,
             autoplayNext: autoplayNextInputChecked,
             autoplayPrevious: autoplayPreviousInputChecked,
           };
@@ -141,7 +147,7 @@ export default function UserSettingsPage() {
           <h2 className="visually-hidden">{t("profileImageEdition")}</h2>
           <img
             className="user-settings__img"
-            src={(currentUser && editingProfilePictureSrc) || currentUser.profilImage}
+            src={(currentUser && editingProfilePictureSrc) || currentUser.profileImage}
             alt={`${currentUser.username} ${t("profileAvatar")}`}
           />
           <Link

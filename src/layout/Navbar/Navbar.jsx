@@ -98,7 +98,7 @@ export default function Navbar() {
           >
             <span className="visually-hidden">Accounts Dropdown</span>
             <img
-              src={user.profilImage}
+              src={user.profileImage}
               alt=""
             />
             <span

@@ -85,5 +85,19 @@
   "cookiePreferences": "Cookie Preferences",
   "investorRelations": "Investor Relations",
   "termsOfUse": "Terms of Use",
-  "serviceCode": "Service Code"
+  "serviceCode": "Service Code",
+  "profileMaturityRatingFor": "Profile Maturity Rating for",
+  "showTitlesRated": "Only show titles rated",
+  "andBelow": " and below ",
+  "showTitles-18+": "Show titles of all maturity ratings for this profile.",
+  "all": "All",
+  "recommendedFor": "Recommended for",
+  "allAudiences": "all audiences",
+  "withoutRestrictions": "Recommended for all audiences",
+  "ages": "ages",
+  "andUp": "and up",
+  "titlesRestrictionFor": "Title Restrictions for",
+  "titlesRestrictionForDescription": "Don't show specific titles for this profile regardless of Maturity Rating",
+  "titlesRestrictionInputLabel": "Enter show or movie name you want to block.",
+  "titlesRestrictionInputPlaceholder": "Enter show or movie name"
 }

@@ -12,7 +12,8 @@ import UserSelectPage from "./pages/UserSelectPage/UserSelectPage";
 import ManageProfilesPage from "./pages/ManageProfilesPage/ManageProfilesPage";
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
 import EditProfile from "./pages/EditProfile/EditProfile";
-import PasswordConfirmationPage from "./pages/PasswordConfirmationPage/PasswordConfirmationPage";
+import RestrictionPage from "./pages/RestrictionPage/RestrictionPage";
+import AccountPage from "./pages/AccountPage/AccountPage";
 
 export default function App() {
   const location = useLocation();
@@ -69,7 +70,11 @@ export default function App() {
         />
         <Route
           path="/Confirmation"
-          element={<PasswordConfirmationPage />}
+          element={<RestrictionPage />}
+        />
+        <Route
+          path="/Account"
+          element={<AccountPage />}
         />
       </Routes>
     </>

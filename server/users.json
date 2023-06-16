@@ -2,7 +2,7 @@
   {
     "id": 1,
     "username": "John",
-    "profilImage": "/images/profiles/Classic/17.png",
+    "profileImage": "/images/profiles/Classic/17.png",
     "language": "English",
     "gameHandle": "",
     "maturityRating": "18+",
@@ -179,7 +179,7 @@
   {
     "id": 2,
     "username": "Sally",
-    "profilImage": "/images/profiles/Classic/18.png",
+    "profileImage": "/images/profiles/Classic/18.png",
     "language": "Polski",
     "gameHandle": "",
     "maturityRating": "16+",
@@ -309,7 +309,7 @@
   {
     "id": 3,
     "username": "Kyle",
-    "profilImage": "/images/profiles/Classic/21.png",
+    "profileImage": "/images/profiles/Classic/21.png",
     "language": "English",
     "gameHandle": "",
     "maturityRating": "13+",
@@ -376,7 +376,7 @@
   {
     "id": 4,
     "username": "Anna",
-    "profilImage": "/images/profiles/Classic/19.png",
+    "profileImage": "/images/profiles/Classic/19.png",
     "language": "English",
     "gameHandle": "",
     "maturityRating": "18+",
@@ -497,7 +497,7 @@
   {
     "id": 5,
     "username": "Kids",
-    "profilImage": "/images/profiles/Classic/profil_kids.png",
+    "profileImage": "/images/profiles/Classic/profil_kids.png",
     "language": "English",
     "gameHandle": "",
     "maturityRating": "10+",

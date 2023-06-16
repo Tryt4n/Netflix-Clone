@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 import usersData from "../../server/users.json";
 import iconsData from "../../server/editProfileData.json";
+import { useSessionStorage } from "../hooks/useStorage";
 
 const UserContext = createContext();
 
@@ -12,7 +13,8 @@ export function UserProvider({ children }) {
 
   const [editingUserLanguage, setEditingUserLanguage] = useState(null);
   const [editingProfilePictureSrc, setEditingProfilePictureSrc] = useState(null);
-  const [currentEditingProfile, setCurrentEditingProfile] = useState(null);
+  const [currentEditingProfile, setCurrentEditingProfile, removeCurrentEditingProfile] =
+    useSessionStorage("currentProfile", "");
 
   const languageCodes = {
     "Bahasa Indonesia": "id",
@@ -53,10 +55,9 @@ export function UserProvider({ children }) {
     setEditingProfilePictureSrc(src);
   }
 
-  // useEffect(() => {
-  //   // console.log(users);
-  //   console.log(currentEditingProfile);
-  // }, [users, currentEditingProfile]);
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
 
   return (
     <UserContext.Provider
@@ -75,6 +76,7 @@ export function UserProvider({ children }) {
         handleProfilePictureChange: handleProfilePictureChange,
         currentEditingProfile: currentEditingProfile,
         setCurrentEditingProfile: setCurrentEditingProfile,
+        removeCurrentEditingProfile: removeCurrentEditingProfile,
         iconsData: iconsData,
       }}
     >

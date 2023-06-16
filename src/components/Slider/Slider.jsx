@@ -74,7 +74,7 @@ export default function Slider({ data, currentUser }) {
     editProfileConfirmationModal.current.close();
   }
 
-  const alreadyUsedProfileIcons = users.map((user) => user.profilImage);
+  const alreadyUsedProfileIcons = users.map((user) => user.profileImage);
   const availableIcons = [...data.icons].filter(
     (icon) => !alreadyUsedProfileIcons.includes(icon.src)
   );
@@ -149,7 +149,7 @@ export default function Slider({ data, currentUser }) {
                 <div className="edit-profile-confirmation-modal__img-wrapper">
                   <figure>
                     <img
-                      src={currentUser.profilImage}
+                      src={currentUser.profileImage}
                       alt={`${currentUser.username} ${t("currentProfileImage")}`}
                     />
                     <figcaption>{t("current")}</figcaption>

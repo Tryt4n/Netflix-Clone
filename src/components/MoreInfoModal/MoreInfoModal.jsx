@@ -59,11 +59,24 @@ export default function MoreInfoModal({ isLearnMoreModalOpen, setIsLearnMoreModa
     }
   }
 
+  function handleModalKeyboardNavigation(e) {
+    if (e.keyCode === 39) {
+      handleNextClick();
+    }
+    if (e.keyCode === 37) {
+      handleBackClick();
+    }
+    if (e.keyCode === 39 && modalStep === 3) {
+      closeModal();
+    }
+  }
+
   return (
     <dialog
       className="learn-more-modal"
       ref={learnMoreModalRef}
       onClick={(e) => closeModalOnBackdropClick(e)}
+      onKeyDown={(e) => handleModalKeyboardNavigation(e)}
     >
       <div className="learn-more-modal__wrapper">
         <button

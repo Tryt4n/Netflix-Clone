@@ -97,5 +97,9 @@
   "titlesRestrictionFor": "Ograniczenia tytułów dla:",
   "titlesRestrictionForDescription": "W tym profilu niektóre tytuły nie będą wyświetlane, niezależnie od kategorii wiekowej.",
   "titlesRestrictionInputLabel": "Wprowadź tytuł filmu, serialu lub programu, który chcesz zablokować.",
-  "titlesRestrictionInputPlaceholder": "Wpisz tytuł filmu, serialu lub programu"
+  "titlesRestrictionInputPlaceholder": "Wpisz tytuł filmu, serialu lub programu",
+  "clearInput": "Wyczyść pole tekstowe",
+  "searchingBlockedMoviesBtnLabel": "Naciśnij aby dodać do listy blokowanych",
+  "blockedMoviesListBtnLabel": "Naciśnij aby usunąć z listy blokowanych",
+  "secondaryNavigation": "Nawigacja dodatkowa"
 }

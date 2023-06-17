@@ -55,9 +55,9 @@ export function UserProvider({ children }) {
     setEditingProfilePictureSrc(src);
   }
 
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
+  // useEffect(() => {
+  //   console.log(users);
+  // }, [users]);
 
   return (
     <UserContext.Provider

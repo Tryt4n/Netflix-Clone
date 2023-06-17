@@ -99,5 +99,9 @@
   "titlesRestrictionFor": "Title Restrictions for",
   "titlesRestrictionForDescription": "Don't show specific titles for this profile regardless of Maturity Rating",
   "titlesRestrictionInputLabel": "Enter show or movie name you want to block.",
-  "titlesRestrictionInputPlaceholder": "Enter show or movie name"
+  "titlesRestrictionInputPlaceholder": "Enter show or movie name",
+  "clearInput": "Clear Input",
+  "searchingBlockedMoviesBtnLabel": "Click to add to blocked list",
+  "blockedMoviesListBtnLabel": "Click to remove from blocked list",
+  "secondaryNavigation": "Secondary Navigation"
 }

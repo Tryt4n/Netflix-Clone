@@ -3,13 +3,15 @@
 @use "../../base/breakpoints" as b;
 
 .account-settings-btn {
-  font-size: v.$font-size-body;
-  line-height: 1em;
-  padding: func.rem(12) 1em;
   min-height: func.rem(37);
   min-width: func.rem(98);
+  padding: func.rem(12) 1em;
   border: none;
+  font-size: v.$font-size-body;
+  line-height: 1em;
+  text-align: center;
   cursor: pointer;
+  display: block;
   @media screen and (width < b.$mobile-medium) {
     width: 100%;
     margin-bottom: calc(v.$confirmation-gap * 0.5);

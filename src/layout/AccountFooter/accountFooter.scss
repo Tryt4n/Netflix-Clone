@@ -11,7 +11,6 @@
   background-color: c.$account-bg;
   color: c.$account-text;
   font-weight: normal;
-  margin-bottom: $footer-main-gap;
   @media screen and (width >= b.$mobile-medium) {
     margin-top: calc($footer-main-gap * 7);
     margin-inline: 3rem;
@@ -67,6 +66,7 @@
 
   &__service-code {
     display: inline-block;
+    margin-bottom: $footer-main-gap;
     min-width: func.rem(90);
     padding: func.rem(8);
     border: 1px solid;

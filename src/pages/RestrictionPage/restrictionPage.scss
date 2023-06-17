@@ -60,7 +60,7 @@
   &__password-input,
   &__blocked-videos-input {
     font: inherit;
-    font-size: func.rem(16);
+    font-size: v.$font-base;
     font-weight: normal;
     padding: func.rem(10) func.rem(11);
     border-width: 1px;
@@ -98,16 +98,6 @@
     }
   }
 
-  &__buttons-container {
-    margin-top: calc(v.$confirmation-gap * 2);
-    margin-bottom: calc(v.$confirmation-gap * 4);
-    margin-inline: v.$confirmation-gap;
-    @media screen and (width > b.$mobile-medium) {
-      @include flex(row, center, center);
-      gap: 0.5em;
-    }
-  }
-
   &__subheading {
     margin-block: 0.75em func.rem(20);
     font-size: func.rem(24);
@@ -116,28 +106,13 @@
 
   &__description-text {
     margin-block: 1em;
-    font-size: func.rem(16);
+    font-size: v.$font-base;
     font-weight: normal;
   }
 
   &__divider {
     margin-block: func.rem(30);
     border-color: c.$white;
-  }
-
-  &__blocked-videos-input {
-    @media screen and (width >= b.$mobile-account) {
-      width: 50%;
-      min-width: func.rem(464);
-    }
-    @media screen and (width < b.$mobile-account) {
-      width: 100%;
-    }
-    @media screen and (width <= func.rem(350)) {
-      &::placeholder {
-        font-size: 14px;
-      }
-    }
   }
 
   &__inputs-container {
@@ -154,6 +129,9 @@
 
   &__restriction-input-wrapper {
     position: relative;
+    &:last-of-type .restriction-confirmation__restriction-label::after {
+      translate: func.rem(-160);
+    }
   }
 
   &__restriction-label {
@@ -290,6 +268,109 @@
     }
     &.active {
       background: c.$viewing-restriction-input-line;
+    }
+  }
+
+  &__form {
+    position: relative;
+    @media screen and (width >= b.$mobile-account) {
+      width: fit-content;
+    }
+  }
+
+  &__blocked-videos-input {
+    @media screen and (width >= b.$mobile-account) {
+      width: 50%;
+      min-width: func.rem(464);
+    }
+    @media screen and (width < b.$mobile-account) {
+      width: 100%;
+    }
+    @media screen and (width <= func.rem(350)) {
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__clear-input-btn {
+    position: absolute;
+    height: fit-content;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1em;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: c.$black;
+    & svg {
+      width: func.rem(16);
+      height: func.rem(16);
+    }
+  }
+
+  &__searching-movies-list {
+    position: absolute;
+    width: 100%;
+    background-color: c.$white;
+    border: func.rem(1) solid c.$black;
+    z-index: 1;
+  }
+
+  &__searching-movies-list-item {
+    &:not(:last-of-type) {
+      border-bottom: func.rem(1) solid c.$bg;
+    }
+  }
+
+  &__searching-movies-list-item-btn {
+    width: 100%;
+    padding: 0.657em;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: v.$font-base;
+    font-weight: normal;
+    text-align: start;
+    cursor: pointer;
+  }
+
+  &__blocked-list-item {
+    @include flex(row, space-between, center);
+    padding-top: 0.625em;
+    padding-left: 1em;
+  }
+
+  &__blocked-list-item-text {
+    color: c.$blocked-list-text;
+    font-weight: normal;
+    font-size: v.$font-base;
+  }
+
+  &__blocked-list-item-delete-btn {
+    padding: 0.3em;
+    margin-right: 0.5em;
+    border: none;
+    background-color: transparent;
+    color: c.$bg;
+    cursor: pointer;
+    & svg {
+      width: func.rem(12);
+      height: func.rem(12);
+    }
+    &:where(:hover, :focus-visible) {
+      color: c.$black;
+    }
+  }
+
+  &__buttons-container {
+    margin-top: calc(v.$confirmation-gap * 2);
+    margin-bottom: calc(v.$confirmation-gap * 4);
+    margin-inline: v.$confirmation-gap;
+    @media screen and (width > b.$mobile-medium) {
+      @include flex(row, center, center);
+      gap: 0.5em;
     }
   }
 }

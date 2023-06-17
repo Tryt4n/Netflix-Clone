@@ -8,6 +8,10 @@ import "./restrictionPage.scss";
 import { useTranslation } from "react-i18next";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 
+import CloseIcon from "../../icons/CloseIcon";
+
+import moviesData from "../../../server/data.json";
+
 export default function RestrictionPage() {
   const { t, i18n } = useTranslation();
 
@@ -16,7 +20,10 @@ export default function RestrictionPage() {
   const [isConfirmationPasswordValid, setIsConfirmationPasswordValid] = useState(true);
   const [passwordConfirmationPassed, setPasswordConfirmationPassed] = useState(false);
   const [selectedRating, setSelectedRating] = useState("16+");
+  const [searchedBlockedValue, setSearchedBlockedValue] = useState("");
+  const [listOfBlockedMovies, setListOfBlockedMovies] = useState([]);
   const confirmationPasswordInputRef = useRef(null);
+  const blockedInputRef = useRef(null);
   const ratings = [
     { id: "all", label: t("all") },
     { id: "7+", label: "7+" },
@@ -56,6 +63,30 @@ export default function RestrictionPage() {
 
   function getIndex(id) {
     return ratings.findIndex((rating) => rating.id === id);
+  }
+
+  function handleConfirmationOnKeyDown(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (confirmationPasswordInputRef.current.value !== "") {
+        setIsConfirmationPasswordValid(true);
+        setPasswordConfirmationPassed(true);
+        changeRestriction();
+      } else {
+        setIsConfirmationPasswordValid(false);
+      }
+    }
+  }
+
+  function clearInput(ref) {
+    if (ref.current.value.length > 0) {
+      setSearchedBlockedValue("");
+    }
+  }
+
+  function addToBlockedList(item) {
+    setListOfBlockedMovies((prevState) => [...prevState, item]);
+    clearInput(blockedInputRef);
   }
 
   return (
@@ -101,6 +132,7 @@ export default function RestrictionPage() {
                     required
                     aria-invalid={!isConfirmationPasswordValid}
                     aria-errormessage="password-confirmation-error-text"
+                    onKeyDown={handleConfirmationOnKeyDown}
                   />
                   {!isConfirmationPasswordValid && (
                     <span
@@ -211,7 +243,10 @@ export default function RestrictionPage() {
                 <p className="restriction-confirmation__description-text">
                   {t("titlesRestrictionForDescription")}
                 </p>
-                <form onSubmit={(e) => e.preventDefault()}>
+                <form
+                  className="restriction-confirmation__form"
+                  onSubmit={(e) => e.preventDefault()}
+                >
                   <label
                     htmlFor="video-restriction"
                     className="visually-hidden"
@@ -224,7 +259,58 @@ export default function RestrictionPage() {
                     name="video-restriction"
                     id="video-restriction"
                     placeholder={t("titlesRestrictionInputPlaceholder")}
+                    autoComplete="off"
+                    ref={blockedInputRef}
+                    value={searchedBlockedValue}
+                    onChange={(e) => setSearchedBlockedValue(e.target.value)}
                   />
+                  {searchedBlockedValue !== "" && (
+                    <button
+                      className="restriction-confirmation__clear-input-btn"
+                      aria-label={t("clearInput")}
+                      onClick={() => clearInput(blockedInputRef)}
+                    >
+                      <CloseIcon />
+                    </button>
+                  )}
+                  {searchedBlockedValue.length >= 3 && (
+                    <ul className="restriction-confirmation__searching-movies-list">
+                      {moviesData.map((item) => (
+                        <li
+                          key={item.name}
+                          className="restriction-confirmation__searching-movies-list-item"
+                        >
+                          <button
+                            className="restriction-confirmation__searching-movies-list-item-btn"
+                            aria-label={t("searchingBlockedMoviesBtnLabel")}
+                            onClick={() => addToBlockedList(item)}
+                          >
+                            {item.name} ({item.productionYear})
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {listOfBlockedMovies.length > 0 && (
+                    <ul>
+                      {listOfBlockedMovies.map((item) => (
+                        <li
+                          key={item.name}
+                          className="restriction-confirmation__blocked-list-item"
+                        >
+                          <span className="restriction-confirmation__blocked-list-item-text">
+                            {item.name}
+                          </span>
+                          <button
+                            className="restriction-confirmation__blocked-list-item-delete-btn"
+                            aria-label={"blockedMoviesListBtnLabel"}
+                          >
+                            <CloseIcon />
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </form>
               </section>
             </>
@@ -232,18 +318,23 @@ export default function RestrictionPage() {
         </main>
       </div>
 
-      <div className="restriction-confirmation__buttons-container">
+      <nav
+        className="restriction-confirmation__buttons-container"
+        aria-label={t("secondaryNavigation")}
+      >
+        <h2 className="visually-hidden">{t("secondaryNavigation")}</h2>
         <AccountSettingsBtn
           text={passwordConfirmationPassed ? t("save") : t("continue")}
           currentClass="accent"
           onClickFunction={passwordConfirmationPassed ? changeRestriction : goNext}
-          path={"/account"}
+          path={passwordConfirmationPassed ? "/account" : ""}
         />
         <AccountSettingsBtn
           text={t("cancel")}
           currentClass="light"
+          path={"/account"}
         />
-      </div>
+      </nav>
       <AccountFooter />
     </div>
   );

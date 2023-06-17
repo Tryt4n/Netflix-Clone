@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 
@@ -19,9 +19,11 @@ export default function RestrictionPage() {
 
   const [isConfirmationPasswordValid, setIsConfirmationPasswordValid] = useState(true);
   const [passwordConfirmationPassed, setPasswordConfirmationPassed] = useState(false);
-  const [selectedRating, setSelectedRating] = useState("16+");
+  const [selectedRating, setSelectedRating] = useState(currentEditingProfile.maturityRating);
   const [searchedBlockedValue, setSearchedBlockedValue] = useState("");
-  const [listOfBlockedMovies, setListOfBlockedMovies] = useState([]);
+  const [listOfBlockedMovies, setListOfBlockedMovies] = useState(
+    currentEditingProfile.blockedMovies !== undefined ? currentEditingProfile.blockedMovies : []
+  );
   const confirmationPasswordInputRef = useRef(null);
   const blockedInputRef = useRef(null);
   const ratings = [
@@ -32,6 +34,13 @@ export default function RestrictionPage() {
     { id: "16+", label: "16+" },
     { id: "18+", label: "18+" },
   ];
+
+  //* List of movies in the searching list excluding those that are already blocked
+  const filteredMovies = moviesData.filter(
+    (item) =>
+      !listOfBlockedMovies.some((blockedItem) => blockedItem.name === item.name) &&
+      item.name.toLowerCase().includes(searchedBlockedValue.toLowerCase())
+  );
 
   function goNext() {
     if (confirmationPasswordInputRef.current.value === "") {
@@ -54,6 +63,7 @@ export default function RestrictionPage() {
         return {
           ...user,
           maturityRating: selectedRating,
+          blockedMovies: listOfBlockedMovies,
         };
       }
       return user;
@@ -88,6 +98,14 @@ export default function RestrictionPage() {
     setListOfBlockedMovies((prevState) => [...prevState, item]);
     clearInput(blockedInputRef);
   }
+
+  function removeFromBlockedList(item) {
+    setListOfBlockedMovies((prevState) => prevState.filter((blockedItem) => blockedItem !== item));
+  }
+
+  useEffect(() => {
+    console.log(listOfBlockedMovies);
+  }, [listOfBlockedMovies]);
 
   return (
     <div className="restriction-confirmation">
@@ -273,9 +291,9 @@ export default function RestrictionPage() {
                       <CloseIcon />
                     </button>
                   )}
-                  {searchedBlockedValue.length >= 3 && (
+                  {searchedBlockedValue.length >= 3 && filteredMovies.length > 0 && (
                     <ul className="restriction-confirmation__searching-movies-list">
-                      {moviesData.map((item) => (
+                      {filteredMovies.map((item) => (
                         <li
                           key={item.name}
                           className="restriction-confirmation__searching-movies-list-item"
@@ -291,7 +309,7 @@ export default function RestrictionPage() {
                       ))}
                     </ul>
                   )}
-                  {listOfBlockedMovies.length > 0 && (
+                  {listOfBlockedMovies?.length > 0 && (
                     <ul>
                       {listOfBlockedMovies.map((item) => (
                         <li
@@ -304,6 +322,7 @@ export default function RestrictionPage() {
                           <button
                             className="restriction-confirmation__blocked-list-item-delete-btn"
                             aria-label={"blockedMoviesListBtnLabel"}
+                            onClick={() => removeFromBlockedList(item)}
                           >
                             <CloseIcon />
                           </button>

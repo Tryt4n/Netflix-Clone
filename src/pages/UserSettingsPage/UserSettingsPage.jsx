@@ -31,6 +31,7 @@ export default function UserSettingsPage() {
     profileImage: currentUser.profileImage,
     language: currentUser.language,
     maturityRating: currentUser.maturityRating,
+    blockedMovies: currentUser?.blockedMovies,
   };
   useEffect(() => {
     setCurrentEditingProfile(sessionStorageUserData);

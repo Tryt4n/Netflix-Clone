@@ -5,8 +5,12 @@
 @use "../../base/breakpoints" as b;
 
 .account {
+  $account-gap: 3em;
+  $account-margin-block: 1em;
+
   background-color: c.$account-bg;
   color: c.$black;
+  cursor: default;
 
   &__container {
     margin-inline: auto;
@@ -66,10 +70,10 @@
     opacity: 0.5;
   }
 
-  &__article {
+  &__article-membership-billing {
     @include flex(row, space-between, flex-start);
-    gap: 3em;
-    margin-top: 1em;
+    gap: $account-gap;
+    margin-block: $account-margin-block;
     font-weight: normal;
     hr {
       opacity: 0.1;
@@ -102,34 +106,29 @@
   }
 
   &__article-section {
-    $article-margin-bottom: 1em;
-
-    margin-bottom: calc($article-margin-bottom * 0.75);
+    margin-bottom: calc($account-margin-block * 0.75);
     width: 100%;
     &:not(:first-child) {
-      margin-top: $article-margin-bottom;
+      margin-top: calc($account-margin-block * 0.75);
     }
     & > * {
       @include flex(row, flex-end, center);
       gap: 1rem;
-      &:not(:last-child) {
-        margin-bottom: calc($article-margin-bottom / 2);
-      }
+      margin-bottom: calc($account-margin-block / 2);
     }
     * > :first-child:not(img, svg) {
       flex-grow: 1;
     }
+  }
 
-    a {
-      text-align: end;
-      color: c.$account-text-accent;
-      &:where(:hover, :focus-visible) {
-        text-decoration: underline;
-      }
-    }
-
-    &:first-child {
-      max-width: 100%;
+  &__article-link {
+    text-align: end;
+    color: c.$account-text-accent;
+    font-weight: normal;
+    display: flex;
+    max-width: fit-content;
+    &:hover {
+      text-decoration: underline;
     }
   }
 
@@ -146,53 +145,105 @@
     img {
       width: func.rem(32);
       height: $line-height;
-      flex-grow: 0;
     }
   }
 
-  &__article-plan-details-wrapper {
+  &__article {
+    @include flex();
+    gap: $account-gap;
+    margin-block: $account-margin-block;
+  }
+
+  &__section-wrapper {
+    flex-grow: 1;
+    @include flex(row, space-between, flex-start);
+  }
+
+  &__plan-wrapper {
     @include flex(row, flex-start, center);
-    gap: 0.25em;
+    height: func.rem(20);
+    line-height: 100%;
     svg {
-      display: inline;
       width: func.rem(110);
-      height: func.rem(20);
+      height: 100%;
     }
-    strong {
-      flex-grow: 0 !important;
-    }
-  }
-
-  &__article-sections-inner-wrapper {
-    @include flex(row, space-between, center);
-    width: 100%;
-    margin-top: -1rem;
   }
 
   &__article-links-wrapper {
-    @include flex(column);
-    gap: 0.5em;
-    flex-grow: 1;
-    white-space: nowrap;
+    @include flex(column, flex-end, flex-end);
+    gap: calc($account-margin-block / 2);
   }
 
-  &__article-section-description-text {
+  &__section-text {
+    font-weight: normal;
     max-width: 43ch;
+    & a {
+      text-decoration: underline;
+    }
   }
 
   &__new-badge {
+    max-height: 1.9em;
     background-color: c.$account-new-badge-accent;
-    color: c.$white;
-    font-size: 0.75em;
-    text-transform: uppercase;
-    font-weight: bold;
+    margin-inline: 0.5em;
     padding: 0.25em 0.5em;
     border-radius: 0.25em;
-    &:is(:first-child) {
-      margin-right: 0.5em;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: c.$white;
+    &--accent {
+      background-color: #5196ff;
     }
-    &:not(:first-child) {
-      margin-left: 0.5em;
+  }
+
+  &__profiles-wrapper {
+    @include flex(column);
+    gap: 1em;
+    width: 100%;
+    margin-bottom: calc($account-margin-block * 2);
+    hr {
+      opacity: 0.3;
     }
+  }
+
+  &__profile-section {
+    @include flex(row, flex-start, center);
+    gap: 1em;
+  }
+
+  &__profile-img {
+    width: func.rem(60);
+    border-radius: 7.5%;
+    aspect-ratio: 1/1;
+  }
+
+  &__profile-heading-wrapper {
+    flex-grow: 1;
+  }
+
+  &__profile-heading {
+    font-size: inherit;
+    font-weight: 500;
+  }
+  &__profile-heading-description {
+    font-size: v.$font-size-body;
+    color: c.$account-text;
+  }
+
+  &__profile-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: hsl(0, 0%, 67%);
+    svg {
+      width: func.rem(20);
+      aspect-ratio: 1/1;
+    }
+  }
+
+  &__settings-wrapper {
+    @include flex(column);
+    gap: calc($account-margin-block / 2);
   }
 }

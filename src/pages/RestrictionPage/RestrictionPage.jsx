@@ -116,7 +116,7 @@ export default function RestrictionPage() {
           <img
             className="restriction-confirmation__profile-img"
             src={currentEditingProfile?.profileImage}
-            alt={`${currentEditingProfile?.username} ${t("profileAvatar")}`}
+            alt={`${t("profileAvatar")} ${currentEditingProfile?.username}`}
           />
         </header>
         <main>

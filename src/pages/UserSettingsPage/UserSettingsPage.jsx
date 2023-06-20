@@ -40,6 +40,7 @@ export default function UserSettingsPage() {
   const [isNameValid, setIsNameValid] = useState(true);
   const [isNameAlreadyExist, setIsNameAlreadyExist] = useState(false);
   const [isGameHandleValid, setIsGameHandleValid] = useState(true);
+  const [isGameHandleActive, setIsGameHandleActive] = useState(false);
 
   const [username, setUsername] = useState(currentUser.username);
   const [userLanguage, setUserLanguage] = useState(currentUser.language);
@@ -259,7 +260,9 @@ export default function UserSettingsPage() {
                 <input
                   id="game-handle"
                   className={`user-settings__input${
-                    isGameHandleValid && gameHandle.length !== 0 ? " available" : ""
+                    isGameHandleValid && gameHandle.length !== 0 && isGameHandleActive
+                      ? " available"
+                      : ""
                   } ${!isGameHandleValid ? " invalid" : ""}`}
                   type="text"
                   placeholder={t("gameHandlePlaceholder")}
@@ -275,6 +278,7 @@ export default function UserSettingsPage() {
                   onFocus={() => {
                     setShowGameHandleLength(true);
                     setShowGameHandleWarningInfo(true);
+                    setIsGameHandleActive(true);
                   }}
                 />
                 {showGameHandleWarningInfo && (
@@ -360,7 +364,7 @@ export default function UserSettingsPage() {
               {t("showTitlesOf")} <b>{t("allMaturityRatings")}</b> {t("forThisProfile")}.
             </p>
             <Link
-              to={"/Confirmation"}
+              to={"/Viewing-Restriction"}
               className="user-settings__maturity-edit-btn"
               aria-label={t("editLabel")}
             >

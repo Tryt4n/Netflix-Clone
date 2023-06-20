@@ -69,7 +69,7 @@ export default function App() {
           element={<EditProfile />}
         />
         <Route
-          path="/Confirmation"
+          path="/Viewing-Restriction"
           element={<RestrictionPage />}
         />
         <Route

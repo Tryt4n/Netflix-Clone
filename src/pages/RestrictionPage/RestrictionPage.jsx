@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 
@@ -39,7 +39,10 @@ export default function RestrictionPage() {
   const filteredMovies = moviesData.filter(
     (item) =>
       !listOfBlockedMovies.some((blockedItem) => blockedItem.name === item.name) &&
-      item.name.toLowerCase().includes(searchedBlockedValue.toLowerCase())
+      //* Searching by movie name
+      (item.name.toLowerCase().includes(searchedBlockedValue.toLowerCase()) ||
+        //* Searching by movie cast
+        item.cast.some((actor) => actor.toLowerCase().includes(searchedBlockedValue.toLowerCase())))
   );
 
   function goNext() {
@@ -102,10 +105,6 @@ export default function RestrictionPage() {
   function removeFromBlockedList(item) {
     setListOfBlockedMovies((prevState) => prevState.filter((blockedItem) => blockedItem !== item));
   }
-
-  useEffect(() => {
-    console.log(listOfBlockedMovies);
-  }, [listOfBlockedMovies]);
 
   return (
     <div className="restriction-confirmation">

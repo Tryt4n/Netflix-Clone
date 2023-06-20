@@ -1,0 +1,198 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.account {
+  background-color: c.$account-bg;
+  color: c.$black;
+
+  &__container {
+    margin-inline: auto;
+    font-size: v.$font-base;
+    font-weight: 500;
+    color: c.$profile-edit-maturity-ratings-bg;
+    @media screen and (width >= b.$mobile-medium) {
+      max-width: func.rem(1024);
+      padding-inline: 3rem;
+    }
+    @media screen and (width < b.$mobile-medium) {
+      margin-inline: 1rem;
+    }
+  }
+
+  &__heading-wrapper {
+    @include flex(row, flex-start, center);
+    gap: 1em;
+    padding-block: 3em 1em;
+  }
+
+  &__main-heading {
+    font-size: clamp(1.5rem, calc(1.22rem + 1.42vw), 2.13rem);
+    font-weight: 500;
+  }
+
+  &__heading-member-container {
+    @include flex(row, flex-start, center);
+    gap: 0.25em;
+    translate: 0 10%;
+    font-size: v.$font-size-body;
+    font-weight: bold;
+    color: hsl(0, 0%, 33%);
+    svg {
+      width: func.rem(26);
+      aspect-ratio: 1/1;
+    }
+  }
+
+  &__heading-restrictions-saved {
+    @include flex();
+    gap: 1em;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 0.25em;
+    background-color: hsl(150, 62%, 45%);
+    font-size: v.$font-base;
+    color: c.$black;
+    svg {
+      width: func.rem(24);
+      aspect-ratio: 1/1;
+    }
+  }
+
+  hr {
+    border-color: c.$bg;
+    opacity: 0.5;
+  }
+
+  &__article {
+    @include flex(row, space-between, flex-start);
+    gap: 3em;
+    margin-top: 1em;
+    font-weight: normal;
+    hr {
+      opacity: 0.1;
+    }
+  }
+
+  &__article-header {
+    margin-bottom: 2em;
+    font: inherit;
+    button {
+      font: inherit;
+      font-size: v.$font-size-body;
+      font-weight: normal;
+      padding-inline: 3.25em;
+    }
+  }
+
+  &__article-header-heading {
+    width: 25ch;
+    font-size: func.rem(18);
+    font-weight: 500;
+    text-transform: uppercase;
+    color: c.$account-text;
+    margin-bottom: 0.5em;
+    letter-spacing: 0.04em;
+  }
+
+  &__article-sections-wrapper {
+    flex-grow: 1;
+  }
+
+  &__article-section {
+    $article-margin-bottom: 1em;
+
+    margin-bottom: calc($article-margin-bottom * 0.75);
+    width: 100%;
+    &:not(:first-child) {
+      margin-top: $article-margin-bottom;
+    }
+    & > * {
+      @include flex(row, flex-end, center);
+      gap: 1rem;
+      &:not(:last-child) {
+        margin-bottom: calc($article-margin-bottom / 2);
+      }
+    }
+    * > :first-child:not(img, svg) {
+      flex-grow: 1;
+    }
+
+    a {
+      text-align: end;
+      color: c.$account-text-accent;
+      &:where(:hover, :focus-visible) {
+        text-decoration: underline;
+      }
+    }
+
+    &:first-child {
+      max-width: 100%;
+    }
+  }
+
+  &__article-text--accent {
+    color: c.$account-text;
+  }
+
+  &__article-section-card-information-wrapper {
+    $line-height: func.rem(20);
+
+    @include flex(row, flex-start, center);
+    line-height: $line-height;
+    gap: 0.25em;
+    img {
+      width: func.rem(32);
+      height: $line-height;
+      flex-grow: 0;
+    }
+  }
+
+  &__article-plan-details-wrapper {
+    @include flex(row, flex-start, center);
+    gap: 0.25em;
+    svg {
+      display: inline;
+      width: func.rem(110);
+      height: func.rem(20);
+    }
+    strong {
+      flex-grow: 0 !important;
+    }
+  }
+
+  &__article-sections-inner-wrapper {
+    @include flex(row, space-between, center);
+    width: 100%;
+    margin-top: -1rem;
+  }
+
+  &__article-links-wrapper {
+    @include flex(column);
+    gap: 0.5em;
+    flex-grow: 1;
+    white-space: nowrap;
+  }
+
+  &__article-section-description-text {
+    max-width: 43ch;
+  }
+
+  &__new-badge {
+    background-color: c.$account-new-badge-accent;
+    color: c.$white;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    &:is(:first-child) {
+      margin-right: 0.5em;
+    }
+    &:not(:first-child) {
+      margin-left: 0.5em;
+    }
+  }
+}

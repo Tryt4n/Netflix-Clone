@@ -107,21 +107,27 @@ export default function RestrictionPage() {
   }
 
   return (
-    <div className="restriction-confirmation">
-      <NavbarShort />
-
-      <div className="restriction-confirmation__content-container">
-        <header className="restriction-confirmation__header">
-          <h1 className="restriction-confirmation__heading">{t("viewingRestrictions")}</h1>
-          <img
-            className="restriction-confirmation__profile-img"
-            src={currentEditingProfile?.profileImage}
-            alt={`${t("profileAvatar")} ${currentEditingProfile?.username}`}
-          />
-        </header>
-        <main>
+    <>
+      <header>
+        <h2 className="visually-hidden">
+          {`${t("viewingRestrictions")} - ${
+            passwordConfirmationPassed ? t("settings") : t("passwordConfirmation")
+          }`}
+        </h2>
+        <NavbarShort />
+      </header>
+      <div className="restriction-confirmation">
+        <main className="restriction-confirmation__content-container">
+          <header className="restriction-confirmation__header">
+            <h1 className="restriction-confirmation__heading">{t("viewingRestrictions")}</h1>
+            <img
+              className="restriction-confirmation__profile-img"
+              src={currentEditingProfile?.profileImage}
+              alt={`${t("profileAvatar")} ${currentEditingProfile?.username}`}
+            />
+          </header>
           {!passwordConfirmationPassed && (
-            <>
+            <section>
               <h2 className="restriction-confirmation__password-subheading">
                 {t("viewingRestrictionsDescription")} {currentEditingProfile?.username}
                 {i18n.language === "en" ? `'s ${t("profile")}` : ""}.
@@ -168,7 +174,7 @@ export default function RestrictionPage() {
                   {t("forgotPassword")}
                 </a>
               </div>
-            </>
+            </section>
           )}
 
           {passwordConfirmationPassed && (
@@ -333,27 +339,28 @@ export default function RestrictionPage() {
               </section>
             </>
           )}
-        </main>
-      </div>
 
-      <nav
-        className="restriction-confirmation__buttons-container"
-        aria-label={t("secondaryNavigation")}
-      >
-        <h2 className="visually-hidden">{t("secondaryNavigation")}</h2>
-        <AccountSettingsBtn
-          text={passwordConfirmationPassed ? t("save") : t("continue")}
-          currentClass="accent"
-          onClickFunction={passwordConfirmationPassed ? changeRestriction : goNext}
-          path={passwordConfirmationPassed ? "/account" : ""}
-        />
-        <AccountSettingsBtn
-          text={t("cancel")}
-          currentClass="light"
-          path={"/account"}
-        />
-      </nav>
-      <AccountFooter />
-    </div>
+          <nav
+            className="restriction-confirmation__buttons-container"
+            aria-label={t("secondaryNavigation")}
+          >
+            <h2 className="visually-hidden">{t("secondaryNavigation")}</h2>
+            <AccountSettingsBtn
+              text={passwordConfirmationPassed ? t("save") : t("continue")}
+              currentClass="accent"
+              onClickFunction={passwordConfirmationPassed ? changeRestriction : goNext}
+              path={passwordConfirmationPassed ? "/account" : ""}
+            />
+            <AccountSettingsBtn
+              text={t("cancel")}
+              currentClass="light"
+              path={"/account"}
+            />
+          </nav>
+        </main>
+
+        <AccountFooter />
+      </div>
+    </>
   );
 }

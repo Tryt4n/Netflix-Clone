@@ -21,10 +21,9 @@ export default function UserSelectPage() {
         aria-label="Choose Profile"
       >
         {users.map((user) => (
-          <SelectProfilItem
-            key={user.id}
-            user={user}
-          />
+          <li key={user.id}>
+            <SelectProfilItem user={user} />
+          </li>
         ))}
       </ul>
 

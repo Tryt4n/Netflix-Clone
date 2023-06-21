@@ -129,13 +129,19 @@
     font-weight: normal;
     display: flex;
     max-width: fit-content;
+    text-wrap: nowrap;
     &:hover {
       text-decoration: underline;
     }
   }
 
-  &__article-text--accent {
-    color: c.$account-text;
+  &__article-text {
+    &--accent {
+      color: c.$account-text;
+    }
+    &--capitalize {
+      text-transform: capitalize;
+    }
   }
 
   &__article-section-card-information-wrapper {

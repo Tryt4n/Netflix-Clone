@@ -28,7 +28,7 @@
   &__list {
     @include flex(row, center);
     flex-wrap: wrap;
-    & > * {
+    & > *:not(:last-child) {
       margin-right: 2vw;
     }
   }

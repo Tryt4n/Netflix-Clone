@@ -6,17 +6,19 @@ import UserContext from "../../context/UserContext";
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import MemberSinceIcon from "../../icons/MemberSicnceIcon";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
+
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
+import CheckboxLight from "../../components/CheckboxLight/CheckboxLight";
+import NewBadge from "./components/NewBadge";
 
 import CheckIcon from "../../icons/CheckIcon";
 import UltraHDIcon from "../../icons/UltraHDIcon";
 import ChevronDown from "../../icons/ChevronDown";
 
 import "./accountPage.scss";
-import CheckboxLight from "../../components/CheckboxLight/CheckboxLight";
 
 export default function AccountPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { users, setCurrentEditingProfile } = useContext(UserContext);
 
@@ -30,69 +32,83 @@ export default function AccountPage() {
     }
   }
 
+  console.log(i18n.language);
+
   return (
     <>
-      <NavbarShort />
+      <header>
+        <h1 className="visually-hidden">
+          {t("account")} - {t("settings")}
+        </h1>
+        <NavbarShort />
+      </header>
 
       <div className="account">
         <main className="account__container">
           <div className="account__heading-wrapper">
-            <h1 className="account__main-heading">Account</h1>
+            <h2 className="account__main-heading">{t("account")}</h2>
             <div className="account__heading-member-container">
               <MemberSinceIcon />
-              <span>Member Since October 2022</span>
+              <span>{t("memberSince")}</span>
             </div>
           </div>
           <div className="account__heading-restrictions-saved">
             <CheckIcon />
-            <span>Viewing Restrictions saved.</span>
+            <span>
+              {t("viewingRestrictions")} {t("saved")}.
+            </span>
           </div>
 
           <hr />
 
           <article className="account__article-membership-billing">
             <header className="account__article-header">
-              <h2 className="account__article-header-heading">Membership & Billing</h2>
+              <h2 className="account__article-header-heading">{t("membershipBiling")}</h2>
               <AccountSettingsBtn
-                text={"Cancel Membership"}
+                text={t("cancelMembership")}
                 currentClass={"light"}
               />
             </header>
             <div className="account__article-sections-wrapper">
               <section className="account__article-section">
-                <h2 className="visually-hidden">Basic account information</h2>
+                <h2 className="visually-hidden">{t("basicAccountInformation")}</h2>
                 <div>
                   <strong>placeholder@gmail.com</strong>
                   <a
                     href="#"
                     className="account__article-link"
                   >
-                    {" "}
-                    Change email
+                    {t("change")} {t("email")}
                   </a>
                 </div>
                 <div>
-                  <span className="account__article-text--accent">Password: ********</span>
+                  <span className="account__article-text--accent account__article-text--capitalize">
+                    {t("password")}: ********
+                  </span>
                   <a
                     href="#"
                     className="account__article-link"
                   >
-                    Change password
+                    {t("change")} {t("password")}
                   </a>
                 </div>
                 <div>
-                  <span className="account__article-text--accent">Phone: 666 777 888</span>
+                  <span className="account__article-text--accent account__article-text--capitalize">
+                    {t("phoneNumber")}: 666 777 888
+                  </span>
                   <a
                     href="#"
                     className="account__article-link"
                   >
-                    Change phone number
+                    {t("change")} {t("phoneNumber")}
                   </a>
                 </div>
               </section>
+
               <hr />
+
               <section className="account__article-section">
-                <h2 className="visually-hidden">Payment account information</h2>
+                <h2 className="visually-hidden">{t("paymentAccountInformation")}</h2>
                 <div>
                   <div className="account__article-section-card-information-wrapper">
                     <img
@@ -105,17 +121,17 @@ export default function AccountPage() {
                     href="#"
                     className="account__article-link"
                   >
-                    Manage payment info
+                    {t("managePaymentInfo")}
                   </a>
                 </div>
                 <div>
                   {/* //? Change biling date */}
-                  <span>Your next billing date is June 26, 2023.</span>
+                  <span>{t("nextBilingDateDescription")} June 26, 2023.</span>
                   <a
                     href="#"
                     className="account__article-link"
                   >
-                    Add backup payment method
+                    {t("backupPayment")}
                   </a>
                 </div>
                 <div>
@@ -123,7 +139,7 @@ export default function AccountPage() {
                     href="#"
                     className="account__article-link"
                   >
-                    Biling details
+                    {t("bilingDetails")}
                   </a>
                 </div>
                 <div>
@@ -131,19 +147,21 @@ export default function AccountPage() {
                     href="#"
                     className="account__article-link"
                   >
-                    Change biling day
+                    {t("change")} {t("bilingDay")}
                   </a>
                 </div>
               </section>
+
               <hr />
+
               <section className="account__article-section">
-                <h2 className="visually-hidden">Gift card informations</h2>
+                <h2 className="visually-hidden">{t("giftCardInformations")}</h2>
                 <div>
                   <a
                     href="#"
                     className="account__article-link"
                   >
-                    Reedem gift card or promo card
+                    {t("reedemGiftCard")}
                   </a>
                 </div>
                 <div>
@@ -151,7 +169,7 @@ export default function AccountPage() {
                     href="#"
                     className="account__article-link"
                   >
-                    Where to buy gift cards
+                    {t("whereToBuyGiftCards")}
                   </a>
                 </div>
               </section>
@@ -162,12 +180,12 @@ export default function AccountPage() {
 
           <article className="account__article">
             <header className="account__article-header-heading">
-              <h2 className="account__article-header-heading">Plan Details</h2>
+              <h2 className="account__article-header-heading">{t("planDetails")}</h2>
             </header>
             <section className="account__section-wrapper">
-              <h2 className="visually-hidden">Chosen plan</h2>
+              <h2 className="visually-hidden">{t("chosenPlan")}</h2>
               <div className="account__plan-wrapper">
-                <strong>Premium</strong>
+                <strong>{t("premium")}</strong>
                 <UltraHDIcon />
               </div>
               <div className="account__article-links-wrapper">
@@ -175,7 +193,7 @@ export default function AccountPage() {
                   href="#"
                   className="account__article-link"
                 >
-                  Change plan
+                  {t("change")} {t("plan")}
                 </a>
               </div>
             </section>
@@ -185,61 +203,50 @@ export default function AccountPage() {
 
           <article className="account__article">
             <header className="account__article-header-heading">
-              <h2 className="account__article-header-heading">Security & Privacy</h2>
+              <h2 className="account__article-header-heading">{t("securityPrivacy")}</h2>
             </header>
             <section className="account__section-wrapper">
-              <h2 className="visually-hidden">Security and Privacy</h2>
-              <p className="account__section-text">
-                Control access to this account, view the most recently active devices and more.
-              </p>
+              <h2 className="visually-hidden">{t("securityAndPrivacy")}</h2>
+              <p className="account__section-text">{t("securityPrivacyDescription")}</p>
               <div className="account__article-links-wrapper">
                 <a
                   href="#"
                   className="account__article-link"
                 >
-                  <span
-                    className="account__new-badge"
-                    aria-label="badge"
-                  >
-                    new
-                  </span>
-                  Manage access and devices
+                  <NewBadge />
+                  {t("manageAccess")}
                 </a>
                 <a
                   href="#"
                   className="account__article-link"
                 >
-                  Sign out of all devices
+                  {t("signOutDevices")}
                 </a>
               </div>
             </section>
           </article>
+
           <hr />
 
           <article className="account__article">
             <header className="account__article-header-heading">
               <h2 className="account__article-header-heading">
-                Extra Members{" "}
-                <span
-                  className="account__new-badge account__new-badge--accent"
-                  aria-label="badge"
-                >
-                  new
-                </span>
+                {t("extraMembers")} {""}
+                <NewBadge accent />
               </h2>
             </header>
             <section className="account__section-wrapper">
-              <h2 className="visually-hidden">Extra Members</h2>
+              <h2 className="visually-hidden">{t("extraMembers")}</h2>
               <p className="account__section-text">
-                Share your Netflix with someone who doesn&apos;t live with you by adding an extra
-                member. Learn more in our <a href="#">Help Center</a>.
+                {t("extraMembersDescription")}&nbsp;
+                <a href="#">{t("helpCenter")}</a>.
               </p>
               <div className="account__article-links-wrapper">
                 <a
                   href="#"
                   className="account__article-link"
                 >
-                  Buy an extra member slot
+                  {t("buyMemberSlot")}
                 </a>
               </div>
             </section>
@@ -249,7 +256,7 @@ export default function AccountPage() {
 
           <article className="account__article">
             <header className="account__article-header-heading">
-              <h2 className="account__article-header-heading">Profile & Parental Controls</h2>
+              <h2 className="account__article-header-heading">{t("parentalControls")}</h2>
             </header>
             <div className="account__profiles-wrapper">
               {users.map((user, index) => {
@@ -273,21 +280,31 @@ export default function AccountPage() {
                           <h2 className="account__profile-heading account__profile-heading--bold">
                             {user.kidsProfile ? t("Kids") : user.username}
                           </h2>
-                          <p className="account__profile-heading-description">
+                          <p
+                            className={`account__profile-heading-description${
+                              user.maturityRating !== "all" && user.maturityRating !== "18+"
+                                ? " account__profile-heading-description--lowercase"
+                                : ""
+                            }`}
+                          >
                             {user.maturityRating === "all"
                               ? t("all")
                               : user.maturityRating === "18+"
                               ? t("allMaturityRatings")
+                              : i18n.language === "pl"
+                              ? `${user.maturityRating} ${t("andYounger")}`
                               : `${user.maturityRating} ${t("andBelow")}`}
                           </p>
                         </div>
                         <button
                           className={`account__profile-btn${isProfileExpanded ? " expanded" : ""}`}
-                          aria-label="Expand the profile menu"
+                          aria-label={t("expandProfileMenu")}
                           aria-controls={`account-profile-list-${user.id}`}
                           onClick={() => expandUser(index)}
                         >
-                          <ChevronDown label={"Chevron Down Icon"} />
+                          <ChevronDown
+                            label={isProfileExpanded ? t("chevronOpenLabel") : t("chevronLabel")}
+                          />
                         </button>
                       </div>
 
@@ -306,46 +323,83 @@ export default function AccountPage() {
                               className="account__profile-list-item"
                             >
                               <div>
-                                <h3 className="account__profile-heading">Language</h3>
+                                <h3 className="account__profile-heading">{t("language")}</h3>
                                 <em className="account__profile-heading-description">
                                   {user.language}
                                 </em>
                               </div>
-                              <span className="account__profile-accent-text">Change</span>
+                              <span className="account__profile-accent-text">{t("change")}</span>
                             </a>
                           </li>
-
                           <li className="account__profile-list-item-wrapper">
                             <Link
                               to={"/Viewing-Restriction"}
                               className="account__profile-list-item"
                             >
                               <div>
-                                <h3 className="account__profile-heading">Viewing Restrictions</h3>
+                                <h3 className="account__profile-heading">
+                                  {t("viewingRestrictions")}
+                                </h3>
                                 {/* //? Change */}
                                 <em className="account__profile-heading-description">
                                   No Restrictions.
                                 </em>
                               </div>
-                              <span className="account__profile-accent-text">Change</span>
+                              <span className="account__profile-accent-text">{t("change")}</span>
                             </Link>
                           </li>
-
                           <li className="account__profile-list-item-wrapper">
                             <a
                               href="#"
                               className="account__profile-list-item"
                             >
                               <div>
-                                <h3 className="account__profile-heading">Profile Lock</h3>
+                                <h3 className="account__profile-heading">{t("profileLock")}</h3>
                                 <em className="account__profile-heading-description">
-                                  {user.lock ? "On" : "Off"}
+                                  {user.lock ? t("on") : t("off")}
                                 </em>
                               </div>
-                              <span className="account__profile-accent-text">Change</span>
+                              <span className="account__profile-accent-text">{t("change")}</span>
                             </a>
                           </li>
-
+                          {!user.kidsProfile && (
+                            <li className="account__profile-list-item-wrapper">
+                              <a
+                                href="#"
+                                className="account__profile-list-item"
+                              >
+                                <div>
+                                  <h3 className="account__profile-heading">
+                                    {t("transferProfile")}
+                                    <NewBadge />
+                                  </h3>
+                                </div>
+                                <span className="account__profile-accent-text">Transfer</span>
+                              </a>
+                            </li>
+                          )}
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">{t("viewingActivity")}</h3>
+                              </div>
+                              <span className="account__profile-accent-text">{t("view")}</span>
+                            </a>
+                          </li>
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">{t("ratings")}</h3>
+                              </div>
+                              <span className="account__profile-accent-text">{t("view")}</span>
+                            </a>
+                          </li>
                           <li className="account__profile-list-item-wrapper">
                             <a
                               href="#"
@@ -353,97 +407,66 @@ export default function AccountPage() {
                             >
                               <div>
                                 <h3 className="account__profile-heading">
-                                  Transfer this profile
-                                  <span
-                                    className="account__new-badge"
-                                    aria-label="badge"
-                                  >
-                                    new
-                                  </span>
+                                  {t("subtitleAppearance")}
                                 </h3>
                               </div>
-                              <span className="account__profile-accent-text">Transfer</span>
+                              <span className="account__profile-accent-text">{t("change")}</span>
                             </a>
                           </li>
-
                           <li className="account__profile-list-item-wrapper">
                             <a
                               href="#"
                               className="account__profile-list-item"
                             >
                               <div>
-                                <h3 className="account__profile-heading">Viewing activity</h3>
-                              </div>
-                              <span className="account__profile-accent-text">View</span>
-                            </a>
-                          </li>
-
-                          <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
-                              className="account__profile-list-item"
-                            >
-                              <div>
-                                <h3 className="account__profile-heading">Ratings</h3>
-                              </div>
-                              <span className="account__profile-accent-text">View</span>
-                            </a>
-                          </li>
-
-                          <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
-                              className="account__profile-list-item"
-                            >
-                              <div>
-                                <h3 className="account__profile-heading">Subtitle appearance</h3>
-                              </div>
-                              <span className="account__profile-accent-text">Change</span>
-                            </a>
-                          </li>
-
-                          <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
-                              className="account__profile-list-item"
-                            >
-                              <div>
-                                <h3 className="account__profile-heading">Playback settings</h3>
+                                <h3 className="account__profile-heading">
+                                  {t("playbackSettings")}
+                                </h3>
                                 <em className="account__profile-heading-description account__profile-heading-description--lowercase">
-                                  {user.autoplayNext && "Autoplay next episode. "}
-                                  {user.autoplayPreviews && "Autoplay previews. "}Best video and
-                                  audio quality.
+                                  {user.autoplayNext && t("autoplayNext")}
+                                  {user.autoplayPreviews && t("autoplayPrev")}
+                                  {t("playbackQuality")}
                                 </em>
                               </div>
-                              <span className="account__profile-accent-text">Change</span>
+                              <span className="account__profile-accent-text">{t("change")}</span>
                             </a>
                           </li>
 
-                          <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
-                              className="account__profile-list-item"
-                            >
-                              <div>
-                                <h3 className="account__profile-heading">Communication settings</h3>
-                              </div>
-                              <span className="account__profile-accent-text">Change</span>
-                            </a>
-                          </li>
+                          {!user.kidsProfile && (
+                            <>
+                              <li className="account__profile-list-item-wrapper">
+                                <a
+                                  href="#"
+                                  className="account__profile-list-item"
+                                >
+                                  <div>
+                                    <h3 className="account__profile-heading">
+                                      {t("communicationSettings")}
+                                    </h3>
+                                  </div>
+                                  <span className="account__profile-accent-text">
+                                    {t("change")}
+                                  </span>
+                                </a>
+                              </li>
 
-                          <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
-                              className="account__profile-list-item"
-                            >
-                              <div>
-                                <h3 className="account__profile-heading">
-                                  Privacy and data settings
-                                </h3>
-                              </div>
-                              <span className="account__profile-accent-text">Change</span>
-                            </a>
-                          </li>
+                              <li className="account__profile-list-item-wrapper">
+                                <a
+                                  href="#"
+                                  className="account__profile-list-item"
+                                >
+                                  <div>
+                                    <h3 className="account__profile-heading">
+                                      {t("privacyAndData")}
+                                    </h3>
+                                  </div>
+                                  <span className="account__profile-accent-text">
+                                    {t("change")}
+                                  </span>
+                                </a>
+                              </li>
+                            </>
+                          )}
 
                           <li>
                             <form
@@ -466,31 +489,26 @@ export default function AccountPage() {
           <hr />
 
           <article className="account__article">
-            <h2 className="account__article-header-heading">Settings</h2>
+            <h2 className="account__article-header-heading">{t("settings")}</h2>
             <div className="account__settings-wrapper">
               <a
                 href="#"
                 className="account__article-link"
               >
-                Turn off profile transfers
-                <span
-                  className="account__new-badge"
-                  aria-label="badge"
-                >
-                  new
-                </span>
+                {t("turnTransfers")}
+                <NewBadge />
               </a>
               <a
                 href="#"
                 className="account__article-link"
               >
-                Test participation
+                {t("testParticipation")}
               </a>
               <a
                 href="#"
                 className="account__article-link"
               >
-                Manage download devices
+                {t("manageDownload")}
               </a>
             </div>
           </article>

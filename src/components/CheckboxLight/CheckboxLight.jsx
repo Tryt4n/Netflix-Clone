@@ -1,6 +1,10 @@
+import { useTranslation } from "react-i18next";
+
 import "./checkboxLight.scss";
 
 export default function CheckboxLight({ data }) {
+  const { t } = useTranslation();
+
   return (
     <>
       <input
@@ -13,7 +17,7 @@ export default function CheckboxLight({ data }) {
         htmlFor={`animation-on-tv${data.id}`}
         className="checkbox-light-label"
       >
-        Reduce animation effects when navigating on TV.
+        {t("animationCheckboxLabel")}
       </label>
     </>
   );

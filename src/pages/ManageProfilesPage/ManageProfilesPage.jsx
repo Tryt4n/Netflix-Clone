@@ -21,15 +21,14 @@ export default function ManageProfilesPage() {
         aria-label={t("chooseProfil")}
       >
         {users.map((user) => (
-          <Link
-            key={user.id}
-            to={`./${user.username}`}
-          >
-            <SelectProfilItem
-              user={user}
-              isEdit
-            />
-          </Link>
+          <li key={user.id}>
+            <Link to={`./${user.username}`}>
+              <SelectProfilItem
+                user={user}
+                isEdit
+              />
+            </Link>
+          </li>
         ))}
       </ul>
 

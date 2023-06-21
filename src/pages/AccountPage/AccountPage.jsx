@@ -1,6 +1,9 @@
 import { useTranslation } from "react-i18next";
+import moment from "moment/moment";
+import "moment/locale/pl";
+
 import { Link } from "react-router-dom";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -32,7 +35,23 @@ export default function AccountPage() {
     }
   }
 
-  console.log(i18n.language);
+  const nextBillingDate = moment().startOf("month").add(1, "month");
+
+  function formattedDate() {
+    if (i18n.language === "pl") {
+      return nextBillingDate.format("D MMMM YYYY");
+    } else {
+      return nextBillingDate.format("MMMM D, YYYY");
+    }
+  }
+
+  useEffect(() => {
+    if (i18n.language === "pl") {
+      moment.locale("pl");
+    } else {
+      moment.locale("en");
+    }
+  }, [i18n.language]);
 
   return (
     <>
@@ -73,7 +92,7 @@ export default function AccountPage() {
               <section className="account__article-section">
                 <h2 className="visually-hidden">{t("basicAccountInformation")}</h2>
                 <div>
-                  <strong>placeholder@gmail.com</strong>
+                  <strong className="account__article-email-text">placeholder@gmail.com</strong>
                   <a
                     href="#"
                     className="account__article-link"
@@ -94,7 +113,7 @@ export default function AccountPage() {
                 </div>
                 <div>
                   <span className="account__article-text--accent account__article-text--capitalize">
-                    {t("phoneNumber")}: 666 777 888
+                    {i18n.language === "pl" ? t("phone") : t("phoneNumber")}: 666 777 888
                   </span>
                   <a
                     href="#"
@@ -125,8 +144,9 @@ export default function AccountPage() {
                   </a>
                 </div>
                 <div>
-                  {/* //? Change biling date */}
-                  <span>{t("nextBilingDateDescription")} June 26, 2023.</span>
+                  <span>
+                    {t("nextBilingDateDescription")} {formattedDate()}.
+                  </span>
                   <a
                     href="#"
                     className="account__article-link"
@@ -214,7 +234,7 @@ export default function AccountPage() {
                   className="account__article-link"
                 >
                   <NewBadge />
-                  {t("manageAccess")}
+                  <span>{t("manageAccess")}</span>
                 </a>
                 <a
                   href="#"
@@ -335,14 +355,20 @@ export default function AccountPage() {
                             <Link
                               to={"/Viewing-Restriction"}
                               className="account__profile-list-item"
+                              onClick={() => setCurrentEditingProfile(user)}
                             >
                               <div>
                                 <h3 className="account__profile-heading">
                                   {t("viewingRestrictions")}
                                 </h3>
-                                {/* //? Change */}
-                                <em className="account__profile-heading-description">
-                                  No Restrictions.
+                                <em className="account__profile-heading-description account__profile-heading-description--lowercase">
+                                  {user.maturityRating === "all"
+                                    ? t("all")
+                                    : user.maturityRating === "18+"
+                                    ? t("noRestriction")
+                                    : i18n.language === "pl"
+                                    ? `${user.maturityRating} ${t("andYounger")}`
+                                    : `${user.maturityRating} ${t("andBelow")}`}
                                 </em>
                               </div>
                               <span className="account__profile-accent-text">{t("change")}</span>
@@ -374,7 +400,9 @@ export default function AccountPage() {
                                     <NewBadge />
                                   </h3>
                                 </div>
-                                <span className="account__profile-accent-text">Transfer</span>
+                                <span className="account__profile-accent-text">
+                                  {t("transfer")}
+                                </span>
                               </a>
                             </li>
                           )}
@@ -432,40 +460,36 @@ export default function AccountPage() {
                             </a>
                           </li>
 
-                          {!user.kidsProfile && (
-                            <>
-                              <li className="account__profile-list-item-wrapper">
-                                <a
-                                  href="#"
-                                  className="account__profile-list-item"
-                                >
-                                  <div>
-                                    <h3 className="account__profile-heading">
-                                      {t("communicationSettings")}
-                                    </h3>
-                                  </div>
-                                  <span className="account__profile-accent-text">
-                                    {t("change")}
-                                  </span>
-                                </a>
-                              </li>
+                          {index === 0 && (
+                            <li className="account__profile-list-item-wrapper">
+                              <a
+                                href="#"
+                                className="account__profile-list-item"
+                              >
+                                <div>
+                                  <h3 className="account__profile-heading">
+                                    {t("communicationSettings")}
+                                  </h3>
+                                </div>
+                                <span className="account__profile-accent-text">{t("change")}</span>
+                              </a>
+                            </li>
+                          )}
 
-                              <li className="account__profile-list-item-wrapper">
-                                <a
-                                  href="#"
-                                  className="account__profile-list-item"
-                                >
-                                  <div>
-                                    <h3 className="account__profile-heading">
-                                      {t("privacyAndData")}
-                                    </h3>
-                                  </div>
-                                  <span className="account__profile-accent-text">
-                                    {t("change")}
-                                  </span>
-                                </a>
-                              </li>
-                            </>
+                          {!user.kidsProfile && (
+                            <li className="account__profile-list-item-wrapper">
+                              <a
+                                href="#"
+                                className="account__profile-list-item"
+                              >
+                                <div>
+                                  <h3 className="account__profile-heading">
+                                    {t("privacyAndData")}
+                                  </h3>
+                                </div>
+                                <span className="account__profile-accent-text">{t("change")}</span>
+                              </a>
+                            </li>
                           )}
 
                           <li>

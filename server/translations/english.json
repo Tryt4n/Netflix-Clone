@@ -145,6 +145,7 @@
   "on": "On",
   "off": "Off",
   "transferProfile": "Transfer this profile",
+  "transfer": "Transfer",
   "viewingActivity": "Viewing activity",
   "view": "View",
   "ratings": "Ratings",
@@ -158,5 +159,6 @@
   "animationCheckboxLabel": "Reduce animation effects when navigating on TV.",
   "turnTransfers": "Turn off profile transfers",
   "testParticipation": "Test participation",
-  "manageDownload": "Manage download devices"
+  "manageDownload": "Manage download devices",
+  "noRestriction": "No Restrictions."
 }

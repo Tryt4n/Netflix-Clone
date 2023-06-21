@@ -8,6 +8,7 @@
     "maturityRating": "18+",
     "autoplayNext": true,
     "autoplayPreviews": true,
+    "reduceAnimationsOnTV": true,
     "notifications": [
       {
         "id": 1,
@@ -187,6 +188,7 @@
     "maturityRating": "16+",
     "autoplayNext": true,
     "autoplayPreviews": true,
+    "reduceAnimationsOnTV": false,
     "notifications": [
       {
         "id": 1,
@@ -319,6 +321,7 @@
     "maturityRating": "13+",
     "autoplayNext": true,
     "autoplayPreviews": true,
+    "reduceAnimationsOnTV": false,
     "notifications": [
       {
         "id": 2,
@@ -388,6 +391,7 @@
     "maturityRating": "18+",
     "autoplayNext": true,
     "autoplayPreviews": true,
+    "reduceAnimationsOnTV": false,
     "notifications": [
       {
         "id": 1,
@@ -512,6 +516,7 @@
     "kidsProfile": true,
     "autoplayNext": true,
     "autoplayPreviews": true,
+    "reduceAnimationsOnTV": false,
     "notifications": [],
     "movies": [
       {

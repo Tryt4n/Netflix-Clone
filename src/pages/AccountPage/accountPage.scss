@@ -5,7 +5,7 @@
 @use "../../base/breakpoints" as b;
 
 .account {
-  $account-gap: 3em;
+  $account-gap: 0em;
   $account-margin-block: 1em;
   $icon-width: func.rem(60);
 
@@ -117,6 +117,7 @@
       @include flex(row, flex-end, center);
       gap: 1rem;
       margin-bottom: calc($account-margin-block / 2);
+      text-wrap: balance;
     }
     * > :first-child:not(img, svg) {
       flex-grow: 1;
@@ -124,15 +125,18 @@
   }
 
   &__article-link {
-    text-align: end;
+    max-width: fit-content;
+    @include flex(row, flex-end);
+    text-align: right;
     color: c.$account-text-accent;
     font-weight: normal;
-    display: flex;
-    max-width: fit-content;
-    text-wrap: nowrap;
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &__article-email-text {
+    word-break: break-all;
   }
 
   &__article-text {
@@ -180,6 +184,10 @@
   &__article-links-wrapper {
     @include flex(column, flex-end, flex-end);
     gap: calc($account-margin-block / 2);
+    min-width: 50%;
+    .account__article-link {
+      display: inline;
+    }
   }
 
   &__section-text {
@@ -270,6 +278,9 @@
   &__settings-wrapper {
     @include flex(column);
     gap: calc($account-margin-block / 2);
+    .account__article-link {
+      justify-content: flex-start;
+    }
   }
 
   &__profiles-list {
@@ -312,6 +323,8 @@
   }
 
   &__profile-animation-form {
+    @include flex(row, flex-start, center);
+    gap: 0.75em;
     margin-block: $account-margin-block;
   }
 

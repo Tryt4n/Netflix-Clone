@@ -6,6 +6,8 @@
     "language": "English",
     "gameHandle": "",
     "maturityRating": "18+",
+    "autoplayNext": true,
+    "autoplayPreviews": true,
     "notifications": [
       {
         "id": 1,
@@ -183,6 +185,8 @@
     "language": "Polski",
     "gameHandle": "",
     "maturityRating": "16+",
+    "autoplayNext": true,
+    "autoplayPreviews": true,
     "notifications": [
       {
         "id": 1,
@@ -313,6 +317,8 @@
     "language": "English",
     "gameHandle": "",
     "maturityRating": "13+",
+    "autoplayNext": true,
+    "autoplayPreviews": true,
     "notifications": [
       {
         "id": 2,
@@ -380,6 +386,8 @@
     "language": "English",
     "gameHandle": "",
     "maturityRating": "18+",
+    "autoplayNext": true,
+    "autoplayPreviews": true,
     "notifications": [
       {
         "id": 1,
@@ -502,6 +510,8 @@
     "gameHandle": "",
     "maturityRating": "10+",
     "kidsProfile": true,
+    "autoplayNext": true,
+    "autoplayPreviews": true,
     "notifications": [],
     "movies": [
       {

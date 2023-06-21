@@ -48,7 +48,7 @@ export default function UserSettingsPage() {
   const [autoplayNextInputChecked, setAutoplayNextInputChecked] = useState(
     currentUser.autoplayNext !== undefined ? currentUser.autoplayNext : true
   );
-  const [autoplayPreviousInputChecked, setAutoplayPreviousInputChecked] = useState(
+  const [autoplayPreviewsInputChecked, setAutoplayPreviewsInputChecked] = useState(
     currentUser.autoplayPrevious !== undefined ? currentUser.autoplayPrevious : true
   );
 
@@ -114,7 +114,7 @@ export default function UserSettingsPage() {
             gameHandle: gameHandle,
             profileImage: editingProfilePictureSrc || currentUser.profileImage,
             autoplayNext: autoplayNextInputChecked,
-            autoplayPrevious: autoplayPreviousInputChecked,
+            autoplayPreviews: autoplayPreviewsInputChecked,
           };
         }
         return user;
@@ -400,8 +400,8 @@ export default function UserSettingsPage() {
                 id="autoplay-previews"
                 className="user-settings__autoplay-checkbox"
                 ref={autoplayPreviousInputRef}
-                checked={autoplayPreviousInputChecked}
-                onChange={() => setAutoplayPreviousInputChecked(!autoplayPreviousInputChecked)}
+                checked={autoplayPreviewsInputChecked}
+                onChange={() => setAutoplayPreviewsInputChecked(!autoplayPreviewsInputChecked)}
               />
               <label
                 htmlFor="autoplay-previews"

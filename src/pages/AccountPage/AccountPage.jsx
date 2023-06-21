@@ -1,4 +1,6 @@
-import { useContext } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -7,18 +9,27 @@ import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 
 import CheckIcon from "../../icons/CheckIcon";
-import UltraHDIcon from "../../icons/UltraHDicon";
+import UltraHDIcon from "../../icons/UltraHDIcon";
 import ChevronDown from "../../icons/ChevronDown";
 
 import "./accountPage.scss";
-import { useTranslation } from "react-i18next";
+import CheckboxLight from "../../components/CheckboxLight/CheckboxLight";
 
 export default function AccountPage() {
   const { t } = useTranslation();
 
-  const { users } = useContext(UserContext);
+  const { users, setCurrentEditingProfile } = useContext(UserContext);
 
-  console.log(users);
+  const [expandedIndexes, setExpandedIndexes] = useState([]);
+
+  function expandUser(index) {
+    if (expandedIndexes.includes(index)) {
+      setExpandedIndexes(expandedIndexes.filter((i) => i !== index));
+    } else {
+      setExpandedIndexes([...expandedIndexes, index]);
+    }
+  }
+
   return (
     <>
       <NavbarShort />
@@ -241,39 +252,214 @@ export default function AccountPage() {
               <h2 className="account__article-header-heading">Profile & Parental Controls</h2>
             </header>
             <div className="account__profiles-wrapper">
-              {users.map((user, index) => (
-                <>
-                  <section
-                    key={user.id}
-                    className="account__profile-section"
-                  >
-                    <img
-                      className="account__profile-img"
-                      src={user.profileImage}
-                      alt={`${t("profileAvatar")} ${user.kidsProfile ? t("Kids") : user.username} `}
-                    />
-                    <div className="account__profile-heading-wrapper">
-                      <h2 className="account__profile-heading">
-                        {user.kidsProfile ? t("Kids") : user.username}
-                      </h2>
-                      <p className="account__profile-heading-description">
-                        {user.maturityRating === "all"
-                          ? t("all")
-                          : user.maturityRating === "18+"
-                          ? t("allMaturityRatings")
-                          : `${user.maturityRating} ${t("andBelow")}`}
-                      </p>
-                    </div>
-                    <button
-                      className="account__profile-btn"
-                      aria-label="Expand the profile menu"
-                    >
-                      <ChevronDown label={"Chevron Down Icon"} />
-                    </button>
-                  </section>
-                  {index !== users.length - 1 && <hr />}
-                </>
-              ))}
+              {users.map((user, index) => {
+                const isProfileExpanded = expandedIndexes.includes(index);
+
+                return (
+                  <React.Fragment key={user.id}>
+                    <section>
+                      <div
+                        className="account__profile-section"
+                        onClick={() => expandUser(index)}
+                      >
+                        <img
+                          className="account__profile-img"
+                          src={user.profileImage}
+                          alt={`${t("profileAvatar")} ${
+                            user.kidsProfile ? t("Kids") : user.username
+                          } `}
+                        />
+                        <div className="account__profile-heading-wrapper">
+                          <h2 className="account__profile-heading account__profile-heading--bold">
+                            {user.kidsProfile ? t("Kids") : user.username}
+                          </h2>
+                          <p className="account__profile-heading-description">
+                            {user.maturityRating === "all"
+                              ? t("all")
+                              : user.maturityRating === "18+"
+                              ? t("allMaturityRatings")
+                              : `${user.maturityRating} ${t("andBelow")}`}
+                          </p>
+                        </div>
+                        <button
+                          className={`account__profile-btn${isProfileExpanded ? " expanded" : ""}`}
+                          aria-label="Expand the profile menu"
+                          aria-controls={`account-profile-list-${user.id}`}
+                          onClick={() => expandUser(index)}
+                        >
+                          <ChevronDown label={"Chevron Down Icon"} />
+                        </button>
+                      </div>
+
+                      {isProfileExpanded && <hr className="divider" />}
+
+                      <div
+                        className={`account__profiles-list${isProfileExpanded ? " expanded" : ""}`}
+                      >
+                        <ul
+                          id={`account-profile-list-${user.id}`}
+                          aria-expanded={isProfileExpanded}
+                        >
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Language</h3>
+                                <em className="account__profile-heading-description">
+                                  {user.language}
+                                </em>
+                              </div>
+                              <span className="account__profile-accent-text">Change</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <Link
+                              to={"/Viewing-Restriction"}
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Viewing Restrictions</h3>
+                                {/* //? Change */}
+                                <em className="account__profile-heading-description">
+                                  No Restrictions.
+                                </em>
+                              </div>
+                              <span className="account__profile-accent-text">Change</span>
+                            </Link>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Profile Lock</h3>
+                                <em className="account__profile-heading-description">
+                                  {user.lock ? "On" : "Off"}
+                                </em>
+                              </div>
+                              <span className="account__profile-accent-text">Change</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">
+                                  Transfer this profile
+                                  <span
+                                    className="account__new-badge"
+                                    aria-label="badge"
+                                  >
+                                    new
+                                  </span>
+                                </h3>
+                              </div>
+                              <span className="account__profile-accent-text">Transfer</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Viewing activity</h3>
+                              </div>
+                              <span className="account__profile-accent-text">View</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Ratings</h3>
+                              </div>
+                              <span className="account__profile-accent-text">View</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Subtitle appearance</h3>
+                              </div>
+                              <span className="account__profile-accent-text">Change</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Playback settings</h3>
+                                <em className="account__profile-heading-description account__profile-heading-description--lowercase">
+                                  {user.autoplayNext && "Autoplay next episode. "}
+                                  {user.autoplayPreviews && "Autoplay previews. "}Best video and
+                                  audio quality.
+                                </em>
+                              </div>
+                              <span className="account__profile-accent-text">Change</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">Communication settings</h3>
+                              </div>
+                              <span className="account__profile-accent-text">Change</span>
+                            </a>
+                          </li>
+
+                          <li className="account__profile-list-item-wrapper">
+                            <a
+                              href="#"
+                              className="account__profile-list-item"
+                            >
+                              <div>
+                                <h3 className="account__profile-heading">
+                                  Privacy and data settings
+                                </h3>
+                              </div>
+                              <span className="account__profile-accent-text">Change</span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <form
+                              className="account__profile-animation-form"
+                              onSubmit={(e) => e.preventDefault()}
+                            >
+                              <CheckboxLight data={user} />
+                            </form>
+                          </li>
+                        </ul>
+                      </div>
+                    </section>
+                    {index !== users.length - 1 && <hr />}
+                  </React.Fragment>
+                );
+              })}
             </div>
           </article>
 

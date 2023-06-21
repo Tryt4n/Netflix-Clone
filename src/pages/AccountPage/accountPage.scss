@@ -7,6 +7,7 @@
 .account {
   $account-gap: 3em;
   $account-margin-block: 1em;
+  $icon-width: func.rem(60);
 
   background-color: c.$account-bg;
   color: c.$black;
@@ -14,6 +15,7 @@
 
   &__container {
     margin-inline: auto;
+    margin-bottom: -3rem;
     font-size: v.$font-base;
     font-weight: 500;
     color: c.$profile-edit-maturity-ratings-bg;
@@ -201,19 +203,22 @@
     @include flex(column);
     gap: 1em;
     width: 100%;
-    margin-bottom: calc($account-margin-block * 2);
+    margin-bottom: $account-margin-block;
     hr {
       opacity: 0.3;
     }
   }
 
   &__profile-section {
+    position: relative;
+    width: 100%;
     @include flex(row, flex-start, center);
     gap: 1em;
+    cursor: pointer;
   }
 
   &__profile-img {
-    width: func.rem(60);
+    width: $icon-width;
     border-radius: 7.5%;
     aspect-ratio: 1/1;
   }
@@ -224,11 +229,20 @@
 
   &__profile-heading {
     font-size: inherit;
-    font-weight: 500;
+    font-weight: normal;
+    &--bold {
+      font-weight: 500;
+    }
   }
   &__profile-heading-description {
     font-size: v.$font-size-body;
     color: c.$account-text;
+    font-weight: normal;
+    font-style: normal;
+    text-transform: capitalize;
+    &--lowercase {
+      text-transform: none;
+    }
   }
 
   &__profile-btn {
@@ -236,14 +250,66 @@
     border: none;
     background: transparent;
     color: hsl(0, 0%, 67%);
+    cursor: inherit;
+    transition: rotate 250ms ease-in-out;
     svg {
       width: func.rem(20);
       aspect-ratio: 1/1;
+    }
+    &.expanded {
+      rotate: 180deg;
     }
   }
 
   &__settings-wrapper {
     @include flex(column);
     gap: calc($account-margin-block / 2);
+  }
+
+  &__profiles-list {
+    margin-left: calc($icon-width + $account-margin-block);
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 250ms;
+
+    & > ul {
+      overflow: hidden;
+      visibility: hidden;
+    }
+  }
+  & .expanded {
+    grid-template-rows: 1fr;
+    & > ul {
+      visibility: visible;
+    }
+  }
+
+  &__profile-accent-text {
+    font-size: v.$font-size-body;
+    font-weight: normal;
+    color: c.$account-text-accent;
+  }
+
+  &__profile-list-item-wrapper:not(:last-child) {
+    border-bottom: func.rem(1) solid c.$bg;
+  }
+
+  &__profile-list-item {
+    @include flex(row, space-between, center);
+    height: func.rem(42);
+    margin-block: $account-margin-block;
+    margin-inline: 0.1em;
+    outline-offset: 0;
+    &:hover .account__profile-accent-text {
+      text-decoration: underline;
+    }
+  }
+
+  &__profile-animation-form {
+    margin-block: $account-margin-block;
+  }
+
+  .divider {
+    margin-top: $account-margin-block;
   }
 }

@@ -15,7 +15,8 @@ import moviesData from "../../../server/data.json";
 export default function RestrictionPage() {
   const { t, i18n } = useTranslation();
 
-  const { currentEditingProfile, users, setUsers } = useContext(UserContext);
+  const { currentEditingProfile, users, setUsers, setIsCurrentlySaved, setDisplayedSavedMessage } =
+    useContext(UserContext);
 
   const [isConfirmationPasswordValid, setIsConfirmationPasswordValid] = useState(true);
   const [passwordConfirmationPassed, setPasswordConfirmationPassed] = useState(false);
@@ -72,6 +73,8 @@ export default function RestrictionPage() {
       return user;
     });
     setUsers(updatedUsers);
+    setIsCurrentlySaved(true);
+    setDisplayedSavedMessage(`${t("viewingRestrictions")} ${t("saved")}.`);
   }
 
   function getIndex(id) {

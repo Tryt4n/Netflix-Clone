@@ -16,6 +16,9 @@ export function UserProvider({ children }) {
   const [currentEditingProfile, setCurrentEditingProfile, removeCurrentEditingProfile] =
     useSessionStorage("currentProfile", users[0]);
 
+  const [isCurrentlySaved, setIsCurrentlySaved] = useState(false);
+  const [displayedSavedMessage, setDisplayedSavedMessage] = useState("");
+
   const languageCodes = {
     "Bahasa Indonesia": "id",
     "Bahasa Melayu": "ms",
@@ -55,9 +58,9 @@ export function UserProvider({ children }) {
     setEditingProfilePictureSrc(src);
   }
 
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
+  // useEffect(() => {
+  //   console.log(users);
+  // }, [users]);
 
   return (
     <UserContext.Provider
@@ -77,6 +80,10 @@ export function UserProvider({ children }) {
         currentEditingProfile: currentEditingProfile,
         setCurrentEditingProfile: setCurrentEditingProfile,
         removeCurrentEditingProfile: removeCurrentEditingProfile,
+        isCurrentlySaved: isCurrentlySaved,
+        setIsCurrentlySaved: setIsCurrentlySaved,
+        displayedSavedMessage: displayedSavedMessage,
+        setDisplayedSavedMessage: setDisplayedSavedMessage,
         iconsData: iconsData,
       }}
     >

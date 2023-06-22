@@ -23,9 +23,16 @@ import "./accountPage.scss";
 export default function AccountPage() {
   const { t, i18n } = useTranslation();
 
-  const { users, setCurrentEditingProfile } = useContext(UserContext);
+  const {
+    users,
+    setCurrentEditingProfile,
+    isCurrentlySaved,
+    setIsCurrentlySaved,
+    displayedSavedMessage,
+  } = useContext(UserContext);
 
   const [expandedIndexes, setExpandedIndexes] = useState([]);
+  const [displayMessage, setDisplayMessage] = useState(false);
 
   function expandUser(index) {
     if (expandedIndexes.includes(index)) {
@@ -53,6 +60,19 @@ export default function AccountPage() {
     }
   }, [i18n.language]);
 
+  //* Displaying saving message only on save
+  useEffect(() => {
+    setTimeout(() => {
+      setIsCurrentlySaved(false);
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    if (isCurrentlySaved) {
+      setDisplayMessage(true);
+    }
+  }, []);
+  //////////////////////////////////////////*
+
   return (
     <>
       <header>
@@ -71,12 +91,12 @@ export default function AccountPage() {
               <span>{t("memberSince")}</span>
             </div>
           </div>
-          <div className="account__heading-restrictions-saved">
-            <CheckIcon />
-            <span>
-              {t("viewingRestrictions")} {t("saved")}.
-            </span>
-          </div>
+          {displayMessage && (
+            <div className="account__heading-restrictions-saved">
+              <CheckIcon />
+              <span>{displayedSavedMessage}</span>
+            </div>
+          )}
 
           <hr />
 

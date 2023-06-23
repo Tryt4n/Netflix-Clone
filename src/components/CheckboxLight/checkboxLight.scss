@@ -20,6 +20,9 @@
   &:checked::after {
     color: c.$viewing-restriction-input-blue;
   }
+  &:disabled:checked::after {
+    color: c.$viewing-restriction-label-inactive-bg;
+  }
 }
 
 .checkbox-light-label {

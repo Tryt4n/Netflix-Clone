@@ -1,0 +1,95 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.language-change {
+  background-color: c.$account-bg;
+  color: c.$black;
+
+  &__heading-wrapper {
+    @include flex(row, space-between, center);
+    gap: 1em;
+  }
+
+  &__heading {
+    font-size: clamp(1.5rem, 1.22rem + 1.42vw, 2.13rem);
+    font-weight: 500;
+  }
+
+  &__heading-description {
+    font-weight: normal;
+    margin-top: 0.25em;
+    text-wrap: balance;
+  }
+
+  &__profile-img {
+    width: func.rem(50);
+    aspect-ratio: 1;
+    border-radius: 0.25em;
+  }
+
+  &__languages-list {
+    @include flex(row, flex-start, center);
+    row-gap: 1em;
+    flex-wrap: wrap;
+    margin-top: 1em;
+    margin-bottom: 3em;
+    @media screen and (width < b.$mobile-medium) {
+      gap: 1em;
+    }
+  }
+
+  &__list-item {
+    @include flex(row, flex-start, center);
+    gap: 0.5em;
+    font-weight: normal;
+    @media screen and (width >= b.$desktop-account) {
+      flex-basis: 25%;
+    }
+    @media screen and (b.$account-page-tablet <= width < b.$desktop-account) {
+      flex-basis: calc(100% / 3);
+    }
+    @media screen and (b.$mobile-medium <= width < b.$account-page-tablet) {
+      flex-basis: 50%;
+    }
+    @media screen and (width < b.$mobile-medium) {
+      gap: 0.15em;
+    }
+  }
+
+  &__input {
+    position: relative;
+    appearance: none;
+    width: func.rem(25);
+    aspect-ratio: 1;
+    background-color: c.$white;
+    border: v.$restrictions-border-width solid c.$viewing-restriction-label-inactive-text;
+    border-radius: 50%;
+    cursor: pointer;
+    outline-offset: 0.1em;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 60%;
+      aspect-ratio: 1;
+      top: 0;
+      left: 0;
+      translate: 35% 35%;
+      background: transparent;
+      border-radius: 50%;
+    }
+    &:checked::before {
+      background: c.$viewing-restriction-input-blue;
+    }
+  }
+
+  &__label {
+    text-transform: capitalize;
+  }
+
+  &__checkbox:disabled:checked + .language-change__label {
+    color: c.$navbar-text;
+  }
+}

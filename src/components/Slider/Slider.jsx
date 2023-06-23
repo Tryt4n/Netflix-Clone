@@ -100,6 +100,7 @@ export default function Slider({ data, currentUser }) {
         loop={true}
         slidesPerView={displayedNumberOfSlides}
         slidesPerGroup={displayedNumberOfSlides}
+        simulateTouch={false}
         className={`mySwiper${data.id === 1 ? "" : data.id}`}
       >
         <button

@@ -13,25 +13,10 @@
   color: c.$black;
   cursor: default;
 
-  &__container {
-    margin-inline: auto;
-    margin-bottom: -3rem;
-    font-size: v.$font-base;
-    font-weight: 500;
-    color: c.$profile-edit-maturity-ratings-bg;
-    @media screen and (width >= b.$mobile-medium) {
-      max-width: func.rem(1024);
-      padding-inline: 3rem;
-    }
-    @media screen and (width < b.$mobile-medium) {
-      margin-inline: 1rem;
-    }
-  }
-
   &__heading-wrapper {
     @include flex(row, flex-start, center);
     gap: 1em;
-    padding-block: 3em 1em;
+    padding-bottom: 1em;
     @media screen and (width < b.$mobile-medium) {
       @include flex(column, flex-start, flex-start);
       gap: 0.25em;

@@ -9,7 +9,7 @@ export default function NavbarShort() {
       <Link to="/">
         <img
           className="netflix-logo"
-          src="./images/logos/netflix-logo.svg"
+          src="/images/logos/netflix-logo.svg"
           alt="Netflix Logo"
         />
       </Link>

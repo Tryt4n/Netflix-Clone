@@ -83,7 +83,7 @@ export default function AccountPage() {
       </header>
 
       <div className="account">
-        <main className="account__container">
+        <main className="settings-container">
           <div className="account__heading-wrapper">
             <h2 className="account__main-heading">{t("account")}</h2>
             <div className="account__heading-member-container">
@@ -358,9 +358,10 @@ export default function AccountPage() {
                           aria-expanded={isProfileExpanded}
                         >
                           <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
+                            <Link
+                              to={"/settings/language"}
                               className="account__profile-list-item"
+                              onClick={() => setCurrentEditingProfile(user)}
                             >
                               <div>
                                 <h3 className="account__profile-heading">{t("language")}</h3>
@@ -369,11 +370,11 @@ export default function AccountPage() {
                                 </em>
                               </div>
                               <span className="account__profile-accent-text">{t("change")}</span>
-                            </a>
+                            </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
                             <Link
-                              to={"/Viewing-Restriction"}
+                              to={"/settings/viewing-restriction"}
                               className="account__profile-list-item"
                               onClick={() => setCurrentEditingProfile(user)}
                             >

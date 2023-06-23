@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 
 import Navbar from "./layout/Navbar/Navbar";
 import Home from "./pages/Home";
@@ -12,8 +12,9 @@ import UserSelectPage from "./pages/UserSelectPage/UserSelectPage";
 import ManageProfilesPage from "./pages/ManageProfilesPage/ManageProfilesPage";
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
 import EditProfile from "./pages/EditProfile/EditProfile";
-import RestrictionPage from "./pages/RestrictionPage/RestrictionPage";
 import AccountPage from "./pages/AccountPage/AccountPage";
+import RestrictionPage from "./pages/RestrictionPage/RestrictionPage";
+import LanguageChangePage from "./pages/LanguageChangePage/LanguageChangePage";
 
 export default function App() {
   const location = useLocation();
@@ -69,13 +70,19 @@ export default function App() {
           element={<EditProfile />}
         />
         <Route
-          path="/Viewing-Restriction"
-          element={<RestrictionPage />}
-        />
-        <Route
           path="/Account"
           element={<AccountPage />}
         />
+        <Route path="/settings">
+          <Route
+            path="viewing-restriction"
+            element={<RestrictionPage />}
+          />
+          <Route
+            path="/settings/language"
+            element={<LanguageChangePage />}
+          />
+        </Route>
       </Routes>
     </>
   );

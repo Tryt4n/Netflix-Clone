@@ -1,3 +1,8 @@
+@use "../abstracts/colors" as c;
+@use "../abstracts/variables" as v;
+@use "./breakpoints" as b;
+@use "./functions" as func;
+
 .visually-hidden {
   position: absolute !important;
   clip: rect(1px 1px 1px 1px);
@@ -6,4 +11,20 @@
   height: 1px !important;
   width: 1px !important;
   overflow: hidden;
+}
+
+.settings-container {
+  margin-inline: auto;
+  margin-bottom: -3rem;
+  padding-top: 3rem;
+  font-size: v.$font-base;
+  font-weight: 500;
+  color: c.$profile-edit-maturity-ratings-bg;
+  @media screen and (width >= b.$mobile-medium) {
+    max-width: func.rem(1024);
+    padding-inline: 3rem;
+  }
+  @media screen and (width < b.$mobile-medium) {
+    margin-inline: 1rem;
+  }
 }

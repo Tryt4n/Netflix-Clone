@@ -364,7 +364,7 @@ export default function UserSettingsPage() {
               {t("showTitlesOf")} <b>{t("allMaturityRatings")}</b> {t("forThisProfile")}.
             </p>
             <Link
-              to={"/Viewing-Restriction"}
+              to={"/settings/viewing-restriction"}
               className="user-settings__maturity-edit-btn"
               aria-label={t("editLabel")}
             >

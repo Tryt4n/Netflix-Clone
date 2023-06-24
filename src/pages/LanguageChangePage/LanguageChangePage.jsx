@@ -63,7 +63,9 @@ export default function LanguageChangePage() {
   return (
     <>
       <header>
-        <h1 className="visually-hidden">{t("settings")} - Language Change</h1>
+        <h1 className="visually-hidden">
+          {t("settings")} - {t("languageChange")}
+        </h1>
         <NavbarShort />
       </header>
       <div className="language-change">
@@ -71,9 +73,9 @@ export default function LanguageChangePage() {
           <article className="language-change__article">
             <div className="language-change__heading-wrapper">
               <hgroup>
-                <h2 className="language-change__heading">Display Language</h2>
+                <h2 className="language-change__heading">{t("displayLanguage")}</h2>
                 <p className="language-change__heading-description">
-                  Would you like to change the language of the text you see on Netflix?
+                  {t("displayLanguageDescription")}
                 </p>
               </hgroup>
               <img
@@ -113,10 +115,9 @@ export default function LanguageChangePage() {
 
           <article className="language-change__article">
             <hgroup>
-              <h2 className="language-change__heading">Shows & Movies Languages</h2>
+              <h2 className="language-change__heading">{t("showsAndMoviesLanguages")}</h2>
               <p className="language-change__heading-description">
-                Which languages do you like to watch shows and movies in? Letting us know helps set
-                up your audio and subtitles.
+                {t("showsAndMoviesLanguagesDescription")}
               </p>
             </hgroup>
 

@@ -105,6 +105,7 @@
   "clearInput": "Wyczyść pole tekstowe",
   "searchingBlockedMoviesBtnLabel": "Naciśnij aby dodać do listy blokowanych",
   "blockedMoviesListBtnLabel": "Naciśnij aby usunąć z listy blokowanych",
+  "navigation": "Nawigacja",
   "secondaryNavigation": "Nawigacja dodatkowa",
   "account": "Konto",
   "memberSince": "Użytkownik od: października 2022",
@@ -161,5 +162,10 @@
   "turnTransfers": "Wyłącz przenoszenie profili",
   "testParticipation": "Udział w testach",
   "manageDownload": "Zarządzaj urządzeniami do pobierania",
-  "noRestriction": "Brak ograniczeń."
+  "noRestriction": "Brak ograniczeń.",
+  "languageChange": "Zmiana Języka",
+  "displayLanguage": "Język tekstu",
+  "displayLanguageDescription": "Czy chcesz zmienić język tekstu w serwisie Netflix?",
+  "showsAndMoviesLanguages": "Języki filmów, seriali i programów",
+  "showsAndMoviesLanguagesDescription": "W których językach lubisz oglądać? Te informacje pomogą nam skonfigurować Twoje ustawienia dźwięku lub napisów."
 }

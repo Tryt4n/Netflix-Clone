@@ -105,6 +105,7 @@
   "clearInput": "Clear Input",
   "searchingBlockedMoviesBtnLabel": "Click to add to blocked list",
   "blockedMoviesListBtnLabel": "Click to remove from blocked list",
+  "navigation": "Navigation",
   "secondaryNavigation": "Secondary Navigation",
   "account": "Account",
   "memberSince": "Member Since October 2022",
@@ -160,5 +161,10 @@
   "turnTransfers": "Turn off profile transfers",
   "testParticipation": "Test participation",
   "manageDownload": "Manage download devices",
-  "noRestriction": "No Restrictions."
+  "noRestriction": "No Restrictions.",
+  "languageChange": "Language Change",
+  "displayLanguage": "Display Language",
+  "displayLanguageDescription": "Would you like to change the language of the text you see on Netflix?",
+  "showsAndMoviesLanguages": "Shows & Movies Languages",
+  "showsAndMoviesLanguagesDescription": "Which languages do you like to watch shows and movies in? Letting us know helps setup your audio and subtitles."
 }

@@ -87,9 +87,11 @@
 
   &__label {
     text-transform: capitalize;
+    cursor: pointer;
   }
 
   &__checkbox:disabled:checked + .language-change__label {
     color: c.$navbar-text;
+    cursor: not-allowed;
   }
 }

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -14,7 +14,51 @@ import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSetti
 export default function LanguageChangePage() {
   const { t } = useTranslation();
 
-  const { currentEditingProfile } = useContext(UserContext);
+  const { currentEditingProfile, users, setUsers, setIsCurrentlySaved, setDisplayedSavedMessage } =
+    useContext(UserContext);
+
+  const [selectedDisplayLanguage, setSelectedDisplayLanguage] = useState(
+    currentEditingProfile.language
+  );
+  const [selectedMovieLanguages, setSelectedMovieLanguages] = useState(
+    currentEditingProfile.moviesLanguages
+  );
+
+  function handleDisplayLanguageChange(e) {
+    const displayLanguage = e.target.value;
+    setSelectedDisplayLanguage(displayLanguage);
+
+    setSelectedMovieLanguages((prevState) => {
+      const updatedLanguages = prevState.filter((lang) => lang !== selectedDisplayLanguage);
+      return [...updatedLanguages, displayLanguage];
+    });
+  }
+
+  function handleMovieLanguageChange(language) {
+    const isLanguageSelected = selectedMovieLanguages.includes(language);
+
+    if (isLanguageSelected) {
+      setSelectedMovieLanguages((prevState) => prevState.filter((lang) => lang !== language));
+    } else {
+      setSelectedMovieLanguages((prevState) => [...prevState, language]);
+    }
+  }
+
+  function handleSave() {
+    const updatedUsers = users.map((user) => {
+      if (user.username === currentEditingProfile.username) {
+        return {
+          ...user,
+          language: selectedDisplayLanguage,
+          moviesLanguages: selectedMovieLanguages,
+        };
+      }
+      return user;
+    });
+    setUsers(updatedUsers);
+    setIsCurrentlySaved(true);
+    setDisplayedSavedMessage("Language settings saved.");
+  }
 
   return (
     <>
@@ -52,6 +96,9 @@ export default function LanguageChangePage() {
                     name="select-language"
                     id={`${language}-display`}
                     className="language-change__input"
+                    value={language}
+                    checked={language === selectedDisplayLanguage}
+                    onChange={handleDisplayLanguageChange}
                   />
                   <label
                     htmlFor={`${language}-display`}
@@ -84,8 +131,10 @@ export default function LanguageChangePage() {
                     name="select-language"
                     id={language}
                     className="checkbox-light language-change__checkbox"
-                    // disabled
-                    // defaultChecked
+                    value={language}
+                    disabled={language === selectedDisplayLanguage}
+                    checked={selectedMovieLanguages.includes(language)}
+                    onChange={() => handleMovieLanguageChange(language)}
                   />
                   <label
                     htmlFor={language}
@@ -105,6 +154,8 @@ export default function LanguageChangePage() {
               <AccountSettingsBtn
                 text={t("save")}
                 currentClass="accent"
+                path={"/account"}
+                onClickFunction={handleSave}
               />
               <AccountSettingsBtn
                 text={t("cancel")}

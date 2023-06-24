@@ -62,6 +62,16 @@ export function UserProvider({ children }) {
   //   console.log(users);
   // }, [users]);
 
+  //* Password Confirmation Logic
+  const [isConfirmationPasswordValid, setIsConfirmationPasswordValid] = useState(true);
+  const [passwordConfirmationPassed, setPasswordConfirmationPassed] = useState(false);
+
+  function resetPasswordConfirmationSettings() {
+    setIsConfirmationPasswordValid(true);
+    setPasswordConfirmationPassed(false);
+  }
+  //* ////////////////////////////////////////////////////////////////////////////////
+
   return (
     <UserContext.Provider
       value={{
@@ -85,6 +95,11 @@ export function UserProvider({ children }) {
         displayedSavedMessage: displayedSavedMessage,
         setDisplayedSavedMessage: setDisplayedSavedMessage,
         iconsData: iconsData,
+        isConfirmationPasswordValid: isConfirmationPasswordValid,
+        setIsConfirmationPasswordValid: setIsConfirmationPasswordValid,
+        passwordConfirmationPassed: passwordConfirmationPassed,
+        setPasswordConfirmationPassed: setPasswordConfirmationPassed,
+        resetPasswordConfirmationSettings: resetPasswordConfirmationSettings,
       }}
     >
       {children}

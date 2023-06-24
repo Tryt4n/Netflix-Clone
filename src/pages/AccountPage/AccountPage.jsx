@@ -396,9 +396,10 @@ export default function AccountPage() {
                             </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
+                            <Link
+                              to={"/settings/lock"}
                               className="account__profile-list-item"
+                              onClick={() => setCurrentEditingProfile(user)}
                             >
                               <div>
                                 <h3 className="account__profile-heading">{t("profileLock")}</h3>
@@ -407,7 +408,7 @@ export default function AccountPage() {
                                 </em>
                               </div>
                               <span className="account__profile-accent-text">{t("change")}</span>
-                            </a>
+                            </Link>
                           </li>
                           {!user.kidsProfile && (
                             <li className="account__profile-list-item-wrapper">

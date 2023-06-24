@@ -15,6 +15,7 @@ import EditProfile from "./pages/EditProfile/EditProfile";
 import AccountPage from "./pages/AccountPage/AccountPage";
 import RestrictionPage from "./pages/RestrictionPage/RestrictionPage";
 import LanguageChangePage from "./pages/LanguageChangePage/LanguageChangePage";
+import PINCodePage from "./pages/PINCodePage/PINCodePage";
 
 export default function App() {
   const location = useLocation();
@@ -81,6 +82,10 @@ export default function App() {
           <Route
             path="/settings/language"
             element={<LanguageChangePage />}
+          />
+          <Route
+            path="/settings/lock"
+            element={<PINCodePage />}
           />
         </Route>
       </Routes>

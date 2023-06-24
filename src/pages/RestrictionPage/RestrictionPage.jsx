@@ -11,21 +11,26 @@ import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSetti
 import CloseIcon from "../../icons/CloseIcon";
 
 import moviesData from "../../../server/data.json";
+import PasswordConfirmation from "../../layout/PasswordConfirmation/PasswordConfirmation";
 
 export default function RestrictionPage() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const { currentEditingProfile, users, setUsers, setIsCurrentlySaved, setDisplayedSavedMessage } =
-    useContext(UserContext);
+  const {
+    currentEditingProfile,
+    users,
+    setUsers,
+    setIsCurrentlySaved,
+    setDisplayedSavedMessage,
+    passwordConfirmationPassed,
+    resetPasswordConfirmationSettings,
+  } = useContext(UserContext);
 
-  const [isConfirmationPasswordValid, setIsConfirmationPasswordValid] = useState(true);
-  const [passwordConfirmationPassed, setPasswordConfirmationPassed] = useState(false);
   const [selectedRating, setSelectedRating] = useState(currentEditingProfile.maturityRating);
   const [searchedBlockedValue, setSearchedBlockedValue] = useState("");
   const [listOfBlockedMovies, setListOfBlockedMovies] = useState(
     currentEditingProfile.blockedMovies !== undefined ? currentEditingProfile.blockedMovies : []
   );
-  const confirmationPasswordInputRef = useRef(null);
   const blockedInputRef = useRef(null);
   const ratings = [
     { id: "all", label: t("all") },
@@ -46,17 +51,6 @@ export default function RestrictionPage() {
         item.cast.some((actor) => actor.toLowerCase().includes(searchedBlockedValue.toLowerCase())))
   );
 
-  function goNext() {
-    if (confirmationPasswordInputRef.current.value === "") {
-      setIsConfirmationPasswordValid(false);
-    }
-
-    if (confirmationPasswordInputRef.current.value !== "") {
-      setIsConfirmationPasswordValid(true);
-      setPasswordConfirmationPassed(true);
-    }
-  }
-
   const handleRatingChange = (e) => {
     setSelectedRating(e.target.id);
   };
@@ -75,23 +69,11 @@ export default function RestrictionPage() {
     setUsers(updatedUsers);
     setIsCurrentlySaved(true);
     setDisplayedSavedMessage(`${t("viewingRestrictions")} ${t("saved")}.`);
+    resetPasswordConfirmationSettings();
   }
 
   function getIndex(id) {
     return ratings.findIndex((rating) => rating.id === id);
-  }
-
-  function handleConfirmationOnKeyDown(e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      if (confirmationPasswordInputRef.current.value !== "") {
-        setIsConfirmationPasswordValid(true);
-        setPasswordConfirmationPassed(true);
-        changeRestriction();
-      } else {
-        setIsConfirmationPasswordValid(false);
-      }
-    }
   }
 
   function clearInput(ref) {
@@ -129,56 +111,7 @@ export default function RestrictionPage() {
               alt={`${t("profileAvatar")} ${currentEditingProfile?.username}`}
             />
           </header>
-          {!passwordConfirmationPassed && (
-            <section>
-              <h2 className="restriction-confirmation__password-subheading">
-                {t("viewingRestrictionsDescription")} {currentEditingProfile?.username}
-                {i18n.language === "en" ? `'s ${t("profile")}` : ""}.
-              </h2>
-
-              <div className="restriction-confirmation__input-wrapper">
-                <form
-                  className="restriction-confirmation__password-form"
-                  onSubmit={(e) => e.preventDefault()}
-                >
-                  <label
-                    htmlFor="confirmation-password"
-                    className="visually-hidden"
-                  >
-                    {t("passwordConfirmation")}
-                  </label>
-                  <input
-                    className={`restriction-confirmation__password-input${
-                      !isConfirmationPasswordValid ? " invalid" : ""
-                    }`}
-                    type="password"
-                    name="confirmation-password"
-                    id="confirmation-password"
-                    ref={confirmationPasswordInputRef}
-                    required
-                    aria-invalid={!isConfirmationPasswordValid}
-                    aria-errormessage="password-confirmation-error-text"
-                    onKeyDown={handleConfirmationOnKeyDown}
-                  />
-                  {!isConfirmationPasswordValid && (
-                    <span
-                      id="password-confirmation-error-text"
-                      className="restriction-confirmation__password-warning-message"
-                      aria-live="assertive"
-                    >
-                      {t("passwordRequired")}
-                    </span>
-                  )}
-                </form>
-                <a
-                  href="#"
-                  className="restriction-confirmation__password-forgot-link"
-                >
-                  {t("forgotPassword")}
-                </a>
-              </div>
-            </section>
-          )}
+          <PasswordConfirmation textDescription={t("viewingRestrictionsDescription")} />
 
           {passwordConfirmationPassed && (
             <>
@@ -340,26 +273,27 @@ export default function RestrictionPage() {
                   )}
                 </form>
               </section>
+
+              <nav
+                className="restriction-confirmation__buttons-container"
+                aria-label={t("secondaryNavigation")}
+              >
+                <h2 className="visually-hidden">{t("secondaryNavigation")}</h2>
+                <AccountSettingsBtn
+                  text={t("save")}
+                  currentClass="accent"
+                  path={"/account"}
+                  onClickFunction={changeRestriction}
+                />
+                <AccountSettingsBtn
+                  text={t("cancel")}
+                  currentClass="light"
+                  path={"/account"}
+                  onClickFunction={resetPasswordConfirmationSettings}
+                />
+              </nav>
             </>
           )}
-
-          <nav
-            className="restriction-confirmation__buttons-container"
-            aria-label={t("secondaryNavigation")}
-          >
-            <h2 className="visually-hidden">{t("secondaryNavigation")}</h2>
-            <AccountSettingsBtn
-              text={passwordConfirmationPassed ? t("save") : t("continue")}
-              currentClass="accent"
-              onClickFunction={passwordConfirmationPassed ? changeRestriction : goNext}
-              path={passwordConfirmationPassed ? "/account" : ""}
-            />
-            <AccountSettingsBtn
-              text={t("cancel")}
-              currentClass="light"
-              path={"/account"}
-            />
-          </nav>
         </main>
 
         <AccountFooter />

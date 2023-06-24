@@ -1,9 +1,10 @@
 @use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
 
 .navbar-bg {
   background-color: c.$bg-color;
 
   .netflix-logo {
-    height: 70px;
+    height: v.$navbar-height;
   }
 }

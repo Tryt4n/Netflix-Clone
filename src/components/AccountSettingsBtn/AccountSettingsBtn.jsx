@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import "./accountSettingsBtn.scss";
 
-export default function AccountSettingsBtn({ text, currentClass, onClickFunction, path }) {
+export default function AccountSettingsBtn({
+  text,
+  currentClass,
+  onClickFunction,
+  path,
+  isDisabled,
+}) {
   return (
     <>
       {path ? (
@@ -16,6 +22,7 @@ export default function AccountSettingsBtn({ text, currentClass, onClickFunction
         <button
           className={`account-settings-btn account-settings-btn--${currentClass}`}
           onClick={onClickFunction}
+          disabled={isDisabled}
         >
           {text}
         </button>

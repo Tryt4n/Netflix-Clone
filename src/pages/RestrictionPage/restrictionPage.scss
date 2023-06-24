@@ -5,7 +5,7 @@
 @use "../../base/breakpoints" as b;
 
 .restriction-confirmation {
-  min-height: 100dvh;
+  min-height: calc(100dvh - v.$navbar-height);
   background-color: c.$account-bg;
   margin-top: -2rem;
 

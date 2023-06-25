@@ -1,0 +1,40 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../base/functions" as func;
+
+.pin-page {
+  &__characters-container {
+    height: func.rem(46);
+    width: calc(4 * func.rem(38));
+    @include flex(row, center, stretch);
+    background-color: c.$white;
+    cursor: pointer;
+  }
+
+  &__character {
+    flex-basis: 25%;
+    border: func.rem(1) solid c.$bg;
+    text-align: center;
+    font-size: 1.7em;
+    &:not(:last-child) {
+      border-right: none;
+    }
+    &.focus:not(:last-child) {
+      border-right: 2px solid c.$black;
+    }
+    &.focus:not(:last-child) + .pin-page__character {
+      border-left: none;
+    }
+    &.focus {
+      border-width: 2px;
+      border-color: c.$black;
+      border-radius: 0.1em;
+    }
+    &.focus + .pin-page__character {
+      border-left-color: c.$black;
+    }
+    &::selection {
+      background: none;
+    }
+  }
+}

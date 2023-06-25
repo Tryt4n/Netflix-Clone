@@ -4,8 +4,6 @@ import UserContext from "../../context/UserContext";
 import { useTranslation } from "react-i18next";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 
-import "./passwordConfirmation.scss";
-
 export default function PasswordConfirmation({ textDescription }) {
   const { t, i18n } = useTranslation();
 

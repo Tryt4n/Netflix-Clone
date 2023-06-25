@@ -51,9 +51,9 @@ export default function RestrictionPage() {
         item.cast.some((actor) => actor.toLowerCase().includes(searchedBlockedValue.toLowerCase())))
   );
 
-  const handleRatingChange = (e) => {
+  function handleRatingChange(e) {
     setSelectedRating(e.target.id);
-  };
+  }
 
   function changeRestriction() {
     const updatedUsers = users.map((user) => {

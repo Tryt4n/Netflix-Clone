@@ -58,9 +58,9 @@ export function UserProvider({ children }) {
     setEditingProfilePictureSrc(src);
   }
 
-  // useEffect(() => {
-  //   console.log(users);
-  // }, [users]);
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
 
   //* Password Confirmation Logic
   const [isConfirmationPasswordValid, setIsConfirmationPasswordValid] = useState(true);

@@ -1,6 +1,8 @@
 @use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
 @use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
 
 .pin-page {
   &__characters-container {
@@ -9,6 +11,7 @@
     @include flex(row, center, stretch);
     background-color: c.$white;
     cursor: pointer;
+    margin-bottom: 0.5em;
   }
 
   &__character {
@@ -35,6 +38,100 @@
     }
     &::selection {
       background: none;
+    }
+  }
+
+  &__require-pin-code-wrapper {
+    @include flex(row, flex-start, flex-start);
+    margin-block: 1em;
+  }
+
+  &__label {
+    flex: 1;
+    text-wrap: balance;
+
+    padding-left: 0.5em;
+    svg {
+      display: inline;
+      width: func.rem(16);
+      aspect-ratio: 1;
+      margin-left: 0.5em;
+      color: hsl(211, 94%, 49%);
+    }
+  }
+
+  &__require-pin-code-tooltip {
+    position: relative;
+    &::after {
+      position: absolute;
+      content: attr(aria-label);
+      width: func.rem(370);
+      top: 2.1em;
+      left: func.rem(-80);
+      padding: 1rem 1.25rem;
+      background-color: c.$white;
+      border-radius: func.rem(4);
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      font-size: 0.8em;
+      color: c.$language-select-bg;
+      line-height: 150%;
+      z-index: 2;
+      transition: opacity 0.8s cubic-bezier(1, -0.11, 0.65, 0.93),
+        transform 0.8s cubic-bezier(1, -0.11, 0.65, 0.93);
+      opacity: 0;
+      visibility: hidden;
+      @media screen and (width < b.$account-page-tablet) {
+        left: 10%;
+        position: fixed;
+        right: 10%;
+        top: 100px;
+        width: auto;
+      }
+    }
+    &::before {
+      position: absolute;
+      content: " ";
+      left: 0.5rem;
+      width: 0;
+      bottom: func.rem(-7);
+      border-bottom: func.rem(8) solid c.$white;
+      border-left: func.rem(8) solid transparent;
+      border-right: func.rem(8) solid transparent;
+      z-index: 3;
+      transition: opacity 0.8s cubic-bezier(1, -0.11, 0.65, 0.93),
+        transform 0.8s cubic-bezier(1, -0.11, 0.65, 0.93);
+      opacity: 0;
+      visibility: hidden;
+      @media screen and (width < b.$account-page-tablet) {
+        display: none;
+      }
+    }
+  }
+  &__require-pin-code-tooltip:hover {
+    &::after,
+    &::before {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__error-message {
+    position: absolute;
+    color: #ff0000;
+    font-weight: normal;
+    opacity: 0;
+    visibility: hidden;
+    @media screen and (width < b.$mobile-medium) {
+      font-size: v.$font-size-navbar;
+    }
+
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+
+      & + .pin-page__require-pin-code-wrapper {
+        margin-top: 3em;
+      }
     }
   }
 }

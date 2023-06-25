@@ -166,5 +166,14 @@
   "displayLanguage": "Display Language",
   "displayLanguageDescription": "Would you like to change the language of the text you see on Netflix?",
   "showsAndMoviesLanguages": "Shows & Movies Languages",
-  "showsAndMoviesLanguagesDescription": "Which languages do you like to watch shows and movies in? Letting us know helps setup your audio and subtitles."
+  "showsAndMoviesLanguagesDescription": "Which languages do you like to watch shows and movies in? Letting us know helps setup your audio and subtitles.",
+  "profileLockDescription": "Enter your account password to edit Profile Lock for",
+  "lockThisProfile": "Lock this profile by creating a 4-digit pin.",
+  "requirePIN": "Require a PIN to access",
+  "requirePINTooltip": "Lock this profile by creating a 4-digit PIN. The Profile Lock PIN can be changed by revisiting this Profile Lock page and entering the account password. Note that a profile PIN is not required to change Profile & Parental Controls or to delete a profile.",
+  "enterPINCode": "Enter PIN code",
+  "PINCodeErrorMessage": "Your PIN must be 4 numbers.",
+  "require": "Require",
+  "PINToAddNewProfiles": "PIN to add new profiles",
+  "profileLockSaveMessage": "Profile Lock saved."
 }

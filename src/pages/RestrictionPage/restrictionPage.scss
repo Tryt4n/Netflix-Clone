@@ -47,6 +47,7 @@
 
   &__password-subheading {
     font: inherit;
+    text-wrap: balance;
   }
 
   &__input-wrapper {
@@ -104,6 +105,7 @@
     margin-block: 0.75em func.rem(20);
     font-size: func.rem(24);
     font-weight: 500;
+    text-wrap: balance;
   }
 
   &__description-text {

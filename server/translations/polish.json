@@ -144,8 +144,8 @@
   "chevronLabel": "Znak strzałki w dół",
   "chevronOpenLabel": "Znak strzałki w górę",
   "profileLock": "Blokada profilu",
-  "on": "Wył.",
-  "off": "Wł.",
+  "on": "Wł.",
+  "off": "Wył.",
   "transferProfile": "Przenieś ten profil",
   "transfer": "Przenieś",
   "viewingActivity": "Historia oglądania",
@@ -167,5 +167,14 @@
   "displayLanguage": "Język tekstu",
   "displayLanguageDescription": "Czy chcesz zmienić język tekstu w serwisie Netflix?",
   "showsAndMoviesLanguages": "Języki filmów, seriali i programów",
-  "showsAndMoviesLanguagesDescription": "W których językach lubisz oglądać? Te informacje pomogą nam skonfigurować Twoje ustawienia dźwięku lub napisów."
+  "showsAndMoviesLanguagesDescription": "W których językach lubisz oglądać? Te informacje pomogą nam skonfigurować Twoje ustawienia dźwięku lub napisów.",
+  "profileLockDescription": "Wprowadź hasło do konta, aby edytować blokadę profilu użytkownika",
+  "lockThisProfile": "Ustaw blokadę profilu, wybierając 4-cyfrowy kod PIN.",
+  "requirePIN": "Żądaj podania kodu PIN do profilu",
+  "requirePINTooltip": "Ustaw blokadę profilu, wybierając 4-cyfrowy kod PIN. Aby zmienić kod PIN do blokady profilu, wejdź na stronę blokady profilu i podaj hasło do konta. Kod PIN do profilu nie jest wymagany do zmiany ustawień w menu Profile i Kontrola rodzicielska ani do usunięcia profilu.",
+  "enterPINCode": "Wprowadź kod PIN",
+  "PINCodeErrorMessage": "Kod PIN musi składać się z 4 cyfr.",
+  "require": "Wymagaj kodu PIN użytkownika",
+  "PINToAddNewProfiles": "aby dodać nowe profile.",
+  "profileLockSaveMessage": "Zapisano blokadę profilu."
 }

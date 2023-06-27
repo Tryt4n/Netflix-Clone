@@ -2,8 +2,11 @@
 // import UserContext from "../../context/UserContext";
 
 import { useTranslation } from "react-i18next";
-import "./selectProfilItem.scss";
+
 import EditIcon from "../../icons/EditIcon";
+import PadlockIcon from "../../icons/PadlockIcon";
+
+import "./selectProfilItem.scss";
 
 export default function SelectProfilItem({
   user,
@@ -39,6 +42,7 @@ export default function SelectProfilItem({
       <span className="select-profil-item__username">
         {user.username === "Kids" ? t("Kids") : user.username}
       </span>
+      {user.lock && <PadlockIcon />}
     </div>
   );
 }

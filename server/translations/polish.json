@@ -176,5 +176,15 @@
   "PINCodeErrorMessage": "Kod PIN musi składać się z 4 cyfr.",
   "require": "Wymagaj kodu PIN użytkownika",
   "PINToAddNewProfiles": "aby dodać nowe profile.",
-  "profileLockSaveMessage": "Zapisano blokadę profilu."
+  "profileLockSaveMessage": "Zapisano blokadę profilu.",
+  "padlockIcon": "Ikona kłódki",
+  "LockON": "Blokada profilu włączona.",
+  "enterPinHeading": "Wprowadź kod PIN, aby otworzyć profil.",
+  "enterPinHeadingWrong": "Ups, nieprawidłowy kod PIN. Spróbuj ponownie.",
+  "enterFirstDigit": "Wprowadź pierwszą cyfrę kodu PIN",
+  "enterSecondDigit": "Wprowadź drugą cyfrę kodu PIN",
+  "enterThirdDigit": "Wprowadź trzecią cyfrę kodu PIN",
+  "enterFourthDigit": "Wprowadź czwartą cyfrę kodu PIN",
+  "forgotPIN": "Nie pamiętasz kodu PIN?",
+  "close": "Zamknij"
 }

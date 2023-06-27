@@ -85,7 +85,7 @@ export default function PINCodePage() {
 
   function handleSave() {
     const updatedUsers = users.map((user) => {
-      if (users[0].username === currentEditingProfile.username) {
+      if (user.username === users[0].username && user.username === currentEditingProfile.username) {
         return {
           ...user,
           lock: isLockedUser,

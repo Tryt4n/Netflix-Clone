@@ -17,6 +17,7 @@ import NewBadge from "./components/NewBadge";
 import CheckIcon from "../../icons/CheckIcon";
 import UltraHDIcon from "../../icons/UltraHDIcon";
 import ChevronDown from "../../icons/ChevronDown";
+import PadlockIcon from "../../icons/PadlockIcon";
 
 import "./accountPage.scss";
 
@@ -342,6 +343,7 @@ export default function AccountPage() {
                           aria-controls={`account-profile-list-${user.id}`}
                           onClick={() => expandUser(index)}
                         >
+                          {user.lock && <PadlockIcon />}
                           <ChevronDown
                             label={isProfileExpanded ? t("chevronOpenLabel") : t("chevronLabel")}
                           />

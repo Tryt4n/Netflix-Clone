@@ -260,7 +260,7 @@
   }
 
   &__profile-btn {
-    padding: 0;
+    padding: 0.25em;
     border: none;
     background: transparent;
     color: hsl(0, 0%, 67%);
@@ -269,6 +269,7 @@
     svg {
       width: func.rem(20);
       aspect-ratio: 1/1;
+      display: inline;
     }
     &.expanded {
       rotate: 180deg;

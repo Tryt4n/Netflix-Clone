@@ -175,5 +175,15 @@
   "PINCodeErrorMessage": "Your PIN must be 4 numbers.",
   "require": "Require",
   "PINToAddNewProfiles": "PIN to add new profiles",
-  "profileLockSaveMessage": "Profile Lock saved."
+  "profileLockSaveMessage": "Profile Lock saved.",
+  "padlockIcon": "Padlock Icon",
+  "LockON": "Profile Lock is currently on.",
+  "enterPinHeading": "Enter your PIN to access this profile.",
+  "enterPinHeadingWrong": "Whoops, wrong PIN. Please try again.",
+  "enterFirstDigit": "Enter First PIN digit",
+  "enterSecondDigit": "Enter Second PIN digit",
+  "enterThirdDigit": "Enter Third PIN digit",
+  "enterFourthDigit": "Enter Fourth PIN digit",
+  "forgotPIN": "Forgot PIN?",
+  "close": "Close"
 }

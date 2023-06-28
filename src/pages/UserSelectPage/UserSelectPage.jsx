@@ -34,15 +34,17 @@ export default function UserSelectPage() {
   }
 
   function handleFormFocus() {
-    const inputs = Array.from(lockModalRef.current.getElementsByTagName("input"));
-    const hasFocus = inputs.some((input) => input === document.activeElement);
-    const hasEmptyValue = inputs.some((input) => !input.value);
-    const isValid = inputs.every(
-      (input, index) => input.value === currentEditingProfile.PIN[index]
-    );
+    if (lockModalRef.current !== null) {
+      const inputs = Array.from(lockModalRef.current.getElementsByTagName("input"));
+      const hasFocus = inputs.some((input) => input === document.activeElement);
+      const hasEmptyValue = inputs.some((input) => !input.value);
+      const isValid = inputs.every(
+        (input, index) => input.value === currentEditingProfile.PIN[index]
+      );
 
-    setIsCorrectPIN(hasEmptyValue || isValid);
-    setIsErrorVisible(!hasFocus && hasEmptyValue);
+      setIsCorrectPIN(hasEmptyValue || isValid);
+      setIsErrorVisible(!hasFocus && hasEmptyValue);
+    }
   }
 
   function handleInputChange(e) {
@@ -58,8 +60,15 @@ export default function UserSelectPage() {
   }
 
   function handleInputKeyDown(e) {
+    const allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Tab", "Backspace"];
+    if (!allowedKeys.includes(e.key)) {
+      e.preventDefault();
+      return;
+    }
+
     const { name } = e.target;
     const inputs = Array.from(lockModalRef.current.getElementsByTagName("input"));
+    if (lockModalRef.current == null) return;
     const currentIndex = inputs.findIndex((input) => input.name === name);
     if (e.key === "Backspace" && currentIndex > 0 && !inputs[currentIndex].value) {
       inputs[currentIndex - 1].focus();
@@ -69,6 +78,21 @@ export default function UserSelectPage() {
   useEffect(() => {
     setCurrentEditingProfile("");
   }, []);
+
+  const movies = [
+    {
+      name: "The Mother",
+      watched: true,
+      watchTime: 117,
+      whenWatched: "27.06.2023",
+    },
+    {
+      name: "Shrek",
+      watched: false,
+      watchTime: 32,
+      whenWatched: "27.06.2023",
+    },
+  ];
 
   return (
     <main className="choose-profile">

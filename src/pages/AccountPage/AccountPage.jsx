@@ -431,15 +431,16 @@ export default function AccountPage() {
                             </li>
                           )}
                           <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
+                            <Link
+                              to={"/settings/viewed"}
                               className="account__profile-list-item"
+                              onClick={() => setCurrentEditingProfile(user)}
                             >
                               <div>
                                 <h3 className="account__profile-heading">{t("viewingActivity")}</h3>
                               </div>
                               <span className="account__profile-accent-text">{t("view")}</span>
-                            </a>
+                            </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
                             <a

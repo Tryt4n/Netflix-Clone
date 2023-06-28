@@ -55,12 +55,14 @@
       {
         "name": "The Mother",
         "watched": true,
-        "watchTime": 117
+        "watchTime": 117,
+        "whenWatched": "27.06.2023"
       },
       {
         "name": "Shrek",
         "watched": false,
-        "watchTime": 32
+        "watchTime": 32,
+        "whenWatched": "26.06.2023"
       }
     ],
     "series": [
@@ -71,22 +73,26 @@
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 48
+              "watchTime": 48,
+              "whenWatched": "22.06.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 25
+              "watchTime": 25,
+              "whenWatched": "22.06.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 13
+              "watchTime": 13,
+              "whenWatched": "22.06.2023"
             },
             {
               "seriesNumber": 4,
               "watched": true,
-              "watchTime": 9
+              "watchTime": 9,
+              "whenWatched": "23.06.2023"
             }
           ]
         }
@@ -98,84 +104,100 @@
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 58
+              "watchTime": 58,
+              "whenWatched": "03.05.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "04.05.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 57
+              "watchTime": 57,
+              "whenWatched": "05.05.2023"
             },
             {
               "seriesNumber": 4,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "06.05.2023"
             },
             {
               "seriesNumber": 5,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "07.05.2023"
             },
             {
               "seriesNumber": 6,
               "watched": true,
-              "watchTime": 57
+              "watchTime": 57,
+              "whenWatched": "07.05.2023"
             },
             {
               "seriesNumber": 7,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "08.05.2023"
             },
             {
               "seriesNumber": 8,
               "watched": true,
-              "watchTime": 72
+              "watchTime": 72,
+              "whenWatched": "08.05.2023"
             }
           ],
           "2": [
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 70
+              "watchTime": 70,
+              "whenWatched": "08.05.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 53
+              "watchTime": 53,
+              "whenWatched": "09.05.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 68
+              "watchTime": 68,
+              "whenWatched": "10.05.2023"
             },
             {
               "seriesNumber": 4,
               "watched": true,
-              "watchTime": 58
+              "watchTime": 58,
+              "whenWatched": "11.05.2023"
             },
             {
               "seriesNumber": 5,
               "watched": true,
-              "watchTime": 58
+              "watchTime": 58,
+              "whenWatched": "12.05.2023"
             },
             {
               "seriesNumber": 6,
               "watched": true,
-              "watchTime": 69
+              "watchTime": 69,
+              "whenWatched": "13.05.2023"
             },
             {
               "seriesNumber": 7,
               "watched": true,
-              "watchTime": 59
+              "watchTime": 59,
+              "whenWatched": "14.05.2023"
             },
             {
               "seriesNumber": 8,
               "watched": true,
-              "watchTime": 72
+              "watchTime": 72,
+              "whenWatched": "15.05.2023"
             }
           ]
         }
@@ -223,7 +245,8 @@
       {
         "name": "The Mother",
         "watched": true,
-        "watchTime": 117
+        "watchTime": 117,
+        "whenWatched": "26.06.2023"
       }
     ],
     "series": [
@@ -234,84 +257,100 @@
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 58
+              "watchTime": 58,
+              "whenWatched": "02.06.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "03.06.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 57
+              "watchTime": 57,
+              "whenWatched": "04.06.2023"
             },
             {
               "seriesNumber": 4,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "04.06.2023"
             },
             {
               "seriesNumber": 5,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "05.06.2023"
             },
             {
               "seriesNumber": 6,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "06.06.2023"
             },
             {
               "seriesNumber": 7,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "06.06.2023"
             },
             {
               "seriesNumber": 8,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "07.06.2023"
             }
           ],
           "2": [
             {
               "seriesNumber": 1,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "08.06.2023"
             },
             {
               "seriesNumber": 2,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "09.06.2023"
             },
             {
               "seriesNumber": 3,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "11.06.2023"
             },
             {
               "seriesNumber": 4,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "13.06.2023"
             },
             {
               "seriesNumber": 5,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "13.06.2023"
             },
             {
               "seriesNumber": 6,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "13.06.2023"
             },
             {
               "seriesNumber": 7,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "15.06.2023"
             },
             {
               "seriesNumber": 8,
               "watched": false,
-              "watchTime": 0
+              "watchTime": 0,
+              "whenWatched": "18.06.2023"
             }
           ]
         }
@@ -353,12 +392,14 @@
       {
         "name": "The Mother",
         "watched": true,
-        "watchTime": 117
+        "watchTime": 117,
+        "whenWatched": "27.06.2023"
       },
       {
         "name": "Shrek",
         "watched": false,
-        "watchTime": 32
+        "watchTime": 32,
+        "whenWatched": "27.06.2023"
       }
     ],
     "series": [
@@ -369,22 +410,26 @@
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 48
+              "watchTime": 48,
+              "whenWatched": "25.06.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 25
+              "watchTime": 25,
+              "whenWatched": "25.06.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 13
+              "watchTime": 13,
+              "whenWatched": "26.06.2023"
             },
             {
               "seriesNumber": 4,
               "watched": true,
-              "watchTime": 9
+              "watchTime": 9,
+              "whenWatched": "26.06.2023"
             }
           ]
         }
@@ -418,12 +463,14 @@
       {
         "name": "The Mother",
         "watched": true,
-        "watchTime": 117
+        "watchTime": 117,
+        "whenWatched": "26.06.2023"
       },
       {
         "name": "Shrek",
         "watched": false,
-        "watchTime": 32
+        "watchTime": 32,
+        "whenWatched": "26.06.2023"
       }
     ],
     "series": [
@@ -434,84 +481,88 @@
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 58
+              "watchTime": 58,
+              "whenWatched": "14.06.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "14.06.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 57
+              "watchTime": 57,
+              "whenWatched": "15.06.2023"
             },
             {
               "seriesNumber": 4,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "16.06.2023"
             },
             {
               "seriesNumber": 5,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "17.06.2023"
             },
             {
               "seriesNumber": 6,
               "watched": true,
-              "watchTime": 57
+              "watchTime": 57,
+              "whenWatched": "17.06.2023"
             },
             {
               "seriesNumber": 7,
               "watched": true,
-              "watchTime": 61
+              "watchTime": 61,
+              "whenWatched": "17.06.2023"
             },
             {
               "seriesNumber": 8,
               "watched": true,
-              "watchTime": 72
+              "watchTime": 72,
+              "whenWatched": "18.06.2023"
             }
           ],
           "2": [
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 70
+              "watchTime": 70,
+              "whenWatched": "19.06.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 53
+              "watchTime": 53,
+              "whenWatched": "20.06.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 68
+              "watchTime": 68,
+              "whenWatched": "20.06.2023"
             },
             {
               "seriesNumber": 4,
               "watched": true,
-              "watchTime": 58
+              "watchTime": 58,
+              "whenWatched": "20.06.2023"
             },
             {
               "seriesNumber": 5,
               "watched": false,
-              "watchTime": 32
+              "watchTime": 32,
+              "whenWatched": "21.06.2023"
             },
             {
               "seriesNumber": 6,
               "watched": false,
-              "watchTime": 0
-            },
-            {
-              "seriesNumber": 7,
-              "watched": false,
-              "watchTime": 0
-            },
-            {
-              "seriesNumber": 8,
-              "watched": false,
-              "watchTime": 0
+              "watchTime": 12,
+              "whenWatched": "22.06.2023"
             }
           ]
         }
@@ -538,17 +589,20 @@
       {
         "name": "Shrek",
         "watched": true,
-        "watchTime": 90
+        "watchTime": 90,
+        "whenWatched": "01.06.2023"
       },
       {
         "name": "Shrek 2",
         "watched": true,
-        "watchTime": 92
+        "watchTime": 92,
+        "whenWatched": "02.06.2023"
       },
       {
         "name": "Shrek The Third",
         "watched": true,
-        "watchTime": 93
+        "watchTime": 93,
+        "whenWatched": "03.06.2023"
       }
     ],
     "series": [
@@ -559,22 +613,26 @@
             {
               "seriesNumber": 1,
               "watched": true,
-              "watchTime": 65
+              "watchTime": 65,
+              "whenWatched": "12.06.2023"
             },
             {
               "seriesNumber": 2,
               "watched": true,
-              "watchTime": 25
+              "watchTime": 25,
+              "whenWatched": "12.06.2023"
             },
             {
               "seriesNumber": 3,
               "watched": true,
-              "watchTime": 12
+              "watchTime": 12,
+              "whenWatched": "12.06.2023"
             },
             {
               "seriesNumber": 4,
               "watched": false,
-              "watchTime": 12
+              "watchTime": 12,
+              "whenWatched": "12.06.2023"
             }
           ]
         }

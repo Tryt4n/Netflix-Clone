@@ -19,6 +19,9 @@ export function UserProvider({ children }) {
   const [isCurrentlySaved, setIsCurrentlySaved] = useState(false);
   const [displayedSavedMessage, setDisplayedSavedMessage] = useState("");
 
+  //* Active watching Activity state. (watching / rating)
+  const [watchingActivity, setWatchingActivity] = useState("watching");
+
   const languageCodes = {
     "Bahasa Indonesia": "id",
     "Bahasa Melayu": "ms",
@@ -100,6 +103,8 @@ export function UserProvider({ children }) {
         passwordConfirmationPassed: passwordConfirmationPassed,
         setPasswordConfirmationPassed: setPasswordConfirmationPassed,
         resetPasswordConfirmationSettings: resetPasswordConfirmationSettings,
+        watchingActivity: watchingActivity,
+        setWatchingActivity: setWatchingActivity,
       }}
     >
       {children}

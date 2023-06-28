@@ -30,6 +30,7 @@ export default function AccountPage() {
     isCurrentlySaved,
     setIsCurrentlySaved,
     displayedSavedMessage,
+    setWatchingActivity,
   } = useContext(UserContext);
 
   const [expandedIndexes, setExpandedIndexes] = useState([]);
@@ -434,7 +435,10 @@ export default function AccountPage() {
                             <Link
                               to={"/settings/viewed"}
                               className="account__profile-list-item"
-                              onClick={() => setCurrentEditingProfile(user)}
+                              onClick={() => {
+                                setCurrentEditingProfile(user);
+                                setWatchingActivity("watching");
+                              }}
                             >
                               <div>
                                 <h3 className="account__profile-heading">{t("viewingActivity")}</h3>
@@ -443,15 +447,19 @@ export default function AccountPage() {
                             </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
+                            <Link
+                              to={"/settings/viewed"}
                               className="account__profile-list-item"
+                              onClick={() => {
+                                setCurrentEditingProfile(user);
+                                setWatchingActivity("rating");
+                              }}
                             >
                               <div>
                                 <h3 className="account__profile-heading">{t("ratings")}</h3>
                               </div>
                               <span className="account__profile-accent-text">{t("view")}</span>
-                            </a>
+                            </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
                             <a

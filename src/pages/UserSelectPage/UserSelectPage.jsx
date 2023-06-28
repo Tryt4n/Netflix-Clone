@@ -79,21 +79,6 @@ export default function UserSelectPage() {
     setCurrentEditingProfile("");
   }, []);
 
-  const movies = [
-    {
-      name: "The Mother",
-      watched: true,
-      watchTime: 117,
-      whenWatched: "27.06.2023",
-    },
-    {
-      name: "Shrek",
-      watched: false,
-      watchTime: 32,
-      whenWatched: "27.06.2023",
-    },
-  ];
-
   return (
     <main className="choose-profile">
       <h1 className="choose-profile__header">{t("whosWatching")}</h1>
@@ -113,7 +98,7 @@ export default function UserSelectPage() {
         ))}
       </ul>
 
-      {currentEditingProfile.lock && (
+      {currentEditingProfile?.lock && (
         <dialog
           className="choose-profile__lock-modal"
           ref={lockModalRef}

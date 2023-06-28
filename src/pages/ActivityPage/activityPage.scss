@@ -15,8 +15,8 @@
 
   &__heading {
     font-size: clamp(1.5rem, 1.22rem + 1.42vw, 2.13rem);
-    font-weight: 500;
-    margin-bottom: 0.25em;
+    font-weight: normal;
+    margin-bottom: 0.3em;
   }
 
   &__tabs-container {
@@ -31,6 +31,7 @@
     outline-offset: 0.25em;
     font: inherit;
     font-weight: normal;
+    line-height: 100%;
     color: c.$viewing-restriction-input-blue;
     cursor: pointer;
     &:where(:hover) {
@@ -110,6 +111,45 @@
     &:hover span {
       opacity: 1;
       visibility: visible;
+    }
+  }
+
+  &__btns-wrapper {
+    @include flex(row, space-between, center);
+    margin-top: 1.5em;
+
+    & > * {
+      @include flex();
+      gap: 1em;
+      font-weight: normal;
+    }
+  }
+
+  &__operating-btn {
+    background: transparent;
+    border: none;
+    padding: 0;
+    outline-offset: 0.25em;
+    font: inherit;
+    font-weight: normal;
+    line-height: 100%;
+    color: c.$viewing-restriction-input-blue;
+    cursor: pointer;
+    &:last-child {
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        width: func.rem(1);
+        height: 100%;
+        background-color: c.$gray-light;
+        translate: -0.5em;
+      }
+    }
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

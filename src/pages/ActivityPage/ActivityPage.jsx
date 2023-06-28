@@ -4,6 +4,12 @@ import UserContext from "../../context/UserContext";
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
+import LikeIcon from "../../icons/LikeIcon";
+import LikeIconFilled from "../../icons/LikeIconFilled";
+import SuperLikeIcon from "../../icons/SuperLikeIcon";
+import SuperLikeIconFilled from "../../icons/SuperLikeIconFilled";
+import DislikeIcon from "../../icons/DislikeIcon";
+import DislikeIconFilled from "../../icons/DislikeIconFilled";
 
 import "./activityPage.scss";
 
@@ -65,19 +71,22 @@ export default function ActivityPage() {
   const ratingList = ratingMoviesList.concat(...ratingSeriesList);
   ratingList.sort((a, b) => moment(b.ratingDateDetail).diff(a.ratingDateDetail));
   const totalRatingItems = ratingList.length;
-  console.log(ratingList);
   //////////////////////////////////////////////////////////////////////////////////////////*
 
-  const handleLoadMore = () => {
+  function handleLoadMore() {
     if (watchingActivity === "watching") {
       setVisibleMovieItems((prevState) => Math.min(prevState + 20, totalMovieItems));
     } else if (watchingActivity === "rating") {
       setVisibleRatingItems((prevState) => Math.min(prevState + 20, totalRatingItems));
     } else return;
-  };
+  }
 
-  // console.log(watchedList);
+  function reset() {
+    setVisibleMovieItems(20);
+    setVisibleRatingItems(20);
+  }
 
+  console.log(currentEditingProfile);
   return (
     <>
       <header>
@@ -119,34 +128,15 @@ export default function ActivityPage() {
             />
           </header>
 
-          {/* <ul>
-            {watchedList.slice(0, visibleMovieItems).map((entry) => (
-              <li
-                key={crypto.randomUUID()}
-                className="activity-page__list-item"
-              >
-                <time
-                  dateTime={entry.whenWatchedDetail}
-                  className="activity-page__list-item-date"
-                >
-                  {entry.whenWatched}
-                </time>
-                <div className="activity-page__list-item-title">
-                  <a href="#">
-                    {entry.seriesName
-                      ? `${entry.seriesName}: Season ${entry.season}: "${entry.name}"`
-                      : entry.name}
-                  </a>
-                </div>
+          {watchingActivity === "watching" && totalMovieItems <= 0 && (
+            <strong className="activity-page__warning-empty">There is no watch history.</strong>
+          )}
+          {watchingActivity === "rating" && totalRatingItems <= 0 && (
+            <strong className="activity-page__warning-empty">
+              There are no rated movies or series.
+            </strong>
+          )}
 
-                <a href="#">Report a problem</a>
-                <div className="activity-page__list-item-hiding-btn-wrapper">
-                  <button>⊘</button>
-                  <span>Hide from viewing history</span>
-                </div>
-              </li>
-            ))}
-          </ul> */}
           <ul>
             {watchingActivity === "watching" ? (
               <>
@@ -169,9 +159,14 @@ export default function ActivityPage() {
                       </a>
                     </div>
 
-                    <a href="#">Report a problem</a>
+                    <a
+                      href="#"
+                      className="activity-page__list-item-report-text"
+                    >
+                      Report a problem
+                    </a>
                     <div className="activity-page__list-item-hiding-btn-wrapper">
-                      <button>⊘</button>
+                      <button className="activity-page__list-item-remove-btn">⊘</button>
                       <span>Hide from viewing history</span>
                     </div>
                   </li>
@@ -194,9 +189,15 @@ export default function ActivityPage() {
                       <a href="#">{entry.name}</a>
                     </div>
                     <div>
-                      <button>1</button>
-                      <button>2</button>
-                      <button>3</button>
+                      <button className="activity-page__rating-btn">
+                        {entry.rating === "dislike" ? <DislikeIconFilled /> : <DislikeIcon />}
+                      </button>
+                      <button className="activity-page__rating-btn">
+                        {entry.rating === "like" ? <LikeIconFilled /> : <LikeIcon />}
+                      </button>
+                      <button className="activity-page__rating-btn">
+                        {entry.rating === "superlike" ? <SuperLikeIconFilled /> : <SuperLikeIcon />}
+                      </button>
                     </div>
                   </li>
                 ))}
@@ -209,17 +210,23 @@ export default function ActivityPage() {
               <AccountSettingsBtn
                 text={t("Show More")}
                 currentClass="accent"
-                isDisabled={visibleMovieItems >= totalMovieItems ? true : false}
+                isDisabled={
+                  watchingActivity === "watching"
+                    ? visibleMovieItems >= totalMovieItems
+                    : visibleRatingItems >= totalRatingItems
+                }
                 onClickFunction={handleLoadMore}
                 key={watchingActivity === "watching" ? "watching" : "rating"}
               />
+
               <AccountSettingsBtn
                 text={t("Back to Your Account")}
                 currentClass="light"
                 path={"/account"}
+                onClickFunction={reset}
               />
             </div>
-            <div className="activity-page__">
+            <div>
               <button className="activity-page__operating-btn">Hide all</button>
               <button className="activity-page__operating-btn">Download all</button>
             </div>

@@ -284,6 +284,11 @@
     &:hover {
       text-decoration: underline;
     }
+    &:disabled {
+      color: inherit;
+      text-decoration: none;
+      cursor: not-allowed;
+    }
   }
 }
 

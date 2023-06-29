@@ -45,6 +45,8 @@
     cursor: default;
     &:hover {
       background-color: #0080ff;
+      background-image: linear-gradient(180deg, #0080ff, #0277ec);
+      opacity: 0.5;
     }
   }
 }

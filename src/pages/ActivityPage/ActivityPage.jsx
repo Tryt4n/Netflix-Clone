@@ -24,6 +24,7 @@ export default function ActivityPage() {
   const [visibleMovieItems, setVisibleMovieItems] = useState(20);
   const [visibleRatingItems, setVisibleRatingItems] = useState(20);
   const [deletedItems, setDeletedItems] = useState([]);
+  const [isBtnHideAllDisabled, setIsBtnHideAllDisabled] = useState(false);
 
   //* Rating
   const [ratingList, setRatingList] = useState([]);
@@ -70,7 +71,7 @@ export default function ActivityPage() {
   //////////////////////////////////////////////////////////////////////////////////////////*
 
   function handleDeleteFromViewed(entry) {
-    setDeletedItems((prevItems) => [...prevItems, entry.name]);
+    setDeletedItems((prevState) => [...prevState, entry.name]);
 
     const updatedUsers = users.map((user) => {
       if (user.username === currentEditingProfile.username) {
@@ -107,6 +108,64 @@ export default function ActivityPage() {
       return user;
     });
 
+    setUsers(updatedUsers);
+  }
+
+  function handleDeleteWholeSeries(entry) {
+    const deletingSeriesName = entry.seriesName;
+    const deletedEpisodes = [];
+
+    const updatedUsers = users.map((user) => {
+      if (user.username === currentEditingProfile.username) {
+        const updatedSeries = user.series.filter((series) => {
+          if (series.name === deletingSeriesName) {
+            Object.values(series.seasons).forEach((season) => {
+              season.forEach((episode) => {
+                deletedEpisodes.push(episode.name);
+              });
+            });
+            return false; //* Deleting whole series
+          }
+          return true; //* Keeping the rest of the series
+        });
+
+        return {
+          ...user,
+          series: updatedSeries,
+        };
+      }
+
+      return user;
+    });
+
+    setUsers(updatedUsers);
+    setDeletedItems((prevState) => [...prevState, ...deletedEpisodes]);
+  }
+
+  function handleDeleteAllViewingHistory() {
+    setDeletedItems((prevState) => {
+      const allItems = [
+        ...prevState,
+        ...currentEditingProfile.movies.map((movie) => movie.name),
+        ...currentEditingProfile.series.flatMap((series) =>
+          Object.values(series.seasons).flatMap((season) => season.map((episode) => episode.name))
+        ),
+      ];
+      return allItems;
+    });
+
+    const updatedUsers = users.map((user) => {
+      if (user.username === currentEditingProfile.username) {
+        return {
+          ...user,
+          movies: [],
+          series: [],
+        };
+      }
+      return user;
+    });
+
+    setIsBtnHideAllDisabled(true);
     setUsers(updatedUsers);
   }
 
@@ -152,6 +211,7 @@ export default function ActivityPage() {
     setVisibleMovieItems(20);
     setVisibleRatingItems(20);
     setDeletedItems([]);
+    setIsBtnHideAllDisabled(false);
   }
 
   return (
@@ -257,12 +317,11 @@ export default function ActivityPage() {
                           and will no longer be used to make recommendations to you, unless you
                           watch it again. <a href="#">Learn more.</a>
                         </p>
-                        {/* //! ADD FUNCTIONALITY OF DELETING WHOLE WATCHING SERIES IF IT'S IS SERIES */}
                         {entry.seriesName && (
                           <button
                             href="#"
                             className="activity-page__list-item-delete-btn"
-                            // onClick={() => handleDeleteSeriesFromViewed(entry)}
+                            onClick={() => handleDeleteWholeSeries(entry)}
                           >
                             Hide series?
                           </button>
@@ -356,10 +415,18 @@ export default function ActivityPage() {
                 onClickFunction={reset}
               />
             </div>
-            <div>
-              <button className="activity-page__operating-btn">Hide all</button>
-              <button className="activity-page__operating-btn">Download all</button>
-            </div>
+            {watchingActivity === "watching" && totalMovieItems > 0 && (
+              <div>
+                <button
+                  className="activity-page__operating-btn"
+                  onClick={handleDeleteAllViewingHistory}
+                  disabled={isBtnHideAllDisabled}
+                >
+                  Hide all
+                </button>
+                <button className="activity-page__operating-btn">Download all</button>
+              </div>
+            )}
           </div>
         </main>
 

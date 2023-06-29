@@ -19,9 +19,11 @@ import { useTranslation } from "react-i18next";
 export default function ActivityPage() {
   const { t } = useTranslation();
 
-  const { currentEditingProfile, watchingActivity, setWatchingActivity } = useContext(UserContext);
+  const { currentEditingProfile, watchingActivity, setWatchingActivity, users, setUsers } =
+    useContext(UserContext);
   const [visibleMovieItems, setVisibleMovieItems] = useState(20);
   const [visibleRatingItems, setVisibleRatingItems] = useState(20);
+  const [deletedItems, setDeletedItems] = useState([]);
 
   //* Watching
   const watchedMovieList = currentEditingProfile.movies.map((movie) => ({
@@ -84,9 +86,99 @@ export default function ActivityPage() {
   function reset() {
     setVisibleMovieItems(20);
     setVisibleRatingItems(20);
+    setDeletedItems([]);
   }
 
-  console.log(currentEditingProfile);
+  function handleDeleteFromViewed(entry) {
+    setDeletedItems((prevItems) => [...prevItems, entry.name]);
+
+    const updatedUsers = users.map((user) => {
+      if (user.username === currentEditingProfile.username) {
+        const updatedMovies = user.movies.filter((movie) => movie.name !== entry.name);
+        const updatedSeries = user.series
+          .map((series) => {
+            const updatedSeasons = Object.entries(series.seasons).reduce(
+              (acc, [season, episodes]) => {
+                const updatedEpisodes = episodes.filter((episode) => episode.name !== entry.name);
+                if (updatedEpisodes.length > 0) {
+                  acc[season] = updatedEpisodes;
+                }
+                return acc;
+              },
+              {}
+            );
+
+            if (Object.keys(updatedSeasons).length > 0) {
+              return {
+                ...series,
+                seasons: updatedSeasons,
+              };
+            }
+            return null;
+          })
+          .filter(Boolean);
+
+        return {
+          ...user,
+          movies: updatedMovies,
+          series: updatedSeries,
+        };
+      }
+      return user;
+    });
+
+    setUsers(updatedUsers);
+  }
+
+  function handleDeleteSeriesFromViewed(entry) {
+    // Pobierz nazwę serialu
+    const seriesName = entry.seriesName;
+
+    // Znajdź wszystkie elementy o tej samej nazwie serialu w przechowywanej liście
+    const deletedItems = watchedList.filter((item) => item.seriesName === seriesName);
+
+    // Dodaj wszystkie usunięte elementy za pomocą setDeletedItems
+    setDeletedItems((prevItems) => [...prevItems, ...deletedItems]);
+
+    // Pozostała część kodu...
+    const updatedUsers = users.map((user) => {
+      if (user.username === currentEditingProfile.username) {
+        const updatedMovies = user.movies.filter((movie) => movie.name !== entry.name);
+        const updatedSeries = user.series
+          .map((series) => {
+            const updatedSeasons = Object.entries(series.seasons).reduce(
+              (acc, [season, episodes]) => {
+                const updatedEpisodes = episodes.filter((episode) => episode.name !== entry.name);
+                if (updatedEpisodes.length > 0) {
+                  acc[season] = updatedEpisodes;
+                }
+                return acc;
+              },
+              {}
+            );
+
+            if (Object.keys(updatedSeasons).length > 0) {
+              return {
+                ...series,
+                seasons: updatedSeasons,
+              };
+            }
+            return null;
+          })
+          .filter(Boolean);
+
+        return {
+          ...user,
+          movies: updatedMovies,
+          series: updatedSeries,
+        };
+      }
+      return user;
+    });
+
+    setUsers(updatedUsers);
+  }
+
   return (
     <>
       <header>
@@ -145,30 +237,63 @@ export default function ActivityPage() {
                     key={crypto.randomUUID()}
                     className="activity-page__list-item"
                   >
-                    <time
-                      dateTime={entry.whenWatchedDetail}
-                      className="activity-page__list-item-date"
-                    >
-                      {entry.whenWatched}
-                    </time>
-                    <div className="activity-page__list-item-title">
-                      <a href="#">
-                        {entry.seriesName
-                          ? `${entry.seriesName}: Season ${entry.season}: "${entry.name}"`
-                          : entry.name}
-                      </a>
-                    </div>
+                    {!deletedItems.includes(entry.name) ? (
+                      <>
+                        <time
+                          dateTime={entry.whenWatchedDetail}
+                          className="activity-page__list-item-date"
+                        >
+                          {entry.whenWatched}
+                        </time>
+                        <div className="activity-page__list-item-title">
+                          <a href="#">
+                            {entry.seriesName
+                              ? `${entry.seriesName}: Season ${entry.season}: "${entry.name}"`
+                              : entry.name}
+                          </a>
+                        </div>
 
-                    <a
-                      href="#"
-                      className="activity-page__list-item-report-text"
-                    >
-                      Report a problem
-                    </a>
-                    <div className="activity-page__list-item-hiding-btn-wrapper">
-                      <button className="activity-page__list-item-remove-btn">⊘</button>
-                      <span>Hide from viewing history</span>
-                    </div>
+                        <a
+                          href="#"
+                          className="activity-page__list-item-report-text"
+                        >
+                          Report a problem
+                        </a>
+                        <div className="activity-page__list-item-hiding-btn-wrapper">
+                          <button
+                            className="activity-page__list-item-remove-btn"
+                            onClick={() => handleDeleteFromViewed(entry)}
+                          >
+                            ⊘
+                          </button>
+                          <span>Hide from viewing history</span>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="activity-page__list-item-delete-container">
+                        <p className="activity-page__list-item-delete-text">
+                          Within 24 hours,{" "}
+                          <strong>
+                            {entry.seriesName
+                              ? `${entry.seriesName}: Season ${entry.season}: "${entry.name}"`
+                              : entry.name}
+                          </strong>{" "}
+                          will no longer appear in the Netflix service as a title you have watched
+                          and will no longer be used to make recommendations to you, unless you
+                          watch it again. <a href="#">Learn more.</a>
+                        </p>
+                        {/* //! ADD FUNCTIONALITY OF DELETING WHOLE WATCHING SERIES IF IT'S IS SERIES */}
+                        {entry.seriesName && (
+                          <button
+                            href="#"
+                            className="activity-page__list-item-delete-btn"
+                            onClick={() => handleDeleteSeriesFromViewed(entry)}
+                          >
+                            Hide series?
+                          </button>
+                        )}
+                      </div>
+                    )}
                   </li>
                 ))}
               </>

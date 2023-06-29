@@ -76,24 +76,28 @@
           "1": [
             {
               "seriesNumber": 1,
+              "name": "Play All Three: Shrek's Swamp Stories",
               "watched": true,
               "watchTime": 48,
               "whenWatched": "22.06.2023"
             },
             {
               "seriesNumber": 2,
+              "name": "Scared Shrekless",
               "watched": true,
               "watchTime": 25,
               "whenWatched": "22.06.2023"
             },
             {
               "seriesNumber": 3,
+              "name": "Puss in Boots: The Three Diablos",
               "watched": true,
               "watchTime": 13,
               "whenWatched": "22.06.2023"
             },
             {
               "seriesNumber": 4,
+              "name": "Far Far Away Idol",
               "watched": true,
               "watchTime": 9,
               "whenWatched": "23.06.2023"
@@ -109,48 +113,56 @@
           "1": [
             {
               "seriesNumber": 1,
+              "name": "Diamond of the First Water",
               "watched": true,
               "watchTime": 58,
               "whenWatched": "03.05.2023"
             },
             {
               "seriesNumber": 2,
+              "name": "Shock and Delight",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "04.05.2023"
             },
             {
               "seriesNumber": 3,
+              "name": "Art of the Swoon",
               "watched": true,
               "watchTime": 57,
               "whenWatched": "05.05.2023"
             },
             {
               "seriesNumber": 4,
+              "name": "An Affair of Honor",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "06.05.2023"
             },
             {
               "seriesNumber": 5,
+              "name": "The Duke And I",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "07.05.2023"
             },
             {
               "seriesNumber": 6,
+              "name": "Swish",
               "watched": true,
               "watchTime": 57,
               "whenWatched": "07.05.2023"
             },
             {
               "seriesNumber": 7,
+              "name": "Oceans Apart",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "08.05.2023"
             },
             {
               "seriesNumber": 8,
+              "name": "After the Rain",
               "watched": true,
               "watchTime": 72,
               "whenWatched": "08.05.2023"
@@ -159,48 +171,56 @@
           "2": [
             {
               "seriesNumber": 1,
+              "name": "Capital R Rake",
               "watched": true,
               "watchTime": 70,
               "whenWatched": "08.05.2023"
             },
             {
               "seriesNumber": 2,
+              "name": "Off to the Races",
               "watched": true,
               "watchTime": 53,
               "whenWatched": "09.05.2023"
             },
             {
               "seriesNumber": 3,
+              "name": "A Bee in Your Bonnet",
               "watched": true,
               "watchTime": 68,
               "whenWatched": "10.05.2023"
             },
             {
               "seriesNumber": 4,
+              "name": "Victory",
               "watched": true,
               "watchTime": 58,
               "whenWatched": "11.05.2023"
             },
             {
               "seriesNumber": 5,
+              "name": "An Unthinkable Fate",
               "watched": true,
               "watchTime": 58,
               "whenWatched": "12.05.2023"
             },
             {
               "seriesNumber": 6,
+              "name": "The Choice",
               "watched": true,
               "watchTime": 69,
               "whenWatched": "13.05.2023"
             },
             {
               "seriesNumber": 7,
+              "name": "Harmony",
               "watched": true,
               "watchTime": 59,
               "whenWatched": "14.05.2023"
             },
             {
               "seriesNumber": 8,
+              "name": "The Viscount Who Loved Me",
               "watched": true,
               "watchTime": 72,
               "whenWatched": "15.05.2023"

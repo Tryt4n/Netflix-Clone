@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -25,6 +25,24 @@ export default function ActivityPage() {
   const [visibleRatingItems, setVisibleRatingItems] = useState(20);
   const [deletedItems, setDeletedItems] = useState([]);
 
+  //* Rating
+  const [ratingList, setRatingList] = useState([]);
+  const sortedRatingList = useMemo(() => {
+    //* Sorted ratingList
+    return [...currentEditingProfile.ratings].sort((a, b) => {
+      const dateA = moment(a.ratingDate, "DD.MM.YYYY");
+      const dateB = moment(b.ratingDate, "DD.MM.YYYY");
+      return dateB - dateA;
+    });
+  }, [currentEditingProfile.ratings]);
+
+  useEffect(() => {
+    setRatingList(sortedRatingList);
+  }, [sortedRatingList]);
+
+  const totalRatingItems = ratingList.length;
+  //////////////////////////////////////////////////////////////////////////////////////////*
+
   //* Watching
   const watchedMovieList = currentEditingProfile.movies.map((movie) => ({
     name: movie.name,
@@ -50,44 +68,6 @@ export default function ActivityPage() {
   watchedList.sort((a, b) => moment(b.whenWatchedDetail).diff(a.whenWatchedDetail));
   const totalMovieItems = watchedList.length;
   //////////////////////////////////////////////////////////////////////////////////////////*
-
-  //* Rating
-  const ratingMoviesList = currentEditingProfile.movies
-    .filter((movie) => movie.rating)
-    .map((movie) => ({
-      name: movie.name,
-      rating: movie.rating,
-      ratingDate: movie.ratingDate,
-      ratingDateDetail: moment(movie.whenWatched, "DD.MM.YYYY").toDate(),
-    }));
-
-  const ratingSeriesList = currentEditingProfile.series
-    .filter((series) => series.rating)
-    .map((series) => ({
-      name: series.name,
-      rating: series.rating,
-      ratingDate: series.ratingDate,
-      ratingDateDetail: moment(series.ratingDate, "DD.MM.YYYY").toDate(),
-    }));
-
-  const ratingList = ratingMoviesList.concat(...ratingSeriesList);
-  ratingList.sort((a, b) => moment(b.ratingDateDetail).diff(a.ratingDateDetail));
-  const totalRatingItems = ratingList.length;
-  //////////////////////////////////////////////////////////////////////////////////////////*
-
-  function handleLoadMore() {
-    if (watchingActivity === "watching") {
-      setVisibleMovieItems((prevState) => Math.min(prevState + 20, totalMovieItems));
-    } else if (watchingActivity === "rating") {
-      setVisibleRatingItems((prevState) => Math.min(prevState + 20, totalRatingItems));
-    } else return;
-  }
-
-  function reset() {
-    setVisibleMovieItems(20);
-    setVisibleRatingItems(20);
-    setDeletedItems([]);
-  }
 
   function handleDeleteFromViewed(entry) {
     setDeletedItems((prevItems) => [...prevItems, entry.name]);
@@ -130,53 +110,48 @@ export default function ActivityPage() {
     setUsers(updatedUsers);
   }
 
-  function handleDeleteSeriesFromViewed(entry) {
-    // Pobierz nazwę serialu
-    const seriesName = entry.seriesName;
+  function handleRatingChange(entry, newRating) {
+    const updatedRatingList = ratingList.map((ratingEntry) => {
+      if (ratingEntry.name === entry.name && ratingEntry.ratingDate === entry.ratingDate) {
+        if (ratingEntry.rating === newRating) {
+          return null; //* Item deletion
+        } else {
+          return {
+            ...ratingEntry,
+            rating: newRating,
+            ratingDate: moment().format("DD.MM.YYYY"),
+          };
+        }
+      }
+      return ratingEntry;
+    });
 
-    // Znajdź wszystkie elementy o tej samej nazwie serialu w przechowywanej liście
-    const deletedItems = watchedList.filter((item) => item.seriesName === seriesName);
-
-    // Dodaj wszystkie usunięte elementy za pomocą setDeletedItems
-    setDeletedItems((prevItems) => [...prevItems, ...deletedItems]);
-
-    // Pozostała część kodu...
     const updatedUsers = users.map((user) => {
       if (user.username === currentEditingProfile.username) {
-        const updatedMovies = user.movies.filter((movie) => movie.name !== entry.name);
-        const updatedSeries = user.series
-          .map((series) => {
-            const updatedSeasons = Object.entries(series.seasons).reduce(
-              (acc, [season, episodes]) => {
-                const updatedEpisodes = episodes.filter((episode) => episode.name !== entry.name);
-                if (updatedEpisodes.length > 0) {
-                  acc[season] = updatedEpisodes;
-                }
-                return acc;
-              },
-              {}
-            );
-
-            if (Object.keys(updatedSeasons).length > 0) {
-              return {
-                ...series,
-                seasons: updatedSeasons,
-              };
-            }
-            return null;
-          })
-          .filter(Boolean);
-
         return {
           ...user,
-          movies: updatedMovies,
-          series: updatedSeries,
+          ratings: updatedRatingList.filter((entry) => entry !== null),
         };
       }
       return user;
     });
 
+    setRatingList(updatedRatingList.filter((entry) => entry !== null)); //* Item deletion
     setUsers(updatedUsers);
+  }
+
+  function handleLoadMore() {
+    if (watchingActivity === "watching") {
+      setVisibleMovieItems((prevState) => Math.min(prevState + 20, totalMovieItems));
+    } else if (watchingActivity === "rating") {
+      setVisibleRatingItems((prevState) => Math.min(prevState + 20, totalRatingItems));
+    } else return;
+  }
+
+  function reset() {
+    setVisibleMovieItems(20);
+    setVisibleRatingItems(20);
+    setDeletedItems([]);
   }
 
   return (
@@ -287,7 +262,7 @@ export default function ActivityPage() {
                           <button
                             href="#"
                             className="activity-page__list-item-delete-btn"
-                            onClick={() => handleDeleteSeriesFromViewed(entry)}
+                            // onClick={() => handleDeleteSeriesFromViewed(entry)}
                           >
                             Hide series?
                           </button>
@@ -305,7 +280,7 @@ export default function ActivityPage() {
                     className="activity-page__list-item"
                   >
                     <time
-                      dateTime={entry.ratingDateDetail}
+                      dateTime={entry.ratingDate}
                       className="activity-page__list-item-date"
                     >
                       {entry.ratingDate}
@@ -313,15 +288,45 @@ export default function ActivityPage() {
                     <div className="activity-page__list-item-title">
                       <a href="#">{entry.name}</a>
                     </div>
-                    <div>
-                      <button className="activity-page__rating-btn">
+                    <div className="activity-page__list-item-btn-rating-container">
+                      <button
+                        className="activity-page__rating-btn"
+                        data-rating="dislike"
+                        aria-label={
+                          entry.rating === "dislike"
+                            ? "Already rated: thumbs down (click to remove rating)"
+                            : "Rate Thumbs Down"
+                        }
+                        onClick={() => handleRatingChange(entry, "dislike")}
+                      >
                         {entry.rating === "dislike" ? <DislikeIconFilled /> : <DislikeIcon />}
+                        <span className="visually-hidden">Dislike</span>
                       </button>
-                      <button className="activity-page__rating-btn">
+                      <button
+                        className="activity-page__rating-btn"
+                        data-rating="like"
+                        aria-label={
+                          entry.rating === "like"
+                            ? "Already rated: thumbs up (click to remove rating)"
+                            : "Rate Thumbs Up"
+                        }
+                        onClick={() => handleRatingChange(entry, "like")}
+                      >
                         {entry.rating === "like" ? <LikeIconFilled /> : <LikeIcon />}
+                        <span className="visually-hidden">Like</span>
                       </button>
-                      <button className="activity-page__rating-btn">
+                      <button
+                        className="activity-page__rating-btn"
+                        data-rating="superlike"
+                        aria-label={
+                          entry.rating === "superlike"
+                            ? "Already rated: two thumbs up (click to remove rating)"
+                            : "Rate Two Thumbs Up"
+                        }
+                        onClick={() => handleRatingChange(entry, "superlike")}
+                      >
                         {entry.rating === "superlike" ? <SuperLikeIconFilled /> : <SuperLikeIcon />}
+                        <span className="visually-hidden">Superlike</span>
                       </button>
                     </div>
                   </li>

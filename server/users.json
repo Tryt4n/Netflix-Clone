@@ -56,17 +56,13 @@
         "name": "The Mother",
         "watched": true,
         "watchTime": 117,
-        "whenWatched": "27.06.2023",
-        "rating": "dislike",
-        "ratingDate": "27.06.2023"
+        "whenWatched": "27.06.2023"
       },
       {
         "name": "Shrek",
         "watched": false,
         "watchTime": 32,
-        "whenWatched": "26.06.2023",
-        "rating": "superlike",
-        "ratingDate": "05.07.2023"
+        "whenWatched": "26.06.2023"
       }
     ],
     "series": [
@@ -107,8 +103,6 @@
       },
       {
         "name": "Bridgerton",
-        "rating": "like",
-        "ratingDate": "08.05.2023",
         "seasons": {
           "1": [
             {
@@ -227,6 +221,23 @@
             }
           ]
         }
+      }
+    ],
+    "ratings": [
+      {
+        "name": "The Mother",
+        "rating": "dislike",
+        "ratingDate": "27.06.2023"
+      },
+      {
+        "name": "Shrek",
+        "rating": "superlike",
+        "ratingDate": "05.07.2023"
+      },
+      {
+        "name": "Bridgerton",
+        "rating": "like",
+        "ratingDate": "08.05.2023"
       }
     ]
   },

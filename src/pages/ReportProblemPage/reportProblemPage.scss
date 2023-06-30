@@ -1,0 +1,96 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/breakpoints" as b;
+@use "../../base/functions" as func;
+
+.report-problem {
+  $inner-breakpoint: func.rem(700);
+
+  & * {
+    font-weight: normal;
+  }
+
+  &__heading {
+    font-size: v.$account-heading;
+    line-height: 100%;
+    margin-bottom: 0.5em;
+  }
+
+  &__subheading {
+    font-size: 1.17em;
+    text-wrap: balance;
+    margin-bottom: 0.75em;
+  }
+
+  &__wrapper {
+    @include flex();
+    gap: 1.5rem;
+  }
+
+  &__image {
+    width: func.rem(107);
+    height: func.rem(150);
+    @media screen and (width < $inner-breakpoint) {
+      display: none;
+    }
+  }
+
+  &__form {
+    flex-grow: 1;
+  }
+
+  &__checkbox-wrapper {
+    @include flex(row, flex-start, flex-start);
+    margin-bottom: 1em;
+    &:first-of-type {
+      margin-top: 1em;
+    }
+  }
+
+  &__checkbox-label {
+    @include flex(column);
+    padding-left: 0.5em;
+    width: fit-content;
+    & > span {
+      text-wrap: balance;
+    }
+  }
+
+  &__textarea-wrapper {
+    @include flex(column);
+  }
+
+  &__textarea-label,
+  & small {
+    color: c.$gray-text;
+  }
+  &__textarea-label {
+    padding-bottom: 0.3em;
+    @media screen and (width < $inner-breakpoint) {
+      font-size: func.rem(14);
+    }
+  }
+  & small {
+    font-size: v.$font-size-navbar;
+  }
+
+  &__textarea {
+    resize: none;
+    padding: 0.5em;
+    font: inherit;
+  }
+
+  &__btns-wrapper {
+    @include flex();
+    gap: 1rem;
+    margin-top: 1.5rem;
+    @media screen and (width < b.$mobile-medium) {
+      flex-direction: column;
+      gap: 0;
+      & > * {
+        font-size: v.$font-base;
+      }
+    }
+  }
+}

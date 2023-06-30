@@ -10,7 +10,10 @@ export default function NavbarShort() {
   return (
     <nav className="navbar-bg">
       <h2 className="visually-hidden">{t("navigation")}</h2>
-      <Link to="/">
+      <Link
+        to="/"
+        className="navbar-logo-link"
+      >
         <img
           className="netflix-logo"
           src="/images/logos/netflix-logo.svg"

@@ -5,17 +5,13 @@
 @use "../../base/breakpoints" as b;
 
 .activity-page {
-  background-color: c.$account-bg;
-  font-size: v.$font-base;
-  min-height: calc(100dvh - v.$navbar-height);
-
   &__header-container {
     @include flex(row, space-between, center);
     margin-bottom: 1.75em;
   }
 
   &__heading {
-    font-size: clamp(1.5rem, 1.22rem + 1.42vw, 2.13rem);
+    font-size: v.$account-heading;
     font-weight: normal;
     margin-bottom: 0.3em;
   }
@@ -91,8 +87,6 @@
   &__list-item-date {
     padding-left: func.rem(5);
     padding-right: 1.5em;
-    // margin-left: func.rem(5);
-    // margin-right: 1.5em;
     min-width: func.rem(105);
     @media screen and (width < b.$account-page-tablet) {
       margin: 0;
@@ -115,6 +109,9 @@
     @media screen and (width < b.$account-page-tablet) {
       font-size: 0.9em;
       margin-bottom: 1.5em;
+    }
+    &.reported {
+      color: #3ba93c;
     }
   }
 
@@ -198,15 +195,15 @@
       right: 0;
       top: 0;
       translate: 15% -100%;
-      opacity: 0;
-      visibility: hidden;
-      transition: v.$main-transition;
-      font-size: 0.7em;
-      line-height: 0.7em;
       padding: 0.5em;
       background-color: c.$white;
       border: func.rem(1) solid c.$black;
+      font-size: 0.7em;
+      line-height: 0.7em;
       text-wrap: nowrap;
+      transition: v.$main-transition;
+      opacity: 0;
+      visibility: hidden;
     }
 
     &:hover span {
@@ -291,6 +288,3 @@
     }
   }
 }
-
-//Report a problem na Problem reported
-// color: #3ba93c;

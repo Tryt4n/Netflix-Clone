@@ -17,6 +17,7 @@ import RestrictionPage from "./pages/RestrictionPage/RestrictionPage";
 import LanguageChangePage from "./pages/LanguageChangePage/LanguageChangePage";
 import PINCodePage from "./pages/PINCodePage/PINCodePage";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
+import ReportProblemPage from "./pages/ReportProblemPage/ReportProblemPage";
 
 export default function App() {
   const location = useLocation();
@@ -93,6 +94,10 @@ export default function App() {
             element={<ActivityPage />}
           />
         </Route>
+        <Route
+          path="/reportproblem/:id"
+          element={<ReportProblemPage />}
+        />
       </Routes>
     </>
   );

@@ -13,6 +13,12 @@
   overflow: hidden;
 }
 
+.settings-wrapper {
+  background-color: c.$account-bg;
+  font-size: v.$font-base;
+  min-height: calc(100dvh - v.$navbar-height);
+}
+
 .settings-container {
   margin-inline: auto;
   margin-bottom: -3rem;

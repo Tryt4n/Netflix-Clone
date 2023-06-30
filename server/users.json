@@ -19,47 +19,57 @@
         "name": "Fubar",
         "text": "New Arrival",
         "time": "1 day ago",
-        "image": "./images/notifications/fubar.jpg"
+        "image": "/images/notifications/fubar.jpg"
       },
       {
         "id": 2,
         "name": "Mother's Day",
         "text": "New Arrival",
         "time": "1 week ago",
-        "image": "./images/notifications/mother's_day.jpg"
+        "image": "/images/notifications/mother's_day.jpg"
       },
       {
         "id": 3,
         "name": "Muted",
         "text": "New Arrival",
         "time": "1 week ago",
-        "image": "./images/notifications/muted.jpg"
+        "image": "/images/notifications/muted.jpg"
       },
       {
         "id": 4,
         "name": "The Mother",
         "text": "New Arrival",
         "time": "2 weeks ago",
-        "image": "./images/notifications/the_mother.jpg"
+        "image": "/images/notifications/the_mother.jpg"
       },
       {
         "id": 5,
         "name": "Welcome to Eden",
         "text": "Now Available",
         "time": "1 month ago",
-        "image": "./images/notifications/welcome_to_eden.jpg",
+        "image": "/images/notifications/welcome_to_eden.jpg",
         "season": 2
       }
     ],
     "movies": [
       {
         "name": "The Mother",
+        "image": "/images/videos/TheMother/image.webp",
+        "verticalImage": "/images/videos/TheMother/image-vertical.jpg",
+        "titleImage": "/images/videos/TheMother/title.webp",
+        "thumbnail": "/images/videos/TheMother/thumbnail.jpg",
+        "id": "EB3IB5EL990RAPY8V7X0",
         "watched": true,
         "watchTime": 117,
         "whenWatched": "27.06.2023"
       },
       {
         "name": "Shrek",
+        "image": "/images/videos/Shrek/image.webp",
+        "verticalImage": "/images/videos/Shrek/image-vertical.jpg",
+        "titleImage": "/images/videos/Shrek/title.webp",
+        "thumbnail": "/images/videos/Shrek/thumbnail.webp",
+        "id": "IA84HEU9QUS02CRSZ62M",
         "watched": false,
         "watchTime": 32,
         "whenWatched": "26.06.2023"
@@ -68,10 +78,15 @@
     "series": [
       {
         "name": "Shrek's Swamp Stories",
+        "image": "/images/videos/ShrekSwampStories/image.webp",
+        "verticalImage": "/images/videos/ShrekSwampStories/image-vertical.jpg",
+        "titleImage": "/images/videos/ShrekSwampStories/title.webp",
+        "thumbnail": "/images/videos/ShrekSwampStories/thumbnail.webp",
         "seasons": {
           "1": [
             {
               "seriesNumber": 1,
+              "id": "XAO1XQCIJILB6BW54FIK",
               "name": "Play All Three: Shrek's Swamp Stories",
               "watched": true,
               "watchTime": 48,
@@ -79,6 +94,7 @@
             },
             {
               "seriesNumber": 2,
+              "id": "EV61QDFTDGQXBLC2L10J",
               "name": "Scared Shrekless",
               "watched": true,
               "watchTime": 25,
@@ -86,6 +102,7 @@
             },
             {
               "seriesNumber": 3,
+              "id": "6I9CTCJFSQ6L2WU2DO3U",
               "name": "Puss in Boots: The Three Diablos",
               "watched": true,
               "watchTime": 13,
@@ -93,6 +110,7 @@
             },
             {
               "seriesNumber": 4,
+              "id": "1HDYZMZ392NUUTWCHM7G",
               "name": "Far Far Away Idol",
               "watched": true,
               "watchTime": 9,
@@ -103,10 +121,15 @@
       },
       {
         "name": "Bridgerton",
+        "image": "/images/videos/Bridgerton/image.webp",
+        "verticalImage": "/images/videos/Bridgerton/image-vertical.jpg",
+        "titleImage": "/images/videos/Bridgerton/title.webp",
+        "thumbnail": "/images/videos/Bridgerton/thumbnail.jpg",
         "seasons": {
           "1": [
             {
               "seriesNumber": 1,
+              "id": "GRTVP7HC1PQ4OR1ZNWEE",
               "name": "Diamond of the First Water",
               "watched": true,
               "watchTime": 58,
@@ -114,6 +137,7 @@
             },
             {
               "seriesNumber": 2,
+              "id": "X2BV8UBN5NVR3S7W485D",
               "name": "Shock and Delight",
               "watched": true,
               "watchTime": 61,
@@ -121,6 +145,7 @@
             },
             {
               "seriesNumber": 3,
+              "id": "PZ45CSP9AX1FKDZWWVYO",
               "name": "Art of the Swoon",
               "watched": true,
               "watchTime": 57,
@@ -128,6 +153,7 @@
             },
             {
               "seriesNumber": 4,
+              "id": "TY9SR2VXR9TED0S60T3A",
               "name": "An Affair of Honor",
               "watched": true,
               "watchTime": 61,
@@ -135,6 +161,7 @@
             },
             {
               "seriesNumber": 5,
+              "id": "YYPP8EN6K5MY7YXS53J8",
               "name": "The Duke And I",
               "watched": true,
               "watchTime": 61,
@@ -142,6 +169,7 @@
             },
             {
               "seriesNumber": 6,
+              "id": "FJGO01GHN4RBM8DQWOA7",
               "name": "Swish",
               "watched": true,
               "watchTime": 57,
@@ -149,6 +177,7 @@
             },
             {
               "seriesNumber": 7,
+              "id": "76AZUZK3T4783K4PEB3I",
               "name": "Oceans Apart",
               "watched": true,
               "watchTime": 61,
@@ -156,6 +185,7 @@
             },
             {
               "seriesNumber": 8,
+              "id": "B5EL990RAPY8V7X0IA84",
               "name": "After the Rain",
               "watched": true,
               "watchTime": 72,
@@ -165,6 +195,7 @@
           "2": [
             {
               "seriesNumber": 1,
+              "id": "HEU9QUS02CRSZ62MXAO1",
               "name": "Capital R Rake",
               "watched": true,
               "watchTime": 70,
@@ -172,6 +203,7 @@
             },
             {
               "seriesNumber": 2,
+              "id": "QDFTDGQXBLC2L10J6I9C",
               "name": "Off to the Races",
               "watched": true,
               "watchTime": 53,
@@ -179,6 +211,7 @@
             },
             {
               "seriesNumber": 3,
+              "id": "TCJFSQ6L2WU2DO3U1HDY",
               "name": "A Bee in Your Bonnet",
               "watched": true,
               "watchTime": 68,
@@ -186,6 +219,7 @@
             },
             {
               "seriesNumber": 4,
+              "id": "ZMZ392NUUTWCHM7GGRTV",
               "name": "Victory",
               "watched": true,
               "watchTime": 58,
@@ -193,6 +227,7 @@
             },
             {
               "seriesNumber": 5,
+              "id": "P7HC1PQ4OR1ZNWEEX2BV",
               "name": "An Unthinkable Fate",
               "watched": true,
               "watchTime": 58,
@@ -200,6 +235,7 @@
             },
             {
               "seriesNumber": 6,
+              "id": "8UBN5NVR3S7W485DPZ45",
               "name": "The Choice",
               "watched": true,
               "watchTime": 69,
@@ -207,6 +243,7 @@
             },
             {
               "seriesNumber": 7,
+              "id": "CSP9AX1FKDZWWVYOTY9S",
               "name": "Harmony",
               "watched": true,
               "watchTime": 59,
@@ -214,6 +251,7 @@
             },
             {
               "seriesNumber": 8,
+              "id": "R2VXR9TED0S60T3AYYPP",
               "name": "The Viscount Who Loved Me",
               "watched": true,
               "watchTime": 72,
@@ -261,26 +299,31 @@
         "name": "Fubar",
         "text": "New Arrival",
         "time": "1 day ago",
-        "image": "./images/notifications/fubar.jpg"
+        "image": "/images/notifications/fubar.jpg"
       },
       {
         "id": 2,
         "name": "Muted",
         "text": "New Arrival",
         "time": "1 week ago",
-        "image": "./images/notifications/muted.jpg"
+        "image": "/images/notifications/muted.jpg"
       },
       {
         "id": 3,
         "name": "The Mother",
         "text": "New Arrival",
         "time": "2 weeks ago",
-        "image": "./images/notifications/the_mother.jpg"
+        "image": "/images/notifications/the_mother.jpg"
       }
     ],
     "movies": [
       {
         "name": "The Mother",
+        "image": "/images/videos/TheMother/image.webp",
+        "verticalImage": "/images/videos/TheMother/image-vertical.jpg",
+        "titleImage": "/images/videos/TheMother/title.webp",
+        "thumbnail": "/images/videos/TheMother/thumbnail.jpg",
+        "id": "EB3IB5EL990RAPY8V7X0",
         "watched": true,
         "watchTime": 117,
         "whenWatched": "26.06.2023"
@@ -289,52 +332,72 @@
     "series": [
       {
         "name": "Bridgerton",
+        "image": "/images/videos/Bridgerton/image.webp",
+        "verticalImage": "/images/videos/Bridgerton/image-vertical.jpg",
+        "titleImage": "/images/videos/Bridgerton/title.webp",
+        "thumbnail": "/images/videos/Bridgerton/thumbnail.jpg",
         "seasons": {
           "1": [
             {
               "seriesNumber": 1,
+              "id": "GRTVP7HC1PQ4OR1ZNWEE",
+              "name": "Diamond of the First Water",
               "watched": true,
               "watchTime": 58,
               "whenWatched": "02.06.2023"
             },
             {
               "seriesNumber": 2,
+              "id": "X2BV8UBN5NVR3S7W485D",
+              "name": "Shock and Delight",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "03.06.2023"
             },
             {
               "seriesNumber": 3,
+              "id": "PZ45CSP9AX1FKDZWWVYO",
+              "name": "Art of the Swoon",
               "watched": true,
               "watchTime": 57,
               "whenWatched": "04.06.2023"
             },
             {
               "seriesNumber": 4,
+              "id": "TY9SR2VXR9TED0S60T3A",
+              "name": "An Affair of Honor",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "04.06.2023"
             },
             {
               "seriesNumber": 5,
+              "id": "YYPP8EN6K5MY7YXS53J8",
+              "name": "The Duke And I",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "05.06.2023"
             },
             {
               "seriesNumber": 6,
+              "id": "FJGO01GHN4RBM8DQWOA7",
+              "name": "Swish",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "06.06.2023"
             },
             {
               "seriesNumber": 7,
+              "id": "76AZUZK3T4783K4PEB3I",
+              "name": "Oceans Apart",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "06.06.2023"
             },
             {
               "seriesNumber": 8,
+              "id": "B5EL990RAPY8V7X0IA84",
+              "name": "After the Rain",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "07.06.2023"
@@ -343,48 +406,64 @@
           "2": [
             {
               "seriesNumber": 1,
+              "id": "HEU9QUS02CRSZ62MXAO1",
+              "name": "Capital R Rake",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "08.06.2023"
             },
             {
               "seriesNumber": 2,
+              "id": "QDFTDGQXBLC2L10J6I9C",
+              "name": "Off to the Races",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "09.06.2023"
             },
             {
               "seriesNumber": 3,
+              "id": "TCJFSQ6L2WU2DO3U1HDY",
+              "name": "A Bee in Your Bonnet",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "11.06.2023"
             },
             {
               "seriesNumber": 4,
+              "id": "ZMZ392NUUTWCHM7GGRTV",
+              "name": "Victory",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "13.06.2023"
             },
             {
               "seriesNumber": 5,
+              "id": "P7HC1PQ4OR1ZNWEEX2BV",
+              "name": "An Unthinkable Fate",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "13.06.2023"
             },
             {
               "seriesNumber": 6,
+              "id": "8UBN5NVR3S7W485DPZ45",
+              "name": "The Choice",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "13.06.2023"
             },
             {
               "seriesNumber": 7,
+              "id": "CSP9AX1FKDZWWVYOTY9S",
+              "name": "Harmony",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "15.06.2023"
             },
             {
               "seriesNumber": 8,
+              "id": "R2VXR9TED0S60T3AYYPP",
+              "name": "The Viscount Who Loved Me",
               "watched": false,
               "watchTime": 0,
               "whenWatched": "18.06.2023"
@@ -415,26 +494,36 @@
         "name": "Mother's Day",
         "text": "New Arrival",
         "time": "1 week ago",
-        "image": "./images/notifications/mother's_day.jpg"
+        "image": "/images/notifications/mother's_day.jpg"
       },
       {
         "id": 2,
         "name": "Welcome to Eden",
         "text": "Now Available",
         "time": "1 month ago",
-        "image": "./images/notifications/welcome_to_eden.jpg",
+        "image": "/images/notifications/welcome_to_eden.jpg",
         "season": 2
       }
     ],
     "movies": [
       {
         "name": "The Mother",
+        "image": "/images/videos/TheMother/image.webp",
+        "verticalImage": "/images/videos/TheMother/image-vertical.jpg",
+        "titleImage": "/images/videos/TheMother/title.webp",
+        "thumbnail": "/images/videos/TheMother/thumbnail.jpg",
+        "id": "EB3IB5EL990RAPY8V7X0",
         "watched": true,
         "watchTime": 117,
         "whenWatched": "27.06.2023"
       },
       {
         "name": "Shrek",
+        "image": "/images/videos/Shrek/image.webp",
+        "verticalImage": "/images/videos/Shrek/image-vertical.jpg",
+        "titleImage": "/images/videos/Shrek/title.webp",
+        "thumbnail": "/images/videos/Shrek/thumbnail.webp",
+        "id": "IA84HEU9QUS02CRSZ62M",
         "watched": false,
         "watchTime": 32,
         "whenWatched": "27.06.2023"
@@ -443,28 +532,40 @@
     "series": [
       {
         "name": "Shrek's Swamp Stories",
+        "image": "/images/videos/ShrekSwampStories/image.webp",
+        "verticalImage": "/images/videos/ShrekSwampStories/image-vertical.jpg",
+        "titleImage": "/images/videos/ShrekSwampStories/title.webp",
+        "thumbnail": "/images/videos/ShrekSwampStories/thumbnail.webp",
         "seasons": {
           "1": [
             {
               "seriesNumber": 1,
+              "id": "XAO1XQCIJILB6BW54FIK",
+              "name": "Play All Three: Shrek's Swamp Stories",
               "watched": true,
               "watchTime": 48,
               "whenWatched": "25.06.2023"
             },
             {
               "seriesNumber": 2,
+              "id": "EV61QDFTDGQXBLC2L10J",
+              "name": "Scared Shrekless",
               "watched": true,
               "watchTime": 25,
               "whenWatched": "25.06.2023"
             },
             {
               "seriesNumber": 3,
+              "id": "6I9CTCJFSQ6L2WU2DO3U",
+              "name": "Puss in Boots: The Three Diablos",
               "watched": true,
               "watchTime": 13,
               "whenWatched": "26.06.2023"
             },
             {
               "seriesNumber": 4,
+              "id": "1HDYZMZ392NUUTWCHM7G",
+              "name": "Far Far Away Idol",
               "watched": true,
               "watchTime": 9,
               "whenWatched": "26.06.2023"
@@ -495,18 +596,28 @@
         "name": "The Mother",
         "text": "New Arrival",
         "time": "2 weeks ago",
-        "image": "./images/notifications/the_mother.jpg"
+        "image": "/images/notifications/the_mother.jpg"
       }
     ],
     "movies": [
       {
         "name": "The Mother",
+        "image": "/images/videos/TheMother/image.webp",
+        "verticalImage": "/images/videos/TheMother/image-vertical.jpg",
+        "titleImage": "/images/videos/TheMother/title.webp",
+        "thumbnail": "/images/videos/TheMother/thumbnail.jpg",
+        "id": "EB3IB5EL990RAPY8V7X0",
         "watched": true,
         "watchTime": 117,
         "whenWatched": "26.06.2023"
       },
       {
         "name": "Shrek",
+        "image": "/images/videos/Shrek/image.webp",
+        "verticalImage": "/images/videos/Shrek/image-vertical.jpg",
+        "titleImage": "/images/videos/Shrek/title.webp",
+        "thumbnail": "/images/videos/Shrek/thumbnail.webp",
+        "id": "IA84HEU9QUS02CRSZ62M",
         "watched": false,
         "watchTime": 32,
         "whenWatched": "26.06.2023"
@@ -515,52 +626,72 @@
     "series": [
       {
         "name": "Bridgerton",
+        "image": "/images/videos/Bridgerton/image.webp",
+        "verticalImage": "/images/videos/Bridgerton/image-vertical.jpg",
+        "titleImage": "/images/videos/Bridgerton/title.webp",
+        "thumbnail": "/images/videos/Bridgerton/thumbnail.jpg",
         "seasons": {
           "1": [
             {
               "seriesNumber": 1,
+              "id": "GRTVP7HC1PQ4OR1ZNWEE",
+              "name": "Diamond of the First Water",
               "watched": true,
               "watchTime": 58,
               "whenWatched": "14.06.2023"
             },
             {
               "seriesNumber": 2,
+              "id": "X2BV8UBN5NVR3S7W485D",
+              "name": "Shock and Delight",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "14.06.2023"
             },
             {
               "seriesNumber": 3,
+              "id": "PZ45CSP9AX1FKDZWWVYO",
+              "name": "Art of the Swoon",
               "watched": true,
               "watchTime": 57,
               "whenWatched": "15.06.2023"
             },
             {
               "seriesNumber": 4,
+              "id": "TY9SR2VXR9TED0S60T3A",
+              "name": "An Affair of Honor",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "16.06.2023"
             },
             {
               "seriesNumber": 5,
+              "id": "YYPP8EN6K5MY7YXS53J8",
+              "name": "The Duke And I",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "17.06.2023"
             },
             {
               "seriesNumber": 6,
+              "id": "FJGO01GHN4RBM8DQWOA7",
+              "name": "Swish",
               "watched": true,
               "watchTime": 57,
               "whenWatched": "17.06.2023"
             },
             {
               "seriesNumber": 7,
+              "id": "76AZUZK3T4783K4PEB3I",
+              "name": "Oceans Apart",
               "watched": true,
               "watchTime": 61,
               "whenWatched": "17.06.2023"
             },
             {
               "seriesNumber": 8,
+              "id": "B5EL990RAPY8V7X0IA84",
+              "name": "After the Rain",
               "watched": true,
               "watchTime": 72,
               "whenWatched": "18.06.2023"
@@ -569,36 +700,48 @@
           "2": [
             {
               "seriesNumber": 1,
+              "id": "HEU9QUS02CRSZ62MXAO1",
+              "name": "Capital R Rake",
               "watched": true,
               "watchTime": 70,
               "whenWatched": "19.06.2023"
             },
             {
               "seriesNumber": 2,
+              "id": "QDFTDGQXBLC2L10J6I9C",
+              "name": "Off to the Races",
               "watched": true,
               "watchTime": 53,
               "whenWatched": "20.06.2023"
             },
             {
               "seriesNumber": 3,
+              "id": "TCJFSQ6L2WU2DO3U1HDY",
+              "name": "A Bee in Your Bonnet",
               "watched": true,
               "watchTime": 68,
               "whenWatched": "20.06.2023"
             },
             {
               "seriesNumber": 4,
+              "id": "ZMZ392NUUTWCHM7GGRTV",
+              "name": "Victory",
               "watched": true,
               "watchTime": 58,
               "whenWatched": "20.06.2023"
             },
             {
               "seriesNumber": 5,
+              "id": "P7HC1PQ4OR1ZNWEEX2BV",
+              "name": "An Unthinkable Fate",
               "watched": false,
               "watchTime": 32,
               "whenWatched": "21.06.2023"
             },
             {
               "seriesNumber": 6,
+              "id": "8UBN5NVR3S7W485DPZ45",
+              "name": "The Choice",
               "watched": false,
               "watchTime": 12,
               "whenWatched": "22.06.2023"
@@ -628,18 +771,33 @@
     "movies": [
       {
         "name": "Shrek",
+        "image": "/images/videos/Shrek/image.webp",
+        "verticalImage": "/images/videos/Shrek/image-vertical.jpg",
+        "titleImage": "/images/videos/Shrek/title.webp",
+        "thumbnail": "/images/videos/Shrek/thumbnail.webp",
+        "id": "IA84HEU9QUS02CRSZ62M",
         "watched": true,
         "watchTime": 90,
         "whenWatched": "01.06.2023"
       },
       {
         "name": "Shrek 2",
+        "image": "/images/videos/Shrek2/image.webp",
+        "verticalImage": "/images/videos/Shrek2/image-vertical.jpg",
+        "titleImage": "/images/videos/Shrek2/title.webp",
+        "thumbnail": "/images/videos/Shrek2/thumbnail.webp",
+        "id": "01GHN4RBM8DQWOA776AZ",
         "watched": true,
         "watchTime": 92,
         "whenWatched": "02.06.2023"
       },
       {
         "name": "Shrek The Third",
+        "image": "/images/videos/Shrek3/image.webp",
+        "verticalImage": "/images/videos/Shrek3/image-vertical.jpg",
+        "titleImage": "/images/videos/Shrek3/title.webp",
+        "thumbnail": "/images/videos/Shrek3/thumbnail.webp",
+        "id": "UZK3T4783K4PEB3IB5EL",
         "watched": true,
         "watchTime": 93,
         "whenWatched": "03.06.2023"
@@ -648,28 +806,40 @@
     "series": [
       {
         "name": "Spooky Stories",
+        "image": "/images/videos/ShrekSpookyStories/image.webp",
+        "verticalImage": "/images/videos/ShrekSpookyStories/image-vertical.jpg",
+        "titleImage": "/images/videos/ShrekSpookyStories/title.webp",
+        "thumbnail": "/images/videos/ShrekSpookyStories/thumbnail.webp",
         "seasons": {
           "1": [
             {
               "seriesNumber": 1,
+              "id": "990RAPY8V7X0IA84HEU9",
+              "name": "Play All Three: Shrek's Swamp Stories",
               "watched": true,
               "watchTime": 65,
               "whenWatched": "12.06.2023"
             },
             {
               "seriesNumber": 2,
+              "id": "QUS02CRSZ62MXAO1XQCI",
+              "name": "Scared Shrekless",
               "watched": true,
               "watchTime": 25,
               "whenWatched": "12.06.2023"
             },
             {
               "seriesNumber": 3,
+              "id": "JILB6BW54FIKEV61QDFT",
+              "name": "The Ghost of Lord Farquaad",
               "watched": true,
               "watchTime": 12,
               "whenWatched": "12.06.2023"
             },
             {
               "seriesNumber": 4,
+              "id": "DGQXBLC2L10J6I9CTCJF",
+              "name": "Monsters vs. Aliens: Mutant Pumpkins from Outer Space",
               "watched": false,
               "watchTime": 12,
               "whenWatched": "12.06.2023"

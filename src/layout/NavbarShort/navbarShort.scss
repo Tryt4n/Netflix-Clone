@@ -1,8 +1,10 @@
+@use "../../abstracts/mixins" as *;
 @use "../../abstracts/colors" as c;
 @use "../../abstracts/variables" as v;
 
 .navbar-bg {
   background-color: c.$bg-color;
+  @include flex();
 
   .netflix-logo {
     height: v.$navbar-height;

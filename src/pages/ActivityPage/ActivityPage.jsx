@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import UserContext from "../../context/UserContext";
 
@@ -19,8 +20,16 @@ import { useTranslation } from "react-i18next";
 export default function ActivityPage() {
   const { t } = useTranslation();
 
-  const { currentEditingProfile, watchingActivity, setWatchingActivity, users, setUsers } =
-    useContext(UserContext);
+  const {
+    currentEditingProfile,
+    watchingActivity,
+    setWatchingActivity,
+    users,
+    setUsers,
+    reportedMovie,
+    setReportedMovie,
+    isReported,
+  } = useContext(UserContext);
   const [visibleMovieItems, setVisibleMovieItems] = useState(20);
   const [visibleRatingItems, setVisibleRatingItems] = useState(20);
   const [deletedItems, setDeletedItems] = useState([]);
@@ -47,6 +56,8 @@ export default function ActivityPage() {
   //* Watching
   const watchedMovieList = currentEditingProfile.movies.map((movie) => ({
     name: movie.name,
+    verticalImage: movie.verticalImage,
+    id: movie.id,
     whenWatched: movie.whenWatched,
     whenWatchedDetail: moment(movie.whenWatched, "DD.MM.YYYY").toDate(),
   }));
@@ -55,6 +66,8 @@ export default function ActivityPage() {
     const seasonList = Object.entries(series.seasons).map(([season, episodes]) => {
       return episodes.map((episode) => ({
         seriesName: series.name,
+        verticalImage: series.verticalImage,
+        id: episode.id,
         name: episode.name,
         season: season,
         whenWatched: episode.whenWatched,
@@ -199,6 +212,10 @@ export default function ActivityPage() {
     setUsers(updatedUsers);
   }
 
+  function reportMovie(entry) {
+    setReportedMovie(entry);
+  }
+
   function handleLoadMore() {
     if (watchingActivity === "watching") {
       setVisibleMovieItems((prevState) => Math.min(prevState + 20, totalMovieItems));
@@ -207,25 +224,50 @@ export default function ActivityPage() {
     } else return;
   }
 
+  const downloadListAsTxt = () => {
+    const textContent = watchedList
+      .map((item) => {
+        if (item.seriesName) {
+          return `${item.seriesName}: ${t("season")} ${item.season}: ${item.name}, "${
+            item.whenWatched
+          }"`;
+        } else {
+          return `${item.name}, "${item.whenWatched}"`;
+        }
+      })
+      .join("\n");
+
+    const blob = new Blob([textContent], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "watched_list.txt";
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
+
   function reset() {
     setVisibleMovieItems(20);
     setVisibleRatingItems(20);
     setDeletedItems([]);
     setIsBtnHideAllDisabled(false);
+    setReportedMovie({});
   }
 
   return (
     <>
       <header>
-        <h1 className="visually-hidden">Activity Settings Page</h1>
+        <h1 className="visually-hidden">{t("activityPage")}</h1>
         <NavbarShort />
       </header>
-      <div className="activity-page">
+      <div className="activity-page settings-wrapper">
         <main className="settings-container">
           <header className="activity-page__header-container">
             <div>
               <h2 className="activity-page__heading">
-                Activity for {currentEditingProfile.username}
+                {t("activityFor")} {currentEditingProfile.username}
               </h2>
               <div className="activity-page__tabs-container">
                 <button
@@ -235,14 +277,14 @@ export default function ActivityPage() {
                   onClick={() => setWatchingActivity("watching")}
                   disabled={watchingActivity === "watching"}
                 >
-                  Watching
+                  {t("watching")}
                 </button>
                 <button
                   className={`activity-page__tab${watchingActivity === "rating" ? " active" : ""}`}
                   onClick={() => setWatchingActivity("rating")}
                   disabled={watchingActivity === "rating"}
                 >
-                  Rating
+                  {t("rating")}
                 </button>
               </div>
             </div>
@@ -256,12 +298,10 @@ export default function ActivityPage() {
           </header>
 
           {watchingActivity === "watching" && totalMovieItems <= 0 && (
-            <strong className="activity-page__warning-empty">There is no watch history.</strong>
+            <strong className="activity-page__warning-empty">{t("noWatchHistory")}</strong>
           )}
           {watchingActivity === "rating" && totalRatingItems <= 0 && (
-            <strong className="activity-page__warning-empty">
-              There are no rated movies or series.
-            </strong>
+            <strong className="activity-page__warning-empty">{t("noRatingMovies")}</strong>
           )}
 
           <ul>
@@ -283,39 +323,56 @@ export default function ActivityPage() {
                         <div className="activity-page__list-item-title">
                           <a href="#">
                             {entry.seriesName
-                              ? `${entry.seriesName}: Season ${entry.season}: "${entry.name}"`
+                              ? `${entry.seriesName}: ${t("season")} ${entry.season}: "${
+                                  entry.name
+                                }"`
                               : entry.name}
                           </a>
                         </div>
 
-                        <a
-                          href="#"
-                          className="activity-page__list-item-report-text"
+                        <Link
+                          to={`/reportproblem/${entry.id}`}
+                          className={`activity-page__list-item-report-text${
+                            isReported && reportedMovie.id === entry.id ? " reported" : ""
+                          }`}
+                          onClick={() => reportMovie(entry)}
+                          disabled={isReported && reportedMovie.id === entry.id}
                         >
-                          Report a problem
-                        </a>
+                          {isReported && reportedMovie.id === entry.id
+                            ? t("problemReported")
+                            : t("problemReport")}
+                        </Link>
                         <div className="activity-page__list-item-hiding-btn-wrapper">
                           <button
                             className="activity-page__list-item-remove-btn"
                             onClick={() => handleDeleteFromViewed(entry)}
+                            aria-label={t("removeFromViewed")}
+                            aria-describedby={`history-tooltip-${entry.id}`}
+                            aria-haspopup="true"
+                            aria-controls={`history-tooltip-${entry.id}`}
                           >
                             ⊘
                           </button>
-                          <span>Hide from viewing history</span>
+                          <span
+                            id={`history-tooltip-${entry.id}`}
+                            aria-live=""
+                          >
+                            {t("hideFromViewingHistory")}
+                          </span>
                         </div>
                       </>
                     ) : (
                       <div className="activity-page__list-item-delete-container">
                         <p className="activity-page__list-item-delete-text">
-                          Within 24 hours,{" "}
+                          {t("within24Hours")},{" "}
                           <strong>
                             {entry.seriesName
-                              ? `${entry.seriesName}: Season ${entry.season}: "${entry.name}"`
+                              ? `${entry.seriesName}: ${t("season")} ${entry.season}: "${
+                                  entry.name
+                                }"`
                               : entry.name}
                           </strong>{" "}
-                          will no longer appear in the Netflix service as a title you have watched
-                          and will no longer be used to make recommendations to you, unless you
-                          watch it again. <a href="#">Learn more.</a>
+                          {t("willNoLongerAppear")} <a href="#">{t("learnMore")}</a>.
                         </p>
                         {entry.seriesName && (
                           <button
@@ -323,7 +380,7 @@ export default function ActivityPage() {
                             className="activity-page__list-item-delete-btn"
                             onClick={() => handleDeleteWholeSeries(entry)}
                           >
-                            Hide series?
+                            {t("hideSeries")}
                           </button>
                         )}
                       </div>
@@ -352,40 +409,34 @@ export default function ActivityPage() {
                         className="activity-page__rating-btn"
                         data-rating="dislike"
                         aria-label={
-                          entry.rating === "dislike"
-                            ? "Already rated: thumbs down (click to remove rating)"
-                            : "Rate Thumbs Down"
+                          entry.rating === "dislike" ? t("alreadyRateDislike") : t("rateDislike")
                         }
                         onClick={() => handleRatingChange(entry, "dislike")}
                       >
                         {entry.rating === "dislike" ? <DislikeIconFilled /> : <DislikeIcon />}
-                        <span className="visually-hidden">Dislike</span>
+                        <span className="visually-hidden">{t("dislike")}</span>
                       </button>
                       <button
                         className="activity-page__rating-btn"
                         data-rating="like"
-                        aria-label={
-                          entry.rating === "like"
-                            ? "Already rated: thumbs up (click to remove rating)"
-                            : "Rate Thumbs Up"
-                        }
+                        aria-label={entry.rating === "like" ? t("alreadyRateLike") : t("rateLike")}
                         onClick={() => handleRatingChange(entry, "like")}
                       >
                         {entry.rating === "like" ? <LikeIconFilled /> : <LikeIcon />}
-                        <span className="visually-hidden">Like</span>
+                        <span className="visually-hidden">{t("like")}</span>
                       </button>
                       <button
                         className="activity-page__rating-btn"
                         data-rating="superlike"
                         aria-label={
                           entry.rating === "superlike"
-                            ? "Already rated: two thumbs up (click to remove rating)"
-                            : "Rate Two Thumbs Up"
+                            ? t("alreadyRateSuperlike")
+                            : t("rateSuperlike")
                         }
                         onClick={() => handleRatingChange(entry, "superlike")}
                       >
                         {entry.rating === "superlike" ? <SuperLikeIconFilled /> : <SuperLikeIcon />}
-                        <span className="visually-hidden">Superlike</span>
+                        <span className="visually-hidden">{t("superlike")}</span>
                       </button>
                     </div>
                   </li>
@@ -397,7 +448,7 @@ export default function ActivityPage() {
           <div className="activity-page__btns-wrapper">
             <div>
               <AccountSettingsBtn
-                text={t("Show More")}
+                text={t("showMore")}
                 currentClass="accent"
                 isDisabled={
                   watchingActivity === "watching"
@@ -409,7 +460,7 @@ export default function ActivityPage() {
               />
 
               <AccountSettingsBtn
-                text={t("Back to Your Account")}
+                text={t("backToAccount")}
                 currentClass="light"
                 path={"/account"}
                 onClickFunction={reset}
@@ -422,9 +473,14 @@ export default function ActivityPage() {
                   onClick={handleDeleteAllViewingHistory}
                   disabled={isBtnHideAllDisabled}
                 >
-                  Hide all
+                  {t("hideAll")}
                 </button>
-                <button className="activity-page__operating-btn">Download all</button>
+                <button
+                  className="activity-page__operating-btn"
+                  onClick={downloadListAsTxt}
+                >
+                  {t("downloadAll")}
+                </button>
               </div>
             )}
           </div>

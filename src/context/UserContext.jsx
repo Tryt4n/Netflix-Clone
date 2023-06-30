@@ -19,6 +19,13 @@ export function UserProvider({ children }) {
   const [isCurrentlySaved, setIsCurrentlySaved] = useState(false);
   const [displayedSavedMessage, setDisplayedSavedMessage] = useState("");
 
+  //* Reporting Problem
+  const [reportedMovie, setReportedMovie, removeReportedMovie] = useSessionStorage(
+    "reportedMovie",
+    {}
+  );
+  const [isReported, setIsReported] = useState(false);
+
   //* Active watching Activity state. (watching / rating)
   const [watchingActivity, setWatchingActivity] = useState("watching");
 
@@ -92,7 +99,7 @@ export function UserProvider({ children }) {
         handleProfilePictureChange: handleProfilePictureChange,
         currentEditingProfile: currentEditingProfile,
         setCurrentEditingProfile: setCurrentEditingProfile,
-        removeCurrentEditingProfile: removeCurrentEditingProfile,
+        // removeCurrentEditingProfile: removeCurrentEditingProfile,
         isCurrentlySaved: isCurrentlySaved,
         setIsCurrentlySaved: setIsCurrentlySaved,
         displayedSavedMessage: displayedSavedMessage,
@@ -105,6 +112,11 @@ export function UserProvider({ children }) {
         resetPasswordConfirmationSettings: resetPasswordConfirmationSettings,
         watchingActivity: watchingActivity,
         setWatchingActivity: setWatchingActivity,
+        reportedMovie: reportedMovie,
+        setReportedMovie: setReportedMovie,
+        removeReportedMovie: removeReportedMovie,
+        isReported: isReported,
+        setIsReported: setIsReported,
       }}
     >
       {children}

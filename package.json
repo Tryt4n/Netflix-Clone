@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1",
     "react-router-dom": "^6.11.2",
+    "react-textarea-autosize": "^8.5.0",
     "swiper": "^9.3.2"
   },
   "devDependencies": {

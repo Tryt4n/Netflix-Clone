@@ -7,6 +7,7 @@ export default function AccountSettingsBtn({
   onClickFunction,
   path,
   isDisabled,
+  btnRef,
 }) {
   return (
     <>
@@ -15,6 +16,7 @@ export default function AccountSettingsBtn({
           to={path}
           className={`account-settings-btn account-settings-btn--${currentClass}`}
           onClick={onClickFunction}
+          ref={btnRef}
         >
           {text}
         </Link>

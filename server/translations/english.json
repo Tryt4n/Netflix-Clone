@@ -103,7 +103,7 @@
   "titlesRestrictionInputLabel": "Enter show or movie name you want to block.",
   "titlesRestrictionInputPlaceholder": "Enter show or movie name",
   "clearInput": "Clear Input",
-  "searchingBlockedMoviesBtnLabel": "Click to add to blocked list",
+  "searchingBlockedMoviesBtnLabel": "Click to add to the blocked list",
   "blockedMoviesListBtnLabel": "Click to remove from blocked list",
   "navigation": "Navigation",
   "secondaryNavigation": "Secondary Navigation",

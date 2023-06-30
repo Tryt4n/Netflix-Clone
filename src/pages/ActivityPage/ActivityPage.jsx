@@ -269,13 +269,18 @@ export default function ActivityPage() {
               <h2 className="activity-page__heading">
                 {t("activityFor")} {currentEditingProfile.username}
               </h2>
-              <div className="activity-page__tabs-container">
+              <div
+                className="activity-page__tabs-container"
+                role="tablist"
+              >
                 <button
                   className={`activity-page__tab${
                     watchingActivity === "watching" ? " active" : ""
                   }`}
                   onClick={() => setWatchingActivity("watching")}
                   disabled={watchingActivity === "watching"}
+                  role="tab"
+                  aria-selected={watchingActivity === "watching" ? true : false}
                 >
                   {t("watching")}
                 </button>
@@ -283,6 +288,8 @@ export default function ActivityPage() {
                   className={`activity-page__tab${watchingActivity === "rating" ? " active" : ""}`}
                   onClick={() => setWatchingActivity("rating")}
                   disabled={watchingActivity === "rating"}
+                  role="tab"
+                  aria-selected={watchingActivity === "rating" ? true : false}
                 >
                   {t("rating")}
                 </button>

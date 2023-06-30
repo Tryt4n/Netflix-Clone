@@ -31,6 +31,7 @@ export default function RestrictionPage() {
   const [listOfBlockedMovies, setListOfBlockedMovies] = useState(
     currentEditingProfile.blockedMovies !== undefined ? currentEditingProfile.blockedMovies : []
   );
+  const saveBtnRef = useRef(null);
   const blockedInputRef = useRef(null);
   const ratings = [
     { id: "all", label: t("all") },
@@ -89,6 +90,115 @@ export default function RestrictionPage() {
 
   function removeFromBlockedList(item) {
     setListOfBlockedMovies((prevState) => prevState.filter((blockedItem) => blockedItem !== item));
+  }
+
+  function handleKeyboardNavigationOnSearchingList(e) {
+    e.preventDefault();
+
+    const firstListElement =
+      e.currentTarget.parentElement.parentElement.firstChild.querySelector("button");
+    const lastListElement =
+      e.currentTarget.parentElement.parentElement.lastChild.querySelector("button");
+
+    if (e.key === "Escape") {
+      clearInput(blockedInputRef);
+      blockedInputRef.current.focus();
+    } else if (e.key === "ArrowDown") {
+      const nextListElement =
+        e.currentTarget.parentElement.nextElementSibling?.querySelector("button");
+      if (nextListElement) {
+        nextListElement.focus();
+      } else {
+        firstListElement.focus();
+      }
+    } else if (e.key === "ArrowUp") {
+      const previousListElement =
+        e.currentTarget.parentElement.previousElementSibling?.querySelector("button");
+      if (previousListElement) {
+        previousListElement.focus();
+      } else {
+        lastListElement.focus();
+      }
+    } else if (e.key === "Home") {
+      firstListElement.focus();
+    } else if (e.key === "End") {
+      lastListElement.focus();
+    } else if (e.key === "Enter") {
+      e.currentTarget.click();
+      blockedInputRef.current.focus();
+    } else if (e.key === "Tab") {
+      if (e.shiftKey) {
+        const previousListElement =
+          e.currentTarget.parentElement.previousElementSibling?.querySelector("button");
+        if (previousListElement) {
+          previousListElement.focus();
+        } else {
+          blockedInputRef.current.focus();
+        }
+      } else {
+        const nextListElement =
+          e.currentTarget.parentElement.nextElementSibling?.querySelector("button");
+        if (nextListElement) {
+          nextListElement.focus();
+        } else {
+          clearInput(blockedInputRef);
+        }
+      }
+    }
+  }
+
+  function handleKeyboardNavigationOnBlockedList(e) {
+    e.preventDefault();
+    if (blockedInputRef.current.value !== "") {
+      clearInput(blockedInputRef);
+    }
+
+    const firstListElement =
+      e.currentTarget.parentElement.parentElement.firstChild.querySelector("button");
+    const lastListElement =
+      e.currentTarget.parentElement.parentElement.lastChild.querySelector("button");
+
+    if (e.key === "ArrowDown") {
+      const nextListElement =
+        e.currentTarget.parentElement.nextElementSibling?.querySelector("button");
+      if (nextListElement) {
+        nextListElement.focus();
+      } else {
+        firstListElement.focus();
+      }
+    } else if (e.key === "ArrowUp") {
+      const previousListElement =
+        e.currentTarget.parentElement.previousElementSibling?.querySelector("button");
+      if (previousListElement) {
+        previousListElement.focus();
+      } else {
+        lastListElement.focus();
+      }
+    } else if (e.key === "Home") {
+      firstListElement.focus();
+    } else if (e.key === "End") {
+      lastListElement.focus();
+    } else if (e.key === "Enter") {
+      e.currentTarget.click();
+    } else if (e.key === "Tab") {
+      if (e.shiftKey) {
+        const previousListElement =
+          e.currentTarget.parentElement.previousElementSibling?.querySelector("button");
+        if (previousListElement) {
+          previousListElement.focus();
+        } else {
+          blockedInputRef.current.focus();
+        }
+      } else {
+        const nextListElement =
+          e.currentTarget.parentElement.nextElementSibling?.querySelector("button");
+        if (nextListElement) {
+          nextListElement.focus();
+        } else {
+          saveBtnRef.current.focus();
+        }
+      }
+    }
   }
 
   return (
@@ -243,6 +353,7 @@ export default function RestrictionPage() {
                             className="restriction-confirmation__searching-movies-list-item-btn"
                             aria-label={t("searchingBlockedMoviesBtnLabel")}
                             onClick={() => addToBlockedList(item)}
+                            onKeyDown={(e) => handleKeyboardNavigationOnSearchingList(e)}
                           >
                             {item.name} ({item.productionYear})
                           </button>
@@ -264,6 +375,7 @@ export default function RestrictionPage() {
                             className="restriction-confirmation__blocked-list-item-delete-btn"
                             aria-label={"blockedMoviesListBtnLabel"}
                             onClick={() => removeFromBlockedList(item)}
+                            onKeyDown={(e) => handleKeyboardNavigationOnBlockedList(e)}
                           >
                             <CloseIcon />
                           </button>
@@ -283,6 +395,7 @@ export default function RestrictionPage() {
                   text={t("save")}
                   currentClass="accent"
                   path={"/account"}
+                  btnRef={saveBtnRef}
                   onClickFunction={changeRestriction}
                 />
                 <AccountSettingsBtn

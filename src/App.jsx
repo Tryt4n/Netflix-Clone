@@ -18,10 +18,11 @@ import LanguageChangePage from "./pages/LanguageChangePage/LanguageChangePage";
 import PINCodePage from "./pages/PINCodePage/PINCodePage";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import ReportProblemPage from "./pages/ReportProblemPage/ReportProblemPage";
+import SubtitlesAppearancePage from "./pages/SubtitlesAppearancePage/SubtitlesAppearancePage";
 
 export default function App() {
   const location = useLocation();
-  const allowedPaths = ["/home", "/movies", "/latest", "/my-list", "/original-audio"];
+  const allowedPaths = ["home", "movies", "latest", "my-list", "original-audio"];
   const showNavbar = allowedPaths.includes(location.pathname);
 
   return (
@@ -33,47 +34,47 @@ export default function App() {
           element={<UserSelectPage />}
         />
         <Route
-          path="/home"
+          path="home"
           element={<Home />}
         />
         <Route
-          path="/series"
+          path="series"
           element={<TVShows />}
         />
         <Route
-          path="/movies"
+          path="movies"
           element={<Movies />}
         />
         <Route
-          path="/latest"
+          path="latest"
           element={<NewPopular />}
         />
         <Route
-          path="/my-list"
+          path="my-list"
           element={<MyList />}
         />
         <Route
-          path="/original-audio"
+          path="original-audio"
           element={<BrowseLanguage />}
         />
         <Route
-          path="/Kids"
+          path="Kids"
           element={<Kids />}
         />
         <Route
-          path="/ManageProfiles"
+          path="ManageProfiles"
           element={<ManageProfilesPage />}
         />
         <Route
-          path="/ManageProfiles/:id"
+          path="ManageProfiles/:id"
           element={<UserSettingsPage />}
         />
         <Route
-          path="/ManageProfiles/:id/EditProfile"
+          path="ManageProfiles/:id/EditProfile"
           element={<EditProfile />}
         />
         <Route
-          path="/Account"
+          path="Account"
           element={<AccountPage />}
         />
         <Route path="/settings">
@@ -93,9 +94,13 @@ export default function App() {
             path="viewed"
             element={<ActivityPage />}
           />
+          <Route
+            path="subtitles"
+            element={<SubtitlesAppearancePage />}
+          />
         </Route>
         <Route
-          path="/reportproblem/:id"
+          path="reportproblem/:id"
           element={<ReportProblemPage />}
         />
       </Routes>

@@ -145,7 +145,7 @@
   &__language-select-list-item {
     word-wrap: break-word;
     cursor: pointer;
-    &:where(:hover, :focus-visible) {
+    &:where(:hover) {
       text-decoration: underline;
     }
   }

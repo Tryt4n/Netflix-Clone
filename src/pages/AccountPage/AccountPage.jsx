@@ -462,8 +462,9 @@ export default function AccountPage() {
                             </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
+                            <Link
+                              to={"/settings/subtitles"}
+                              onClick={() => setCurrentEditingProfile(user)}
                               className="account__profile-list-item"
                             >
                               <div>
@@ -472,7 +473,7 @@ export default function AccountPage() {
                                 </h3>
                               </div>
                               <span className="account__profile-accent-text">{t("change")}</span>
-                            </a>
+                            </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
                             <a

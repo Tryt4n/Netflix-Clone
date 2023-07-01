@@ -1,0 +1,189 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.font-select {
+  &__btn {
+    font: inherit;
+  }
+  &__list {
+    background-color: #333;
+    & li[aria-selected="true"] {
+      opacity: 0.5;
+    }
+    & .MuiOption-highlighted {
+      color: red;
+      opacity: 1;
+    }
+  }
+}
+
+.subtitles {
+  $select-color-size: func.rem(45);
+
+  & * {
+    font-weight: normal;
+  }
+
+  &__header {
+    @include flex(row, space-between, center);
+    margin-bottom: 2em;
+  }
+
+  &__heading {
+    font-size: v.$account-heading;
+    font-weight: normal;
+  }
+
+  &__subheading {
+    margin-bottom: 1em;
+  }
+
+  &__form {
+    max-width: func.rem(750);
+  }
+
+  &__visualization-container {
+    width: 100%;
+    height: 8rem;
+    display: grid;
+    place-content: center;
+    margin-bottom: 1.25rem;
+    padding: 0.5rem;
+    background-image: url("/images/other/sky-background.jpg");
+    border: func.rem(1) solid c.$viewing-restriction-label-inactive-text;
+    font-size: func.rem(20);
+    color: c.$white;
+  }
+
+  &__settings-container {
+    @media screen and (width > func.rem(775)) {
+      display: grid;
+      grid-template-columns: repeat(2, func.rem(300));
+      gap: 2rem 3rem;
+    }
+    max-width: func.rem(300);
+  }
+
+  & fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  & legend {
+    color: c.$gray-text;
+    margin-bottom: 0.375em;
+  }
+
+  &__settings-inner-container {
+    @include flex();
+    gap: 0.75em;
+  }
+
+  &__settings-text-btn {
+    $arrow-inline: func.rem(5);
+    $arrow-height: func.rem(6);
+
+    position: relative;
+    font: inherit;
+    flex-grow: 1;
+    padding: func.rem(10);
+    border: func.rem(1) solid c.$navbar-text;
+    background-color: c.$white;
+    text-align: start;
+    text-transform: capitalize;
+    cursor: pointer;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0.5em;
+      top: 50%;
+      translate: 0 -50%;
+      border-left: $arrow-inline solid transparent;
+      border-right: $arrow-inline solid transparent;
+      border-top: $arrow-height solid black;
+    }
+    &[aria-expanded="true"]::after {
+      border-left: $arrow-inline solid transparent;
+      border-right: $arrow-inline solid transparent;
+      border-top: none;
+      border-bottom: $arrow-height solid black;
+    }
+  }
+
+  &__settings-color-btn {
+    --bg: white;
+    position: relative;
+    width: $select-color-size;
+    aspect-ratio: 1;
+    border: func.rem(1) solid c.$gray-light;
+    color: transparent;
+    cursor: pointer;
+    //? TODO change by JS
+    background-color: var(--bg);
+    // &[value="white"] {
+    //   background-color: white;
+    // }
+    // &[value="black"] {
+    //   background-color: black;
+    // }
+    // &[value="red"] {
+    //   background-color: red;
+    // }
+    // &[value="green"] {
+    //   background-color: green;
+    // }
+    // &[value="blue"] {
+    //   background-color: blue;
+    // }
+    // &[value="yellow"] {
+    //   background-color: yellow;
+    // }
+    // &[value="magenta"] {
+    //   background-color: magenta;
+    // }
+    // &[value="cyan"] {
+    //   background-color: cyan;
+    // }
+  }
+
+  &__list {
+    background-color: white;
+    border: func.rem(1) solid c.$gray-light;
+    width: func.rem(235);
+
+    &--text {
+      min-width: calc(100% + func.rem(8));
+      border-top: none;
+      @media screen and (width <= func.rem(332)) {
+        min-width: 98.5%;
+        max-width: 98.5%;
+      }
+    }
+    &--color {
+      position: absolute;
+      right: calc($select-color-size * -1);
+    }
+
+    & li[aria-selected="true"] {
+      opacity: 0.5;
+    }
+    & .MuiOption-highlighted {
+      color: red;
+      opacity: 1;
+    }
+  }
+
+  ///////////////////////////
+
+  &__form-btns-wrapper {
+    @media screen and (width > b.$mobile-medium) {
+      @include flex();
+      gap: 1em;
+      padding-block: 1rem;
+    }
+  }
+}

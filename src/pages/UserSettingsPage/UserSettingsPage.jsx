@@ -60,6 +60,10 @@ export default function UserSettingsPage() {
 
   const autoplayNextInputRef = useRef(true);
   const autoplayPreviousInputRef = useRef(true);
+  //!
+  const languageBtnRef = useRef(null); //?
+  const firstLanguageOnListRef = useRef(null);
+  //!
 
   const isDuplicate = users.some((user) => user.username.toLowerCase() === username.toLowerCase());
 
@@ -79,10 +83,8 @@ export default function UserSettingsPage() {
     setUserLanguage(selectedLanguage);
     setIsLanguageMenuOpen(false);
   }
-
   function handleLanguageChangeOnKeyDown(e, selectedLanguage) {
-    if (e.keyCode === 32 || e.keyCode === 13) {
-      e.preventDefault();
+    if (e.key === "Enter" || e.keyCode === 32) {
       handleLanguageChange(selectedLanguage);
     }
   }
@@ -136,6 +138,59 @@ export default function UserSettingsPage() {
     const updatedUsers = users.filter((user) => user !== currentUser);
     setUsers(updatedUsers);
     setCurrentEditingProfile(null);
+  }
+
+  function handleKeyboardNavigationOnLanguageList(e, index) {
+    e.preventDefault();
+
+    const firstListElement = e.currentTarget.parentElement.firstChild;
+    const lastListElement = e.currentTarget.parentElement.lastChild;
+
+    const isEvenNumber = index % 2 === 0;
+
+    if (e.key === "Escape") {
+      setIsLanguageMenuOpen(false);
+    } else if (e.key === "ArrowDown") {
+      const nextListElement = e.currentTarget.nextElementSibling?.nextElementSibling;
+      if (nextListElement) {
+        nextListElement.focus();
+      } else {
+        firstListElement.focus();
+      }
+    } else if (e.key === "ArrowUp") {
+      const previousListElement = e.currentTarget.previousElementSibling?.previousElementSibling;
+      if (previousListElement) {
+        previousListElement.focus();
+      } else {
+        lastListElement.focus();
+      }
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+      if (isEvenNumber) {
+        e.currentTarget.nextElementSibling.focus();
+      } else {
+        e.currentTarget.previousElementSibling.focus();
+      }
+    } else if (e.key === "Home") {
+      firstListElement.focus();
+    } else if (e.key === "End") {
+      lastListElement.focus();
+    } else if (e.key === "Tab") {
+      if (e.shiftKey) {
+        const previousListElement = e.currentTarget.previousElementSibling;
+        if (previousListElement) {
+          previousListElement.focus();
+        } else {
+          setIsLanguageMenuOpen(false);
+        }
+      } else {
+        const nextListElement = e.currentTarget.nextElementSibling;
+        if (nextListElement) {
+          nextListElement.focus();
+        } else {
+          setIsLanguageMenuOpen(false);
+        }
+      }
+    }
   }
 
   return (
@@ -207,7 +262,14 @@ export default function UserSettingsPage() {
               aria-haspopup="true"
               aria-expanded={isLanguageMenuOpen}
               aria-labelledby="user-settings-language"
+              ref={languageBtnRef}
               onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+              onKeyDown={(e) => {
+                if (isLanguageMenuOpen && (e.key === "ArrowDown" || e.key === "Tab")) {
+                  e.preventDefault();
+                  firstLanguageOnListRef.current.focus();
+                }
+              }}
             >
               {userLanguage}
               <span
@@ -220,14 +282,18 @@ export default function UserSettingsPage() {
                 className="user-settings__language-select-list"
                 role="menu"
               >
-                {languageOptions.map((language) => (
+                {languageOptions.map((language, index) => (
                   <li
                     key={language}
                     className="user-settings__language-select-list-item"
                     role="menuitem"
                     tabIndex={0}
+                    ref={index === 0 ? firstLanguageOnListRef : undefined}
                     onClick={() => handleLanguageChange(language)}
-                    onKeyDown={(e) => handleLanguageChangeOnKeyDown(e, language)}
+                    onKeyDown={(e) => {
+                      handleKeyboardNavigationOnLanguageList(e, index);
+                      handleLanguageChangeOnKeyDown(e, language);
+                    }}
                   >
                     {language}
                   </li>

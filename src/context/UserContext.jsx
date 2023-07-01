@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 import usersData from "../../server/users.json";
 import iconsData from "../../server/editProfileData.json";
+import moviesData from "../../server/data.json";
 import { useLocalStorage, useSessionStorage } from "../hooks/useStorage";
 
 const UserContext = createContext();
@@ -85,6 +86,9 @@ export function UserProvider({ children }) {
   return (
     <UserContext.Provider
       value={{
+        //!
+        moviesData: moviesData,
+        //!
         users: users,
         setUsers: setUsers,
         user: user,

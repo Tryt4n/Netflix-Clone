@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "d2f2eee4-9c64-4e5a-b469-207a41856699",
     "username": "John",
     "profileImage": "/images/profiles/Classic/17.png",
     "language": "English",
@@ -78,6 +78,7 @@
     "series": [
       {
         "name": "Shrek's Swamp Stories",
+        "id": "L7O0I084G5L9HLIQ2CIJ",
         "image": "/images/videos/ShrekSwampStories/image.webp",
         "verticalImage": "/images/videos/ShrekSwampStories/image-vertical.jpg",
         "titleImage": "/images/videos/ShrekSwampStories/title.webp",
@@ -121,6 +122,7 @@
       },
       {
         "name": "Bridgerton",
+        "id": "ZHRMBY0EY1BIW6XN6ML4",
         "image": "/images/videos/Bridgerton/image.webp",
         "verticalImage": "/images/videos/Bridgerton/image-vertical.jpg",
         "titleImage": "/images/videos/Bridgerton/title.webp",
@@ -281,7 +283,7 @@
   },
 
   {
-    "id": 2,
+    "id": "fc13ded9-d605-4706-95da-fe32b9d7053b",
     "username": "Sally",
     "profileImage": "/images/profiles/Classic/18.png",
     "language": "Polski",
@@ -332,6 +334,7 @@
     "series": [
       {
         "name": "Bridgerton",
+        "id": "ZHRMBY0EY1BIW6XN6ML4",
         "image": "/images/videos/Bridgerton/image.webp",
         "verticalImage": "/images/videos/Bridgerton/image-vertical.jpg",
         "titleImage": "/images/videos/Bridgerton/title.webp",
@@ -476,7 +479,7 @@
   },
 
   {
-    "id": 3,
+    "id": "1ce1d1a7-f366-4d77-aa71-952fda233972",
     "username": "Kyle",
     "profileImage": "/images/profiles/Classic/21.png",
     "language": "English",
@@ -533,6 +536,7 @@
       {
         "name": "Shrek's Swamp Stories",
         "image": "/images/videos/ShrekSwampStories/image.webp",
+        "id": "L7O0I084G5L9HLIQ2CIJ",
         "verticalImage": "/images/videos/ShrekSwampStories/image-vertical.jpg",
         "titleImage": "/images/videos/ShrekSwampStories/title.webp",
         "thumbnail": "/images/videos/ShrekSwampStories/thumbnail.webp",
@@ -578,7 +582,7 @@
   },
 
   {
-    "id": 4,
+    "id": "f7e83719-a0b3-4cd4-808d-c63d718d0313",
     "username": "Anna",
     "profileImage": "/images/profiles/Classic/19.png",
     "language": "English",
@@ -626,6 +630,7 @@
     "series": [
       {
         "name": "Bridgerton",
+        "id": "ZHRMBY0EY1BIW6XN6ML4",
         "image": "/images/videos/Bridgerton/image.webp",
         "verticalImage": "/images/videos/Bridgerton/image-vertical.jpg",
         "titleImage": "/images/videos/Bridgerton/title.webp",
@@ -754,7 +759,7 @@
   },
 
   {
-    "id": 5,
+    "id": "d243b137-51b1-4ff2-8875-60aeabb89e38",
     "username": "Kids",
     "profileImage": "/images/profiles/Classic/profil_kids.png",
     "language": "English",
@@ -806,6 +811,7 @@
     "series": [
       {
         "name": "Spooky Stories",
+        "id": "P52MOAESXQC998B16BM5",
         "image": "/images/videos/ShrekSpookyStories/image.webp",
         "verticalImage": "/images/videos/ShrekSpookyStories/image-vertical.jpg",
         "titleImage": "/images/videos/ShrekSpookyStories/title.webp",

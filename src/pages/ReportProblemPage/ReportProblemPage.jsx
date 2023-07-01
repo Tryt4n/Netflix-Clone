@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -15,8 +16,13 @@ export default function ReportProblemPage() {
 
   const { reportedMovie, removeReportedMovie, setIsReported } = useContext(UserContext);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsReported(false);
+    if (reportedMovie.name === undefined) {
+      navigate("/account");
+    }
   }, []);
 
   function reportProblem() {

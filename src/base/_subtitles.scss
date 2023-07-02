@@ -1,0 +1,185 @@
+$red: #c80000;
+$green: #00c800;
+$blue: #0000c8;
+$yellow: #eedc00;
+$magenta: #d60080;
+$cyan: #009fda;
+
+//* Font Face
+[data-font-face="typewriter"] {
+  font-family: "Courier New", monospace;
+}
+[data-font-face="print"] {
+  font-family: "Georgia", serif;
+}
+[data-font-face="console"] {
+  font-family: "Lucida Console", "Monaco", monospace;
+}
+[data-font-face="block"] {
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", "Roboto,Ubuntu", sans-serif;
+}
+[data-font-face="casual"] {
+  font-family: "Comic Sans MS", "MarkerFelt-Thin", "Roboto Italic", cursive;
+}
+[data-font-face="cursive"] {
+  font-family: "Lucida Handwriting", "Droid Serif Italic", cursive;
+}
+[data-font-face="small-caps"] {
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", "Roboto,Ubuntu", sans-serif;
+  font-variant: small-caps;
+}
+
+//* Colors
+[data-font-color="white"] {
+  color: white;
+}
+[data-font-color="black"] {
+  color: black;
+}
+[data-font-color="red"] {
+  color: $red;
+}
+[data-font-color="green"] {
+  color: $green;
+}
+[data-font-color="blue"] {
+  color: $blue;
+}
+[data-font-color="yellow"] {
+  color: $yellow;
+}
+[data-font-color="magenta"] {
+  color: $magenta;
+}
+[data-font-color="cyan"] {
+  color: $cyan;
+}
+
+//* Shadow Color
+// [data-shadow-color="white"] {
+//   text-shadow: 1px 1px 1px white !important;
+// }
+// [data-shadow-color="black"] {
+//   text-shadow: 1px 1px 1px black !important;
+// }
+// [data-shadow-color="red"] {
+//   text-shadow: 1px 1px 1px $red !important;
+// }
+// [data-shadow-color="green"] {
+//   text-shadow: 1px 1px 1px $green !important;
+// }
+// [data-shadow-color="blue"] {
+//   text-shadow: 1px 1px 1px $blue !important;
+// }
+// [data-shadow-color="yellow"] {
+//   text-shadow: 1px 1px 1px $yellow !important;
+// }
+// [data-shadow-color="magenta"] {
+//   text-shadow: 1px 1px 1px $magenta !important;
+// }
+// [data-shadow-color="cyan"] {
+//   text-shadow: 1px 1px 1px $cyan !important;
+// }
+
+[data-text-bg-color="none"] {
+  background-color: transparent;
+  background-image: linear-gradient(
+    to right bottom,
+    transparent,
+    transparent 48%,
+    #ccc 49%,
+    #ccc 51%,
+    transparent 52%,
+    transparent
+  );
+}
+[data-text-bg-color="white"] {
+  background-color: white;
+}
+[data-text-bg-color="black"] {
+  background-color: black;
+}
+[data-text-bg-color="red"] {
+  background-color: $red;
+}
+[data-text-bg-color="green"] {
+  background-color: $green;
+}
+[data-text-bg-color="blue"] {
+  background-color: $blue;
+}
+[data-text-bg-color="yellow"] {
+  background-color: $yellow;
+}
+[data-text-bg-color="magenta"] {
+  background-color: $magenta;
+}
+[data-text-bg-color="cyan"] {
+  background-color: $cyan;
+}
+
+[data-color="none"] {
+  background-color: transparent;
+  background-image: linear-gradient(
+    to right bottom,
+    transparent,
+    transparent 48%,
+    #ccc 49%,
+    #ccc 51%,
+    transparent 52%,
+    transparent
+  );
+}
+[data-color="white"] {
+  background-color: white;
+}
+[data-color="black"] {
+  background-color: black;
+}
+[data-color="red"] {
+  background-color: $red;
+}
+[data-color="green"] {
+  background-color: $green;
+}
+[data-color="blue"] {
+  background-color: $blue;
+}
+[data-color="yellow"] {
+  background-color: $yellow;
+}
+[data-color="magenta"] {
+  background-color: $magenta;
+}
+[data-color="cyan"] {
+  background-color: $cyan;
+}
+
+//* Font Size
+[data-font-size="small"] {
+  font-size: 10pt;
+}
+[data-font-size="medium"] {
+  font-size: 15pt;
+}
+[data-font-size="large"] {
+  font-size: 20pt;
+}
+
+//* Shadow
+[data-shadow="none"] {
+  text-shadow: none;
+}
+[data-shadow="raised"] {
+  text-shadow: 0 -1px 0 #fff, 0 1px 0 #999;
+}
+[data-shadow="depressed"] {
+  text-shadow: 0 -1px 0 #999, 0 1px 0 #fff;
+}
+[data-shadow="uniform"] {
+  color: #fff;
+  text-shadow: -1px 1px 0 #000, 1px -1px 0 #000, 1px 1px 0 #000, -1px -1px 0 #000;
+}
+[data-shadow="drop-shadow"] {
+  text-shadow: 1px 1px 1px grey;
+}

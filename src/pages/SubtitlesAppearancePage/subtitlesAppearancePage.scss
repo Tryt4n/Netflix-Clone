@@ -4,22 +4,6 @@
 @use "../../base/functions" as func;
 @use "../../base/breakpoints" as b;
 
-.font-select {
-  &__btn {
-    font: inherit;
-  }
-  &__list {
-    background-color: #333;
-    & li[aria-selected="true"] {
-      opacity: 0.5;
-    }
-    & .MuiOption-highlighted {
-      color: red;
-      opacity: 1;
-    }
-  }
-}
-
 .subtitles {
   $select-color-size: func.rem(45);
 
@@ -54,12 +38,13 @@
     padding: 0.5rem;
     background-image: url("/images/other/sky-background.jpg");
     border: func.rem(1) solid c.$viewing-restriction-label-inactive-text;
-    font-size: func.rem(20);
-    color: c.$white;
+  }
+  &__visualization-text {
+    text-align: center;
   }
 
   &__settings-container {
-    @media screen and (width > func.rem(775)) {
+    @media screen and (width > b.$subtitles-setting) {
       display: grid;
       grid-template-columns: repeat(2, func.rem(300));
       gap: 2rem 3rem;
@@ -71,16 +56,116 @@
     border: none;
     padding: 0;
     margin: 0;
+    @media screen and (width <= b.$subtitles-setting) {
+      margin-bottom: 1.5em;
+    }
   }
 
   & legend {
     color: c.$gray-text;
     margin-bottom: 0.375em;
+    padding: 0;
+    & > span {
+      text-transform: capitalize;
+    }
   }
 
   &__settings-inner-container {
     @include flex();
     gap: 0.75em;
+  }
+
+  &__settings-inner-wrapper {
+    @include flex();
+    & > * {
+      width: 50%;
+    }
+    @media screen and (width <= b.$subtitles-setting) {
+      position: relative;
+      margin-bottom: 1em;
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        width: calc(100vw - (3rem * 2));
+        height: func.rem(1);
+        background-color: c.$gray-light;
+      }
+    }
+    @media screen and (width <= b.$mobile-medium) {
+      margin-bottom: 2em;
+      &::after {
+        width: calc(100vw - (1rem * 2));
+      }
+    }
+  }
+
+  @media screen and (width <= b.$subtitles-setting) {
+    &__text-size-container {
+      position: relative;
+      margin-bottom: 0.5em !important;
+      padding-bottom: 1.5em !important;
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        width: calc(100vw - (3rem * 2));
+        height: func.rem(1);
+        background-color: c.$gray-light;
+        @media screen and (width <= b.$mobile-medium) {
+          width: calc(100vw - (1rem * 2));
+        }
+      }
+    }
+  }
+
+  &__fs-container {
+    @include flex(row);
+    height: $select-color-size;
+
+    & > * {
+      flex-grow: 1;
+      border: func.rem(1) solid c.$gray-text;
+    }
+    & > *:first-child {
+      border-right-color: transparent;
+    }
+    & > *:last-child {
+      border-left-color: transparent;
+    }
+
+    input {
+      position: relative;
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      background-color: c.$main-text-color;
+      border: func.rem(1) solid transparent;
+      color: c.$gray-text;
+      font-size: 1rem;
+      cursor: pointer;
+      &::after {
+        position: absolute;
+        content: "A";
+        inset: 0;
+        display: grid;
+        place-content: center;
+      }
+      &:checked {
+        background-color: c.$white;
+      }
+    }
+    [data-font-size="small"]::after {
+      font-size: 10pt;
+    }
+    [data-font-size="medium"]::after {
+      font-size: 15pt;
+    }
+    [data-font-size="large"]::after {
+      font-size: 20pt;
+    }
   }
 
   &__settings-text-btn {
@@ -115,43 +200,28 @@
   }
 
   &__settings-color-btn {
-    --bg: white;
     position: relative;
     width: $select-color-size;
     aspect-ratio: 1;
     border: func.rem(1) solid c.$gray-light;
-    color: transparent;
+    text-indent: -9999px;
     cursor: pointer;
-    //? TODO change by JS
-    background-color: var(--bg);
-    // &[value="white"] {
-    //   background-color: white;
-    // }
-    // &[value="black"] {
-    //   background-color: black;
-    // }
-    // &[value="red"] {
-    //   background-color: red;
-    // }
-    // &[value="green"] {
-    //   background-color: green;
-    // }
-    // &[value="blue"] {
-    //   background-color: blue;
-    // }
-    // &[value="yellow"] {
-    //   background-color: yellow;
-    // }
-    // &[value="magenta"] {
-    //   background-color: magenta;
-    // }
-    // &[value="cyan"] {
-    //   background-color: cyan;
-    // }
+    &[data-selected-color="none"] {
+      background-color: none;
+      background-image: linear-gradient(
+        to right bottom,
+        transparent,
+        transparent 48%,
+        #ccc 49%,
+        #ccc 51%,
+        transparent 52%,
+        transparent
+      );
+    }
   }
 
   &__list {
-    background-color: white;
+    background-color: c.$white;
     border: func.rem(1) solid c.$gray-light;
     width: func.rem(235);
 
@@ -162,22 +232,85 @@
         min-width: 98.5%;
         max-width: 98.5%;
       }
-    }
-    &--color {
-      position: absolute;
-      right: calc($select-color-size * -1);
+      & li {
+        padding: func.rem(10);
+        font-size: v.$font-base;
+        color: c.$profile-edit-maturity-ratings-bg;
+        cursor: pointer;
+        &.MuiOption-highlighted,
+        &:hover {
+          background-color: c.$account-bg;
+        }
+      }
     }
 
-    & li[aria-selected="true"] {
-      opacity: 0.5;
+    &--color {
+      $spacing: func.rem(10);
+
+      position: absolute;
+      right: calc($select-color-size * -1);
+      padding-left: $spacing;
+      padding-top: $spacing;
+      & li {
+        height: $select-color-size;
+        aspect-ratio: 1;
+        display: inline-block;
+        margin-right: $spacing;
+        margin-bottom: $spacing;
+        border: func.rem(1) solid c.$gray-light;
+        text-indent: -9999px;
+        cursor: pointer;
+        &[data-color="none"] {
+          background-color: transparent;
+          background-image: none;
+          width: calc(100% - $spacing);
+          height: calc(v.$font-base + ($spacing));
+          padding: calc($spacing / 2);
+          font: inherit;
+          text-indent: 0;
+          font-size: v.$font-base;
+          text-align: center;
+          text-transform: capitalize;
+          line-height: 100%;
+          color: c.$viewing-restriction-input-blue;
+          outline: none !important;
+          &:hover {
+            text-decoration: underline;
+            background-color: c.$account-bg;
+          }
+          &.MuiOption-highlighted {
+            background-color: c.$account-bg;
+          }
+          &.Mui-selected.MuiOption-highlighted {
+            outline: func.rem(1) solid black !important;
+          }
+        }
+        &[aria-selected="true"] {
+          box-shadow: 0 0 0 1px c.$white, 0 0 0 2px c.$navbar-text;
+        }
+        &.MuiOption-highlighted {
+          outline: func.rem(1) solid black;
+        }
+      }
     }
-    & .MuiOption-highlighted {
-      color: red;
-      opacity: 1;
+    &--text-bgColor {
+      left: 0;
+    }
+    &--window-bgColor {
+      translate: 40%;
     }
   }
 
-  ///////////////////////////
+  &__list-checkbox-wrapper {
+    @include flex(row, flex-start, center);
+    margin-block: 1em;
+    & label {
+      width: 100%;
+      text-align: center;
+      font-size: v.$font-base;
+      color: c.$profile-edit-maturity-ratings-bg;
+    }
+  }
 
   &__form-btns-wrapper {
     @media screen and (width > b.$mobile-medium) {

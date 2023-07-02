@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -15,7 +15,27 @@ export default function SubtitlesAppearancePage() {
 
   const { currentEditingProfile } = useContext(UserContext);
 
-  console.log(useSelect);
+  const [textStyles, setTextStyles] = useState({
+    fontFace: "block",
+    fontColor: "white",
+    fontSize: "medium",
+    shadow: "drop-shadow",
+    shadowColor: "black",
+    bgColor: "none",
+    windowColor: "none",
+  });
+
+  function handleChange(e, attribute) {
+    const selectedAttribute = e.target.dataset[attribute] || e.target.dataset.color;
+    setTextStyles((prevState) => ({
+      ...prevState,
+      [attribute]: selectedAttribute,
+    }));
+  }
+
+  useEffect(() => {
+    console.log(textStyles);
+  }, [textStyles]);
 
   return (
     <>
@@ -43,99 +63,472 @@ export default function SubtitlesAppearancePage() {
 
           <form className="subtitles__form">
             <div className="subtitles__visualization-container">
-              <span>These settings affect subtitles on all supported devices.</span>
+              <span
+                className="subtitles__visualization-text"
+                data-font-face={textStyles.fontFace}
+                data-font-color={textStyles.fontColor}
+                data-font-size={textStyles.fontSize}
+                data-shadow={textStyles.shadow}
+                data-shadow-color={textStyles.shadowColor}
+                data-text-bg-color={textStyles.bgColor}
+              >
+                These settings affect subtitles on all supported devices.
+              </span>
             </div>
 
             <div className="subtitles__settings-container">
               <fieldset className="subtitles__settings-inner-container">
                 <legend>Font</legend>
+                {/* //* Font Face */}
                 <Select
-                  defaultValue="block"
+                  defaultValue={textStyles.fontFace}
                   slotProps={{
                     root: { className: "subtitles__settings-text-btn" },
-                    // popper: { className: "subtitles__list-container" },
                     listbox: { className: "subtitles__list subtitles__list--text" },
                   }}
+                  data-font-face={textStyles.fontFace}
+                  onChange={(e) => handleChange(e, "fontFace")}
                 >
-                  <Option value="typewriter">typewriter</Option>
-                  <Option value="print">print</Option>
-                  <Option value="console">console</Option>
-                  <Option value="block">block</Option>
-                  <Option value="casual">casual</Option>
-                  <Option value="cursive">cursive</Option>
-                  <Option value="small-caps">small caps</Option>
+                  <Option
+                    value="typewriter"
+                    data-font-face="typewriter"
+                  >
+                    typewriter
+                  </Option>
+                  <Option
+                    value="print"
+                    data-font-face="print"
+                  >
+                    print
+                  </Option>
+                  <Option
+                    value="console"
+                    data-font-face="console"
+                  >
+                    console
+                  </Option>
+                  <Option
+                    value="block"
+                    data-font-face="block"
+                  >
+                    block
+                  </Option>
+                  <Option
+                    value="casual"
+                    data-font-face="casual"
+                  >
+                    casual
+                  </Option>
+                  <Option
+                    value="cursive"
+                    data-font-face="cursive"
+                  >
+                    cursive
+                  </Option>
+                  <Option
+                    value="small-caps"
+                    data-font-face="small-caps"
+                  >
+                    small caps
+                  </Option>
                 </Select>
+                {/* //* Text Color */}
                 <Select
-                  defaultValue="white"
+                  defaultValue={textStyles.fontColor}
                   slotProps={{
                     root: { className: "subtitles__settings-color-btn" },
                     listbox: { className: "subtitles__list subtitles__list--color" },
                   }}
+                  data-color={textStyles.fontColor}
+                  onChange={(e) => handleChange(e, "fontColor")}
                 >
-                  <Option value="white">white</Option>
-                  <Option value="black">black</Option>
-                  <Option value="red">red</Option>
-                  <Option value="green">green</Option>
-                  <Option value="blue">blue</Option>
-                  <Option value="yellow">yellow</Option>
-                  <Option value="magenta">magenta</Option>
-                  <Option value="cyan">cyan</Option>
-                  <div>
+                  <Option
+                    value="white"
+                    data-color="white"
+                  >
+                    white
+                  </Option>
+                  <Option
+                    value="black"
+                    data-color="black"
+                  >
+                    black
+                  </Option>
+                  <Option
+                    value="red"
+                    data-color="red"
+                  >
+                    red
+                  </Option>
+                  <Option
+                    value="green"
+                    data-color="green"
+                  >
+                    green
+                  </Option>
+                  <Option
+                    value="blue"
+                    data-color="blue"
+                  >
+                    blue
+                  </Option>
+                  <Option
+                    value="yellow"
+                    data-color="yellow"
+                  >
+                    yellow
+                  </Option>
+                  <Option
+                    value="magenta"
+                    data-color="magenta"
+                  >
+                    magenta
+                  </Option>
+                  <Option
+                    value="cyan"
+                    data-color="cyan"
+                  >
+                    cyan
+                  </Option>
+                  <div className="subtitles__list-checkbox-wrapper">
                     <input
                       type="checkbox"
-                      name="font-color-transparency"
-                      id="font-color-transparency"
-                      tabIndex={0}
+                      name="text-color-transparency"
+                      id="text-color-transparency"
+                      className="checkbox-light"
                     />
-                    <label htmlFor="font-color-transparency">Semitransparent</label>
+                    <label htmlFor="text-color-transparency">Semitransparent</label>
                   </div>
                 </Select>
               </fieldset>
 
-              <fieldset>
-                <legend>Text Size: Medium</legend>
+              {/* //* Text Size */}
+              <fieldset className="subtitles__text-size-container">
+                <legend>
+                  Text Size: <span>{textStyles.fontSize}</span>
+                </legend>
+                <div className="subtitles__fs-container">
+                  <div>
+                    <input
+                      type="radio"
+                      name="fs-size"
+                      id="fs-small"
+                      value="small"
+                      data-font-size="small"
+                      checked={textStyles.fontSize === "small"}
+                      onChange={(e) => handleChange(e, "fontSize")}
+                    />
+                    <label
+                      htmlFor="fs-small"
+                      className="visually-hidden"
+                    >
+                      Small Text
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="fs-size"
+                      id="fs-medium"
+                      value="medium"
+                      data-font-size="medium"
+                      checked={textStyles.fontSize === "medium"}
+                      onChange={(e) => handleChange(e, "fontSize")}
+                    />
+                    <label
+                      htmlFor="fs-medium"
+                      className="visually-hidden"
+                    >
+                      Medium Text
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="radio"
+                      name="fs-size"
+                      id="fs-bold"
+                      value="Large"
+                      data-font-size="large"
+                      checked={textStyles.fontSize === "large"}
+                      onChange={(e) => handleChange(e, "fontSize")}
+                    />
+                    <label
+                      htmlFor="fs-bold"
+                      className="visually-hidden"
+                    >
+                      Large Text
+                    </label>
+                  </div>
+                </div>
               </fieldset>
 
+              {/* //* Text Shadow */}
               <fieldset className="subtitles__settings-inner-container">
                 <legend>Shadow</legend>
                 <Select
-                  defaultValue="drop-shadow"
+                  defaultValue={textStyles.shadow}
                   slotProps={{
                     root: { className: "subtitles__settings-text-btn" },
-                    listbox: { className: "font-select__list" },
+                    listbox: { className: "subtitles__list subtitles__list--text" },
                   }}
+                  data-shadow={textStyles.shadow}
+                  onChange={(e) => handleChange(e, "shadow")}
                 >
-                  <Option value="none">none</Option>
-                  <Option value="raised">raised</Option>
-                  <Option value="depressed">depressed</Option>
-                  <Option value="uniform">uniform</Option>
-                  <Option value="drop-shadow">drop shadow</Option>
+                  <Option
+                    value="none"
+                    data-shadow="none"
+                  >
+                    none
+                  </Option>
+                  <Option
+                    value="raised"
+                    data-shadow="raised"
+                  >
+                    raised
+                  </Option>
+                  <Option
+                    value="depressed"
+                    data-shadow="depressed"
+                  >
+                    depressed
+                  </Option>
+                  <Option
+                    value="uniform"
+                    data-shadow="uniform"
+                  >
+                    uniform
+                  </Option>
+                  <Option
+                    value="drop-shadow"
+                    data-shadow="drop-shadow"
+                  >
+                    drop shadow
+                  </Option>
                 </Select>
+                {/* //* Shadow Color */}
                 <Select
-                  defaultValue="black"
+                  defaultValue={textStyles.shadowColor}
                   slotProps={{
                     root: { className: "subtitles__settings-color-btn" },
-                    listbox: { className: "font-select__list" },
+                    listbox: { className: "subtitles__list subtitles__list--color" },
                   }}
+                  data-color={textStyles.shadowColor}
+                  onChange={(e) => handleChange(e, "shadowColor")}
                 >
-                  <Option value="white">white</Option>
-                  <Option value="black">black</Option>
-                  <Option value="red">red</Option>
-                  <Option value="green">green</Option>
-                  <Option value="blue">blue</Option>
-                  <Option value="yellow">yellow</Option>
-                  <Option value="magenta">magenta</Option>
-                  <Option value="cyan">cyan</Option>
+                  <Option
+                    value="white"
+                    data-color="white"
+                  >
+                    white
+                  </Option>
+                  <Option
+                    value="black"
+                    data-color="black"
+                  >
+                    black
+                  </Option>
+                  <Option
+                    value="red"
+                    data-color="red"
+                  >
+                    red
+                  </Option>
+                  <Option
+                    value="green"
+                    data-color="green"
+                  >
+                    green
+                  </Option>
+                  <Option
+                    value="blue"
+                    data-color="blue"
+                  >
+                    blue
+                  </Option>
+                  <Option
+                    value="yellow"
+                    data-color="yellow"
+                  >
+                    yellow
+                  </Option>
+                  <Option
+                    value="magenta"
+                    data-color="magenta"
+                  >
+                    magenta
+                  </Option>
+                  <Option
+                    value="cyan"
+                    data-color="cyan"
+                  >
+                    cyan
+                  </Option>
                 </Select>
               </fieldset>
 
-              <div>
+              <div className="subtitles__settings-inner-wrapper">
                 <fieldset>
                   <legend>Background</legend>
+                  {/* //* Text Background Color */}
+                  <Select
+                    defaultValue={textStyles.bgColor}
+                    slotProps={{
+                      root: { className: "subtitles__settings-color-btn" },
+                      listbox: {
+                        className:
+                          "subtitles__list subtitles__list--color subtitles__list--text-bgColor",
+                      },
+                    }}
+                    data-color={textStyles.bgColor}
+                    onChange={(e) => handleChange(e, "bgColor")}
+                  >
+                    <Option
+                      value="none"
+                      data-color="none"
+                    >
+                      none
+                    </Option>
+                    <Option
+                      value="white"
+                      data-color="white"
+                    >
+                      white
+                    </Option>
+                    <Option
+                      value="black"
+                      data-color="black"
+                    >
+                      black
+                    </Option>
+                    <Option
+                      value="red"
+                      data-color="red"
+                    >
+                      red
+                    </Option>
+                    <Option
+                      value="green"
+                      data-color="green"
+                    >
+                      green
+                    </Option>
+                    <Option
+                      value="blue"
+                      data-color="blue"
+                    >
+                      blue
+                    </Option>
+                    <Option
+                      value="yellow"
+                      data-color="yellow"
+                    >
+                      yellow
+                    </Option>
+                    <Option
+                      value="magenta"
+                      data-color="magenta"
+                    >
+                      magenta
+                    </Option>
+                    <Option
+                      value="cyan"
+                      data-color="cyan"
+                    >
+                      cyan
+                    </Option>
+                    <div className="subtitles__list-checkbox-wrapper">
+                      <input
+                        type="checkbox"
+                        name="background-transparency"
+                        id="background-transparency"
+                        className="checkbox-light"
+                      />
+                      <label htmlFor="background-transparency">Semitransparent</label>
+                    </div>
+                  </Select>
                 </fieldset>
 
                 <fieldset>
                   <legend>Window</legend>
+                  {/* //* Background Color */}
+                  <Select
+                    defaultValue={textStyles.windowColor}
+                    slotProps={{
+                      root: { className: "subtitles__settings-color-btn" },
+                      listbox: {
+                        className:
+                          "subtitles__list subtitles__list--color subtitles__list--window-bgColor",
+                      },
+                    }}
+                    data-color={textStyles.windowColor}
+                    onChange={(e) => handleChange(e, "windowColor")}
+                  >
+                    <Option
+                      value="none"
+                      data-color="none"
+                    >
+                      none
+                    </Option>
+                    <div>
+                      <Option
+                        value="white"
+                        data-color="white"
+                      >
+                        white
+                      </Option>
+                      <Option
+                        value="black"
+                        data-color="black"
+                      >
+                        black
+                      </Option>
+                      <Option
+                        value="red"
+                        data-color="red"
+                      >
+                        red
+                      </Option>
+                      <Option
+                        value="green"
+                        data-color="green"
+                      >
+                        green
+                      </Option>
+                      <Option
+                        value="blue"
+                        data-color="blue"
+                      >
+                        blue
+                      </Option>
+                      <Option
+                        value="yellow"
+                        data-color="yellow"
+                      >
+                        yellow
+                      </Option>
+                      <Option
+                        value="magenta"
+                        data-color="magenta"
+                      >
+                        magenta
+                      </Option>
+                      <Option
+                        value="cyan"
+                        data-color="cyan"
+                      >
+                        cyan
+                      </Option>
+                    </div>
+                    <div className="subtitles__list-checkbox-wrapper">
+                      <input
+                        type="checkbox"
+                        name="window-transparency"
+                        id="window-transparency"
+                        className="checkbox-light"
+                      />
+                      <label htmlFor="window-transparency">Semitransparent</label>
+                    </div>
+                  </Select>
                 </fieldset>
               </div>
             </div>

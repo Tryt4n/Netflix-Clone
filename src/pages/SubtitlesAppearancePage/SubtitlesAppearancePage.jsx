@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -8,34 +8,92 @@ import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import "./subtitlesAppearancePage.scss";
 import { useTranslation } from "react-i18next";
 import { Option, Select } from "@mui/base";
-import useSelect from "@mui/base/useSelect";
 
 export default function SubtitlesAppearancePage() {
   const { t } = useTranslation();
 
-  const { currentEditingProfile } = useContext(UserContext);
+  const { currentEditingProfile, users, setUsers, setIsCurrentlySaved, setDisplayedSavedMessage } =
+    useContext(UserContext);
 
-  const [textStyles, setTextStyles] = useState({
+  const defaultTextStyles = {
     fontFace: "block",
     fontColor: "white",
+    fontColorSemitransparent: false,
     fontSize: "medium",
     shadow: "drop-shadow",
     shadowColor: "black",
     bgColor: "none",
+    bgColorSemitransparent: false,
     windowColor: "none",
+    windowColorSemitransparent: false,
+  };
+
+  const [textStyles, setTextStyles] = useState({
+    fontFace: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.fontFace
+      : defaultTextStyles.fontFace,
+    fontColor: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.fontColor
+      : defaultTextStyles.fontColor,
+    fontColorSemitransparent: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.fontColorSemitransparent
+      : defaultTextStyles.fontColorSemitransparent,
+    fontSize: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.fontSize
+      : defaultTextStyles.fontSize,
+    shadow: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.shadow
+      : defaultTextStyles.shadow,
+    shadowColor: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.shadowColor
+      : defaultTextStyles.shadowColor,
+    bgColor: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.bgColor
+      : defaultTextStyles.bgColor,
+    bgColorSemitransparent: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.bgColorSemitransparent
+      : defaultTextStyles.bgColorSemitransparent,
+    windowColor: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.windowColor
+      : defaultTextStyles.windowColor,
+    windowColorSemitransparent: currentEditingProfile.textStyles
+      ? currentEditingProfile.textStyles.windowColorSemitransparent
+      : defaultTextStyles.windowColorSemitransparent,
   });
 
-  function handleChange(e, attribute) {
-    const selectedAttribute = e.target.dataset[attribute] || e.target.dataset.color;
-    setTextStyles((prevState) => ({
-      ...prevState,
-      [attribute]: selectedAttribute,
-    }));
+  function handleChange(e, propertyName) {
+    if (e.target.type === "checkbox") {
+      const { checked } = e.target;
+      setTextStyles((prevState) => ({
+        ...prevState,
+        [propertyName]: checked,
+      }));
+    } else {
+      const selectedAttribute = e.target.dataset[propertyName] || e.target.dataset.color;
+      setTextStyles((prevState) => ({
+        ...prevState,
+        [propertyName]: selectedAttribute,
+      }));
+    }
   }
 
-  useEffect(() => {
-    console.log(textStyles);
-  }, [textStyles]);
+  function handleSave(reset) {
+    const updatedTextStyles = reset ? textStyles : defaultTextStyles;
+
+    const updatedUsers = users.map((user) => {
+      if (user.username === currentEditingProfile.username) {
+        return {
+          ...user,
+          textStyles: updatedTextStyles,
+        };
+      }
+      return user;
+    });
+
+    setUsers(updatedUsers);
+    setIsCurrentlySaved(true);
+    setDisplayedSavedMessage("Your subtitle appearance preferences have been updated.");
+  }
 
   return (
     <>
@@ -66,15 +124,18 @@ export default function SubtitlesAppearancePage() {
               <span
                 className="subtitles__visualization-wrapper"
                 data-window-bg-color={textStyles.windowColor}
+                data-window-bg-color-semitransparent={textStyles.windowColorSemitransparent}
               >
                 <span
                   className="subtitles__visualization-text"
                   data-font-face={textStyles.fontFace}
                   data-font-color={textStyles.fontColor}
+                  data-font-color-semitransparent={textStyles.fontColorSemitransparent}
                   data-font-size={textStyles.fontSize}
                   data-shadow={textStyles.shadow}
                   data-shadow-color={textStyles.shadowColor}
                   data-text-bg-color={textStyles.bgColor}
+                  data-text-bg-color-semitransparent={textStyles.bgColorSemitransparent}
                 >
                   These settings affect subtitles on all supported devices.
                 </span>
@@ -201,6 +262,8 @@ export default function SubtitlesAppearancePage() {
                       name="text-color-transparency"
                       id="text-color-transparency"
                       className="checkbox-light"
+                      checked={textStyles.fontColorSemitransparent}
+                      onChange={(e) => handleChange(e, "fontColorSemitransparent")}
                     />
                     <label htmlFor="text-color-transparency">Semitransparent</label>
                   </div>
@@ -447,6 +510,8 @@ export default function SubtitlesAppearancePage() {
                         name="background-transparency"
                         id="background-transparency"
                         className="checkbox-light"
+                        checked={textStyles.bgColorSemitransparent}
+                        onChange={(e) => handleChange(e, "bgColorSemitransparent")}
                       />
                       <label htmlFor="background-transparency">Semitransparent</label>
                     </div>
@@ -530,6 +595,8 @@ export default function SubtitlesAppearancePage() {
                         name="window-transparency"
                         id="window-transparency"
                         className="checkbox-light"
+                        checked={textStyles.windowColorSemitransparent}
+                        onChange={(e) => handleChange(e, "windowColorSemitransparent")}
                       />
                       <label htmlFor="window-transparency">Semitransparent</label>
                     </div>
@@ -543,27 +610,20 @@ export default function SubtitlesAppearancePage() {
                 text={t("save")}
                 currentClass="accent"
                 path={"/account"}
-                // isDisabled={
-                //   watchingActivity === "watching"
-                //     ? visibleMovieItems >= totalMovieItems
-                //     : visibleRatingItems >= totalRatingItems
-                // }
-                // onClickFunction={handleLoadMore}
-                // key={watchingActivity === "watching" ? "watching" : "rating"}
+                onClickFunction={handleSave}
               />
 
               <AccountSettingsBtn
                 text={"Reset to default"}
                 currentClass="light"
                 path={"/account"}
-                // onClickFunction={reset}
+                onClickFunction={() => handleSave(false)}
               />
 
               <AccountSettingsBtn
                 text={"Cancel"}
                 currentClass="light"
                 path={"/account"}
-                // onClickFunction={reset}
               />
             </div>
           </form>

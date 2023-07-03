@@ -1,11 +1,17 @@
 :root {
-  --red: #c80000;
-  --green: #00c800;
-  --blue: #0000c8;
-  --yellow: #eedc00;
-  --magenta: #d60080;
-  --cyan: #009fda;
+  //* Colors RGB codes
+  --white: 255, 255, 255;
+  --black: 0, 0, 0;
+  --red: 199, 0, 0;
+  --green: 0, 200, 0;
+  --blue: 0, 0, 200;
+  --yellow: 240, 220, 0;
+  --magenta: 214, 0, 128;
+  --cyan: 0, 159, 218;
 
+  --text-opacity: 1;
+  --text-background-opacity: 1;
+  --window-opacity: 1;
   --shadowColor: black;
 }
 
@@ -35,28 +41,32 @@
 
 //* Text Color
 [data-font-color="white"] {
-  color: white;
+  color: rgba(var(--white), var(--text-opacity));
 }
 [data-font-color="black"] {
-  color: black;
+  color: rgba(var(--black), var(--text-opacity));
 }
 [data-font-color="red"] {
-  color: var(--red);
+  color: rgba(var(--red), var(--text-opacity));
 }
 [data-font-color="green"] {
-  color: var(--green);
+  color: rgba(var(--green), var(--text-opacity));
 }
 [data-font-color="blue"] {
-  color: var(--blue);
+  color: rgba(var(--blue), var(--text-opacity));
 }
 [data-font-color="yellow"] {
-  color: var(--yellow);
+  color: rgba(var(--yellow), var(--text-opacity));
 }
 [data-font-color="magenta"] {
-  color: var(--magenta);
+  color: rgba(var(--magenta), var(--text-opacity));
 }
 [data-font-color="cyan"] {
-  color: var(--cyan);
+  color: rgba(var(--cyan), var(--text-opacity));
+}
+//* Text Color Semitransparent
+[data-font-color-semitransparent="true"] {
+  --text-opacity: 0.6;
 }
 
 //* Text Background Color
@@ -64,28 +74,32 @@
   background-color: transparent;
 }
 [data-text-bg-color="white"] {
-  background-color: white;
+  background-color: rgba(var(--white), var(--text-background-opacity));
 }
 [data-text-bg-color="black"] {
-  background-color: black;
+  background-color: rgba(var(--black), var(--text-background-opacity));
 }
 [data-text-bg-color="red"] {
-  background-color: var(--red);
+  background-color: rgba(var(--red), var(--text-background-opacity));
 }
 [data-text-bg-color="green"] {
-  background-color: var(--green);
+  background-color: rgba(var(--green), var(--text-background-opacity));
 }
 [data-text-bg-color="blue"] {
-  background-color: var(--blue);
+  background-color: rgba(var(--blue), var(--text-background-opacity));
 }
 [data-text-bg-color="yellow"] {
-  background-color: var(--yellow);
+  background-color: rgba(var(--yellow), var(--text-background-opacity));
 }
 [data-text-bg-color="magenta"] {
-  background-color: var(--magenta);
+  background-color: rgba(var(--magenta), var(--text-background-opacity));
 }
 [data-text-bg-color="cyan"] {
-  background-color: var(--cyan);
+  background-color: rgba(var(--cyan), var(--text-background-opacity));
+}
+//* Text Background Color Semitransparent
+[data-text-bg-color-semitransparent="true"] {
+  --text-background-opacity: 0.6;
 }
 
 //* Window Background Color
@@ -93,28 +107,32 @@
   background-color: transparent;
 }
 [data-window-bg-color="white"] {
-  background-color: white;
+  background-color: rgba(var(--white), var(--window-opacity));
 }
 [data-window-bg-color="black"] {
-  background-color: black;
+  background-color: rgba(var(--black), var(--window-opacity));
 }
 [data-window-bg-color="red"] {
-  background-color: var(--red);
+  background-color: rgba(var(--red), var(--window-opacity));
 }
 [data-window-bg-color="green"] {
-  background-color: var(--green);
+  background-color: rgba(ar(--green), var(--window-opacity));
 }
 [data-window-bg-color="blue"] {
-  background-color: var(--blue);
+  background-color: rgba(var(--blue), var(--window-opacity));
 }
 [data-window-bg-color="yellow"] {
-  background-color: var(--yellow);
+  background-color: rgba(var(--yellow), var(--window-opacity));
 }
 [data-window-bg-color="magenta"] {
-  background-color: var(--magenta);
+  background-color: rgba(var(--magenta), var(--window-opacity));
 }
 [data-window-bg-color="cyan"] {
-  background-color: var(--cyan);
+  background-color: rgba(var(--cyan), var(--window-opacity));
+}
+//* Text Background Color Semitransparent
+[data-window-bg-color-semitransparent="true"] {
+  --window-opacity: 0.6;
 }
 
 //* Colors
@@ -131,28 +149,28 @@
   );
 }
 [data-color="white"] {
-  background-color: white;
+  background-color: rgb(var(--white));
 }
 [data-color="black"] {
-  background-color: black;
+  background-color: rgb(var(--black));
 }
 [data-color="red"] {
-  background-color: var(--red);
+  background-color: rgb(var(--red));
 }
 [data-color="green"] {
-  background-color: var(--green);
+  background-color: rgb(var(--green));
 }
 [data-color="blue"] {
-  background-color: var(--blue);
+  background-color: rgb(var(--blue));
 }
 [data-color="yellow"] {
-  background-color: var(--yellow);
+  background-color: rgb(var(--yellow));
 }
 [data-color="magenta"] {
-  background-color: var(--magenta);
+  background-color: rgb(var(--magenta));
 }
 [data-color="cyan"] {
-  background-color: var(--cyan);
+  background-color: rgb(var(--cyan));
 }
 
 //* Font Size
@@ -168,28 +186,28 @@
 
 //* Shadow Color
 [data-shadow-color="white"] {
-  --shadowColor: white;
+  --shadowColor: rgb(var(--white));
 }
 [data-shadow-color="black"] {
-  --shadowColor: black;
+  --shadowColor: rgb(var(--black));
 }
 [data-shadow-color="red"] {
-  --shadowColor: var(--red);
+  --shadowColor: rgb(var(--red));
 }
 [data-shadow-color="green"] {
-  --shadowColor: var(--green);
+  --shadowColor: rgb(var(--green));
 }
 [data-shadow-color="blue"] {
-  --shadowColor: var(--blue);
+  --shadowColor: rgb(var(--blue));
 }
 [data-shadow-color="yellow"] {
-  --shadowColor: var(--yellow);
+  --shadowColor: rgb(var(--yellow));
 }
 [data-shadow-color="magenta"] {
-  --shadowColor: magenta;
+  --shadowColor: rgb(var(--magenta));
 }
 [data-shadow-color="cyan"] {
-  --shadowColor: var(--cyan);
+  --shadowColor: rgb(var(--cyan));
 }
 
 //* Shadow
@@ -197,13 +215,13 @@
   text-shadow: none;
 }
 [data-shadow="raised"] {
-  text-shadow: 0 -1px 0 #fff, 0 1px 0 var(--shadowColor);
+  text-shadow: 0 -1px 0 white, 0 1px 0 var(--shadowColor);
 }
 [data-shadow="depressed"] {
-  text-shadow: 0 -1px 0 var(--shadowColor), 0 1px 0 #fff;
+  text-shadow: 0 -1px 0 var(--shadowColor), 0 1px 0 white;
 }
 [data-shadow="uniform"] {
-  color: #fff;
+  color: white;
   text-shadow: -1px 1px 0 var(--shadowColor), 1px -1px 0 var(--shadowColor),
     1px 1px 0 var(--shadowColor), -1px -1px 0 var(--shadowColor);
 }

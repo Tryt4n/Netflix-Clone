@@ -64,15 +64,20 @@ export default function SubtitlesAppearancePage() {
           <form className="subtitles__form">
             <div className="subtitles__visualization-container">
               <span
-                className="subtitles__visualization-text"
-                data-font-face={textStyles.fontFace}
-                data-font-color={textStyles.fontColor}
-                data-font-size={textStyles.fontSize}
-                data-shadow={textStyles.shadow}
-                data-shadow-color={textStyles.shadowColor}
-                data-text-bg-color={textStyles.bgColor}
+                className="subtitles__visualization-wrapper"
+                data-window-bg-color={textStyles.windowColor}
               >
-                These settings affect subtitles on all supported devices.
+                <span
+                  className="subtitles__visualization-text"
+                  data-font-face={textStyles.fontFace}
+                  data-font-color={textStyles.fontColor}
+                  data-font-size={textStyles.fontSize}
+                  data-shadow={textStyles.shadow}
+                  data-shadow-color={textStyles.shadowColor}
+                  data-text-bg-color={textStyles.bgColor}
+                >
+                  These settings affect subtitles on all supported devices.
+                </span>
               </span>
             </div>
 

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -7,10 +7,13 @@ import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
 import "./subtitlesAppearancePage.scss";
 import { useTranslation } from "react-i18next";
-import { Option, Select } from "@mui/base";
+import { Select } from "@mui/base";
+import CustomOption from "./components/CustomOption";
+import SemitransparentCheckbox from "./components/SemitransparentCheckbox";
+import SizeRadioInput from "./components/SizeRadioInput";
 
 export default function SubtitlesAppearancePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { currentEditingProfile, users, setUsers, setIsCurrentlySaved, setDisplayedSavedMessage } =
     useContext(UserContext);
@@ -61,15 +64,51 @@ export default function SubtitlesAppearancePage() {
       : defaultTextStyles.windowColorSemitransparent,
   });
 
+  const translationsMapping = {
+    "maszyna do pisania": "typewriter",
+    drukarska: "print",
+    konsola: "console",
+    blokowa: "block",
+    zwykła: "casual",
+    kursywa: "cursive",
+    kapitaliki: "small-caps",
+    biały: "white",
+    czarny: "black",
+    czerwony: "red",
+    zielony: "green",
+    niebieski: "blue",
+    żółty: "yellow",
+    amarantowy: "magenta",
+    błękitny: "cyan",
+    brak: "none",
+    podniesione: "raised",
+    obniżone: "depressed",
+    jednolite: "uniform",
+    "efekt cienia": "drop-shadow",
+  };
+
+  const colorOptions = ["white", "black", "red", "green", "blue", "yellow", "magenta", "cyan"];
+  const colorOptionsWithNone = ["none", ...colorOptions];
+  const fontOptions = [
+    "typewriter",
+    "print",
+    "console",
+    "block",
+    "casual",
+    "cursive",
+    "small-caps",
+  ];
+  const sizeOptions = ["small", "medium", "large"];
+  const shadowOptions = ["none", "raised", "depressed", "uniform", "drop-shadow"];
+
   function handleChange(e, propertyName) {
     if (e.key === "Enter" || e.key === " ") {
-      const btnValue = e.target.innerText.toLowerCase().replace(" ", "-");
-      console.log(btnValue);
+      const btnValue = e.target.innerText.toLowerCase();
+      const btnValuePL = translationsMapping[btnValue];
       setTextStyles((prevState) => ({
         ...prevState,
-        [propertyName]: btnValue,
+        [propertyName]: i18n.language === "pl" ? btnValuePL : btnValue.replace(" ", "-"),
       }));
-      console.log(btnValue);
     } else if (e.target.type === "checkbox") {
       const { checked } = e.target;
       setTextStyles((prevState) => ({
@@ -100,12 +139,8 @@ export default function SubtitlesAppearancePage() {
 
     setUsers(updatedUsers);
     setIsCurrentlySaved(true);
-    setDisplayedSavedMessage("Your subtitle appearance preferences have been updated.");
+    setDisplayedSavedMessage(t("subtitlesSavedMessage"));
   }
-
-  // useEffect(() => {
-  //   console.log(textStyles);
-  // }, [textStyles]);
 
   return (
     <>
@@ -129,19 +164,24 @@ export default function SubtitlesAppearancePage() {
             />
           </header>
           <p className="subtitles__subheading">
-            {t("changeWaySubtitlesAppear")} {currentEditingProfile.username}{" "}
+            {t("changeWaySubtitlesAppear")} <em>{currentEditingProfile.username} </em>
             {t("onAllSupportedDevices")}
           </p>
 
           <form className="subtitles__form">
+            {/* //* Visualization Text Container  */}
             <div className="subtitles__visualization-container">
               <span
                 className="subtitles__visualization-wrapper"
+                role="presentation"
+                aria-live="assertive"
                 data-window-bg-color={textStyles.windowColor}
                 data-window-bg-color-semitransparent={textStyles.windowColorSemitransparent}
               >
                 <span
                   className="subtitles__visualization-text"
+                  role="presentation"
+                  aria-live="assertive"
                   data-font-face={textStyles.fontFace}
                   data-font-color={textStyles.fontColor}
                   data-font-color-semitransparent={textStyles.fontColorSemitransparent}
@@ -169,48 +209,11 @@ export default function SubtitlesAppearancePage() {
                   data-font-face={textStyles.fontFace}
                   onChange={(e) => handleChange(e, "fontFace")}
                 >
-                  <Option
-                    value="typewriter"
-                    data-font-face="typewriter"
-                  >
-                    {t("typewriter")}
-                  </Option>
-                  <Option
-                    value="print"
-                    data-font-face="print"
-                  >
-                    {t("print")}
-                  </Option>
-                  <Option
-                    value="console"
-                    data-font-face="console"
-                  >
-                    {t("console")}
-                  </Option>
-                  <Option
-                    value="block"
-                    data-font-face="block"
-                  >
-                    {t("block")}
-                  </Option>
-                  <Option
-                    value="casual"
-                    data-font-face="casual"
-                  >
-                    {t("casual")}
-                  </Option>
-                  <Option
-                    value="cursive"
-                    data-font-face="cursive"
-                  >
-                    {t("cursive")}
-                  </Option>
-                  <Option
-                    value="small-caps"
-                    data-font-face="small-caps"
-                  >
-                    {t("smallCaps")}
-                  </Option>
+                  <CustomOption
+                    options={fontOptions}
+                    attribute="data-font-face"
+                    tKey={true}
+                  />
                 </Select>
                 {/* //* Text Color */}
                 <Select
@@ -222,65 +225,15 @@ export default function SubtitlesAppearancePage() {
                   data-color={textStyles.fontColor}
                   onChange={(e) => handleChange(e, "fontColor")}
                 >
-                  <Option
-                    value="white"
-                    data-color="white"
-                  >
-                    {t("white")}
-                  </Option>
-                  <Option
-                    value="black"
-                    data-color="black"
-                  >
-                    {t("black")}
-                  </Option>
-                  <Option
-                    value="red"
-                    data-color="red"
-                  >
-                    {t("red")}
-                  </Option>
-                  <Option
-                    value="green"
-                    data-color="green"
-                  >
-                    {t("green")}
-                  </Option>
-                  <Option
-                    value="blue"
-                    data-color="blue"
-                  >
-                    {t("blue")}
-                  </Option>
-                  <Option
-                    value="yellow"
-                    data-color="yellow"
-                  >
-                    {t("yellow")}
-                  </Option>
-                  <Option
-                    value="magenta"
-                    data-color="magenta"
-                  >
-                    {t("magenta")}
-                  </Option>
-                  <Option
-                    value="cyan"
-                    data-color="cyan"
-                  >
-                    {t("cyan")}
-                  </Option>
-                  <div className="subtitles__list-checkbox-wrapper">
-                    <input
-                      type="checkbox"
-                      name="text-color-transparency"
-                      id="text-color-transparency"
-                      className="checkbox-light"
-                      checked={textStyles.fontColorSemitransparent}
-                      onChange={(e) => handleChange(e, "fontColorSemitransparent")}
-                    />
-                    <label htmlFor="text-color-transparency">{t("Semitransparent")}</label>
-                  </div>
+                  <CustomOption
+                    options={colorOptions}
+                    attribute="data-color"
+                  />
+                  <SemitransparentCheckbox
+                    textStyles={textStyles}
+                    handleChange={handleChange}
+                    inputStyles={"fontColorSemitransparent"}
+                  />
                 </Select>
               </fieldset>
 
@@ -290,57 +243,14 @@ export default function SubtitlesAppearancePage() {
                   {t("textSize")}: <span>{textStyles.fontSize}</span>
                 </legend>
                 <div className="subtitles__fs-container">
-                  <div>
-                    <input
-                      type="radio"
-                      name="fs-size"
-                      id="fs-small"
-                      value="small"
-                      data-font-size="small"
-                      checked={textStyles.fontSize === "small"}
-                      onChange={(e) => handleChange(e, "fontSize")}
+                  {sizeOptions.map((size) => (
+                    <SizeRadioInput
+                      key={size}
+                      textStyles={textStyles}
+                      handleChange={handleChange}
+                      size={size}
                     />
-                    <label
-                      htmlFor="fs-small"
-                      className="visually-hidden"
-                    >
-                      {t("smallText")}
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="fs-size"
-                      id="fs-medium"
-                      value="medium"
-                      data-font-size="medium"
-                      checked={textStyles.fontSize === "medium"}
-                      onChange={(e) => handleChange(e, "fontSize")}
-                    />
-                    <label
-                      htmlFor="fs-medium"
-                      className="visually-hidden"
-                    >
-                      {t("mediumText")}
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      type="radio"
-                      name="fs-size"
-                      id="fs-bold"
-                      value="Large"
-                      data-font-size="large"
-                      checked={textStyles.fontSize === "large"}
-                      onChange={(e) => handleChange(e, "fontSize")}
-                    />
-                    <label
-                      htmlFor="fs-bold"
-                      className="visually-hidden"
-                    >
-                      {t("largeText")}
-                    </label>
-                  </div>
+                  ))}
                 </div>
               </fieldset>
 
@@ -356,36 +266,11 @@ export default function SubtitlesAppearancePage() {
                   data-shadow={textStyles.shadow}
                   onChange={(e) => handleChange(e, "shadow")}
                 >
-                  <Option
-                    value="none"
-                    data-shadow="none"
-                  >
-                    {t("none")}
-                  </Option>
-                  <Option
-                    value="raised"
-                    data-shadow="raised"
-                  >
-                    {t("raised")}
-                  </Option>
-                  <Option
-                    value="depressed"
-                    data-shadow="depressed"
-                  >
-                    {t("depressed")}
-                  </Option>
-                  <Option
-                    value="uniform"
-                    data-shadow="uniform"
-                  >
-                    {t("uniform")}
-                  </Option>
-                  <Option
-                    value="drop-shadow"
-                    data-shadow="drop-shadow"
-                  >
-                    {t("dropShadow")}
-                  </Option>
+                  <CustomOption
+                    options={shadowOptions}
+                    attribute="data-shadow"
+                    tKey={true}
+                  />
                 </Select>
                 {/* //* Shadow Color */}
                 <Select
@@ -397,54 +282,10 @@ export default function SubtitlesAppearancePage() {
                   data-color={textStyles.shadowColor}
                   onChange={(e) => handleChange(e, "shadowColor")}
                 >
-                  <Option
-                    value="white"
-                    data-color="white"
-                  >
-                    {t("white")}
-                  </Option>
-                  <Option
-                    value="black"
-                    data-color="black"
-                  >
-                    {t("black")}
-                  </Option>
-                  <Option
-                    value="red"
-                    data-color="red"
-                  >
-                    {t("red")}
-                  </Option>
-                  <Option
-                    value="green"
-                    data-color="green"
-                  >
-                    {t("green")}
-                  </Option>
-                  <Option
-                    value="blue"
-                    data-color="blue"
-                  >
-                    {t("blue")}
-                  </Option>
-                  <Option
-                    value="yellow"
-                    data-color="yellow"
-                  >
-                    {t("yellow")}
-                  </Option>
-                  <Option
-                    value="magenta"
-                    data-color="magenta"
-                  >
-                    {t("magenta")}
-                  </Option>
-                  <Option
-                    value="cyan"
-                    data-color="cyan"
-                  >
-                    {t("cyan")}
-                  </Option>
+                  <CustomOption
+                    options={colorOptions}
+                    attribute="data-color"
+                  />
                 </Select>
               </fieldset>
 
@@ -464,71 +305,15 @@ export default function SubtitlesAppearancePage() {
                     data-color={textStyles.bgColor}
                     onChange={(e) => handleChange(e, "bgColor")}
                   >
-                    <Option
-                      value="none"
-                      data-color="none"
-                    >
-                      {t("none")}
-                    </Option>
-                    <Option
-                      value="white"
-                      data-color="white"
-                    >
-                      {t("white")}
-                    </Option>
-                    <Option
-                      value="black"
-                      data-color="black"
-                    >
-                      {t("black")}
-                    </Option>
-                    <Option
-                      value="red"
-                      data-color="red"
-                    >
-                      {t("red")}
-                    </Option>
-                    <Option
-                      value="green"
-                      data-color="green"
-                    >
-                      {t("green")}
-                    </Option>
-                    <Option
-                      value="blue"
-                      data-color="blue"
-                    >
-                      {t("blue")}
-                    </Option>
-                    <Option
-                      value="yellow"
-                      data-color="yellow"
-                    >
-                      {t("yellow")}
-                    </Option>
-                    <Option
-                      value="magenta"
-                      data-color="magenta"
-                    >
-                      {t("magenta")}
-                    </Option>
-                    <Option
-                      value="cyan"
-                      data-color="cyan"
-                    >
-                      {t("cyan")}
-                    </Option>
-                    <div className="subtitles__list-checkbox-wrapper">
-                      <input
-                        type="checkbox"
-                        name="background-transparency"
-                        id="background-transparency"
-                        className="checkbox-light"
-                        checked={textStyles.bgColorSemitransparent}
-                        onChange={(e) => handleChange(e, "bgColorSemitransparent")}
-                      />
-                      <label htmlFor="background-transparency">{t("semitransparent")}</label>
-                    </div>
+                    <CustomOption
+                      options={colorOptionsWithNone}
+                      attribute="data-color"
+                    />
+                    <SemitransparentCheckbox
+                      textStyles={textStyles}
+                      handleChange={handleChange}
+                      inputStyles={"bgColorSemitransparent"}
+                    />
                   </Select>
                 </fieldset>
 
@@ -547,73 +332,15 @@ export default function SubtitlesAppearancePage() {
                     data-color={textStyles.windowColor}
                     onChange={(e) => handleChange(e, "windowColor")}
                   >
-                    <Option
-                      value="none"
-                      data-color="none"
-                    >
-                      {t("none")}
-                    </Option>
-                    <div>
-                      <Option
-                        value="white"
-                        data-color="white"
-                      >
-                        {t("white")}
-                      </Option>
-                      <Option
-                        value="black"
-                        data-color="black"
-                      >
-                        {t("black")}
-                      </Option>
-                      <Option
-                        value="red"
-                        data-color="red"
-                      >
-                        {t("red")}
-                      </Option>
-                      <Option
-                        value="green"
-                        data-color="green"
-                      >
-                        {t("green")}
-                      </Option>
-                      <Option
-                        value="blue"
-                        data-color="blue"
-                      >
-                        {t("blue")}
-                      </Option>
-                      <Option
-                        value="yellow"
-                        data-color="yellow"
-                      >
-                        {t("yellow")}
-                      </Option>
-                      <Option
-                        value="magenta"
-                        data-color="magenta"
-                      >
-                        {t("magenta")}
-                      </Option>
-                      <Option
-                        value="cyan"
-                        data-color="cyan"
-                      >
-                        {t("cyan")}
-                      </Option>
-                    </div>
-                    <div className="subtitles__list-checkbox-wrapper">
-                      <input
-                        type="checkbox"
-                        name="window-transparency"
-                        id="window-transparency"
-                        className="checkbox-light"
-                        checked={textStyles.windowColorSemitransparent}
-                        onChange={(e) => handleChange(e, "windowColorSemitransparent")}
-                      />
-                      <label htmlFor="window-transparency">{t("semitransparent")}</label>
-                    </div>
+                    <CustomOption
+                      options={colorOptionsWithNone}
+                      attribute="data-color"
+                    />
+                    <SemitransparentCheckbox
+                      textStyles={textStyles}
+                      handleChange={handleChange}
+                      inputStyles={"windowColorSemitransparent"}
+                    />
                   </Select>
                 </fieldset>
               </div>
@@ -628,14 +355,14 @@ export default function SubtitlesAppearancePage() {
               />
 
               <AccountSettingsBtn
-                text={"Reset to default"}
+                text={t("resetToDefault")}
                 currentClass="light"
                 path={"/account"}
                 onClickFunction={() => handleSave(false)}
               />
 
               <AccountSettingsBtn
-                text={"Cancel"}
+                text={t("cancel")}
                 currentClass="light"
                 path={"/account"}
               />

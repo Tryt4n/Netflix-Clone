@@ -29,6 +29,9 @@
 
   &__subheading {
     margin-bottom: 1em;
+    & em {
+      font-style: normal;
+    }
   }
 
   &__form {
@@ -48,9 +51,14 @@
     margin: 1rem;
     padding: 0.5em;
     text-align: center;
+    transition: 250ms ease-in-out;
   }
   &__visualization-text {
     padding: func.rem(3);
+    transition: 250ms ease-in-out;
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 
   &__settings-container {

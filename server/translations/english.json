@@ -228,6 +228,7 @@
   "hideAll": "Hide all",
   "downloadAll": "Download all",
   "subtitles": "subtitles",
+  "subtitlesSavedMessage": "Your subtitle appearance preferences have been updated.",
   "changeWaySubtitlesAppear": "Change the way subtitles appear for",
   "onAllSupportedDevices": "on all supported devices.",
   "subtitlesText": "These settings affect subtitles on all supported devices.",
@@ -246,6 +247,7 @@
   "blue": "blue",
   "yellow": "yellow",
   "magenta": "magenta",
+  "cyan": "cyan",
   "semitransparent": "Semitransparent",
   "textSize": "Text size",
   "smallText": "Small Text",
@@ -258,5 +260,6 @@
   "uniform": "uniform",
   "dropShadow": "drop shadow",
   "background": "Background",
-  "window": "Window"
+  "window": "Window",
+  "resetToDefault": "Reset to default"
 }

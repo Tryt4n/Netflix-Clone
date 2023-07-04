@@ -177,6 +177,9 @@
       opacity: 0;
       visibility: hidden;
       transition: 250ms ease-in-out;
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
       @media screen and (width < b.$mobile-account) {
         margin-left: 2rem;
       }

@@ -179,9 +179,11 @@
 }
 [data-font-size="medium"] {
   font-size: 15pt;
+  line-height: 145%;
 }
 [data-font-size="large"] {
   font-size: 20pt;
+  line-height: 135%;
 }
 
 //* Shadow Color
@@ -221,7 +223,6 @@
   text-shadow: 0 -1px 0 var(--shadowColor), 0 1px 0 white;
 }
 [data-shadow="uniform"] {
-  color: white;
   text-shadow: -1px 1px 0 var(--shadowColor), 1px -1px 0 var(--shadowColor),
     1px 1px 0 var(--shadowColor), -1px -1px 0 var(--shadowColor);
 }

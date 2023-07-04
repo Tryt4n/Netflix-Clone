@@ -106,6 +106,12 @@
         display: none;
       }
     }
+    &::before,
+    &::after {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    }
   }
   &__require-pin-code-tooltip:hover {
     &::after,

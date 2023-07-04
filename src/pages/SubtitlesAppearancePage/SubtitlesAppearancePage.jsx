@@ -107,7 +107,7 @@ export default function SubtitlesAppearancePage() {
       const btnValuePL = translationsMapping[btnValue];
       setTextStyles((prevState) => ({
         ...prevState,
-        [propertyName]: i18n.language === "pl" ? btnValuePL : btnValue.replace(" ", "-"),
+        [propertyName]: i18n.language.includes("pl") ? btnValuePL : btnValue.replace(" ", "-"),
       }));
     } else if (e.target.type === "checkbox") {
       const { checked } = e.target;

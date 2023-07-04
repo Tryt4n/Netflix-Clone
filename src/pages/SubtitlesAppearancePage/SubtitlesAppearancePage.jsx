@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
@@ -62,7 +62,15 @@ export default function SubtitlesAppearancePage() {
   });
 
   function handleChange(e, propertyName) {
-    if (e.target.type === "checkbox") {
+    if (e.key === "Enter" || e.key === " ") {
+      const btnValue = e.target.innerText.toLowerCase().replace(" ", "-");
+      console.log(btnValue);
+      setTextStyles((prevState) => ({
+        ...prevState,
+        [propertyName]: btnValue,
+      }));
+      console.log(btnValue);
+    } else if (e.target.type === "checkbox") {
       const { checked } = e.target;
       setTextStyles((prevState) => ({
         ...prevState,
@@ -95,17 +103,23 @@ export default function SubtitlesAppearancePage() {
     setDisplayedSavedMessage("Your subtitle appearance preferences have been updated.");
   }
 
+  // useEffect(() => {
+  //   console.log(textStyles);
+  // }, [textStyles]);
+
   return (
     <>
       <header>
-        <h1 className="visually-hidden">Settings - Subtitles</h1>
+        <h1 className="visually-hidden">
+          {t("settings")} - {t("subtitles")}
+        </h1>
         <NavbarShort />
       </header>
 
       <div className="subtitles settings-wrapper">
         <main className="settings-container">
           <header className="subtitles__header">
-            <h2 className="subtitles__heading">Subtitle Appearance</h2>
+            <h2 className="subtitles__heading">{t("subtitleAppearance")}</h2>
             <img
               className="language-change__profile-img"
               src={currentEditingProfile.profileImage}
@@ -115,8 +129,8 @@ export default function SubtitlesAppearancePage() {
             />
           </header>
           <p className="subtitles__subheading">
-            Change the way subtitles appear for {currentEditingProfile.username} on all supported
-            devices.
+            {t("changeWaySubtitlesAppear")} {currentEditingProfile.username}{" "}
+            {t("onAllSupportedDevices")}
           </p>
 
           <form className="subtitles__form">
@@ -137,14 +151,14 @@ export default function SubtitlesAppearancePage() {
                   data-text-bg-color={textStyles.bgColor}
                   data-text-bg-color-semitransparent={textStyles.bgColorSemitransparent}
                 >
-                  These settings affect subtitles on all supported devices.
+                  {t("subtitlesText")}
                 </span>
               </span>
             </div>
 
             <div className="subtitles__settings-container">
               <fieldset className="subtitles__settings-inner-container">
-                <legend>Font</legend>
+                <legend>{t("font")}</legend>
                 {/* //* Font Face */}
                 <Select
                   defaultValue={textStyles.fontFace}
@@ -159,43 +173,43 @@ export default function SubtitlesAppearancePage() {
                     value="typewriter"
                     data-font-face="typewriter"
                   >
-                    typewriter
+                    {t("typewriter")}
                   </Option>
                   <Option
                     value="print"
                     data-font-face="print"
                   >
-                    print
+                    {t("print")}
                   </Option>
                   <Option
                     value="console"
                     data-font-face="console"
                   >
-                    console
+                    {t("console")}
                   </Option>
                   <Option
                     value="block"
                     data-font-face="block"
                   >
-                    block
+                    {t("block")}
                   </Option>
                   <Option
                     value="casual"
                     data-font-face="casual"
                   >
-                    casual
+                    {t("casual")}
                   </Option>
                   <Option
                     value="cursive"
                     data-font-face="cursive"
                   >
-                    cursive
+                    {t("cursive")}
                   </Option>
                   <Option
                     value="small-caps"
                     data-font-face="small-caps"
                   >
-                    small caps
+                    {t("smallCaps")}
                   </Option>
                 </Select>
                 {/* //* Text Color */}
@@ -212,49 +226,49 @@ export default function SubtitlesAppearancePage() {
                     value="white"
                     data-color="white"
                   >
-                    white
+                    {t("white")}
                   </Option>
                   <Option
                     value="black"
                     data-color="black"
                   >
-                    black
+                    {t("black")}
                   </Option>
                   <Option
                     value="red"
                     data-color="red"
                   >
-                    red
+                    {t("red")}
                   </Option>
                   <Option
                     value="green"
                     data-color="green"
                   >
-                    green
+                    {t("green")}
                   </Option>
                   <Option
                     value="blue"
                     data-color="blue"
                   >
-                    blue
+                    {t("blue")}
                   </Option>
                   <Option
                     value="yellow"
                     data-color="yellow"
                   >
-                    yellow
+                    {t("yellow")}
                   </Option>
                   <Option
                     value="magenta"
                     data-color="magenta"
                   >
-                    magenta
+                    {t("magenta")}
                   </Option>
                   <Option
                     value="cyan"
                     data-color="cyan"
                   >
-                    cyan
+                    {t("cyan")}
                   </Option>
                   <div className="subtitles__list-checkbox-wrapper">
                     <input
@@ -265,7 +279,7 @@ export default function SubtitlesAppearancePage() {
                       checked={textStyles.fontColorSemitransparent}
                       onChange={(e) => handleChange(e, "fontColorSemitransparent")}
                     />
-                    <label htmlFor="text-color-transparency">Semitransparent</label>
+                    <label htmlFor="text-color-transparency">{t("Semitransparent")}</label>
                   </div>
                 </Select>
               </fieldset>
@@ -273,7 +287,7 @@ export default function SubtitlesAppearancePage() {
               {/* //* Text Size */}
               <fieldset className="subtitles__text-size-container">
                 <legend>
-                  Text Size: <span>{textStyles.fontSize}</span>
+                  {t("textSize")}: <span>{textStyles.fontSize}</span>
                 </legend>
                 <div className="subtitles__fs-container">
                   <div>
@@ -290,7 +304,7 @@ export default function SubtitlesAppearancePage() {
                       htmlFor="fs-small"
                       className="visually-hidden"
                     >
-                      Small Text
+                      {t("smallText")}
                     </label>
                   </div>
                   <div>
@@ -307,7 +321,7 @@ export default function SubtitlesAppearancePage() {
                       htmlFor="fs-medium"
                       className="visually-hidden"
                     >
-                      Medium Text
+                      {t("mediumText")}
                     </label>
                   </div>
                   <div>
@@ -324,7 +338,7 @@ export default function SubtitlesAppearancePage() {
                       htmlFor="fs-bold"
                       className="visually-hidden"
                     >
-                      Large Text
+                      {t("largeText")}
                     </label>
                   </div>
                 </div>
@@ -332,7 +346,7 @@ export default function SubtitlesAppearancePage() {
 
               {/* //* Text Shadow */}
               <fieldset className="subtitles__settings-inner-container">
-                <legend>Shadow</legend>
+                <legend>{t("shadow")}</legend>
                 <Select
                   defaultValue={textStyles.shadow}
                   slotProps={{
@@ -346,31 +360,31 @@ export default function SubtitlesAppearancePage() {
                     value="none"
                     data-shadow="none"
                   >
-                    none
+                    {t("none")}
                   </Option>
                   <Option
                     value="raised"
                     data-shadow="raised"
                   >
-                    raised
+                    {t("raised")}
                   </Option>
                   <Option
                     value="depressed"
                     data-shadow="depressed"
                   >
-                    depressed
+                    {t("depressed")}
                   </Option>
                   <Option
                     value="uniform"
                     data-shadow="uniform"
                   >
-                    uniform
+                    {t("uniform")}
                   </Option>
                   <Option
                     value="drop-shadow"
                     data-shadow="drop-shadow"
                   >
-                    drop shadow
+                    {t("dropShadow")}
                   </Option>
                 </Select>
                 {/* //* Shadow Color */}
@@ -387,56 +401,56 @@ export default function SubtitlesAppearancePage() {
                     value="white"
                     data-color="white"
                   >
-                    white
+                    {t("white")}
                   </Option>
                   <Option
                     value="black"
                     data-color="black"
                   >
-                    black
+                    {t("black")}
                   </Option>
                   <Option
                     value="red"
                     data-color="red"
                   >
-                    red
+                    {t("red")}
                   </Option>
                   <Option
                     value="green"
                     data-color="green"
                   >
-                    green
+                    {t("green")}
                   </Option>
                   <Option
                     value="blue"
                     data-color="blue"
                   >
-                    blue
+                    {t("blue")}
                   </Option>
                   <Option
                     value="yellow"
                     data-color="yellow"
                   >
-                    yellow
+                    {t("yellow")}
                   </Option>
                   <Option
                     value="magenta"
                     data-color="magenta"
                   >
-                    magenta
+                    {t("magenta")}
                   </Option>
                   <Option
                     value="cyan"
                     data-color="cyan"
                   >
-                    cyan
+                    {t("cyan")}
                   </Option>
                 </Select>
               </fieldset>
 
               <div className="subtitles__settings-inner-wrapper">
                 <fieldset>
-                  <legend>Background</legend>
+                  <legend>{t("background")}</legend>
                   {/* //* Text Background Color */}
                   <Select
                     defaultValue={textStyles.bgColor}
@@ -454,55 +468,55 @@ export default function SubtitlesAppearancePage() {
                       value="none"
                       data-color="none"
                     >
-                      none
+                      {t("none")}
                     </Option>
                     <Option
                       value="white"
                       data-color="white"
                     >
-                      white
+                      {t("white")}
                     </Option>
                     <Option
                       value="black"
                       data-color="black"
                     >
-                      black
+                      {t("black")}
                     </Option>
                     <Option
                       value="red"
                       data-color="red"
                     >
-                      red
+                      {t("red")}
                     </Option>
                     <Option
                       value="green"
                       data-color="green"
                     >
-                      green
+                      {t("green")}
                     </Option>
                     <Option
                       value="blue"
                       data-color="blue"
                     >
-                      blue
+                      {t("blue")}
                     </Option>
                     <Option
                       value="yellow"
                       data-color="yellow"
                     >
-                      yellow
+                      {t("yellow")}
                     </Option>
                     <Option
                       value="magenta"
                       data-color="magenta"
                     >
-                      magenta
+                      {t("magenta")}
                     </Option>
                     <Option
                       value="cyan"
                       data-color="cyan"
                     >
-                      cyan
+                      {t("cyan")}
                     </Option>
                     <div className="subtitles__list-checkbox-wrapper">
                       <input
@@ -513,13 +527,13 @@ export default function SubtitlesAppearancePage() {
                         checked={textStyles.bgColorSemitransparent}
                         onChange={(e) => handleChange(e, "bgColorSemitransparent")}
                       />
-                      <label htmlFor="background-transparency">Semitransparent</label>
+                      <label htmlFor="background-transparency">{t("semitransparent")}</label>
                     </div>
                   </Select>
                 </fieldset>
 
                 <fieldset>
-                  <legend>Window</legend>
+                  <legend>{t("window")}</legend>
                   {/* //* Background Color */}
                   <Select
                     defaultValue={textStyles.windowColor}
@@ -537,56 +551,56 @@ export default function SubtitlesAppearancePage() {
                       value="none"
                       data-color="none"
                     >
-                      none
+                      {t("none")}
                     </Option>
                     <div>
                       <Option
                         value="white"
                         data-color="white"
                       >
-                        white
+                        {t("white")}
                       </Option>
                       <Option
                         value="black"
                         data-color="black"
                       >
-                        black
+                        {t("black")}
                       </Option>
                       <Option
                         value="red"
                         data-color="red"
                       >
-                        red
+                        {t("red")}
                       </Option>
                       <Option
                         value="green"
                         data-color="green"
                       >
-                        green
+                        {t("green")}
                       </Option>
                       <Option
                         value="blue"
                         data-color="blue"
                       >
-                        blue
+                        {t("blue")}
                       </Option>
                       <Option
                         value="yellow"
                         data-color="yellow"
                       >
-                        yellow
+                        {t("yellow")}
                       </Option>
                       <Option
                         value="magenta"
                         data-color="magenta"
                       >
-                        magenta
+                        {t("magenta")}
                       </Option>
                       <Option
                         value="cyan"
                         data-color="cyan"
                       >
-                        cyan
+                        {t("cyan")}
                       </Option>
                     </div>
                     <div className="subtitles__list-checkbox-wrapper">
@@ -598,7 +612,7 @@ export default function SubtitlesAppearancePage() {
                         checked={textStyles.windowColorSemitransparent}
                         onChange={(e) => handleChange(e, "windowColorSemitransparent")}
                       />
-                      <label htmlFor="window-transparency">Semitransparent</label>
+                      <label htmlFor="window-transparency">{t("semitransparent")}</label>
                     </div>
                   </Select>
                 </fieldset>

@@ -7,6 +7,12 @@
 .subtitles {
   $select-color-size: func.rem(45);
 
+  h1,
+  h2,
+  legend {
+    text-transform: capitalize;
+  }
+
   & * {
     font-weight: normal;
   }
@@ -228,6 +234,7 @@
     background-color: c.$white;
     border: func.rem(1) solid c.$gray-light;
     width: func.rem(235);
+    text-transform: capitalize;
 
     &--text {
       min-width: calc(100% + func.rem(8));

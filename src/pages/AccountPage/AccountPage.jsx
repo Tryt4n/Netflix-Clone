@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
-import MemberSinceIcon from "../../icons/MemberSicnceIcon";
+import MemberSinceIcon from "../../icons/MemberSinceIcon";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
@@ -114,7 +114,9 @@ export default function AccountPage() {
               <section className="account__article-section">
                 <h2 className="visually-hidden">{t("basicAccountInformation")}</h2>
                 <div>
-                  <strong className="account__article-email-text">placeholder@gmail.com</strong>
+                  <strong className="account__article-email-text">
+                    {users[0].accountData.email}
+                  </strong>
                   <a
                     href="#"
                     className="account__article-link"
@@ -135,7 +137,8 @@ export default function AccountPage() {
                 </div>
                 <div>
                   <span className="account__article-text--accent account__article-text--capitalize">
-                    {i18n.language === "pl" ? t("phone") : t("phoneNumber")}: 666 777 888
+                    {i18n.language === "pl" ? t("phone") : t("phoneNumber")}:{" "}
+                    {users[0].accountData.phoneNumber}
                   </span>
                   <a
                     href="#"

@@ -20,6 +20,7 @@ import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import ReportProblemPage from "./pages/ReportProblemPage/ReportProblemPage";
 import SubtitlesAppearancePage from "./pages/SubtitlesAppearancePage/SubtitlesAppearancePage";
 import PlaybackPage from "./pages/PlaybackPage/PlaybackPage";
+import CommunicationPage from "./pages/CommunicationPage/CommunicationPage";
 
 export default function App() {
   const location = useLocation();
@@ -103,7 +104,10 @@ export default function App() {
             path="playback"
             element={<PlaybackPage />}
           />
-          <Route path="communicationPreference" />
+          <Route
+            path="communicationPreference"
+            element={<CommunicationPage />}
+          />
           <Route path="privacy" />
         </Route>
         <Route

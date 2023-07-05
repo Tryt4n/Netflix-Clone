@@ -14,6 +14,21 @@
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": true,
     "dataUsage": "auto",
+    "accountData": {
+      "email": "placeholder@gmail.com",
+      "emailCommunication": {
+        "updates": true,
+        "now": true,
+        "offers": true,
+        "surveys": true,
+        "kidsFamily": true
+      },
+      "phoneNumber": "666 777 888",
+      "phoneCommunication": {
+        "accountMessages": true,
+        "informations": true
+      }
+    },
     "notifications": [
       {
         "id": 1,

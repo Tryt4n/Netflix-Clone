@@ -476,9 +476,10 @@ export default function AccountPage() {
                             </Link>
                           </li>
                           <li className="account__profile-list-item-wrapper">
-                            <a
-                              href="#"
+                            <Link
+                              to={"/settings/playback"}
                               className="account__profile-list-item"
+                              onClick={() => setCurrentEditingProfile(user)}
                             >
                               <div>
                                 <h3 className="account__profile-heading">
@@ -491,14 +492,15 @@ export default function AccountPage() {
                                 </em>
                               </div>
                               <span className="account__profile-accent-text">{t("change")}</span>
-                            </a>
+                            </Link>
                           </li>
 
                           {index === 0 && (
                             <li className="account__profile-list-item-wrapper">
-                              <a
-                                href="#"
+                              <Link
+                                to={"/settings/communicationPreference"}
                                 className="account__profile-list-item"
+                                onClick={() => setCurrentEditingProfile(user)}
                               >
                                 <div>
                                   <h3 className="account__profile-heading">
@@ -506,15 +508,16 @@ export default function AccountPage() {
                                   </h3>
                                 </div>
                                 <span className="account__profile-accent-text">{t("change")}</span>
-                              </a>
+                              </Link>
                             </li>
                           )}
 
                           {!user.kidsProfile && (
                             <li className="account__profile-list-item-wrapper">
-                              <a
-                                href="#"
+                              <Link
+                                to={"/settings/privacy"}
                                 className="account__profile-list-item"
+                                onClick={() => setCurrentEditingProfile(user)}
                               >
                                 <div>
                                   <h3 className="account__profile-heading">
@@ -522,7 +525,7 @@ export default function AccountPage() {
                                   </h3>
                                 </div>
                                 <span className="account__profile-accent-text">{t("change")}</span>
-                              </a>
+                              </Link>
                             </li>
                           )}
 

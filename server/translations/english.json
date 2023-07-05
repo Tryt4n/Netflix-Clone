@@ -261,5 +261,17 @@
   "dropShadow": "drop shadow",
   "background": "Background",
   "window": "Window",
-  "resetToDefault": "Reset to default"
+  "resetToDefault": "Reset to default",
+  "playbackSavedMessage": "Playback settings saved.",
+  "playback": "Playback",
+  "for": " for",
+  "dataUsage": "Data usage per screen",
+  "auto": "auto",
+  "low": "low",
+  "medium": "medium",
+  "high": "high",
+  "autoDescription": "Default video and audio quality, and data usage",
+  "lowDescription": "Basic video and audio quality, up to 0.3 GB per hour",
+  "mediumDescription": "Standard video and audio quality, up to 0.7GB per hour",
+  "highDescription": "Best video and audio quality, up to 3 GB per hour for HD, 7 GB per hour for Ultra HD"
 }

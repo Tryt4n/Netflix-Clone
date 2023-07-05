@@ -45,6 +45,15 @@ svg {
   user-select: none;
 }
 
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+legend {
+  padding: 0;
+}
+
 // /* clears the ‘X’ from Internet Explorer */
 // input[type="search"]::-ms-clear {
 //   display: none;

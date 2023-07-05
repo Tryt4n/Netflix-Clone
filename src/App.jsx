@@ -19,6 +19,7 @@ import PINCodePage from "./pages/PINCodePage/PINCodePage";
 import ActivityPage from "./pages/ActivityPage/ActivityPage";
 import ReportProblemPage from "./pages/ReportProblemPage/ReportProblemPage";
 import SubtitlesAppearancePage from "./pages/SubtitlesAppearancePage/SubtitlesAppearancePage";
+import PlaybackPage from "./pages/PlaybackPage/PlaybackPage";
 
 export default function App() {
   const location = useLocation();
@@ -98,6 +99,12 @@ export default function App() {
             path="subtitles"
             element={<SubtitlesAppearancePage />}
           />
+          <Route
+            path="playback"
+            element={<PlaybackPage />}
+          />
+          <Route path="communicationPreference" />
+          <Route path="privacy" />
         </Route>
         <Route
           path="reportproblem/:id"

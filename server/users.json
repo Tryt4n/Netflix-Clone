@@ -13,6 +13,7 @@
     "autoplayNext": true,
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": true,
+    "dataUsage": "auto",
     "notifications": [
       {
         "id": 1,
@@ -295,6 +296,7 @@
     "autoplayNext": true,
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
+    "dataUsage": "High",
     "notifications": [
       {
         "id": 1,
@@ -491,6 +493,7 @@
     "autoplayNext": true,
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
+    "dataUsage": "medium",
     "notifications": [
       {
         "id": 2,
@@ -594,6 +597,7 @@
     "autoplayNext": true,
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
+    "dataUsage": "low",
     "notifications": [
       {
         "id": 1,
@@ -772,6 +776,7 @@
     "autoplayNext": true,
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
+    "dataUsage": "auto",
     "notifications": [],
     "movies": [
       {

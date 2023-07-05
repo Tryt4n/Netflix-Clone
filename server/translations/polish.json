@@ -262,5 +262,17 @@
   "dropShadow": "efekt cienia",
   "background": "Tło",
   "window": "Okno",
-  "resetToDefault": "Przywróć domyślne"
+  "resetToDefault": "Przywróć domyślne",
+  "playbackSavedMessage": "Zapisano ustawienia odtwarzania.",
+  "playback": "Odtwarzanie",
+  "for": ":",
+  "dataUsage": "Użycie danych na ekran",
+  "auto": "automatyczne",
+  "low": "niskie",
+  "medium": "średnie",
+  "high": "wysokie",
+  "autoDescription": "Domyślna jakość audio i wideo oraz użycie danych",
+  "lowDescription": "Podstawowa jakość audio i wideo, do 0,3 GB na godzinę",
+  "mediumDescription": "Standardowa jakość audio i wideo, do 0,7 GB na godzinę",
+  "highDescription": "Najwyższa jakość audio i wideo, do 3 GB na godzinę w jakości HD, 7 GB na godzinę w jakości Ultra HD"
 }

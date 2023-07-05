@@ -71,9 +71,6 @@
   }
 
   & fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
     @media screen and (width <= b.$subtitles-setting) {
       margin-bottom: 1.5em;
     }
@@ -82,7 +79,6 @@
   & legend {
     color: c.$gray-text;
     margin-bottom: 0.375em;
-    padding: 0;
     & > span {
       text-transform: capitalize;
     }

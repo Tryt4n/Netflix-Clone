@@ -311,7 +311,7 @@
     "autoplayNext": true,
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
-    "dataUsage": "High",
+    "dataUsage": "high",
     "notifications": [
       {
         "id": 1,

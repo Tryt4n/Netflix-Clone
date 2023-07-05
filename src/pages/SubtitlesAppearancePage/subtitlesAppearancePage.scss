@@ -25,6 +25,7 @@
   &__heading {
     font-size: v.$account-heading;
     font-weight: normal;
+    text-transform: capitalize;
   }
 
   &__subheading {

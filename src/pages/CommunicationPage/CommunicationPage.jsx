@@ -96,20 +96,22 @@ export default function PlaybackPage() {
 
     setUsers(updatedUsers);
     setIsCurrentlySaved(true);
-    setDisplayedSavedMessage("Communication settings saved.");
+    setDisplayedSavedMessage(t("communicationSavedMessage"));
   }
 
   return (
     <>
       <header>
-        <h1 className="visually-hidden">{t("settings")} - Communication</h1>
+        <h1 className="visually-hidden">
+          {t("settings")} - {t("communication")}
+        </h1>
         <NavbarShort />
       </header>
 
-      <div className="settings-wrapper">
+      <div className="communication settings-wrapper">
         <main className="settings-container">
           <header className="subtitles__header">
-            <h2 className="subtitles__heading">Communication Settings</h2>
+            <h2 className="subtitles__heading">{t("communicationSettings")}</h2>
             <img
               className="language-change__profile-img"
               src={user.profileImage}
@@ -119,9 +121,15 @@ export default function PlaybackPage() {
 
           <form>
             <fieldset>
-              <h3>Email Messages for {user.username}</h3>
-              <legend>Email address: {accountPreferences.email}</legend>
-              <div>
+              <legend>
+                <div className="communication__legend-heading">
+                  {t("emailMessages")} {user.username}
+                </div>
+                <div className="communication__legend-subheading">
+                  {t("emailAddress")} {accountPreferences.email}
+                </div>
+              </legend>
+              <div className="communication__checkbox-wrapper">
                 <input
                   type="checkbox"
                   name="updates"
@@ -132,16 +140,13 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="updates"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  <span>Netflix Updates</span>
-                  <small>
-                    New and enhanced features and tips for getting the most out of the Netflix
-                    service.
-                  </small>
+                  <span>{t("netflixUpdates")}</span>
+                  <small>{t("netflixUpdatesDescription")}</small>
                 </label>
               </div>
-              <div>
+              <div className="communication__checkbox-wrapper">
                 <input
                   type="checkbox"
                   name="now"
@@ -152,16 +157,13 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="now"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  <span>Now on Netflix</span>
-                  <small>
-                    Newly added movies, TV shows, and seasons plus personalized suggestions and
-                    alerts.
-                  </small>
+                  <span>{t("nowOnNetflix")}</span>
+                  <small>{t("nowOnNetflixDescription")}</small>
                 </label>
               </div>
-              <div>
+              <div className="communication__checkbox-wrapper">
                 <input
                   type="checkbox"
                   name="offers"
@@ -172,13 +174,13 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="offers"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  <span>Netflix Offers</span>
-                  <small>Receive special offers and promotions from Netflix.</small>
+                  <span>{t("netflixOffers")}</span>
+                  <small>{t("netflixOffersDescription")}</small>
                 </label>
               </div>
-              <div>
+              <div className="communication__checkbox-wrapper">
                 <input
                   type="checkbox"
                   name="surveys"
@@ -189,16 +191,13 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="surveys"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  <span>Netflix Surveys</span>
-                  <small>
-                    Make your opinions heard! Give us feedback on how to make Netflix a better
-                    product for you.
-                  </small>
+                  <span>{t("netflixSurveys")}</span>
+                  <small>{t("netflixSurveysDescription")}</small>
                 </label>
               </div>
-              <div>
+              <div className="communication__checkbox-wrapper">
                 <input
                   type="checkbox"
                   name="kids-family"
@@ -209,20 +208,24 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="kids-family"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  <span>Netflix Kids & Family</span>
-                  <small>
-                    Get updates about parental controls, kids activity, recommendations and more.
-                  </small>
+                  <span>{t("netflixKidsFamily")}</span>
+                  <small>{t("netflixKidsFamilyDescription")}</small>
                 </label>
               </div>
             </fieldset>
 
             <fieldset>
-              <h3>Text Messages for {user.username}</h3>
-              <legend>Phone number: {accountPreferences.phoneNumber}</legend>
-              <div>
+              <legend>
+                <div className="communication__legend-heading">
+                  {t("textMessagesFor")} {user.username}
+                </div>
+                <div className="communication__legend-subheading">
+                  {t("phoneNumber2")} {accountPreferences.phoneNumber}
+                </div>
+              </legend>
+              <div className="communication__checkbox-wrapper">
                 <input
                   type="checkbox"
                   name="account-messages"
@@ -233,13 +236,13 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="account-messages"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  <span>Account Messages</span>
-                  <small>Important messages related to your account and biling.</small>
+                  <span>{t("accountMessages")}</span>
+                  <small>{t("accountMessagesDescription")}</small>
                 </label>
               </div>
-              <div>
+              <div className="communication__checkbox-wrapper">
                 <input
                   type="checkbox"
                   name="informations"
@@ -250,26 +253,27 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="informations"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  <span>Netflix Information</span>
-                  <small>
-                    Updates and information from Netflix including newly added TV shows and movies
-                    and offers.
-                  </small>
+                  <span>{t("netflixInformations")}</span>
+                  <small>{t("netflixInformationsDescription")}</small>
                 </label>
               </div>
             </fieldset>
 
-            <hr />
+            <hr className="communication__divider" />
 
             <div>
-              <div>
+              <div
+                className="communication__checkbox-wrapper"
+                aria-labelledby="checkbox-label"
+              >
                 <input
                   type="checkbox"
                   name="not-send"
                   id="not-send"
                   className="checkbox-light"
+                  aria-describedby="additional-info"
                   checked={
                     Object.values(accountCommunicationPreferences.emailCommunication).every(
                       (value) => !value
@@ -282,18 +286,22 @@ export default function PlaybackPage() {
                 />
                 <label
                   htmlFor="not-send"
-                  className="checkbox-light-label"
+                  className="checkbox-light-label communication__label-wrapper"
                 >
-                  Do not send me any emails or text messages.
+                  {t("noneOffer")}
                 </label>
               </div>
-              <em>Note: You will always receive transactional email related to your account.</em>
+              <em
+                id="additional-info"
+                className="communication__note-text"
+              >
+                {t("noneOfferNote")}
+              </em>
             </div>
 
-            <div className="playback__btns-wrapper">
+            <div className="communication__btns-wrapper">
               <AccountSettingsBtn
-                // text={t("update")}
-                text="Update"
+                text={t("update")}
                 currentClass="accent"
                 path={"/account"}
                 onClickFunction={handleSave}

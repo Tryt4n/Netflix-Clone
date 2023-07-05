@@ -5,4 +5,71 @@
 @use "../../base/breakpoints" as b;
 
 .communication {
+  &__legend-heading {
+    margin-bottom: 1em;
+    font-size: func.rem(24);
+    font-weight: normal;
+  }
+
+  &__legend-subheading {
+    margin-bottom: 0.5em;
+    font-size: func.rem(18);
+    font-weight: normal;
+  }
+
+  & fieldset:not(:last-of-type) {
+    margin-bottom: 2em;
+  }
+
+  &__checkbox-wrapper {
+    @include flex(row, flex-start, flex-start);
+    &:not(:last-of-type) {
+      margin-bottom: 1em;
+    }
+
+    & input {
+      flex-shrink: 0;
+    }
+  }
+
+  &__label-wrapper {
+    @include flex(column);
+    padding-left: 0.5em;
+    cursor: pointer;
+
+    & span {
+      padding-block: 0.25em;
+      line-height: 100%;
+    }
+
+    & small {
+      font-size: v.$font-size-navbar;
+      color: c.$gray-text;
+    }
+  }
+
+  &__divider {
+    margin-block: 1em;
+    border-top: none;
+    border-bottom: func.rem(1) solid c.$gray-light;
+  }
+
+  &__note-text {
+    font-style: normal;
+    font-weight: normal;
+    color: hsl(0, 0%, 53%);
+  }
+
+  &__btns-wrapper {
+    @include flex();
+    gap: 1em;
+    margin-top: 2em;
+    font-weight: normal;
+    text-transform: capitalize;
+    @media screen and (width < b.$mobile-medium) {
+      @include flex(column);
+      gap: 0;
+      margin-top: 1.5em;
+    }
+  }
 }

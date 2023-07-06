@@ -2,15 +2,15 @@ import { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
+import CustomOption from "./components/CustomOption";
+import SemitransparentCheckbox from "./components/SemitransparentCheckbox";
+import SizeRadioInput from "./components/SizeRadioInput";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 
 import "./subtitlesAppearancePage.scss";
 import { useTranslation } from "react-i18next";
 import { Select } from "@mui/base";
-import CustomOption from "./components/CustomOption";
-import SemitransparentCheckbox from "./components/SemitransparentCheckbox";
-import SizeRadioInput from "./components/SizeRadioInput";
 
 export default function SubtitlesAppearancePage() {
   const { t, i18n } = useTranslation();
@@ -346,27 +346,18 @@ export default function SubtitlesAppearancePage() {
               </div>
             </div>
 
-            <div className="subtitles__form-btns-wrapper">
-              <AccountSettingsBtn
-                text={t("save")}
-                currentClass="accent"
-                path={"/account"}
-                onClickFunction={handleSave}
-              />
-
-              <AccountSettingsBtn
-                text={t("resetToDefault")}
-                currentClass="light"
-                path={"/account"}
-                onClickFunction={() => handleSave(false)}
-              />
-
-              <AccountSettingsBtn
-                text={t("cancel")}
-                currentClass="light"
-                path={"/account"}
-              />
-            </div>
+            <BtnsWrapperAccount
+              btnAccentText={t("save")}
+              btnAccentPath="/account"
+              btnAccentFunction={handleSave}
+              btnLightText={t("resetToDefault")}
+              btnLightPath="/account"
+              btnLightFunction={() => handleSave(false)}
+              extraBtn="light"
+              extraBtnText={t("cancel")}
+              extraBtnPath="/account"
+              extraSpace
+            />
           </form>
         </main>
 

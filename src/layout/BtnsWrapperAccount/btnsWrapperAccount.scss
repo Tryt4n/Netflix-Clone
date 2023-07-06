@@ -6,11 +6,24 @@
   @include flex();
   gap: 1rem;
   margin-top: 1.5rem;
+  font-weight: normal;
   @media screen and (width < b.$mobile-medium) {
     flex-direction: column;
     gap: 0;
     & > * {
       font-size: v.$font-base;
     }
+  }
+
+  &--center {
+    justify-content: center;
+  }
+
+  &--mt {
+    margin-top: 3em;
+  }
+
+  &--m0 {
+    margin: 0;
   }
 }

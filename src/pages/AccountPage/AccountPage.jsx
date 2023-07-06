@@ -10,6 +10,7 @@ import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import MemberSinceIcon from "../../icons/MemberSinceIcon";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
+import Divider from "../../components/Divider/Divider";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import CheckboxLight from "../../components/CheckboxLight/CheckboxLight";
 import NewBadge from "./components/NewBadge";
@@ -99,9 +100,10 @@ export default function AccountPage() {
               <span>{displayedSavedMessage}</span>
             </div>
           )}
-
-          <hr />
-
+          <Divider
+            customColor={"hsl(0,0%,50%)"}
+            spaceSmall
+          />
           <article className="account__article-membership-billing">
             <header className="account__article-header">
               <h2 className="account__article-header-heading">{t("membershipBiling")}</h2>
@@ -149,7 +151,10 @@ export default function AccountPage() {
                 </div>
               </section>
 
-              <hr />
+              <Divider
+                customColor={"hsl(0,0%,50%)"}
+                spaceSmall
+              />
 
               <section className="account__article-section">
                 <h2 className="visually-hidden">{t("paymentAccountInformation")}</h2>
@@ -197,7 +202,10 @@ export default function AccountPage() {
                 </div>
               </section>
 
-              <hr />
+              <Divider
+                customColor={"hsl(0,0%,50%)"}
+                spaceSmall
+              />
 
               <section className="account__article-section">
                 <h2 className="visually-hidden">{t("giftCardInformations")}</h2>
@@ -221,7 +229,10 @@ export default function AccountPage() {
             </div>
           </article>
 
-          <hr />
+          <Divider
+            customColor={"hsl(0,0%,50%)"}
+            spaceSmall
+          />
 
           <article className="account__article">
             <header className="account__article-header-heading">
@@ -244,7 +255,10 @@ export default function AccountPage() {
             </section>
           </article>
 
-          <hr />
+          <Divider
+            customColor={"hsl(0,0%,50%)"}
+            spaceSmall
+          />
 
           <article className="account__article">
             <header className="account__article-header-heading">
@@ -271,7 +285,10 @@ export default function AccountPage() {
             </section>
           </article>
 
-          <hr />
+          <Divider
+            customColor={"hsl(0,0%,50%)"}
+            spaceSmall
+          />
 
           <article className="account__article">
             <header className="account__article-header-heading">
@@ -297,7 +314,10 @@ export default function AccountPage() {
             </section>
           </article>
 
-          <hr />
+          <Divider
+            customColor={"hsl(0,0%,50%)"}
+            spaceSmall
+          />
 
           <article className="account__article">
             <header className="account__article-header-heading">
@@ -543,14 +563,22 @@ export default function AccountPage() {
                         </ul>
                       </div>
                     </section>
-                    {index !== users.length - 1 && <hr />}
+                    {index !== users.length - 1 && (
+                      <Divider
+                        customColor={"hsl(0,0%,50%)"}
+                        spaceSmall
+                      />
+                    )}
                   </React.Fragment>
                 );
               })}
             </div>
           </article>
 
-          <hr />
+          <Divider
+            customColor={"hsl(0,0%,50%)"}
+            spaceSmall
+          />
 
           <article className="account__article">
             <h2 className="account__article-header-heading">{t("settings")}</h2>

@@ -3,12 +3,12 @@ import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
+import Divider from "../../components/Divider/Divider";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
 import { useTranslation } from "react-i18next";
 import "./communicationPage.scss";
-import Divider from "../../components/Divider/Divider";
 
 export default function CommunicationPage() {
   const { t } = useTranslation();
@@ -217,20 +217,13 @@ export default function CommunicationPage() {
               </em>
             </div>
 
-            <div className="communication__btns-wrapper">
-              <AccountSettingsBtn
-                text={t("update")}
-                currentClass="accent"
-                path={"/account"}
-                onClickFunction={handleSave}
-              />
-
-              <AccountSettingsBtn
-                text={t("cancel")}
-                currentClass="light"
-                path={"/account"}
-              />
-            </div>
+            <BtnsWrapperAccount
+              btnAccentText={t("update")}
+              btnAccentPath="/account"
+              btnAccentFunction={handleSave}
+              btnLightText={t("cancel")}
+              btnLightPath="/account"
+            />
           </form>
         </main>
 

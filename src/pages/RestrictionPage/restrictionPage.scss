@@ -45,28 +45,6 @@
     aspect-ratio: 1;
   }
 
-  &__blocked-videos-input {
-    font: inherit;
-    font-size: v.$font-base;
-    font-weight: normal;
-    padding: func.rem(10) func.rem(11);
-    border-width: 1px;
-    border-color: hsl(0, 0%, 70%);
-    &:focus {
-      border-color: c.$gray-text;
-      outline: none;
-    }
-    &.invalid {
-      border-color: c.$error-message-2;
-    }
-    @media screen and (width >= b.$mobile-medium) {
-      width: func.rem(300);
-    }
-    @media screen and (width < b.$mobile-medium) {
-      width: max(func.rem(175), 100%);
-    }
-  }
-
   &__subheading {
     margin-block: 0.75em func.rem(20);
     font-size: func.rem(24);
@@ -280,6 +258,28 @@
     font-weight: normal;
     text-align: start;
     cursor: pointer;
+  }
+
+  &__blocked-videos-input {
+    font: inherit;
+    font-size: v.$font-base;
+    font-weight: normal;
+    padding: func.rem(10) func.rem(11);
+    border-width: 1px;
+    border-color: hsl(0, 0%, 70%);
+    &:focus {
+      border-color: c.$gray-text;
+      outline: none;
+    }
+    &.invalid {
+      border-color: c.$error-message-2;
+    }
+    @media screen and (width >= b.$mobile-medium) {
+      width: func.rem(300);
+    }
+    @media screen and (width < b.$mobile-medium) {
+      width: max(func.rem(175), 100%);
+    }
   }
 
   &__blocked-list-item {

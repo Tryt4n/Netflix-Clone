@@ -327,15 +327,4 @@
       color: c.$profile-edit-maturity-ratings-bg;
     }
   }
-
-  &__form-btns-wrapper {
-    @media screen and (width > b.$subtitles-setting) {
-      margin-top: 2rem;
-    }
-    @media screen and (width > b.$mobile-medium) {
-      @include flex();
-      gap: 1em;
-      padding-block: 1rem;
-    }
-  }
 }

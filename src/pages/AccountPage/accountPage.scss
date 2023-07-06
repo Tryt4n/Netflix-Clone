@@ -16,7 +16,6 @@
   &__heading-wrapper {
     @include flex(row, flex-start, center);
     gap: 1em;
-    padding-bottom: 1em;
     @media screen and (width < b.$mobile-medium) {
       @include flex(column, flex-start, flex-start);
       gap: 0.25em;
@@ -215,7 +214,6 @@
 
   &__profiles-wrapper {
     @include flex(column);
-    gap: 1em;
     width: 100%;
     margin-bottom: $account-margin-block;
     hr {

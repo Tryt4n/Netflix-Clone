@@ -16,12 +16,4 @@
       font-size: func.rem(18);
     }
   }
-
-  &__btns-wrapper {
-    gap: 0.5em;
-    margin-top: func.rem(26);
-    @media screen and (width >= b.$mobile-medium) {
-      @include flex(row, center, center);
-    }
-  }
 }

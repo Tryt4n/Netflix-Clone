@@ -1,6 +1,6 @@
-export default function Divider({ customColor }) {
+export default function Divider({ customColor, spaceSmall }) {
   const dividerStyle = {
-    marginBlock: "2em",
+    marginBlock: spaceSmall ? "1em" : "2em",
     borderTop: "none",
     borderBottom: `1px solid ${customColor || `#ccc`}`,
   };

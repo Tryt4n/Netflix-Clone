@@ -4,7 +4,7 @@ import UserContext from "../../context/UserContext";
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
 import Divider from "../../components/Divider/Divider";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
 import { useTranslation } from "react-i18next";
@@ -126,20 +126,14 @@ export default function PlaybackPage() {
               />
             </fieldset>
 
-            <div className="playback__btns-wrapper">
-              <AccountSettingsBtn
-                text={t("save")}
-                currentClass="accent"
-                path={"/account"}
-                onClickFunction={handleSave}
-              />
-
-              <AccountSettingsBtn
-                text={t("cancel")}
-                currentClass="light"
-                path={"/account"}
-              />
-            </div>
+            <BtnsWrapperAccount
+              btnAccentText={t("save")}
+              btnAccentPath="/account"
+              btnAccentFunction={handleSave}
+              btnLightText={t("cancel")}
+              btnLightPath="/account"
+              center
+            />
           </form>
         </main>
 

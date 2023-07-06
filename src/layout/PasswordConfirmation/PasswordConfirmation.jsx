@@ -3,8 +3,8 @@ import UserContext from "../../context/UserContext";
 
 import { useTranslation } from "react-i18next";
 
+import BtnsWrapperAccount from "../BtnsWrapperAccount/BtnsWrapperAccount";
 import "./passwordConfirmation.scss";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 
 export default function PasswordConfirmation({ textDescription }) {
   const { t, i18n } = useTranslation();
@@ -91,19 +91,15 @@ export default function PasswordConfirmation({ textDescription }) {
               </a>
             </div>
 
-            <div className="restriction-confirmation__buttons-container">
-              <AccountSettingsBtn
-                text={t("continue")}
-                currentClass="accent"
-                onClickFunction={goNext}
-              />
-              <AccountSettingsBtn
-                text={t("cancel")}
-                currentClass="light"
-                path={"/account"}
-                onClickFunction={resetPasswordConfirmationSettings}
-              />
-            </div>
+            <BtnsWrapperAccount
+              btnAccentText={t("continue")}
+              btnAccentFunction={goNext}
+              btnLightText={t("cancel")}
+              btnLightPath="/account"
+              btnLightFunction={resetPasswordConfirmationSettings}
+              center
+              extraSpace
+            />
           </form>
         </>
       )}

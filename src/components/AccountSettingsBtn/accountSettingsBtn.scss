@@ -14,6 +14,9 @@
   text-align: center;
   cursor: pointer;
   display: block;
+  &::first-letter {
+    text-transform: capitalize;
+  }
   @media screen and (width < b.$mobile-medium) {
     width: 100%;
     margin-bottom: calc(v.$confirmation-gap * 0.5);
@@ -43,7 +46,7 @@
 
   &:disabled {
     opacity: 0.5;
-    cursor: default;
+    cursor: not-allowed;
     &:hover {
       background-color: #0080ff;
       background-image: linear-gradient(180deg, #0080ff, #0277ec);

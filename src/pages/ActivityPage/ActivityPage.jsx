@@ -4,7 +4,6 @@ import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import LikeIcon from "../../icons/LikeIcon";
 import LikeIconFilled from "../../icons/LikeIconFilled";
 import SuperLikeIcon from "../../icons/SuperLikeIcon";
@@ -16,6 +15,7 @@ import "./activityPage.scss";
 
 import moment from "moment/moment";
 import { useTranslation } from "react-i18next";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 
 export default function ActivityPage() {
   const { t } = useTranslation();
@@ -453,26 +453,19 @@ export default function ActivityPage() {
           </ul>
 
           <div className="activity-page__btns-wrapper">
-            <div>
-              <AccountSettingsBtn
-                text={t("showMore")}
-                currentClass="accent"
-                isDisabled={
-                  watchingActivity === "watching"
-                    ? visibleMovieItems >= totalMovieItems
-                    : visibleRatingItems >= totalRatingItems
-                }
-                onClickFunction={handleLoadMore}
-                key={watchingActivity === "watching" ? "watching" : "rating"}
-              />
-
-              <AccountSettingsBtn
-                text={t("backToAccount")}
-                currentClass="light"
-                path={"/account"}
-                onClickFunction={reset}
-              />
-            </div>
+            <BtnsWrapperAccount
+              btnAccentText={t("showMore")}
+              btnAccentFunction={handleLoadMore}
+              btnLightText={t("backToAccount")}
+              btnLightPath="/account"
+              btnLightFunction={reset}
+              withoutSpace
+              disabled={
+                watchingActivity === "watching"
+                  ? visibleMovieItems >= totalMovieItems
+                  : visibleRatingItems >= totalRatingItems
+              }
+            />
             {watchingActivity === "watching" && totalMovieItems > 0 && (
               <div>
                 <button

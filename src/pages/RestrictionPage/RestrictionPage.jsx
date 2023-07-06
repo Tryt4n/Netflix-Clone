@@ -7,11 +7,11 @@ import "./restrictionPage.scss";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import Divider from "../../components/Divider/Divider";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import CloseIcon from "../../icons/CloseIcon";
+import PasswordConfirmation from "../../layout/PasswordConfirmation/PasswordConfirmation";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 
 import moviesData from "../../../server/data.json";
-import PasswordConfirmation from "../../layout/PasswordConfirmation/PasswordConfirmation";
 
 export default function RestrictionPage() {
   const { t } = useTranslation();
@@ -383,21 +383,16 @@ export default function RestrictionPage() {
                 </div>
               </fieldset>
 
-              <div className="restriction-confirmation__buttons-container">
-                <AccountSettingsBtn
-                  text={t("save")}
-                  currentClass="accent"
-                  path={"/account"}
-                  btnRef={saveBtnRef}
-                  onClickFunction={changeRestriction}
-                />
-                <AccountSettingsBtn
-                  text={t("cancel")}
-                  currentClass="light"
-                  path={"/account"}
-                  onClickFunction={resetPasswordConfirmationSettings}
-                />
-              </div>
+              <BtnsWrapperAccount
+                btnAccentText={t("save")}
+                btnAccentPath="/account"
+                btnAccentFunction={changeRestriction}
+                btnLightText={t("cancel")}
+                btnLightPath="/account"
+                btnLightFunction={resetPasswordConfirmationSettings}
+                center
+                extraSpace
+              />
             </form>
           )}
         </main>

@@ -10,7 +10,7 @@ import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import displayLanguageOptions from "../../../server/languageOptions.json";
 import moviesLanguageOptions from "../../../server/languageOptionsMovies.json";
 import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 
 export default function LanguageChangePage() {
   const { t } = useTranslation();
@@ -138,19 +138,14 @@ export default function LanguageChangePage() {
                 ))}
               </ul>
 
-              <div className="restriction-confirmation__buttons-container">
-                <AccountSettingsBtn
-                  text={t("save")}
-                  currentClass="accent"
-                  path={"/account"}
-                  onClickFunction={handleSave}
-                />
-                <AccountSettingsBtn
-                  text={t("cancel")}
-                  currentClass="light"
-                  path={"/account"}
-                />
-              </div>
+              <BtnsWrapperAccount
+                btnAccentText={t("save")}
+                btnAccentFunction={handleSave}
+                btnAccentPath="/account"
+                btnLightText={t("cancel")}
+                btnLightPath="/account"
+                center
+              />
             </fieldset>
           </form>
         </main>

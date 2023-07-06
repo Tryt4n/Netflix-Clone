@@ -107,8 +107,10 @@ export default function ReportProblemPage() {
               <BtnsWrapperAccount
                 btnAccentText={t("reportProblem")}
                 btnAccentFunction={reportProblem}
+                btnAccentPath="/settings/viewed"
                 btnLightText={t("cancel")}
                 btnLightFunction={reset}
+                btnLightPath="/settings/viewed"
               />
             </form>
           </div>

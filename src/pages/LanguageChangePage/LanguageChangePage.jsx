@@ -1,14 +1,15 @@
 import { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 
-import NavbarShort from "../../layout/NavbarShort/NavbarShort";
-import AccountFooter from "../../layout/AccountFooter/AccountFooter";
-
 import { useTranslation } from "react-i18next";
 
 import "./languageChangePage.scss";
+
+import NavbarShort from "../../layout/NavbarShort/NavbarShort";
+import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 import displayLanguageOptions from "../../../server/languageOptions.json";
 import moviesLanguageOptions from "../../../server/languageOptionsMovies.json";
+import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 
 export default function LanguageChangePage() {
@@ -25,7 +26,7 @@ export default function LanguageChangePage() {
   );
 
   function handleDisplayLanguageChange(e) {
-    const displayLanguage = e.target.value;
+    const displayLanguage = e;
     setSelectedDisplayLanguage(displayLanguage);
 
     setSelectedMovieLanguages((prevState) => {
@@ -57,7 +58,7 @@ export default function LanguageChangePage() {
     });
     setUsers(updatedUsers);
     setIsCurrentlySaved(true);
-    setDisplayedSavedMessage("Language settings saved.");
+    setDisplayedSavedMessage(t("languageSettingSaved"));
   }
 
   return (
@@ -70,101 +71,88 @@ export default function LanguageChangePage() {
       </header>
       <div className="language-change">
         <main className="settings-container">
-          <article className="language-change__article">
-            <div className="language-change__heading-wrapper">
-              <hgroup>
-                <h2 className="language-change__heading">{t("displayLanguage")}</h2>
+          <h2 className="visually-hidden">{t("languageSettings")}</h2>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <fieldset className="language-change__article">
+              <div className="language-change__heading-wrapper">
+                <div>
+                  <legend className="language-change__heading">{t("displayLanguage")}</legend>
+                  <p className="language-change__heading-description">
+                    {t("displayLanguageDescription")}
+                  </p>
+                </div>
+                <img
+                  className="language-change__profile-img"
+                  src={currentEditingProfile.profileImage}
+                  alt={`${t("profileAvatar")} ${
+                    currentEditingProfile.kidsProfile ? t("Kids") : currentEditingProfile.username
+                  } `}
+                />
+              </div>
+
+              <ul className="language-change__languages-list">
+                {displayLanguageOptions.map((language) => (
+                  <li
+                    key={language}
+                    className="language-change__list-item"
+                  >
+                    <CheckboxAccount
+                      radio
+                      name="select-language"
+                      id={`${language}-display`}
+                      value={language}
+                      checked={language === selectedDisplayLanguage}
+                      onChangeFunction={handleDisplayLanguageChange}
+                      passValueToFunction
+                      text={language}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </fieldset>
+
+            <fieldset className="language-change__article">
+              <div>
+                <legend className="language-change__heading">{t("showsAndMoviesLanguages")}</legend>
                 <p className="language-change__heading-description">
-                  {t("displayLanguageDescription")}
+                  {t("showsAndMoviesLanguagesDescription")}
                 </p>
-              </hgroup>
-              <img
-                className="language-change__profile-img"
-                src={currentEditingProfile.profileImage}
-                alt={`${t("profileAvatar")} ${
-                  currentEditingProfile.kidsProfile ? t("Kids") : currentEditingProfile.username
-                } `}
-              />
-            </div>
+              </div>
 
-            <ul className="language-change__languages-list">
-              {displayLanguageOptions.map((language) => (
-                <li
-                  key={language}
-                  className="language-change__list-item"
-                >
-                  <input
-                    type="radio"
-                    name="select-language"
-                    id={`${language}-display`}
-                    className="language-change__input"
-                    value={language}
-                    checked={language === selectedDisplayLanguage}
-                    onChange={handleDisplayLanguageChange}
-                  />
-                  <label
-                    htmlFor={`${language}-display`}
-                    className="language-change__label"
+              <ul className="language-change__languages-list">
+                {moviesLanguageOptions.map((language) => (
+                  <li
+                    key={language}
+                    className="language-change__list-item"
                   >
-                    {language}
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </article>
+                    <CheckboxAccount
+                      name={`select-movie-${language}`}
+                      id={language}
+                      value={language}
+                      checked={selectedMovieLanguages.includes(language)}
+                      disabled={language === selectedDisplayLanguage}
+                      onChangeFunction={() => handleMovieLanguageChange(language)}
+                      text={language}
+                    />
+                  </li>
+                ))}
+              </ul>
 
-          <article className="language-change__article">
-            <hgroup>
-              <h2 className="language-change__heading">{t("showsAndMoviesLanguages")}</h2>
-              <p className="language-change__heading-description">
-                {t("showsAndMoviesLanguagesDescription")}
-              </p>
-            </hgroup>
-
-            <ul className="language-change__languages-list">
-              {moviesLanguageOptions.map((language) => (
-                <li
-                  key={language}
-                  className="language-change__list-item"
-                >
-                  <input
-                    type="checkbox"
-                    name="select-language"
-                    id={language}
-                    className="checkbox-light language-change__checkbox"
-                    value={language}
-                    disabled={language === selectedDisplayLanguage}
-                    checked={selectedMovieLanguages.includes(language)}
-                    onChange={() => handleMovieLanguageChange(language)}
-                  />
-                  <label
-                    htmlFor={language}
-                    className="checkbox-light-label language-change__label"
-                  >
-                    {language}
-                  </label>
-                </li>
-              ))}
-            </ul>
-
-            <nav
-              className="restriction-confirmation__buttons-container"
-              aria-label={t("secondaryNavigation")}
-            >
-              <h2 className="visually-hidden">{t("secondaryNavigation")}</h2>
-              <AccountSettingsBtn
-                text={t("save")}
-                currentClass="accent"
-                path={"/account"}
-                onClickFunction={handleSave}
-              />
-              <AccountSettingsBtn
-                text={t("cancel")}
-                currentClass="light"
-                path={"/account"}
-              />
-            </nav>
-          </article>
+              <div className="restriction-confirmation__buttons-container">
+                <AccountSettingsBtn
+                  text={t("save")}
+                  currentClass="accent"
+                  path={"/account"}
+                  onClickFunction={handleSave}
+                />
+                <AccountSettingsBtn
+                  text={t("cancel")}
+                  currentClass="light"
+                  path={"/account"}
+                />
+              </div>
+            </fieldset>
+          </form>
         </main>
 
         <AccountFooter />

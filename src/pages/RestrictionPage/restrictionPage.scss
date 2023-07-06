@@ -42,25 +42,9 @@
   &__profile-img {
     width: func.rem(50);
     border-radius: 7.5%;
-    aspect-ratio: 1/1;
+    aspect-ratio: 1;
   }
 
-  &__password-subheading {
-    font: inherit;
-    text-wrap: balance;
-  }
-
-  &__input-wrapper {
-    @include flex(row, flex-start, center);
-    gap: 1em;
-    margin-top: v.$confirmation-gap;
-  }
-
-  &__password-form {
-    position: relative;
-  }
-
-  &__password-input,
   &__blocked-videos-input {
     font: inherit;
     font-size: v.$font-base;
@@ -83,24 +67,6 @@
     }
   }
 
-  &__password-warning-message {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-size: v.$font-size-header-mobile;
-    color: c.$error-message-2;
-    translate: 0 100%;
-  }
-
-  &__password-forgot-link {
-    font-size: 1rem;
-    font-weight: normal;
-    color: hsl(210, 100%, 50%);
-    &:where(:hover, :focus-visible) {
-      text-decoration: underline;
-    }
-  }
-
   &__subheading {
     margin-block: 0.75em func.rem(20);
     font-size: func.rem(24);
@@ -112,11 +78,6 @@
     margin-block: 1em;
     font-size: v.$font-base;
     font-weight: normal;
-  }
-
-  &__divider {
-    margin-block: func.rem(30);
-    border-color: c.$white;
   }
 
   &__inputs-container {
@@ -194,32 +155,10 @@
   }
 
   &__restriction-input {
-    position: relative;
+    width: 30px !important;
     display: block;
-    appearance: none;
-    width: 30px;
-    aspect-ratio: 1/1;
-    background-color: c.$white;
-    border: v.$restrictions-border-width solid c.$viewing-restriction-label-inactive-text;
-    border-radius: 50%;
-    cursor: pointer;
-    outline-offset: 0.1em;
     @media screen and (width < b.$mobile-account) {
       translate: calc(-50% + (v.$restrictions-border-width * 2));
-    }
-    &::before {
-      position: absolute;
-      content: "";
-      width: 60%;
-      aspect-ratio: 1/1;
-      top: 0;
-      left: 0;
-      translate: 35% 35%;
-      background-color: transparent;
-      border-radius: 50%;
-    }
-    &.active::before {
-      background: c.$viewing-restriction-input-blue;
     }
   }
 
@@ -251,7 +190,7 @@
       position: absolute;
       content: "";
       width: func.rem(12);
-      aspect-ratio: 1/1;
+      aspect-ratio: 1;
       translate: 0 -50%;
       background-color: inherit;
       border-radius: 50%;

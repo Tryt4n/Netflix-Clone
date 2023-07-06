@@ -60,7 +60,7 @@ export default function PlaybackPage() {
             />
           </header>
 
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <fieldset>
               <legend className="playback__subheading">
                 {t("autoplayControls")}

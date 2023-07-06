@@ -18,7 +18,7 @@
   width: func.rem(25);
   aspect-ratio: 1;
   background-color: c.$white;
-  border: func.rem(1) solid hsl(0, 0%, 70%);
+  border: func.rem(1) solid c.$navbar-text;
   cursor: pointer;
 }
 

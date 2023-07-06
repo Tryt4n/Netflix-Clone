@@ -1,0 +1,16 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/variables" as v;
+@use "../../base/breakpoints" as b;
+
+.btns-wrapper {
+  @include flex();
+  gap: 1rem;
+  margin-top: 1.5rem;
+  @media screen and (width < b.$mobile-medium) {
+    flex-direction: column;
+    gap: 0;
+    & > * {
+      font-size: v.$font-base;
+    }
+  }
+}

@@ -114,7 +114,7 @@ export default function CommunicationPage() {
             />
           </header>
 
-          <form>
+          <form onSubmit={(e) => e.preventDefault()}>
             <fieldset>
               <legend>
                 <div className="communication__legend-heading">

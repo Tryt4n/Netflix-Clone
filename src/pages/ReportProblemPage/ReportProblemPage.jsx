@@ -4,8 +4,9 @@ import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import TextareaAutosize from "react-textarea-autosize";
+import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 
 import "./reportProblemPage.scss";
 
@@ -61,72 +62,32 @@ export default function ReportProblemPage() {
               )}`}
               className="report-problem__image"
             />
-            <form className="report-problem__form">
-              <legend>{t("checkAllApply")}</legend>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <legend className="report-problem__legend">{t("checkAllApply")}</legend>
 
-              <div className="report-problem__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="mislabeledMovie"
-                  id="mislabeledMovie"
-                  className="checkbox-light"
-                />
-                <label
-                  htmlFor="mislabeledMovie"
-                  className="report-problem__checkbox-label"
-                >
-                  <span>{t("mislabeledMovie")}</span>
-                  <small>({t("mislabeledMovieSubheading")})</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                name="mislabeledMovie"
+                text={t("mislabeledMovie")}
+                textSmall={t("mislabeledMovieSubheading")}
+              />
 
-              <div className="report-problem__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="videoProblems"
-                  id="videoProblems"
-                  className="checkbox-light"
-                />
-                <label
-                  htmlFor="videoProblems"
-                  className="report-problem__checkbox-label"
-                >
-                  <span>{t("videoProblems")}</span>
-                  <small>({t("videoProblemsSubheading")})</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                name="videoProblems"
+                text={t("videoProblems")}
+                textSmall={t("videoProblemsSubheading")}
+              />
 
-              <div className="report-problem__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="soundProblems"
-                  id="soundProblems"
-                  className="checkbox-light"
-                />
-                <label
-                  htmlFor="soundProblems"
-                  className="report-problem__checkbox-label"
-                >
-                  <span>{t("soundProblems")}</span>
-                  <small>({t("soundProblemsSubheading")})</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                name="soundProblems"
+                text={t("soundProblems")}
+                textSmall={t("soundProblemsSubheading")}
+              />
 
-              <div className="report-problem__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="subtitlesProblems"
-                  id="subtitlesProblems"
-                  className="checkbox-light"
-                />
-                <label
-                  htmlFor="subtitlesProblems"
-                  className="report-problem__checkbox-label"
-                >
-                  <span>{t("subtitlesProblems")}</span>
-                  <small>({t("subtitlesProblemsSubheading")})</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                name="subtitlesProblems"
+                text={t("subtitlesProblems")}
+                textSmall={t("subtitlesProblemsSubheading")}
+              />
 
               <div className="report-problem__textarea-wrapper">
                 <label
@@ -143,21 +104,12 @@ export default function ReportProblemPage() {
                 />
               </div>
 
-              <div className="report-problem__btns-wrapper">
-                <AccountSettingsBtn
-                  text={t("reportProblem")}
-                  currentClass="accent"
-                  path={"/settings/viewed"}
-                  onClickFunction={() => reportProblem()}
-                />
-
-                <AccountSettingsBtn
-                  text={t("cancel")}
-                  currentClass="light"
-                  path={"/settings/viewed"}
-                  onClickFunction={reset}
-                />
-              </div>
+              <BtnsWrapperAccount
+                btnAccentText={t("reportProblem")}
+                btnAccentFunction={reportProblem}
+                btnLightText={t("cancel")}
+                btnLightFunction={reset}
+              />
             </form>
           </div>
         </main>

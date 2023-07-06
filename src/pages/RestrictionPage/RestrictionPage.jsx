@@ -1,13 +1,13 @@
 import React, { useContext, useRef, useState } from "react";
-import AccountFooter from "../../layout/AccountFooter/AccountFooter";
-import NavbarShort from "../../layout/NavbarShort/NavbarShort";
-
 import UserContext from "../../context/UserContext";
+import { useTranslation } from "react-i18next";
 
 import "./restrictionPage.scss";
-import { useTranslation } from "react-i18next";
-import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 
+import AccountFooter from "../../layout/AccountFooter/AccountFooter";
+import NavbarShort from "../../layout/NavbarShort/NavbarShort";
+import Divider from "../../components/Divider/Divider";
+import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import CloseIcon from "../../icons/CloseIcon";
 
 import moviesData from "../../../server/data.json";
@@ -204,17 +204,17 @@ export default function RestrictionPage() {
   return (
     <>
       <header>
-        <h2 className="visually-hidden">
+        <h1 className="visually-hidden">
           {`${t("viewingRestrictions")} - ${
             passwordConfirmationPassed ? t("settings") : t("passwordConfirmation")
           }`}
-        </h2>
+        </h1>
         <NavbarShort />
       </header>
       <div className="restriction-confirmation">
         <main className="restriction-confirmation__content-container">
           <header className="restriction-confirmation__header">
-            <h1 className="restriction-confirmation__heading">{t("viewingRestrictions")}</h1>
+            <h2 className="restriction-confirmation__heading">{t("viewingRestrictions")}</h2>
             <img
               className="restriction-confirmation__profile-img"
               src={currentEditingProfile?.profileImage}
@@ -224,11 +224,11 @@ export default function RestrictionPage() {
           <PasswordConfirmation textDescription={t("viewingRestrictionsDescription")} />
 
           {passwordConfirmationPassed && (
-            <>
-              <section>
-                <h2 className="restriction-confirmation__subheading">
+            <form onSubmit={(e) => e.preventDefault()}>
+              <fieldset>
+                <legend className="restriction-confirmation__subheading">
                   {t("profileMaturityRatingFor")} {currentEditingProfile.username}
-                </h2>
+                </legend>
                 <p className="restriction-confirmation__description-text">
                   {selectedRating === "18+" ? (
                     t("showTitles-18+")
@@ -283,7 +283,7 @@ export default function RestrictionPage() {
                             type="radio"
                             name="rating-radio"
                             id={rating.id}
-                            className={`restriction-confirmation__restriction-input ${
+                            className={`radio-account restriction-confirmation__restriction-input ${
                               isChecked ? "active" : ""
                             }`}
                             checked={isChecked}
@@ -301,21 +301,18 @@ export default function RestrictionPage() {
                     role="presentation"
                   ></span>
                 </div>
-              </section>
+              </fieldset>
 
-              <hr className="restriction-confirmation__divider" />
+              <Divider />
 
-              <section>
-                <h2 className="restriction-confirmation__subheading">
+              <fieldset>
+                <legend className="restriction-confirmation__subheading">
                   {t("titlesRestrictionFor")} {currentEditingProfile.username}
-                </h2>
-                <p className="restriction-confirmation__description-text">
-                  {t("titlesRestrictionForDescription")}
-                </p>
-                <form
-                  className="restriction-confirmation__form"
-                  onSubmit={(e) => e.preventDefault()}
-                >
+                  <p className="restriction-confirmation__description-text">
+                    {t("titlesRestrictionForDescription")}
+                  </p>
+                </legend>
+                <div className="restriction-confirmation__form">
                   <label
                     htmlFor="video-restriction"
                     className="visually-hidden"
@@ -383,14 +380,10 @@ export default function RestrictionPage() {
                       ))}
                     </ul>
                   )}
-                </form>
-              </section>
+                </div>
+              </fieldset>
 
-              <nav
-                className="restriction-confirmation__buttons-container"
-                aria-label={t("secondaryNavigation")}
-              >
-                <h2 className="visually-hidden">{t("secondaryNavigation")}</h2>
+              <div className="restriction-confirmation__buttons-container">
                 <AccountSettingsBtn
                   text={t("save")}
                   currentClass="accent"
@@ -404,8 +397,8 @@ export default function RestrictionPage() {
                   path={"/account"}
                   onClickFunction={resetPasswordConfirmationSettings}
                 />
-              </nav>
-            </>
+              </div>
+            </form>
           )}
         </main>
 

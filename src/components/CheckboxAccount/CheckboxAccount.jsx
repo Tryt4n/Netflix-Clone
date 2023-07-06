@@ -47,16 +47,17 @@ export default function CheckboxAccount({
   name,
   id,
   checked,
+  disabled,
+  value,
   onChangeFunction,
   text,
   textSmall,
   trueValue,
   radio,
+  passValueToFunction,
 }) {
   //* `name` formatted from text-text on textText
   const idValue = radio ? id : name;
-  //   const words = name.split("-");
-  //   const words = (radio ? id : name).split("-");
   const words = idValue.split("-");
   const formattedWords = words.map((word, index) => {
     if (index !== 0) {
@@ -73,12 +74,16 @@ export default function CheckboxAccount({
       <input
         type={radio ? "radio" : "checkbox"}
         name={name}
-        // id={radio ? id : name}
         id={idValue}
         className={radio ? "radio-account" : "checkbox-account"}
         checked={checked}
-        onChange={() => onChangeFunction(formattedName, trueValue)}
-        // onChange={() => onChangeFunction(id, trueValue)}
+        disabled={disabled ? disabled : null}
+        value={value ? value : undefined}
+        onChange={
+          onChangeFunction
+            ? () => onChangeFunction(passValueToFunction ? value : formattedName, trueValue)
+            : null
+        }
       />
       <label
         htmlFor={radio ? id : name}

@@ -162,6 +162,8 @@
   "testParticipation": "Test participation",
   "manageDownload": "Manage download devices",
   "noRestriction": "No Restrictions.",
+  "languageSettingSaved": "Language settings saved.",
+  "languageSettings": "Display and playback language selection settings",
   "languageChange": "Language Change",
   "displayLanguage": "Display Language",
   "displayLanguageDescription": "Would you like to change the language of the text you see on Netflix?",

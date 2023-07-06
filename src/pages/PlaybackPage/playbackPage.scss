@@ -17,45 +17,6 @@
     }
   }
 
-  &__inner-checkbox-wrapper {
-    @include flex(row, flex-start, flex-start);
-
-    & input {
-      flex-shrink: 0;
-    }
-
-    & label {
-      padding-left: 0.5em;
-      text-wrap: balance;
-      padding-block: 0.25em;
-    }
-    &:not(:last-of-type) {
-      margin-bottom: 0.5em;
-    }
-
-    &--data-usage {
-      & label {
-        @include flex(column);
-        text-transform: capitalize;
-        font-weight: normal;
-        cursor: pointer;
-        padding-block: 0;
-
-        & small {
-          font-size: v.$font-size-navbar;
-          color: c.$gray-text;
-          text-transform: none;
-        }
-      }
-    }
-  }
-
-  &__divider {
-    margin-block: 2em;
-    border-top: none;
-    border-bottom: func.rem(1) solid c.$gray-light;
-  }
-
   &__btns-wrapper {
     gap: 0.5em;
     margin-top: func.rem(26);

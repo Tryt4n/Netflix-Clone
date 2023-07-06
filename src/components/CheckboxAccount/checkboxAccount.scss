@@ -1,0 +1,86 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.input-wrapper {
+  @include flex(row, flex-start, flex-start);
+  &:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+}
+
+.checkbox-account,
+.radio-account {
+  flex-shrink: 0;
+  position: relative;
+  appearance: none;
+  width: func.rem(25);
+  aspect-ratio: 1;
+  background-color: c.$white;
+  border: func.rem(1) solid hsl(0, 0%, 70%);
+  cursor: pointer;
+}
+
+.checkbox-account {
+  &::after {
+    position: absolute;
+    content: "\2713";
+    translate: 10% -20%;
+    font-size: func.rem(25);
+    font-weight: bold;
+    color: transparent;
+  }
+  &:checked::after {
+    color: c.$viewing-restriction-input-blue;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &:disabled:checked::after {
+    color: c.$viewing-restriction-label-inactive-bg;
+  }
+}
+
+.radio-account {
+  border-color: c.$viewing-restriction-label-inactive-text;
+  border-radius: 50%;
+  outline-offset: 0.1em;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 60%;
+    aspect-ratio: 1;
+    top: 0;
+    left: 0;
+    translate: 35% 35%;
+    background: transparent;
+    border-radius: 50%;
+  }
+  &:checked::before {
+    background: c.$viewing-restriction-input-blue;
+  }
+}
+
+.label-wrapper {
+  @include flex(column);
+  padding-left: 0.5em;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.label-main-text {
+  padding-block: 0.25em;
+  line-height: 100%;
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.label-small-text {
+  font-size: v.$font-size-navbar;
+  color: c.$gray-text;
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}

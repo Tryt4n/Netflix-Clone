@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
+import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
+import Divider from "../../components/Divider/Divider";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
 import { useTranslation } from "react-i18next";
 import "./playbackPage.scss";
-import { useState } from "react";
 
 export default function PlaybackPage() {
   const { t } = useTranslation();
@@ -65,103 +66,64 @@ export default function PlaybackPage() {
                 {t("autoplayControls")}
                 {t("for")} {currentEditingProfile.username}
               </legend>
-              <div className="playback__inner-checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="autoplay-next"
-                  id="autoplay-next"
-                  className="checkbox-light"
-                  checked={autoplayNext}
-                  onChange={() => setAutoPlayNext(!autoplayNext)}
-                />
-                <label
-                  htmlFor="autoplay-next"
-                  className="checkbox-light-label"
-                >
-                  {t("autoplayControlsNext")}
-                </label>
-              </div>
-              <div className="playback__inner-checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="autoplay-previous"
-                  id="autoplay-previous"
-                  className="checkbox-light"
-                  checked={autoplayPreviews}
-                  onChange={() => setAutoPlayPreviews(!autoplayPreviews)}
-                />
-                <label
-                  htmlFor="autoplay-previous"
-                  className="checkbox-light-label"
-                >
-                  {t("autoplayControlsPrev")}
-                </label>
-              </div>
+              <CheckboxAccount
+                name="autoplay-next"
+                checked={autoplayNext}
+                onChangeFunction={() => setAutoPlayNext(!autoplayNext)}
+                text={t("autoplayControlsNext")}
+              />
+
+              <CheckboxAccount
+                name="autoplay-previous"
+                checked={autoplayPreviews}
+                onChangeFunction={() => setAutoPlayPreviews(!autoplayPreviews)}
+                text={t("autoplayControlsPrev")}
+              />
             </fieldset>
 
-            <hr className="playback__divider" />
+            <Divider />
 
             <fieldset>
               <legend className="playback__subheading">{t("dataUsage")}</legend>
-              <div className="playback__inner-checkbox-wrapper playback__inner-checkbox-wrapper--data-usage">
-                <input
-                  type="radio"
-                  name="data-usage"
-                  id="auto"
-                  className="language-change__input"
-                  checked={dataUsage === "auto" ? true : false}
-                  onChange={() => setDataUsage("auto")}
-                />
-                <label htmlFor="auto">
-                  <span>{t("auto")}</span>
-                  <small>{t("autoDescription")}</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                radio
+                name="data-usage"
+                id="auto"
+                checked={dataUsage === "auto" ? true : false}
+                onChangeFunction={setDataUsage}
+                text={t("auto")}
+                textSmall={t("autoDescription")}
+              />
 
-              <div className="playback__inner-checkbox-wrapper playback__inner-checkbox-wrapper--data-usage">
-                <input
-                  type="radio"
-                  name="data-usage"
-                  id="low"
-                  className="language-change__input"
-                  checked={dataUsage === "low" ? true : false}
-                  onChange={() => setDataUsage("low")}
-                />
-                <label htmlFor="low">
-                  <span>{t("low")}</span>
-                  <small>{t("lowDescription")}</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                radio
+                name="data-usage"
+                id="low"
+                checked={dataUsage === "low" ? true : false}
+                onChangeFunction={setDataUsage}
+                text={t("low")}
+                textSmall={t("lowDescription")}
+              />
 
-              <div className="playback__inner-checkbox-wrapper playback__inner-checkbox-wrapper--data-usage">
-                <input
-                  type="radio"
-                  name="data-usage"
-                  id="medium"
-                  className="language-change__input"
-                  checked={dataUsage === "medium" ? true : false}
-                  onChange={() => setDataUsage("medium")}
-                />
-                <label htmlFor="medium">
-                  <span>{t("medium")}</span>
-                  <small>{t("mediumDescription")}</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                radio
+                name="data-usage"
+                id="medium"
+                checked={dataUsage === "medium" ? true : false}
+                onChangeFunction={setDataUsage}
+                text={t("medium")}
+                textSmall={t("mediumDescription")}
+              />
 
-              <div className="playback__inner-checkbox-wrapper playback__inner-checkbox-wrapper--data-usage">
-                <input
-                  type="radio"
-                  name="data-usage"
-                  id="high"
-                  className="language-change__input"
-                  checked={dataUsage === "high" ? true : false}
-                  onChange={() => setDataUsage("high")}
-                />
-                <label htmlFor="high">
-                  <span>{t("high")}</span>
-                  <small>{t("highDescription")}</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                radio
+                name="data-usage"
+                id="high"
+                checked={dataUsage === "high" ? true : false}
+                onChangeFunction={setDataUsage}
+                text={t("high")}
+                textSmall={t("highDescription")}
+              />
             </fieldset>
 
             <div className="playback__btns-wrapper">

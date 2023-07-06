@@ -2,13 +2,15 @@ import { useState, useContext } from "react";
 import UserContext from "../../context/UserContext";
 
 import NavbarShort from "../../layout/NavbarShort/NavbarShort";
+import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
 import { useTranslation } from "react-i18next";
 import "./communicationPage.scss";
+import Divider from "../../components/Divider/Divider";
 
-export default function PlaybackPage() {
+export default function CommunicationPage() {
   const { t } = useTranslation();
 
   const { users, setUsers, setIsCurrentlySaved, setDisplayedSavedMessage } =
@@ -35,23 +37,16 @@ export default function PlaybackPage() {
 
   function changeCheckboxStatus(propertyName, phone) {
     setAccountCommunicationPreferences((prevState) => {
-      if (phone) {
-        return {
-          ...prevState,
-          phoneCommunication: {
-            ...prevState.phoneCommunication,
-            [propertyName]: !prevState.phoneCommunication[propertyName],
-          },
-        };
-      } else {
-        return {
-          ...prevState,
-          emailCommunication: {
-            ...prevState.emailCommunication,
-            [propertyName]: !prevState.emailCommunication[propertyName],
-          },
-        };
-      }
+      const communicationType = phone ? "phoneCommunication" : "emailCommunication";
+      const communication = prevState[communicationType];
+
+      return {
+        ...prevState,
+        [communicationType]: {
+          ...communication,
+          [propertyName]: !communication[propertyName],
+        },
+      };
     });
   }
 
@@ -129,91 +124,45 @@ export default function PlaybackPage() {
                   {t("emailAddress")} {accountPreferences.email}
                 </div>
               </legend>
-              <div className="communication__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="updates"
-                  id="updates"
-                  className="checkbox-light"
-                  checked={accountCommunicationPreferences.emailCommunication.updates}
-                  onChange={() => changeCheckboxStatus("updates")}
-                />
-                <label
-                  htmlFor="updates"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  <span>{t("netflixUpdates")}</span>
-                  <small>{t("netflixUpdatesDescription")}</small>
-                </label>
-              </div>
-              <div className="communication__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="now"
-                  id="now"
-                  className="checkbox-light"
-                  checked={accountCommunicationPreferences.emailCommunication.now}
-                  onChange={() => changeCheckboxStatus("now")}
-                />
-                <label
-                  htmlFor="now"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  <span>{t("nowOnNetflix")}</span>
-                  <small>{t("nowOnNetflixDescription")}</small>
-                </label>
-              </div>
-              <div className="communication__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="offers"
-                  id="offers"
-                  className="checkbox-light"
-                  checked={accountCommunicationPreferences.emailCommunication.offers}
-                  onChange={() => changeCheckboxStatus("offers")}
-                />
-                <label
-                  htmlFor="offers"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  <span>{t("netflixOffers")}</span>
-                  <small>{t("netflixOffersDescription")}</small>
-                </label>
-              </div>
-              <div className="communication__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="surveys"
-                  id="surveys"
-                  className="checkbox-light"
-                  checked={accountCommunicationPreferences.emailCommunication.surveys}
-                  onChange={() => changeCheckboxStatus("surveys")}
-                />
-                <label
-                  htmlFor="surveys"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  <span>{t("netflixSurveys")}</span>
-                  <small>{t("netflixSurveysDescription")}</small>
-                </label>
-              </div>
-              <div className="communication__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="kids-family"
-                  id="kids-family"
-                  className="checkbox-light"
-                  checked={accountCommunicationPreferences.emailCommunication.kidsFamily}
-                  onChange={() => changeCheckboxStatus("kidsFamily")}
-                />
-                <label
-                  htmlFor="kids-family"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  <span>{t("netflixKidsFamily")}</span>
-                  <small>{t("netflixKidsFamilyDescription")}</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                name="updates"
+                checked={accountCommunicationPreferences.emailCommunication.updates}
+                onChangeFunction={changeCheckboxStatus}
+                text={t("netflixUpdates")}
+                textSmall={t("netflixUpdatesDescription")}
+              />
+
+              <CheckboxAccount
+                name="now"
+                checked={accountCommunicationPreferences.emailCommunication.now}
+                onChangeFunction={changeCheckboxStatus}
+                text={t("nowOnNetflix")}
+                textSmall={t("nowOnNetflixDescription")}
+              />
+
+              <CheckboxAccount
+                name="offers"
+                checked={accountCommunicationPreferences.emailCommunication.offers}
+                onChangeFunction={changeCheckboxStatus}
+                text={t("netflixOffers")}
+                textSmall={t("netflixOffersDescription")}
+              />
+
+              <CheckboxAccount
+                name="surveys"
+                checked={accountCommunicationPreferences.emailCommunication.surveys}
+                onChangeFunction={changeCheckboxStatus}
+                text={t("netflixSurveys")}
+                textSmall={t("netflixSurveysDescription")}
+              />
+
+              <CheckboxAccount
+                name="kids-family"
+                checked={accountCommunicationPreferences.emailCommunication.kidsFamily}
+                onChangeFunction={changeCheckboxStatus}
+                text={t("netflixKidsFamily")}
+                textSmall={t("netflixKidsFamilyDescription")}
+              />
             </fieldset>
 
             <fieldset>
@@ -225,72 +174,41 @@ export default function PlaybackPage() {
                   {t("phoneNumber2")} {accountPreferences.phoneNumber}
                 </div>
               </legend>
-              <div className="communication__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="account-messages"
-                  id="account-messages"
-                  className="checkbox-light"
-                  checked={accountCommunicationPreferences.phoneCommunication.accountMessages}
-                  onChange={() => changeCheckboxStatus("accountMessages", true)}
-                />
-                <label
-                  htmlFor="account-messages"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  <span>{t("accountMessages")}</span>
-                  <small>{t("accountMessagesDescription")}</small>
-                </label>
-              </div>
-              <div className="communication__checkbox-wrapper">
-                <input
-                  type="checkbox"
-                  name="informations"
-                  id="informations"
-                  className="checkbox-light"
-                  checked={accountCommunicationPreferences.phoneCommunication.informations}
-                  onChange={() => changeCheckboxStatus("informations", true)}
-                />
-                <label
-                  htmlFor="informations"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  <span>{t("netflixInformations")}</span>
-                  <small>{t("netflixInformationsDescription")}</small>
-                </label>
-              </div>
+              <CheckboxAccount
+                name="account-messages"
+                checked={accountCommunicationPreferences.phoneCommunication.accountMessages}
+                onChangeFunction={changeCheckboxStatus}
+                text={t("accountMessages")}
+                textSmall={t("accountMessagesDescription")}
+                trueValue={true}
+              />
+
+              <CheckboxAccount
+                name="informations"
+                checked={accountCommunicationPreferences.phoneCommunication.informations}
+                onChangeFunction={changeCheckboxStatus}
+                text={t("netflixInformations")}
+                textSmall={t("netflixInformationsDescription")}
+                trueValue={true}
+              />
             </fieldset>
 
-            <hr className="communication__divider" />
+            <Divider />
 
             <div>
-              <div
-                className="communication__checkbox-wrapper"
-                aria-labelledby="checkbox-label"
-              >
-                <input
-                  type="checkbox"
-                  name="not-send"
-                  id="not-send"
-                  className="checkbox-light"
-                  aria-describedby="additional-info"
-                  checked={
-                    Object.values(accountCommunicationPreferences.emailCommunication).every(
-                      (value) => !value
-                    ) &&
-                    Object.values(accountCommunicationPreferences.phoneCommunication).every(
-                      (value) => !value
-                    )
-                  }
-                  onChange={resetCheckboxStatus}
-                />
-                <label
-                  htmlFor="not-send"
-                  className="checkbox-light-label communication__label-wrapper"
-                >
-                  {t("noneOffer")}
-                </label>
-              </div>
+              <CheckboxAccount
+                name="not-send"
+                checked={
+                  Object.values(accountCommunicationPreferences.emailCommunication).every(
+                    (value) => !value
+                  ) &&
+                  Object.values(accountCommunicationPreferences.phoneCommunication).every(
+                    (value) => !value
+                  )
+                }
+                onChangeFunction={resetCheckboxStatus}
+                text={t("noneOffer")}
+              />
               <em
                 id="additional-info"
                 className="communication__note-text"

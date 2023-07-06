@@ -21,39 +21,6 @@
     margin-bottom: 2em;
   }
 
-  &__checkbox-wrapper {
-    @include flex(row, flex-start, flex-start);
-    &:not(:last-of-type) {
-      margin-bottom: 1em;
-    }
-
-    & input {
-      flex-shrink: 0;
-    }
-  }
-
-  &__label-wrapper {
-    @include flex(column);
-    padding-left: 0.5em;
-    cursor: pointer;
-
-    & span {
-      padding-block: 0.25em;
-      line-height: 100%;
-    }
-
-    & small {
-      font-size: v.$font-size-navbar;
-      color: c.$gray-text;
-    }
-  }
-
-  &__divider {
-    margin-block: 1em;
-    border-top: none;
-    border-bottom: func.rem(1) solid c.$gray-light;
-  }
-
   &__note-text {
     font-style: normal;
     font-weight: normal;

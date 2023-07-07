@@ -17,17 +17,6 @@
     font-weight: normal;
   }
 
-  &__header {
-    @include flex(row, space-between, center);
-    margin-bottom: 2em;
-  }
-
-  &__heading {
-    font-size: v.$account-heading;
-    font-weight: normal;
-    text-transform: capitalize;
-  }
-
   &__subheading {
     margin-bottom: 1em;
     & em {

@@ -135,9 +135,13 @@
       opacity: 1;
       visibility: visible;
 
-      & + .pin-page__require-pin-code-wrapper {
-        margin-top: 3em;
+      & + .input-wrapper {
+        margin-top: 3em !important;
       }
     }
+  }
+
+  .input-wrapper {
+    margin-top: 1em;
   }
 }

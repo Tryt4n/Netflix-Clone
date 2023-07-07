@@ -1,0 +1,20 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.common-account__header {
+  @include flex(row, space-between, center);
+  margin-bottom: 2em;
+}
+
+.common-account__heading {
+  font-size: v.$account-heading;
+  font-weight: normal;
+  text-transform: capitalize;
+}
+
+.common-account__profile-img {
+  width: func.rem(50);
+  aspect-ratio: 1;
+  border-radius: 0.25em;
+}

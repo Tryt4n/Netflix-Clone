@@ -11,8 +11,8 @@ import MemberSinceIcon from "../../icons/MemberSinceIcon";
 import AccountFooter from "../../layout/AccountFooter/AccountFooter";
 
 import Divider from "../../components/Divider/Divider";
+import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
 import AccountSettingsBtn from "../../components/AccountSettingsBtn/AccountSettingsBtn";
-import CheckboxLight from "../../components/CheckboxLight/CheckboxLight";
 import NewBadge from "./components/NewBadge";
 
 import CheckIcon from "../../icons/CheckIcon";
@@ -27,6 +27,7 @@ export default function AccountPage() {
 
   const {
     users,
+    setUsers,
     setCurrentEditingProfile,
     isCurrentlySaved,
     setIsCurrentlySaved,
@@ -75,6 +76,19 @@ export default function AccountPage() {
     }
   }, []);
   //////////////////////////////////////////*
+
+  function changeAnimationCheckboxStatus(u) {
+    const updatedUsers = users.map((user) => {
+      if (user.username === u.username) {
+        return {
+          ...user,
+          reduceAnimationsOnTV: !u.reduceAnimationsOnTV,
+        };
+      }
+      return user;
+    });
+    setUsers(updatedUsers);
+  }
 
   return (
     <>
@@ -557,7 +571,12 @@ export default function AccountPage() {
                               className="account__profile-animation-form"
                               onSubmit={(e) => e.preventDefault()}
                             >
-                              <CheckboxLight data={user} />
+                              <CheckboxAccount
+                                name={`animation-on-tv${user.id}`}
+                                checked={user.reduceAnimationsOnTV}
+                                onChangeFunction={() => changeAnimationCheckboxStatus(user)}
+                                text={t("animationCheckboxLabel")}
+                              />
                             </form>
                           </li>
                         </ul>

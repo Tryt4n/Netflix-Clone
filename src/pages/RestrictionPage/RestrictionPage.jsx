@@ -2,16 +2,15 @@ import React, { useContext, useRef, useState } from "react";
 import UserContext from "../../context/UserContext";
 import { useTranslation } from "react-i18next";
 
-import "./restrictionPage.scss";
-
-import AccountFooter from "../../layout/AccountFooter/AccountFooter";
-import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import Divider from "../../components/Divider/Divider";
 import CloseIcon from "../../icons/CloseIcon";
 import PasswordConfirmation from "../../layout/PasswordConfirmation/PasswordConfirmation";
 import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 
 import moviesData from "../../../server/data.json";
+import CommonAccountLayout from "../../layout/CommonAccountLayout/CommonAccountLayout";
+
+import "./restrictionPage.scss";
 
 export default function RestrictionPage() {
   const { t } = useTranslation();
@@ -202,203 +201,186 @@ export default function RestrictionPage() {
   }
 
   return (
-    <>
-      <header>
-        <h1 className="visually-hidden">
-          {`${t("viewingRestrictions")} - ${
-            passwordConfirmationPassed ? t("settings") : t("passwordConfirmation")
-          }`}
-        </h1>
-        <NavbarShort />
-      </header>
-      <div className="restriction-confirmation">
-        <main className="restriction-confirmation__content-container">
-          <header className="restriction-confirmation__header">
-            <h2 className="restriction-confirmation__heading">{t("viewingRestrictions")}</h2>
-            <img
-              className="restriction-confirmation__profile-img"
-              src={currentEditingProfile?.profileImage}
-              alt={`${t("profileAvatar")} ${currentEditingProfile?.username}`}
-            />
-          </header>
-          <PasswordConfirmation textDescription={t("viewingRestrictionsDescription")} />
+    <CommonAccountLayout
+      pageTitle={`${t("viewingRestrictions")} - ${
+        passwordConfirmationPassed ? t("settings") : t("passwordConfirmation")
+      }`}
+      sectionTitle={t("viewingRestrictions")}
+    >
+      <PasswordConfirmation textDescription={t("viewingRestrictionsDescription")} />
 
-          {passwordConfirmationPassed && (
-            <form onSubmit={(e) => e.preventDefault()}>
-              <fieldset>
-                <legend className="restriction-confirmation__subheading">
-                  {t("profileMaturityRatingFor")} {currentEditingProfile.username}
-                </legend>
-                <p className="restriction-confirmation__description-text">
-                  {selectedRating === "18+" ? (
-                    t("showTitles-18+")
-                  ) : (
-                    <>
-                      {t("showTitlesRated")}{" "}
-                      <strong>
-                        {selectedRating === "all" ? t("all") : selectedRating}
-                        {t("andBelow")}
-                      </strong>
-                      {t("forThisProfile")}.
-                    </>
-                  )}
-                </p>
+      {passwordConfirmationPassed && (
+        <form onSubmit={(e) => e.preventDefault()}>
+          <fieldset>
+            <legend className="restriction-confirmation__subheading">
+              {t("profileMaturityRatingFor")} {currentEditingProfile.username}
+            </legend>
+            <p className="restriction-confirmation__description-text">
+              {selectedRating === "18+" ? (
+                t("showTitles-18+")
+              ) : (
+                <>
+                  {t("showTitlesRated")}{" "}
+                  <strong>
+                    {selectedRating === "all" ? t("all") : selectedRating}
+                    {t("andBelow")}
+                  </strong>
+                  {t("forThisProfile")}.
+                </>
+              )}
+            </p>
 
-                <div className="restriction-confirmation__inputs-container">
-                  {ratings.map((rating, index) => {
-                    const isChecked = selectedRating === rating.id;
-                    const isBeforeChecked = getIndex(selectedRating) > index;
+            <div className="restriction-confirmation__inputs-container">
+              {ratings.map((rating, index) => {
+                const isChecked = selectedRating === rating.id;
+                const isBeforeChecked = getIndex(selectedRating) > index;
 
-                    const classes = ["restriction-confirmation__line"];
-                    if (isChecked || isBeforeChecked) {
-                      classes.push("active");
-                    }
+                const classes = ["restriction-confirmation__line"];
+                if (isChecked || isBeforeChecked) {
+                  classes.push("active");
+                }
 
-                    return (
-                      <React.Fragment key={rating.id}>
-                        <span
-                          className={`${classes.join(" ")} ${
-                            rating.id === "all" ? " restriction-confirmation__line--first" : ""
-                          }`}
-                          role="presentation"
-                        ></span>
+                return (
+                  <React.Fragment key={rating.id}>
+                    <span
+                      className={`${classes.join(" ")} ${
+                        rating.id === "all" ? " restriction-confirmation__line--first" : ""
+                      }`}
+                      role="presentation"
+                    ></span>
 
-                        <div className="restriction-confirmation__restriction-input-wrapper">
-                          <label
-                            htmlFor={rating.id}
-                            className={`restriction-confirmation__restriction-label${
-                              isChecked || isBeforeChecked ? " active" : ""
-                            }`}
-                            data-tooltip={`${
-                              rating.id === "all" ? t("withoutRestrictions") : t("recommendedFor")
-                            } ${
-                              rating.id !== "all"
-                                ? `${t("ages")} ${rating.id.replace("+", "")} ${t("andUp")}`
-                                : ""
-                            }`}
-                          >
-                            {rating.label}
-                          </label>
-                          <input
-                            type="radio"
-                            name="rating-radio"
-                            id={rating.id}
-                            className={`radio-account restriction-confirmation__restriction-input ${
-                              isChecked ? "active" : ""
-                            }`}
-                            checked={isChecked}
-                            onChange={handleRatingChange}
-                          />
-                        </div>
-                      </React.Fragment>
-                    );
-                  })}
+                    <div className="restriction-confirmation__restriction-input-wrapper">
+                      <label
+                        htmlFor={rating.id}
+                        className={`restriction-confirmation__restriction-label${
+                          isChecked || isBeforeChecked ? " active" : ""
+                        }`}
+                        data-tooltip={`${
+                          rating.id === "all" ? t("withoutRestrictions") : t("recommendedFor")
+                        } ${
+                          rating.id !== "all"
+                            ? `${t("ages")} ${rating.id.replace("+", "")} ${t("andUp")}`
+                            : ""
+                        }`}
+                      >
+                        {rating.label}
+                      </label>
+                      <input
+                        type="radio"
+                        name="rating-radio"
+                        id={rating.id}
+                        className={`radio-account restriction-confirmation__restriction-input ${
+                          isChecked ? "active" : ""
+                        }`}
+                        checked={isChecked}
+                        onChange={handleRatingChange}
+                      />
+                    </div>
+                  </React.Fragment>
+                );
+              })}
 
-                  <span
-                    className={`restriction-confirmation__line restriction-confirmation__line--last${
-                      selectedRating === "18+" ? " active" : ""
-                    }`}
-                    role="presentation"
-                  ></span>
-                </div>
-              </fieldset>
+              <span
+                className={`restriction-confirmation__line restriction-confirmation__line--last${
+                  selectedRating === "18+" ? " active" : ""
+                }`}
+                role="presentation"
+              ></span>
+            </div>
+          </fieldset>
 
-              <Divider />
+          <Divider />
 
-              <fieldset>
-                <legend className="restriction-confirmation__subheading">
-                  {t("titlesRestrictionFor")} {currentEditingProfile.username}
-                  <p className="restriction-confirmation__description-text">
-                    {t("titlesRestrictionForDescription")}
-                  </p>
-                </legend>
-                <div className="restriction-confirmation__form">
-                  <label
-                    htmlFor="video-restriction"
-                    className="visually-hidden"
-                  >
-                    {t("titlesRestrictionInputLabel")}
-                  </label>
-                  <input
-                    className="restriction-confirmation__blocked-videos-input"
-                    type="text"
-                    name="video-restriction"
-                    id="video-restriction"
-                    placeholder={t("titlesRestrictionInputPlaceholder")}
-                    autoComplete="off"
-                    ref={blockedInputRef}
-                    value={searchedBlockedValue}
-                    onChange={(e) => setSearchedBlockedValue(e.target.value)}
-                  />
-                  {searchedBlockedValue !== "" && (
-                    <button
-                      className="restriction-confirmation__clear-input-btn"
-                      aria-label={t("clearInput")}
-                      onClick={() => clearInput(blockedInputRef)}
-                    >
-                      <CloseIcon />
-                    </button>
-                  )}
-                  {searchedBlockedValue.length >= 3 && filteredMovies.length > 0 && (
-                    <ul className="restriction-confirmation__searching-movies-list">
-                      {filteredMovies.map((item) => (
-                        <li
-                          key={item.name}
-                          className="restriction-confirmation__searching-movies-list-item"
-                        >
-                          <button
-                            className="restriction-confirmation__searching-movies-list-item-btn"
-                            aria-label={t("searchingBlockedMoviesBtnLabel")}
-                            onClick={() => addToBlockedList(item)}
-                            onKeyDown={(e) => handleKeyboardNavigationOnSearchingList(e)}
-                          >
-                            {item.name} ({item.productionYear})
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {listOfBlockedMovies?.length > 0 && (
-                    <ul>
-                      {listOfBlockedMovies.map((item) => (
-                        <li
-                          key={item.name}
-                          className="restriction-confirmation__blocked-list-item"
-                        >
-                          <span className="restriction-confirmation__blocked-list-item-text">
-                            {item.name}
-                          </span>
-                          <button
-                            className="restriction-confirmation__blocked-list-item-delete-btn"
-                            aria-label={"blockedMoviesListBtnLabel"}
-                            onClick={() => removeFromBlockedList(item)}
-                            onKeyDown={(e) => handleKeyboardNavigationOnBlockedList(e)}
-                          >
-                            <CloseIcon />
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </fieldset>
-
-              <BtnsWrapperAccount
-                btnAccentText={t("save")}
-                btnAccentPath="/account"
-                btnAccentFunction={changeRestriction}
-                btnLightText={t("cancel")}
-                btnLightPath="/account"
-                btnLightFunction={resetPasswordConfirmationSettings}
-                center
-                extraSpace
+          <fieldset>
+            <legend className="restriction-confirmation__subheading">
+              {t("titlesRestrictionFor")} {currentEditingProfile.username}
+              <p className="restriction-confirmation__description-text">
+                {t("titlesRestrictionForDescription")}
+              </p>
+            </legend>
+            <div className="restriction-confirmation__form">
+              <label
+                htmlFor="video-restriction"
+                className="visually-hidden"
+              >
+                {t("titlesRestrictionInputLabel")}
+              </label>
+              <input
+                className="restriction-confirmation__blocked-videos-input"
+                type="text"
+                name="video-restriction"
+                id="video-restriction"
+                placeholder={t("titlesRestrictionInputPlaceholder")}
+                autoComplete="off"
+                ref={blockedInputRef}
+                value={searchedBlockedValue}
+                onChange={(e) => setSearchedBlockedValue(e.target.value)}
               />
-            </form>
-          )}
-        </main>
+              {searchedBlockedValue !== "" && (
+                <button
+                  className="restriction-confirmation__clear-input-btn"
+                  aria-label={t("clearInput")}
+                  onClick={() => clearInput(blockedInputRef)}
+                >
+                  <CloseIcon />
+                </button>
+              )}
+              {searchedBlockedValue.length >= 3 && filteredMovies.length > 0 && (
+                <ul className="restriction-confirmation__searching-movies-list">
+                  {filteredMovies.map((item) => (
+                    <li
+                      key={item.name}
+                      className="restriction-confirmation__searching-movies-list-item"
+                    >
+                      <button
+                        className="restriction-confirmation__searching-movies-list-item-btn"
+                        aria-label={t("searchingBlockedMoviesBtnLabel")}
+                        onClick={() => addToBlockedList(item)}
+                        onKeyDown={(e) => handleKeyboardNavigationOnSearchingList(e)}
+                      >
+                        {item.name} ({item.productionYear})
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {listOfBlockedMovies?.length > 0 && (
+                <ul>
+                  {listOfBlockedMovies.map((item) => (
+                    <li
+                      key={item.name}
+                      className="restriction-confirmation__blocked-list-item"
+                    >
+                      <span className="restriction-confirmation__blocked-list-item-text">
+                        {item.name}
+                      </span>
+                      <button
+                        className="restriction-confirmation__blocked-list-item-delete-btn"
+                        aria-label={"blockedMoviesListBtnLabel"}
+                        onClick={() => removeFromBlockedList(item)}
+                        onKeyDown={(e) => handleKeyboardNavigationOnBlockedList(e)}
+                      >
+                        <CloseIcon />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </fieldset>
 
-        <AccountFooter />
-      </div>
-    </>
+          <BtnsWrapperAccount
+            btnAccentText={t("save")}
+            btnAccentPath="/account"
+            btnAccentFunction={changeRestriction}
+            btnLightText={t("cancel")}
+            btnLightPath="/account"
+            btnLightFunction={resetPasswordConfirmationSettings}
+            center
+            extraSpace
+          />
+        </form>
+      )}
+    </CommonAccountLayout>
   );
 }

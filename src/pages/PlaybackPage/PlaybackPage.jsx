@@ -1,11 +1,10 @@
 import { useState, useContext } from "react";
 import UserContext from "../../context/UserContext";
 
-import NavbarShort from "../../layout/NavbarShort/NavbarShort";
 import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
 import Divider from "../../components/Divider/Divider";
 import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
-import AccountFooter from "../../layout/AccountFooter/AccountFooter";
+import CommonAccountLayout from "../../layout/CommonAccountLayout/CommonAccountLayout";
 
 import { useTranslation } from "react-i18next";
 import "./playbackPage.scss";
@@ -39,106 +38,85 @@ export default function PlaybackPage() {
   }
 
   return (
-    <>
-      <header>
-        <h1 className="visually-hidden">
-          {t("settings")} - {t("playback")}
-        </h1>
-        <NavbarShort />
-      </header>
+    <CommonAccountLayout
+      pageTitle={`${t("settings")} - ${t("playback")}`}
+      sectionTitle={t("playbackSettings")}
+    >
+      <form onSubmit={(e) => e.preventDefault()}>
+        <fieldset>
+          <legend className="playback__subheading">
+            {t("autoplayControls")}
+            {t("for")} {currentEditingProfile.username}
+          </legend>
+          <CheckboxAccount
+            name="autoplay-next"
+            checked={autoplayNext}
+            onChangeFunction={() => setAutoPlayNext(!autoplayNext)}
+            text={t("autoplayControlsNext")}
+          />
 
-      <div className="playback settings-wrapper">
-        <main className="settings-container">
-          <header className="subtitles__header">
-            <h2 className="subtitles__heading">{t("playbackSettings")}</h2>
-            <img
-              className="language-change__profile-img"
-              src={currentEditingProfile.profileImage}
-              alt={`${t("profileAvatar")} ${
-                currentEditingProfile.kidsProfile ? t("Kids") : currentEditingProfile.username
-              } `}
-            />
-          </header>
+          <CheckboxAccount
+            name="autoplay-previous"
+            checked={autoplayPreviews}
+            onChangeFunction={() => setAutoPlayPreviews(!autoplayPreviews)}
+            text={t("autoplayControlsPrev")}
+          />
+        </fieldset>
 
-          <form onSubmit={(e) => e.preventDefault()}>
-            <fieldset>
-              <legend className="playback__subheading">
-                {t("autoplayControls")}
-                {t("for")} {currentEditingProfile.username}
-              </legend>
-              <CheckboxAccount
-                name="autoplay-next"
-                checked={autoplayNext}
-                onChangeFunction={() => setAutoPlayNext(!autoplayNext)}
-                text={t("autoplayControlsNext")}
-              />
+        <Divider />
 
-              <CheckboxAccount
-                name="autoplay-previous"
-                checked={autoplayPreviews}
-                onChangeFunction={() => setAutoPlayPreviews(!autoplayPreviews)}
-                text={t("autoplayControlsPrev")}
-              />
-            </fieldset>
+        <fieldset>
+          <legend className="playback__subheading">{t("dataUsage")}</legend>
+          <CheckboxAccount
+            radio
+            name="data-usage"
+            id="auto"
+            checked={dataUsage === "auto" ? true : false}
+            onChangeFunction={setDataUsage}
+            text={t("auto")}
+            textSmall={t("autoDescription")}
+          />
 
-            <Divider />
+          <CheckboxAccount
+            radio
+            name="data-usage"
+            id="low"
+            checked={dataUsage === "low" ? true : false}
+            onChangeFunction={setDataUsage}
+            text={t("low")}
+            textSmall={t("lowDescription")}
+          />
 
-            <fieldset>
-              <legend className="playback__subheading">{t("dataUsage")}</legend>
-              <CheckboxAccount
-                radio
-                name="data-usage"
-                id="auto"
-                checked={dataUsage === "auto" ? true : false}
-                onChangeFunction={setDataUsage}
-                text={t("auto")}
-                textSmall={t("autoDescription")}
-              />
+          <CheckboxAccount
+            radio
+            name="data-usage"
+            id="medium"
+            checked={dataUsage === "medium" ? true : false}
+            onChangeFunction={setDataUsage}
+            text={t("medium")}
+            textSmall={t("mediumDescription")}
+          />
 
-              <CheckboxAccount
-                radio
-                name="data-usage"
-                id="low"
-                checked={dataUsage === "low" ? true : false}
-                onChangeFunction={setDataUsage}
-                text={t("low")}
-                textSmall={t("lowDescription")}
-              />
+          <CheckboxAccount
+            radio
+            name="data-usage"
+            id="high"
+            checked={dataUsage === "high" ? true : false}
+            onChangeFunction={setDataUsage}
+            text={t("high")}
+            textSmall={t("highDescription")}
+          />
+        </fieldset>
 
-              <CheckboxAccount
-                radio
-                name="data-usage"
-                id="medium"
-                checked={dataUsage === "medium" ? true : false}
-                onChangeFunction={setDataUsage}
-                text={t("medium")}
-                textSmall={t("mediumDescription")}
-              />
-
-              <CheckboxAccount
-                radio
-                name="data-usage"
-                id="high"
-                checked={dataUsage === "high" ? true : false}
-                onChangeFunction={setDataUsage}
-                text={t("high")}
-                textSmall={t("highDescription")}
-              />
-            </fieldset>
-
-            <BtnsWrapperAccount
-              btnAccentText={t("save")}
-              btnAccentPath="/account"
-              btnAccentFunction={handleSave}
-              btnLightText={t("cancel")}
-              btnLightPath="/account"
-              center
-            />
-          </form>
-        </main>
-
-        <AccountFooter />
-      </div>
-    </>
+        <BtnsWrapperAccount
+          btnAccentText={t("save")}
+          btnAccentPath="/account"
+          btnAccentFunction={handleSave}
+          btnLightText={t("cancel")}
+          btnLightPath="/account"
+          center
+        />
+      </form>
+    </CommonAccountLayout>
   );
 }

@@ -5,46 +5,6 @@
 @use "../../base/breakpoints" as b;
 
 .restriction-confirmation {
-  min-height: calc(100dvh - v.$navbar-height);
-  background-color: c.$account-bg;
-  margin-top: -2rem;
-
-  &__content-container {
-    margin-inline: auto;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: c.$profile-edit-maturity-ratings-bg;
-    @media screen and (width >= b.$mobile-medium) {
-      max-width: func.rem(1024);
-      margin-block: 2rem;
-      padding-top: 2rem;
-      padding-inline: 3rem;
-    }
-    @media screen and (width < b.$mobile-medium) {
-      margin: 1rem;
-      padding-top: 1rem;
-    }
-  }
-
-  &__header {
-    @include flex(row, space-between, center);
-    margin-bottom: v.$confirmation-gap;
-  }
-
-  &__heading {
-    font-size: 2rem;
-    font-weight: inherit;
-    @media screen and (width <= func.rem(740)) {
-      font-size: 1.5rem;
-    }
-  }
-
-  &__profile-img {
-    width: func.rem(50);
-    border-radius: 7.5%;
-    aspect-ratio: 1;
-  }
-
   &__subheading {
     margin-block: 0.75em func.rem(20);
     font-size: func.rem(24);
@@ -67,6 +27,7 @@
     @media screen and (width < b.$mobile-account) {
       @include flex(column, space-around, flex-start);
       margin-left: 1rem;
+      margin-bottom: 0;
     }
   }
 
@@ -208,7 +169,7 @@
       min-width: func.rem(464);
     }
     @media screen and (width < b.$mobile-account) {
-      width: 100%;
+      min-width: 100%;
     }
     @media screen and (width <= func.rem(350)) {
       &::placeholder {

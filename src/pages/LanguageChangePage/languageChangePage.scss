@@ -5,9 +5,6 @@
 @use "../../base/breakpoints" as b;
 
 .language-change {
-  background-color: c.$account-bg;
-  color: c.$black;
-
   &__heading-wrapper {
     @include flex(row, space-between, center);
     gap: 1em;
@@ -24,11 +21,11 @@
     text-wrap: balance;
   }
 
-  &__profile-img {
-    width: func.rem(50);
-    aspect-ratio: 1;
-    border-radius: 0.25em;
-  }
+  // &__profile-img {
+  //   width: func.rem(50);
+  //   aspect-ratio: 1;
+  //   border-radius: 0.25em;
+  // }
 
   &__languages-list {
     @include flex(row, flex-start, center);

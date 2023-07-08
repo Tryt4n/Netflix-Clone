@@ -11,14 +11,24 @@
     font-weight: normal;
   }
 
+  @media screen and (width >= b.$desktop-account) {
+    &__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5em;
+    }
+  }
+
   &__legend-subheading {
     margin-bottom: 0.5em;
     font-size: func.rem(18);
     font-weight: normal;
   }
 
-  & fieldset:not(:last-of-type) {
-    margin-bottom: 2em;
+  @media screen and (width < b.$desktop-account) {
+    & fieldset:not(:last-of-type) {
+      margin-bottom: 2em;
+    }
   }
 
   &__note-text {

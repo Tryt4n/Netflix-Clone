@@ -7,29 +7,32 @@
 .subtitles {
   $select-color-size: func.rem(45);
 
-  h1,
-  h2,
-  legend {
-    text-transform: capitalize;
-  }
-
-  & * {
-    font-weight: normal;
+  &__form {
+    max-width: func.rem(750);
+    legend {
+      margin-bottom: 0.25em;
+      color: c.$gray-text;
+      &::first-letter {
+        text-transform: capitalize;
+      }
+      & > * {
+        text-transform: capitalize;
+      }
+    }
+    & * {
+      font-weight: normal;
+    }
   }
 
   &__subheading {
-    margin-bottom: 1em;
+    margin-bottom: 1em !important;
+    color: c.$profile-edit-maturity-ratings-bg !important;
     & em {
       font-style: normal;
     }
   }
 
-  &__form {
-    max-width: func.rem(750);
-  }
-
   &__visualization-container {
-    height: 8rem;
     @include flex(row, center, center);
     margin-bottom: 1.25rem;
     background-image: url("/images/other/sky-background.jpg");
@@ -52,12 +55,13 @@
   }
 
   &__settings-container {
+    display: grid;
     @media screen and (width > b.$subtitles-setting) {
-      display: grid;
       grid-template-columns: repeat(2, func.rem(300));
       gap: 2rem 3rem;
     }
     max-width: func.rem(300);
+    gap: 1rem;
   }
 
   & fieldset {
@@ -86,7 +90,7 @@
     }
     @media screen and (width <= b.$subtitles-setting) {
       position: relative;
-      margin-bottom: 1em;
+      padding-bottom: 2em;
       &::after {
         position: absolute;
         bottom: 0;
@@ -108,8 +112,7 @@
   @media screen and (width <= b.$subtitles-setting) {
     &__text-size-container {
       position: relative;
-      margin-bottom: 0.5em !important;
-      padding-bottom: 1.5em !important;
+      padding-bottom: 1.5em;
       &::after {
         position: absolute;
         bottom: 0;

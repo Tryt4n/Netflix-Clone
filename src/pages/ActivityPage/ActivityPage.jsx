@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import UserContext from "../../context/UserContext";
 
-import NavbarShort from "../../layout/NavbarShort/NavbarShort";
-import AccountFooter from "../../layout/AccountFooter/AccountFooter";
+import CommonAccountLayout from "../../layout/CommonAccountLayout/CommonAccountLayout";
+import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
+
 import LikeIcon from "../../icons/LikeIcon";
 import LikeIconFilled from "../../icons/LikeIconFilled";
 import SuperLikeIcon from "../../icons/SuperLikeIcon";
@@ -15,7 +16,6 @@ import "./activityPage.scss";
 
 import moment from "moment/moment";
 import { useTranslation } from "react-i18next";
-import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
 
 export default function ActivityPage() {
   const { t } = useTranslation();
@@ -256,238 +256,218 @@ export default function ActivityPage() {
     setReportedMovie({});
   }
 
+  const CustomHeader = () => {
+    return (
+      <div>
+        <h2 className="activity-page__heading">
+          {t("activityFor")} {currentEditingProfile.username}
+        </h2>
+        <div
+          className="activity-page__tabs-container"
+          role="tablist"
+        >
+          <button
+            className={`activity-page__tab${watchingActivity === "watching" ? " active" : ""}`}
+            onClick={() => setWatchingActivity("watching")}
+            disabled={watchingActivity === "watching"}
+            role="tab"
+            aria-selected={watchingActivity === "watching" ? true : false}
+          >
+            {t("watching")}
+          </button>
+          <button
+            className={`activity-page__tab${watchingActivity === "rating" ? " active" : ""}`}
+            onClick={() => setWatchingActivity("rating")}
+            disabled={watchingActivity === "rating"}
+            role="tab"
+            aria-selected={watchingActivity === "rating" ? true : false}
+          >
+            {t("rating")}
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <>
-      <header>
-        <h1 className="visually-hidden">{t("activityPage")}</h1>
-        <NavbarShort />
-      </header>
-      <div className="activity-page settings-wrapper">
-        <main className="settings-container">
-          <header className="activity-page__header-container">
-            <div>
-              <h2 className="activity-page__heading">
-                {t("activityFor")} {currentEditingProfile.username}
-              </h2>
-              <div
-                className="activity-page__tabs-container"
-                role="tablist"
+    <CommonAccountLayout
+      pageTitle={t("activityPage")}
+      sectionTitle={<CustomHeader />}
+    >
+      {watchingActivity === "watching" && totalMovieItems <= 0 && (
+        <strong className="activity-page__warning-empty">{t("noWatchHistory")}</strong>
+      )}
+      {watchingActivity === "rating" && totalRatingItems <= 0 && (
+        <strong className="activity-page__warning-empty">{t("noRatingMovies")}</strong>
+      )}
+
+      <ul>
+        {watchingActivity === "watching" ? (
+          <>
+            {watchedList.slice(0, visibleMovieItems).map((entry) => (
+              <li
+                key={crypto.randomUUID()}
+                className="activity-page__list-item"
               >
-                <button
-                  className={`activity-page__tab${
-                    watchingActivity === "watching" ? " active" : ""
-                  }`}
-                  onClick={() => setWatchingActivity("watching")}
-                  disabled={watchingActivity === "watching"}
-                  role="tab"
-                  aria-selected={watchingActivity === "watching" ? true : false}
-                >
-                  {t("watching")}
-                </button>
-                <button
-                  className={`activity-page__tab${watchingActivity === "rating" ? " active" : ""}`}
-                  onClick={() => setWatchingActivity("rating")}
-                  disabled={watchingActivity === "rating"}
-                  role="tab"
-                  aria-selected={watchingActivity === "rating" ? true : false}
-                >
-                  {t("rating")}
-                </button>
-              </div>
-            </div>
-            <img
-              className="language-change__profile-img"
-              src={currentEditingProfile.profileImage}
-              alt={`${t("profileAvatar")} ${
-                currentEditingProfile.kidsProfile ? t("Kids") : currentEditingProfile.username
-              } `}
-            />
-          </header>
-
-          {watchingActivity === "watching" && totalMovieItems <= 0 && (
-            <strong className="activity-page__warning-empty">{t("noWatchHistory")}</strong>
-          )}
-          {watchingActivity === "rating" && totalRatingItems <= 0 && (
-            <strong className="activity-page__warning-empty">{t("noRatingMovies")}</strong>
-          )}
-
-          <ul>
-            {watchingActivity === "watching" ? (
-              <>
-                {watchedList.slice(0, visibleMovieItems).map((entry) => (
-                  <li
-                    key={crypto.randomUUID()}
-                    className="activity-page__list-item"
-                  >
-                    {!deletedItems.includes(entry.name) ? (
-                      <>
-                        <time
-                          dateTime={entry.whenWatchedDetail}
-                          className="activity-page__list-item-date"
-                        >
-                          {entry.whenWatched}
-                        </time>
-                        <div className="activity-page__list-item-title">
-                          <a href="#">
-                            {entry.seriesName
-                              ? `${entry.seriesName}: ${t("season")} ${entry.season}: "${
-                                  entry.name
-                                }"`
-                              : entry.name}
-                          </a>
-                        </div>
-
-                        <Link
-                          to={`/reportproblem/${entry.id}`}
-                          className={`activity-page__list-item-report-text${
-                            isReported && reportedMovie.id === entry.id ? " reported" : ""
-                          }`}
-                          onClick={() => reportMovie(entry)}
-                          disabled={isReported && reportedMovie.id === entry.id}
-                        >
-                          {isReported && reportedMovie.id === entry.id
-                            ? t("problemReported")
-                            : t("problemReport")}
-                        </Link>
-                        <div className="activity-page__list-item-hiding-btn-wrapper">
-                          <button
-                            className="activity-page__list-item-remove-btn"
-                            onClick={() => handleDeleteFromViewed(entry)}
-                            aria-label={t("removeFromViewed")}
-                            aria-describedby={`history-tooltip-${entry.id}`}
-                            aria-haspopup="true"
-                            aria-controls={`history-tooltip-${entry.id}`}
-                          >
-                            ⊘
-                          </button>
-                          <span
-                            id={`history-tooltip-${entry.id}`}
-                            aria-live=""
-                          >
-                            {t("hideFromViewingHistory")}
-                          </span>
-                        </div>
-                      </>
-                    ) : (
-                      <div className="activity-page__list-item-delete-container">
-                        <p className="activity-page__list-item-delete-text">
-                          {t("within24Hours")},{" "}
-                          <strong>
-                            {entry.seriesName
-                              ? `${entry.seriesName}: ${t("season")} ${entry.season}: "${
-                                  entry.name
-                                }"`
-                              : entry.name}
-                          </strong>{" "}
-                          {t("willNoLongerAppear")} <a href="#">{t("learnMore")}</a>.
-                        </p>
-                        {entry.seriesName && (
-                          <button
-                            href="#"
-                            className="activity-page__list-item-delete-btn"
-                            onClick={() => handleDeleteWholeSeries(entry)}
-                          >
-                            {t("hideSeries")}
-                          </button>
-                        )}
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </>
-            ) : (
-              <>
-                {ratingList.slice(0, visibleRatingItems).map((entry) => (
-                  <li
-                    key={crypto.randomUUID()}
-                    className="activity-page__list-item"
-                  >
+                {!deletedItems.includes(entry.name) ? (
+                  <>
                     <time
-                      dateTime={entry.ratingDate}
+                      dateTime={entry.whenWatchedDetail}
                       className="activity-page__list-item-date"
                     >
-                      {entry.ratingDate}
+                      {entry.whenWatched}
                     </time>
                     <div className="activity-page__list-item-title">
-                      <a href="#">{entry.name}</a>
+                      <a href="#">
+                        {entry.seriesName
+                          ? `${entry.seriesName}: ${t("season")} ${entry.season}: "${entry.name}"`
+                          : entry.name}
+                      </a>
                     </div>
-                    <div className="activity-page__list-item-btn-rating-container">
-                      <button
-                        className="activity-page__rating-btn"
-                        data-rating="dislike"
-                        aria-label={
-                          entry.rating === "dislike" ? t("alreadyRateDislike") : t("rateDislike")
-                        }
-                        onClick={() => handleRatingChange(entry, "dislike")}
-                      >
-                        {entry.rating === "dislike" ? <DislikeIconFilled /> : <DislikeIcon />}
-                        <span className="visually-hidden">{t("dislike")}</span>
-                      </button>
-                      <button
-                        className="activity-page__rating-btn"
-                        data-rating="like"
-                        aria-label={entry.rating === "like" ? t("alreadyRateLike") : t("rateLike")}
-                        onClick={() => handleRatingChange(entry, "like")}
-                      >
-                        {entry.rating === "like" ? <LikeIconFilled /> : <LikeIcon />}
-                        <span className="visually-hidden">{t("like")}</span>
-                      </button>
-                      <button
-                        className="activity-page__rating-btn"
-                        data-rating="superlike"
-                        aria-label={
-                          entry.rating === "superlike"
-                            ? t("alreadyRateSuperlike")
-                            : t("rateSuperlike")
-                        }
-                        onClick={() => handleRatingChange(entry, "superlike")}
-                      >
-                        {entry.rating === "superlike" ? <SuperLikeIconFilled /> : <SuperLikeIcon />}
-                        <span className="visually-hidden">{t("superlike")}</span>
-                      </button>
-                    </div>
-                  </li>
-                ))}
-              </>
-            )}
-          </ul>
 
-          <div className="activity-page__btns-wrapper">
-            <BtnsWrapperAccount
-              btnAccentText={t("showMore")}
-              btnAccentFunction={handleLoadMore}
-              btnLightText={t("backToAccount")}
-              btnLightPath="/account"
-              btnLightFunction={reset}
-              withoutSpace
-              disabled={
-                watchingActivity === "watching"
-                  ? visibleMovieItems >= totalMovieItems
-                  : visibleRatingItems >= totalRatingItems
-              }
-            />
-            {watchingActivity === "watching" && totalMovieItems > 0 && (
-              <div>
-                <button
-                  className="activity-page__operating-btn"
-                  onClick={handleDeleteAllViewingHistory}
-                  disabled={isBtnHideAllDisabled}
+                    <Link
+                      to={`/reportproblem/${entry.id}`}
+                      className={`activity-page__list-item-report-text${
+                        isReported && reportedMovie.id === entry.id ? " reported" : ""
+                      }`}
+                      onClick={() => reportMovie(entry)}
+                      disabled={isReported && reportedMovie.id === entry.id}
+                    >
+                      {isReported && reportedMovie.id === entry.id
+                        ? t("problemReported")
+                        : t("problemReport")}
+                    </Link>
+                    <div className="activity-page__list-item-hiding-btn-wrapper">
+                      <button
+                        className="activity-page__list-item-remove-btn"
+                        onClick={() => handleDeleteFromViewed(entry)}
+                        aria-label={t("removeFromViewed")}
+                        aria-describedby={`history-tooltip-${entry.id}`}
+                        aria-haspopup="true"
+                        aria-controls={`history-tooltip-${entry.id}`}
+                      >
+                        ⊘
+                      </button>
+                      <span
+                        id={`history-tooltip-${entry.id}`}
+                        aria-live=""
+                      >
+                        {t("hideFromViewingHistory")}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="activity-page__list-item-delete-container">
+                    <p className="activity-page__list-item-delete-text">
+                      {t("within24Hours")},{" "}
+                      <strong>
+                        {entry.seriesName
+                          ? `${entry.seriesName}: ${t("season")} ${entry.season}: "${entry.name}"`
+                          : entry.name}
+                      </strong>{" "}
+                      {t("willNoLongerAppear")} <a href="#">{t("learnMore")}</a>.
+                    </p>
+                    {entry.seriesName && (
+                      <button
+                        href="#"
+                        className="activity-page__list-item-delete-btn"
+                        onClick={() => handleDeleteWholeSeries(entry)}
+                      >
+                        {t("hideSeries")}
+                      </button>
+                    )}
+                  </div>
+                )}
+              </li>
+            ))}
+          </>
+        ) : (
+          <>
+            {ratingList.slice(0, visibleRatingItems).map((entry) => (
+              <li
+                key={crypto.randomUUID()}
+                className="activity-page__list-item"
+              >
+                <time
+                  dateTime={entry.ratingDate}
+                  className="activity-page__list-item-date"
                 >
-                  {t("hideAll")}
-                </button>
-                <button
-                  className="activity-page__operating-btn"
-                  onClick={downloadListAsTxt}
-                >
-                  {t("downloadAll")}
-                </button>
-              </div>
-            )}
+                  {entry.ratingDate}
+                </time>
+                <div className="activity-page__list-item-title">
+                  <a href="#">{entry.name}</a>
+                </div>
+                <div className="activity-page__list-item-btn-rating-container">
+                  <button
+                    className="activity-page__rating-btn"
+                    data-rating="dislike"
+                    aria-label={
+                      entry.rating === "dislike" ? t("alreadyRateDislike") : t("rateDislike")
+                    }
+                    onClick={() => handleRatingChange(entry, "dislike")}
+                  >
+                    {entry.rating === "dislike" ? <DislikeIconFilled /> : <DislikeIcon />}
+                    <span className="visually-hidden">{t("dislike")}</span>
+                  </button>
+                  <button
+                    className="activity-page__rating-btn"
+                    data-rating="like"
+                    aria-label={entry.rating === "like" ? t("alreadyRateLike") : t("rateLike")}
+                    onClick={() => handleRatingChange(entry, "like")}
+                  >
+                    {entry.rating === "like" ? <LikeIconFilled /> : <LikeIcon />}
+                    <span className="visually-hidden">{t("like")}</span>
+                  </button>
+                  <button
+                    className="activity-page__rating-btn"
+                    data-rating="superlike"
+                    aria-label={
+                      entry.rating === "superlike" ? t("alreadyRateSuperlike") : t("rateSuperlike")
+                    }
+                    onClick={() => handleRatingChange(entry, "superlike")}
+                  >
+                    {entry.rating === "superlike" ? <SuperLikeIconFilled /> : <SuperLikeIcon />}
+                    <span className="visually-hidden">{t("superlike")}</span>
+                  </button>
+                </div>
+              </li>
+            ))}
+          </>
+        )}
+      </ul>
+
+      <div className="activity-page__btns-wrapper">
+        <BtnsWrapperAccount
+          btnAccentText={t("showMore")}
+          btnAccentFunction={handleLoadMore}
+          btnLightText={t("backToAccount")}
+          btnLightPath="/account"
+          btnLightFunction={reset}
+          withoutSpace
+          disabled={
+            watchingActivity === "watching"
+              ? visibleMovieItems >= totalMovieItems
+              : visibleRatingItems >= totalRatingItems
+          }
+        />
+        {watchingActivity === "watching" && totalMovieItems > 0 && (
+          <div>
+            <button
+              className="activity-page__operating-btn"
+              onClick={handleDeleteAllViewingHistory}
+              disabled={isBtnHideAllDisabled}
+            >
+              {t("hideAll")}
+            </button>
+            <button
+              className="activity-page__operating-btn"
+              onClick={downloadListAsTxt}
+            >
+              {t("downloadAll")}
+            </button>
           </div>
-        </main>
-
-        <AccountFooter />
+        )}
       </div>
-    </>
+    </CommonAccountLayout>
   );
 }

@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import UserContext from "../../context/UserContext";
 
-import NavbarShort from "../../layout/NavbarShort/NavbarShort";
-import AccountFooter from "../../layout/AccountFooter/AccountFooter";
+import CommonAccountLayout from "../../layout/CommonAccountLayout/CommonAccountLayout";
 import CustomOption from "./components/CustomOption";
 import SemitransparentCheckbox from "./components/SemitransparentCheckbox";
 import SizeRadioInput from "./components/SizeRadioInput";
@@ -101,6 +100,19 @@ export default function SubtitlesAppearancePage() {
   const sizeOptions = ["small", "medium", "large"];
   const shadowOptions = ["none", "raised", "depressed", "uniform", "drop-shadow"];
 
+  let displayedFontSizeText;
+  switch (textStyles.fontSize) {
+    case "small":
+      displayedFontSizeText = t("small");
+      break;
+    case "medium":
+      displayedFontSizeText = t("medium");
+      break;
+    case "large":
+      displayedFontSizeText = t("large");
+      break;
+  }
+
   function handleChange(e, propertyName) {
     if (e.key === "Enter" || e.key === " ") {
       const btnValue = e.target.innerText.toLowerCase();
@@ -143,226 +155,208 @@ export default function SubtitlesAppearancePage() {
   }
 
   return (
-    <>
-      <header>
-        <h1 className="visually-hidden">
-          {t("settings")} - {t("subtitles")}
-        </h1>
-        <NavbarShort />
-      </header>
+    <CommonAccountLayout
+      pageTitle={`${t("settings")} - ${t("subtitles")}`}
+      sectionTitle={t("subtitleAppearance")}
+    >
+      <form className="subtitles__form">
+        <legend className="subtitles__subheading">
+          {t("changeWaySubtitlesAppear")} <em>{currentEditingProfile.username} </em>
+          {t("onAllSupportedDevices")}
+        </legend>
+        {/* //* Visualization Text Container  */}
+        <div className="subtitles__visualization-container">
+          <span
+            className="subtitles__visualization-wrapper"
+            role="presentation"
+            aria-live="assertive"
+            data-window-bg-color={textStyles.windowColor}
+            data-window-bg-color-semitransparent={textStyles.windowColorSemitransparent}
+          >
+            <span
+              className="subtitles__visualization-text"
+              role="presentation"
+              aria-live="assertive"
+              data-font-face={textStyles.fontFace}
+              data-font-color={textStyles.fontColor}
+              data-font-color-semitransparent={textStyles.fontColorSemitransparent}
+              data-font-size={textStyles.fontSize}
+              data-shadow={textStyles.shadow}
+              data-shadow-color={textStyles.shadowColor}
+              data-text-bg-color={textStyles.bgColor}
+              data-text-bg-color-semitransparent={textStyles.bgColorSemitransparent}
+            >
+              {t("subtitlesText")}
+            </span>
+          </span>
+        </div>
 
-      <div className="subtitles settings-wrapper">
-        <main className="settings-container">
-          <header className="subtitles__header">
-            <h2 className="subtitles__heading">{t("subtitleAppearance")}</h2>
-            <img
-              className="language-change__profile-img"
-              src={currentEditingProfile.profileImage}
-              alt={`${t("profileAvatar")} ${
-                currentEditingProfile.kidsProfile ? t("Kids") : currentEditingProfile.username
-              } `}
-            />
-          </header>
-          <p className="subtitles__subheading">
-            {t("changeWaySubtitlesAppear")} <em>{currentEditingProfile.username} </em>
-            {t("onAllSupportedDevices")}
-          </p>
+        <div className="subtitles__settings-container">
+          <fieldset className="subtitles__settings-inner-container">
+            <legend>{t("font")}</legend>
+            {/* //* Font Face */}
+            <Select
+              defaultValue={textStyles.fontFace}
+              slotProps={{
+                root: { className: "subtitles__settings-text-btn" },
+                listbox: { className: "subtitles__list subtitles__list--text" },
+              }}
+              data-font-face={textStyles.fontFace}
+              onChange={(e) => handleChange(e, "fontFace")}
+            >
+              <CustomOption
+                options={fontOptions}
+                attribute="data-font-face"
+                tKey={true}
+              />
+            </Select>
+            {/* //* Text Color */}
+            <Select
+              defaultValue={textStyles.fontColor}
+              slotProps={{
+                root: { className: "subtitles__settings-color-btn" },
+                listbox: { className: "subtitles__list subtitles__list--color" },
+              }}
+              data-color={textStyles.fontColor}
+              onChange={(e) => handleChange(e, "fontColor")}
+            >
+              <CustomOption
+                options={colorOptions}
+                attribute="data-color"
+              />
+              <SemitransparentCheckbox
+                textStyles={textStyles}
+                handleChange={handleChange}
+                inputStyles={"fontColorSemitransparent"}
+              />
+            </Select>
+          </fieldset>
 
-          <form className="subtitles__form">
-            {/* //* Visualization Text Container  */}
-            <div className="subtitles__visualization-container">
-              <span
-                className="subtitles__visualization-wrapper"
-                role="presentation"
-                aria-live="assertive"
-                data-window-bg-color={textStyles.windowColor}
-                data-window-bg-color-semitransparent={textStyles.windowColorSemitransparent}
+          {/* //* Text Size */}
+          <fieldset className="subtitles__text-size-container">
+            <legend>
+              {/* {t("textSize")}: <span>{textStyles.fontSize}</span> */}
+              {t("textSize")}: <span>{displayedFontSizeText}</span>
+            </legend>
+            <div className="subtitles__fs-container">
+              {sizeOptions.map((size) => (
+                <SizeRadioInput
+                  key={size}
+                  textStyles={textStyles}
+                  handleChange={handleChange}
+                  size={size}
+                />
+              ))}
+            </div>
+          </fieldset>
+
+          {/* //* Text Shadow */}
+          <fieldset className="subtitles__settings-inner-container">
+            <legend>{t("shadow")}</legend>
+            <Select
+              defaultValue={textStyles.shadow}
+              slotProps={{
+                root: { className: "subtitles__settings-text-btn" },
+                listbox: { className: "subtitles__list subtitles__list--text" },
+              }}
+              data-shadow={textStyles.shadow}
+              onChange={(e) => handleChange(e, "shadow")}
+            >
+              <CustomOption
+                options={shadowOptions}
+                attribute="data-shadow"
+                tKey={true}
+              />
+            </Select>
+            {/* //* Shadow Color */}
+            <Select
+              defaultValue={textStyles.shadowColor}
+              slotProps={{
+                root: { className: "subtitles__settings-color-btn" },
+                listbox: { className: "subtitles__list subtitles__list--color" },
+              }}
+              data-color={textStyles.shadowColor}
+              onChange={(e) => handleChange(e, "shadowColor")}
+            >
+              <CustomOption
+                options={colorOptions}
+                attribute="data-color"
+              />
+            </Select>
+          </fieldset>
+
+          <div className="subtitles__settings-inner-wrapper">
+            <fieldset>
+              <legend>{t("background")}</legend>
+              {/* //* Text Background Color */}
+              <Select
+                defaultValue={textStyles.bgColor}
+                slotProps={{
+                  root: { className: "subtitles__settings-color-btn" },
+                  listbox: {
+                    className:
+                      "subtitles__list subtitles__list--color subtitles__list--text-bgColor",
+                  },
+                }}
+                data-color={textStyles.bgColor}
+                onChange={(e) => handleChange(e, "bgColor")}
               >
-                <span
-                  className="subtitles__visualization-text"
-                  role="presentation"
-                  aria-live="assertive"
-                  data-font-face={textStyles.fontFace}
-                  data-font-color={textStyles.fontColor}
-                  data-font-color-semitransparent={textStyles.fontColorSemitransparent}
-                  data-font-size={textStyles.fontSize}
-                  data-shadow={textStyles.shadow}
-                  data-shadow-color={textStyles.shadowColor}
-                  data-text-bg-color={textStyles.bgColor}
-                  data-text-bg-color-semitransparent={textStyles.bgColorSemitransparent}
-                >
-                  {t("subtitlesText")}
-                </span>
-              </span>
-            </div>
+                <CustomOption
+                  options={colorOptionsWithNone}
+                  attribute="data-color"
+                />
+                <SemitransparentCheckbox
+                  textStyles={textStyles}
+                  handleChange={handleChange}
+                  inputStyles={"bgColorSemitransparent"}
+                  id="bg-color"
+                />
+              </Select>
+            </fieldset>
 
-            <div className="subtitles__settings-container">
-              <fieldset className="subtitles__settings-inner-container">
-                <legend>{t("font")}</legend>
-                {/* //* Font Face */}
-                <Select
-                  defaultValue={textStyles.fontFace}
-                  slotProps={{
-                    root: { className: "subtitles__settings-text-btn" },
-                    listbox: { className: "subtitles__list subtitles__list--text" },
-                  }}
-                  data-font-face={textStyles.fontFace}
-                  onChange={(e) => handleChange(e, "fontFace")}
-                >
-                  <CustomOption
-                    options={fontOptions}
-                    attribute="data-font-face"
-                    tKey={true}
-                  />
-                </Select>
-                {/* //* Text Color */}
-                <Select
-                  defaultValue={textStyles.fontColor}
-                  slotProps={{
-                    root: { className: "subtitles__settings-color-btn" },
-                    listbox: { className: "subtitles__list subtitles__list--color" },
-                  }}
-                  data-color={textStyles.fontColor}
-                  onChange={(e) => handleChange(e, "fontColor")}
-                >
-                  <CustomOption
-                    options={colorOptions}
-                    attribute="data-color"
-                  />
-                  <SemitransparentCheckbox
-                    textStyles={textStyles}
-                    handleChange={handleChange}
-                    inputStyles={"fontColorSemitransparent"}
-                  />
-                </Select>
-              </fieldset>
+            <fieldset>
+              <legend>{t("window")}</legend>
+              {/* //* Background Color */}
+              <Select
+                defaultValue={textStyles.windowColor}
+                slotProps={{
+                  root: { className: "subtitles__settings-color-btn" },
+                  listbox: {
+                    className:
+                      "subtitles__list subtitles__list--color subtitles__list--window-bgColor",
+                  },
+                }}
+                data-color={textStyles.windowColor}
+                onChange={(e) => handleChange(e, "windowColor")}
+              >
+                <CustomOption
+                  options={colorOptionsWithNone}
+                  attribute="data-color"
+                />
+                <SemitransparentCheckbox
+                  textStyles={textStyles}
+                  handleChange={handleChange}
+                  inputStyles={"windowColorSemitransparent"}
+                  id="window-color"
+                />
+              </Select>
+            </fieldset>
+          </div>
+        </div>
 
-              {/* //* Text Size */}
-              <fieldset className="subtitles__text-size-container">
-                <legend>
-                  {t("textSize")}: <span>{textStyles.fontSize}</span>
-                </legend>
-                <div className="subtitles__fs-container">
-                  {sizeOptions.map((size) => (
-                    <SizeRadioInput
-                      key={size}
-                      textStyles={textStyles}
-                      handleChange={handleChange}
-                      size={size}
-                    />
-                  ))}
-                </div>
-              </fieldset>
-
-              {/* //* Text Shadow */}
-              <fieldset className="subtitles__settings-inner-container">
-                <legend>{t("shadow")}</legend>
-                <Select
-                  defaultValue={textStyles.shadow}
-                  slotProps={{
-                    root: { className: "subtitles__settings-text-btn" },
-                    listbox: { className: "subtitles__list subtitles__list--text" },
-                  }}
-                  data-shadow={textStyles.shadow}
-                  onChange={(e) => handleChange(e, "shadow")}
-                >
-                  <CustomOption
-                    options={shadowOptions}
-                    attribute="data-shadow"
-                    tKey={true}
-                  />
-                </Select>
-                {/* //* Shadow Color */}
-                <Select
-                  defaultValue={textStyles.shadowColor}
-                  slotProps={{
-                    root: { className: "subtitles__settings-color-btn" },
-                    listbox: { className: "subtitles__list subtitles__list--color" },
-                  }}
-                  data-color={textStyles.shadowColor}
-                  onChange={(e) => handleChange(e, "shadowColor")}
-                >
-                  <CustomOption
-                    options={colorOptions}
-                    attribute="data-color"
-                  />
-                </Select>
-              </fieldset>
-
-              <div className="subtitles__settings-inner-wrapper">
-                <fieldset>
-                  <legend>{t("background")}</legend>
-                  {/* //* Text Background Color */}
-                  <Select
-                    defaultValue={textStyles.bgColor}
-                    slotProps={{
-                      root: { className: "subtitles__settings-color-btn" },
-                      listbox: {
-                        className:
-                          "subtitles__list subtitles__list--color subtitles__list--text-bgColor",
-                      },
-                    }}
-                    data-color={textStyles.bgColor}
-                    onChange={(e) => handleChange(e, "bgColor")}
-                  >
-                    <CustomOption
-                      options={colorOptionsWithNone}
-                      attribute="data-color"
-                    />
-                    <SemitransparentCheckbox
-                      textStyles={textStyles}
-                      handleChange={handleChange}
-                      inputStyles={"bgColorSemitransparent"}
-                    />
-                  </Select>
-                </fieldset>
-
-                <fieldset>
-                  <legend>{t("window")}</legend>
-                  {/* //* Background Color */}
-                  <Select
-                    defaultValue={textStyles.windowColor}
-                    slotProps={{
-                      root: { className: "subtitles__settings-color-btn" },
-                      listbox: {
-                        className:
-                          "subtitles__list subtitles__list--color subtitles__list--window-bgColor",
-                      },
-                    }}
-                    data-color={textStyles.windowColor}
-                    onChange={(e) => handleChange(e, "windowColor")}
-                  >
-                    <CustomOption
-                      options={colorOptionsWithNone}
-                      attribute="data-color"
-                    />
-                    <SemitransparentCheckbox
-                      textStyles={textStyles}
-                      handleChange={handleChange}
-                      inputStyles={"windowColorSemitransparent"}
-                    />
-                  </Select>
-                </fieldset>
-              </div>
-            </div>
-
-            <BtnsWrapperAccount
-              btnAccentText={t("save")}
-              btnAccentPath="/account"
-              btnAccentFunction={handleSave}
-              btnLightText={t("resetToDefault")}
-              btnLightPath="/account"
-              btnLightFunction={() => handleSave(false)}
-              extraBtn="light"
-              extraBtnText={t("cancel")}
-              extraBtnPath="/account"
-              extraSpace
-            />
-          </form>
-        </main>
-
-        <AccountFooter />
-      </div>
-    </>
+        <BtnsWrapperAccount
+          btnAccentText={t("save")}
+          btnAccentPath="/account"
+          btnAccentFunction={handleSave}
+          btnLightText={t("resetToDefault")}
+          btnLightPath="/account"
+          btnLightFunction={() => handleSave(false)}
+          extraBtn="light"
+          extraBtnText={t("cancel")}
+          extraBtnPath="/account"
+          extraSpace
+        />
+      </form>
+    </CommonAccountLayout>
   );
 }

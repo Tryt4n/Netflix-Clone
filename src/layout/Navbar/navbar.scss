@@ -1,5 +1,12 @@
-@use "../../base/functions" as func;
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
 
-.netflix-logo {
-  height: func.rem(68);
+.navbar-bg {
+  background-color: c.$bg-color;
+  @include flex();
+
+  .netflix-logo {
+    height: v.$navbar-height;
+  }
 }

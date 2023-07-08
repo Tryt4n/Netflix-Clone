@@ -5,6 +5,9 @@
 .common-account__header {
   @include flex(row, space-between, center);
   margin-bottom: 2em;
+  &--m1 {
+    margin-bottom: 1em;
+  }
 }
 
 .common-account__heading {

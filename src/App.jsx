@@ -1,6 +1,5 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-import Navbar from "./layout/Navbar/Navbar";
 import Home from "./pages/Home";
 import TVShows from "./pages/TVShows";
 import Movies from "./pages/Movies";
@@ -23,13 +22,8 @@ import PlaybackPage from "./pages/PlaybackPage/PlaybackPage";
 import CommunicationPage from "./pages/CommunicationPage/CommunicationPage";
 
 export default function App() {
-  const location = useLocation();
-  const allowedPaths = ["home", "movies", "latest", "my-list", "original-audio"];
-  const showNavbar = allowedPaths.includes(location.pathname);
-
   return (
     <>
-      {showNavbar && <Navbar />}
       <Routes>
         <Route
           index={true}

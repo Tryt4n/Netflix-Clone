@@ -86,9 +86,7 @@ export function UserProvider({ children }) {
   return (
     <UserContext.Provider
       value={{
-        //!
         moviesData: moviesData,
-        //!
         users: users,
         setUsers: setUsers,
         user: user,

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import AccountFooter from "../AccountFooter/AccountFooter";
-import NavbarShort from "../NavbarShort/NavbarShort";
+import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 import UserContext from "../../context/UserContext";
 import { useTranslation } from "react-i18next";
 
@@ -12,6 +12,7 @@ export default function CommonAccountLayout({
   sectionTitle,
   withoutHeader,
   withoutImg,
+  smallSpace,
 }) {
   const { t } = useTranslation();
 
@@ -21,13 +22,15 @@ export default function CommonAccountLayout({
     <>
       <header>
         <h1 className="visually-hidden">{pageTitle}</h1>
-        <NavbarShort />
+        <Navbar />
       </header>
 
       <div className="settings-wrapper">
         <main className="settings-container">
           {!withoutHeader ? (
-            <header className="common-account__header">
+            <header
+              className={`common-account__header${smallSpace ? " common-account__header--m1" : ""}`}
+            >
               <h2 className="common-account__heading">{sectionTitle}</h2>
               {!withoutImg && (
                 <img
@@ -46,7 +49,7 @@ export default function CommonAccountLayout({
           {children}
         </main>
 
-        <AccountFooter />
+        <Footer />
       </div>
     </>
   );

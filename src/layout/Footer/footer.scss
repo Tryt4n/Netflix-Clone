@@ -74,6 +74,9 @@
     text-align: center;
     color: inherit;
     cursor: pointer;
+    &:disabled {
+      cursor: default;
+    }
   }
 
   a:where(:hover, :focus-visible) {

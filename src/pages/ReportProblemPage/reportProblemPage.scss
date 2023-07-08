@@ -7,25 +7,17 @@
 .report-problem {
   $inner-breakpoint: func.rem(700);
 
-  & * {
-    font-weight: normal;
-  }
-
-  &__heading {
-    font-size: v.$account-heading;
-    line-height: 100%;
-    margin-bottom: 0.5em;
-  }
-
-  &__subheading {
+  &__title {
     font-size: 1.17em;
     text-wrap: balance;
+    font-weight: normal;
     margin-bottom: 0.75em;
   }
 
   &__wrapper {
     @include flex();
     gap: 1.5rem;
+    font-weight: normal;
   }
 
   &__image {
@@ -58,18 +50,5 @@
     resize: none;
     padding: 0.5em;
     font: inherit;
-  }
-
-  &__btns-wrapper {
-    @include flex();
-    gap: 1rem;
-    margin-top: 1.5rem;
-    @media screen and (width < b.$mobile-medium) {
-      flex-direction: column;
-      gap: 0;
-      & > * {
-        font-size: v.$font-base;
-      }
-    }
   }
 }

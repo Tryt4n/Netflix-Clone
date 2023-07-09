@@ -20,6 +20,7 @@ import ReportProblemPage from "./pages/ReportProblemPage/ReportProblemPage";
 import SubtitlesAppearancePage from "./pages/SubtitlesAppearancePage/SubtitlesAppearancePage";
 import PlaybackPage from "./pages/PlaybackPage/PlaybackPage";
 import CommunicationPage from "./pages/CommunicationPage/CommunicationPage";
+import PrivacyAndDataPage from "./pages/PrivacyAndDataPage/PrivacyAndDataPage";
 
 export default function App() {
   return (
@@ -73,7 +74,7 @@ export default function App() {
           path="Account"
           element={<AccountPage />}
         />
-        <Route path="/settings">
+        <Route path="settings">
           <Route
             path="viewing-restriction"
             element={<RestrictionPage />}
@@ -102,7 +103,10 @@ export default function App() {
             path="communicationPreference"
             element={<CommunicationPage />}
           />
-          <Route path="privacy" />
+          <Route
+            path="privacy"
+            element={<PrivacyAndDataPage />}
+          />
         </Route>
         <Route
           path="reportproblem/:id"

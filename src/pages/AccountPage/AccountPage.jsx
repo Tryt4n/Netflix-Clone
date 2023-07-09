@@ -398,7 +398,7 @@ export default function AccountPage() {
                       >
                         <li className="account__profile-list-item-wrapper">
                           <Link
-                            to={"/settings/language"}
+                            to="/settings/language"
                             className="account__profile-list-item"
                             onClick={() => setCurrentEditingProfile(user)}
                           >
@@ -413,7 +413,7 @@ export default function AccountPage() {
                         </li>
                         <li className="account__profile-list-item-wrapper">
                           <Link
-                            to={"/settings/viewing-restriction"}
+                            to="/settings/viewing-restriction"
                             className="account__profile-list-item"
                             onClick={() => setCurrentEditingProfile(user)}
                           >
@@ -436,7 +436,7 @@ export default function AccountPage() {
                         </li>
                         <li className="account__profile-list-item-wrapper">
                           <Link
-                            to={"/settings/lock"}
+                            to="/settings/lock"
                             className="account__profile-list-item"
                             onClick={() => setCurrentEditingProfile(user)}
                           >
@@ -467,7 +467,7 @@ export default function AccountPage() {
                         )}
                         <li className="account__profile-list-item-wrapper">
                           <Link
-                            to={"/settings/viewed"}
+                            to="/settings/viewed"
                             className="account__profile-list-item"
                             onClick={() => {
                               setCurrentEditingProfile(user);
@@ -482,7 +482,7 @@ export default function AccountPage() {
                         </li>
                         <li className="account__profile-list-item-wrapper">
                           <Link
-                            to={"/settings/viewed"}
+                            to="/settings/viewed"
                             className="account__profile-list-item"
                             onClick={() => {
                               setCurrentEditingProfile(user);
@@ -497,7 +497,7 @@ export default function AccountPage() {
                         </li>
                         <li className="account__profile-list-item-wrapper">
                           <Link
-                            to={"/settings/subtitles"}
+                            to="/settings/subtitles"
                             onClick={() => setCurrentEditingProfile(user)}
                             className="account__profile-list-item"
                           >
@@ -511,7 +511,7 @@ export default function AccountPage() {
                         </li>
                         <li className="account__profile-list-item-wrapper">
                           <Link
-                            to={"/settings/playback"}
+                            to="/settings/playback"
                             className="account__profile-list-item"
                             onClick={() => setCurrentEditingProfile(user)}
                           >
@@ -547,7 +547,7 @@ export default function AccountPage() {
                         {!user.kidsProfile && (
                           <li className="account__profile-list-item-wrapper">
                             <Link
-                              to={"/settings/privacy"}
+                              to="/settings/privacy"
                               className="account__profile-list-item"
                               onClick={() => setCurrentEditingProfile(user)}
                             >

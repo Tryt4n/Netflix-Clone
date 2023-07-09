@@ -1,0 +1,60 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.switch-input {
+  $space: func.rem(4);
+
+  position: relative;
+  appearance: none;
+  width: 3.5rem;
+  height: 2rem;
+  background: c.$layout-btn-bg;
+  border-radius: 100vw;
+  transition: v.$main-transition;
+  cursor: pointer;
+  outline-offset: 0;
+  &:hover {
+    background-color: c.$layout-btn-bg-hover;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    width: func.rem(24);
+    aspect-ratio: 1;
+    top: 50%;
+    background-color: c.$white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    translate: $space -50%;
+    transition: v.$main-transition;
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    width: 0.75rem;
+    height: func.rem(2);
+    background-color: c.$layout-btn-bg-hover;
+    top: 50%;
+    z-index: 2;
+    translate: calc($space + 6px) -50%;
+    transition: opacity 250ms ease-in-out;
+  }
+
+  &:checked {
+    background-color: rgb(73, 105, 228);
+    &:hover {
+      background-color: rgba(73, 105, 228, 0.7);
+    }
+    &::after {
+      content: "\2713";
+      translate: calc(100% - ($space * -1)) -50%;
+      color: rgb(73, 105, 228);
+    }
+    &::before {
+      display: none;
+    }
+  }
+}

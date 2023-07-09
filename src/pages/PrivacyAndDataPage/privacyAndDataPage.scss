@@ -1,0 +1,134 @@
+@use "../../abstracts/mixins" as *;
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../base/functions" as func;
+
+.privacy-and-data {
+  & > * {
+    max-width: func.rem(600);
+    margin-inline: auto;
+  }
+
+  &__back-link {
+    font-weight: bold;
+    padding: 0.5em 1em;
+    width: max-content;
+  }
+  &__back-link {
+    @include flex();
+    border-radius: 0.25em;
+    transition: v.$main-transition;
+    color: c.$black;
+    &:hover {
+      background: rgba(128, 128, 128, 0.2);
+    }
+  }
+
+  &__header-wrapper {
+    @include flex(column, center, center);
+    padding-bottom: func.rem(30);
+    color: c.$black;
+    text-align: center;
+    @media screen and (width < func.rem(960)) {
+      & svg {
+        width: func.rem(91);
+        height: func.rem(70);
+      }
+    }
+  }
+
+  &__heading {
+    margin-bottom: 0.25em;
+    font-size: 2rem;
+    font-size: clamp(1.5rem, 1.22rem + 1.42vw, 2.13rem);
+  }
+
+  &__text {
+    font-size: func.rem(18);
+    font-weight: normal;
+    font-size: clamp(0.88rem, calc(0.59rem + 1.43vw), 1.13rem);
+  }
+
+  &__download-wrapper {
+    $padding: 0.75rem;
+
+    position: relative;
+    @include flex(flex-start, flex-start, center);
+    width: 100%;
+    padding: $padding;
+    padding-right: 3rem;
+    background-color: c.$white;
+    border: none;
+    border-radius: 0.5rem;
+    font: inherit;
+    font-size: v.$font-size-navbar;
+    text-align: start;
+    cursor: pointer;
+    & svg:last-child {
+      position: absolute;
+      right: 0;
+      translate: calc($padding * -1);
+      rotate: 180deg;
+    }
+  }
+
+  &__download-text {
+    margin-left: 1em;
+    font-weight: bold;
+  }
+
+  &__subheader {
+    font-size: v.$font-size-navbar;
+    margin-block: 1.5rem 1rem;
+    font-weight: 500;
+  }
+
+  &__container {
+    background-color: c.$white;
+    padding: func.rem(12);
+    border-radius: 0.5rem;
+  }
+
+  &__legend {
+    margin-bottom: 0.25em;
+    font-size: v.$font-size-navbar;
+    color: c.$black;
+  }
+
+  &__form-wrapper {
+    @include flex();
+    gap: 2rem;
+  }
+
+  &__form-text {
+    font-size: func.rem(12);
+    font-weight: normal;
+
+    & a {
+      color: c.$viewing-restriction-input-blue;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  & hr {
+    width: calc(100% + (func.rem(12) * 2));
+    translate: calc(func.rem(12) * -1);
+  }
+
+  &__form-btn {
+    width: 100%;
+    padding: 0.75em 1em;
+    background-color: c.$layout-btn-bg;
+    border: none;
+    border-radius: 0.25em;
+    font: inherit;
+    line-height: 100%;
+    cursor: pointer;
+    transition: v.$main-transition;
+    &:hover {
+      background-color: c.$layout-btn-bg-hover;
+    }
+  }
+}

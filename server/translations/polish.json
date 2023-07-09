@@ -300,5 +300,20 @@
   "noneOffer": "Nie chcę dostawać żadnych e-maili ani wiadomości SMS",
   "noneOfferNote": "Uwaga: Nadal będziesz otrzymywać pocztą e-mail powiadomienia o transakcjach związanych z Twoim Kontem",
   "update": "aktualizuj",
-  "communicationSavedMessage": "Zaktualizowano ustawienia komunikacji."
+  "communicationSavedMessage": "Zaktualizowano ustawienia komunikacji.",
+  "PrivacyAndData": "Prywatność i Dane",
+  "preferencesUpdated": "Zaktualizowano preferencje",
+  "privacyAndDataSettings": "Ustawienia prywatności i danych",
+  "privacyAndDataSettingsDescription": "Tutaj możesz pobrać pozyskane od Ciebie dane oraz zarządzać ich użyciem.",
+  "downloadPersonalInfo": "Pobierz dane osobowe",
+  "manageProfile": "Zarządzaj profilem",
+  "allowCommunication": "Zezwalaj na komunikaty przesyłane w razie zgodności identyfikatorów",
+  "allowCommunicationDescription1": "Wykorzystuj chronione ustawieniami prywatności dane kontaktowe powiązane z moim kontem Netflix, by wyświetlać odpowiednie treści marketingowe dotyczące usług innych firm.",
+  "allowCommunicationDescription2": "o „komunikatach przesyłanych w razie zgodności identyfikatorów”.",
+  "allowCommunicationDescription3": "Możesz zrezygnować z udostępniania osobom trzecim określonych informacji, które przekazujesz firmie Netflix. Nie przekazujesz firmie Netflix tego rodzaju informacji, ale możesz dokonać wyboru poniżej.",
+  "optAll": "Wyłącz wszystkie ustawienia",
+  "optAll2": "Zrezygnuj z udostępniania danych",
+  "optModalHeading": "Czy chcesz wyłączyć wszystkie ustawienia na tym profilu?",
+  "optModalDescription": "Potwierdzenie spowoduje wyłączenie wszystkich ustawień udostępniania danych na tym profilu.",
+  "confirm": "Potwierdź"
 }

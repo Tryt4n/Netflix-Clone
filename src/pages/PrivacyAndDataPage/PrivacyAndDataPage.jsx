@@ -14,9 +14,11 @@ import DownloadIcon from "../../icons/DownloadIcon";
 import CheckIcon2 from "../../icons/CheckIcon2";
 
 import "./privacyAndDataPage.scss";
-import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function PrivacyAndDataPage() {
+  const { t } = useTranslation();
+
   const { currentEditingProfile, users, setUsers } = useContext(UserContext);
 
   const [communicationsCheckbox, setCommunicationsCheckbox] = useState(
@@ -83,14 +85,10 @@ export default function PrivacyAndDataPage() {
     }
   }
 
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
-
   return (
     <>
       <header>
-        <h1 className="visually-hidden">Privacy and Data</h1>
+        <h1 className="visually-hidden">{t("PrivacyAndData")}</h1>
         <Navbar />
       </header>
 
@@ -101,7 +99,7 @@ export default function PrivacyAndDataPage() {
           aria-live="polite"
         >
           <CheckIcon2 />
-          <p>Preferences updated</p>
+          <p>{t("preferencesUpdated")}</p>
         </div>
       )}
 
@@ -113,49 +111,42 @@ export default function PrivacyAndDataPage() {
               className="privacy-and-data__back-link"
             >
               <ArrowIndicatorLightIcon />
-              Back
+              {t("back")}
             </Link>
           </div>
 
           <header className="privacy-and-data__header-wrapper">
             <HandshakeIcon />
-            <h2 className="privacy-and-data__heading">Privacy and Data Settings</h2>
-            <p className="privacy-and-data__text">
-              Here you can download information collected from you or manage how it is used.
-            </p>
+            <h2 className="privacy-and-data__heading">{t("privacyAndDataSettings")}</h2>
+            <p className="privacy-and-data__text">{t("privacyAndDataSettingsDescription")}</p>
           </header>
 
           {currentEditingProfile.id === users[0].id && (
             <article>
-              <h2 className="visually-hidden">Download personal information</h2>
+              <h2 className="visually-hidden">{t("downloadPersonalInfo")}</h2>
               <button className="privacy-and-data__download-wrapper">
                 <DownloadIcon />
-                <span className="privacy-and-data__download-text">
-                  Download personal information
-                </span>
+                <span className="privacy-and-data__download-text">{t("downloadPersonalInfo")}</span>
                 <ArrowIndicatorLightIcon />
               </button>
             </article>
           )}
 
           <article>
-            <h2 className="privacy-and-data__subheader">Manage Your Profile</h2>
+            <h2 className="privacy-and-data__subheader">{t("manageProfile")}</h2>
             <div className="privacy-and-data__container">
               <form onSubmit={(e) => e.preventDefault()}>
                 {currentEditingProfile.id === users[0].id ? (
                   <>
-                    <legend className="privacy-and-data__legend">
-                      Allow matched identifier communications
-                    </legend>
+                    <legend className="privacy-and-data__legend">{t("allowCommunication")}</legend>
                     <div className="privacy-and-data__form-wrapper">
                       <p className="privacy-and-data__form-text">
-                        Use privacy protected contact information from my Netflix account to display
-                        relevant marketing on third party services. <a href="#">Learn more</a> about
-                        "Matched Identifier Communications".
+                        {t("allowCommunicationDescription1")} <a href="#">{t("learnMore")}</a>{" "}
+                        {t("allowCommunicationDescription2")}
                       </p>
                       <Switch
                         name="communications"
-                        text="Allow matched identifier communications"
+                        text={t("allowCommunication")}
                         checked={communicationsCheckbox}
                         onChangeFunction={() => handleSwitch()}
                       />
@@ -163,9 +154,7 @@ export default function PrivacyAndDataPage() {
                   </>
                 ) : (
                   <p className="privacy-and-data__form-text">
-                    You have the ability to opt out of sharing certain information you provide to
-                    Netflix, with third parties. You are not providing any such information to
-                    Netflix, but can exercise your choice below.
+                    {t("allowCommunicationDescription3")}
                   </p>
                 )}
 
@@ -178,32 +167,26 @@ export default function PrivacyAndDataPage() {
                   disabled={isOpted}
                   onClick={openModal}
                 >
-                  {currentEditingProfile.id === users[0].id
-                    ? "Opt Out of All"
-                    : "Opt Out of Data Sharing"}
+                  {currentEditingProfile.id === users[0].id ? t("optAll") : t("optAll2")}
                 </button>
                 <dialog
                   className="privacy-and-data__modal"
                   ref={privacyAndDataSettingsModal}
                   onClick={closeModalOnBackdropClick}
                 >
-                  <h2 className="privacy-and-data__modal-heading">
-                    Do you want to opt this profile out of all?
-                  </h2>
-                  <p className="privacy-and-data__modal-text">
-                    This control opts your profile out of all data sharing.
-                  </p>
+                  <h2 className="privacy-and-data__modal-heading">{t("optModalHeading")}</h2>
+                  <p className="privacy-and-data__modal-text">{t("optModalDescription")}</p>
                   <button
                     className="privacy-and-data__modal-btn privacy-and-data__modal-btn--accent"
                     onClick={handleOpt}
                   >
-                    Confirm
+                    {t("confirm")}
                   </button>
                   <button
                     className="privacy-and-data__modal-btn"
                     onClick={closeModal}
                   >
-                    Cancel
+                    {t("cancel")}
                   </button>
                 </dialog>
               </form>

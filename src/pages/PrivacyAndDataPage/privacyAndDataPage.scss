@@ -85,6 +85,7 @@
     position: relative;
     @include flex(flex-start, flex-start, center);
     width: 100%;
+    margin-bottom: 1.5rem;
     padding: $padding;
     padding-right: 3rem;
     background-color: c.$white;
@@ -110,6 +111,7 @@
   &__subheader {
     font-size: v.$font-size-navbar;
     margin-block: 1.5rem 1rem;
+    margin-top: 0;
     font-weight: 500;
   }
 
@@ -133,6 +135,8 @@
   &__form-text {
     font-size: func.rem(12);
     font-weight: normal;
+    letter-spacing: 0.025em;
+    line-height: 140%;
 
     & a {
       color: c.$viewing-restriction-input-blue;

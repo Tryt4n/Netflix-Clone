@@ -300,5 +300,20 @@
   "noneOffer": "Do not send me any emails or text messages.",
   "noneOfferNote": "Note: You will always receive transactional email related to your account.",
   "update": "update",
-  "communicationSavedMessage": "Communication settings saved."
+  "communicationSavedMessage": "Communication settings saved.",
+  "PrivacyAndData": "Privacy and Data",
+  "preferencesUpdated": "Preferences Updated",
+  "privacyAndDataSettings": "Privacy and Data Settings",
+  "privacyAndDataSettingsDescription": "Here you can download information collected from you or manage how it is used.",
+  "downloadPersonalInfo": "Download personal information",
+  "manageProfile": "Manage your Profile",
+  "allowCommunication": "Allow matched identifier communications",
+  "allowCommunicationDescription1": "Use privacy protected contact information from my Netflix account to display relevant marketing on third party services.",
+  "allowCommunicationDescription2": "about \"Matched Identifier Communications\".",
+  "allowCommunicationDescription3": "You have the ability to opt out of sharing certain information you provide to Netflix, with third parties. You are not providing any such information to Netflix, but can exercise your choice below.",
+  "optAll": "Opt Out of All",
+  "optAll2": "Opt Out of Data Sharing",
+  "optModalHeading": "Do you want to opt this profile out of all?",
+  "optModalDescription": "This control opts your profile out of all data sharing.",
+  "confirm": "Confirm"
 }

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useRef } from "react";
 import UserContext from "../../context/UserContext";
 import { Link } from "react-router-dom";
 
@@ -11,11 +11,81 @@ import Divider from "../../components/Divider/Divider";
 import ArrowIndicatorLightIcon from "../../icons/ArrowIndicatorLightIcon";
 import HandshakeIcon from "../../icons/HandshakeIcon";
 import DownloadIcon from "../../icons/DownloadIcon";
+import CheckIcon2 from "../../icons/CheckIcon2";
 
 import "./privacyAndDataPage.scss";
+import { useEffect } from "react";
 
 export default function PrivacyAndDataPage() {
-  const { currentEditingProfile, users } = useContext(UserContext);
+  const { currentEditingProfile, users, setUsers } = useContext(UserContext);
+
+  const [communicationsCheckbox, setCommunicationsCheckbox] = useState(
+    currentEditingProfile.privacyAndDataCommunication
+  );
+  const [showCommunicationInfo, setShowCommunicationInfo] = useState(false);
+  const [communicationInfoTimeout, setCommunicationInfoTimeout] = useState(null);
+  const [isOpted, setIsOpted] = useState(currentEditingProfile.dataSharingOpted);
+
+  const privacyAndDataSettingsModal = useRef(null);
+
+  function handleSave(propertyName, propertyValue) {
+    const updatedUsers = users.map((user) => {
+      if (user.id === currentEditingProfile.id) {
+        return {
+          ...user,
+          [propertyName]: propertyValue,
+        };
+      }
+      return user;
+    });
+
+    setUsers(updatedUsers);
+  }
+
+  function handleSwitch() {
+    clearTimeout(communicationInfoTimeout);
+    setCommunicationsCheckbox(!communicationsCheckbox);
+    handleSave("privacyAndDataCommunication", !communicationsCheckbox);
+    setShowCommunicationInfo(true);
+    setNewTimeout();
+  }
+
+  function handleOpt() {
+    setIsOpted(true);
+    handleSave("dataSharingOpted", true);
+    closeModal();
+  }
+
+  function setNewTimeout() {
+    const newTimeout = setTimeout(() => {
+      setShowCommunicationInfo(false);
+    }, 3000);
+    setCommunicationInfoTimeout(newTimeout);
+  }
+
+  function openModal() {
+    privacyAndDataSettingsModal.current.showModal();
+  }
+
+  function closeModal() {
+    privacyAndDataSettingsModal.current.close();
+  }
+
+  function closeModalOnBackdropClick(e) {
+    const dialogDimensions = e.target.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      closeModal();
+    }
+  }
+
+  useEffect(() => {
+    console.log(users);
+  }, [users]);
 
   return (
     <>
@@ -23,6 +93,17 @@ export default function PrivacyAndDataPage() {
         <h1 className="visually-hidden">Privacy and Data</h1>
         <Navbar />
       </header>
+
+      {showCommunicationInfo && (
+        <div
+          className="privacy-and-data__preferences-notification"
+          role="alert"
+          aria-live="polite"
+        >
+          <CheckIcon2 />
+          <p>Preferences updated</p>
+        </div>
+      )}
 
       <div className="settings-wrapper">
         <main className="settings-container privacy-and-data">
@@ -75,6 +156,8 @@ export default function PrivacyAndDataPage() {
                       <Switch
                         name="communications"
                         text="Allow matched identifier communications"
+                        checked={communicationsCheckbox}
+                        onChangeFunction={() => handleSwitch()}
                       />
                     </div>
                   </>
@@ -90,11 +173,39 @@ export default function PrivacyAndDataPage() {
                   spaceSmall
                   customColor="rgba(128, 128, 128, 0.2)"
                 />
-                <button className="privacy-and-data__form-btn">
+                <button
+                  className="privacy-and-data__form-btn"
+                  disabled={isOpted}
+                  onClick={openModal}
+                >
                   {currentEditingProfile.id === users[0].id
                     ? "Opt Out of All"
                     : "Opt Out of Data Sharing"}
                 </button>
+                <dialog
+                  className="privacy-and-data__modal"
+                  ref={privacyAndDataSettingsModal}
+                  onClick={closeModalOnBackdropClick}
+                >
+                  <h2 className="privacy-and-data__modal-heading">
+                    Do you want to opt this profile out of all?
+                  </h2>
+                  <p className="privacy-and-data__modal-text">
+                    This control opts your profile out of all data sharing.
+                  </p>
+                  <button
+                    className="privacy-and-data__modal-btn privacy-and-data__modal-btn--accent"
+                    onClick={handleOpt}
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="privacy-and-data__modal-btn"
+                    onClick={closeModal}
+                  >
+                    Cancel
+                  </button>
+                </dialog>
               </form>
             </div>
           </article>

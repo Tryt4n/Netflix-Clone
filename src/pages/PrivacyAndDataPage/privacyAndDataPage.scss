@@ -9,6 +9,36 @@
     margin-inline: auto;
   }
 
+  &__preferences-notification {
+    $animation-time: 500ms;
+
+    position: fixed;
+    right: 2.5%;
+    bottom: 2.5%;
+    padding: 0.75em 1.25em;
+    @include flex(row, flex-start, center);
+    gap: 0.5em;
+    background-color: c.$black;
+    border-radius: 100vw;
+    color: c.$white;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 100;
+    opacity: 0;
+    animation: show $animation-time ease-in forwards,
+      hide $animation-time ease-out calc(3000ms - $animation-time) forwards;
+    @keyframes show {
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes hide {
+      to {
+        opacity: 0;
+      }
+    }
+  }
+
   &__back-link {
     font-weight: bold;
     padding: 0.5em 1em;
@@ -129,6 +159,60 @@
     transition: v.$main-transition;
     &:hover {
       background-color: c.$layout-btn-bg-hover;
+    }
+    &:disabled {
+      background-color: c.$white;
+      color: rgba(0, 0, 0, 0.4);
+      cursor: not-allowed;
+    }
+  }
+
+  &__modal {
+    max-width: func.rem(450);
+    padding: clamp(1rem, calc(-2.69rem + 18.46vw), 2.5rem);
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+    &::backdrop {
+      background-color: hsla(0, 0%, 0%, 0.7);
+    }
+  }
+
+  &__modal-heading {
+    font-size: clamp(1.5rem, calc(0.27rem + 6.15vw), 2rem);
+    margin-bottom: 0.25em;
+  }
+
+  &__modal-text {
+    font-size: clamp(0.88rem, calc(0.57rem + 1.54vw), 1rem);
+    font-weight: normal;
+    padding-bottom: 1.75em;
+  }
+
+  &__modal-btn {
+    width: 100%;
+    padding: 0.5em;
+    background-color: c.$layout-btn-bg;
+    color: c.$black;
+    border: none;
+    border-radius: 0.25em;
+    outline-offset: 0.15em;
+    font: inherit;
+    font-size: func.rem(18);
+    transition: v.$main-transition;
+    cursor: pointer;
+    &:not(:last-of-type) {
+      margin-bottom: 0.5rem;
+    }
+    &:hover {
+      background-color: c.$layout-btn-bg-hover;
+    }
+    &--accent {
+      background-color: c.$black;
+      color: c.$white;
+      &:hover {
+        background-color: hsla(0, 0%, 0%, 0.7);
+      }
     }
   }
 }

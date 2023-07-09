@@ -14,6 +14,8 @@
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": true,
     "dataUsage": "auto",
+    "privacyAndDataCommunication": true,
+    "dataSharingOpted": false,
     "accountData": {
       "email": "placeholder@gmail.com",
       "emailCommunication": {
@@ -312,6 +314,7 @@
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
     "dataUsage": "high",
+    "dataSharingOpted": false,
     "notifications": [
       {
         "id": 1,
@@ -509,6 +512,7 @@
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
     "dataUsage": "medium",
+    "dataSharingOpted": false,
     "notifications": [
       {
         "id": 2,
@@ -613,6 +617,7 @@
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
     "dataUsage": "low",
+    "dataSharingOpted": false,
     "notifications": [
       {
         "id": 1,
@@ -792,6 +797,7 @@
     "autoplayPreviews": true,
     "reduceAnimationsOnTV": false,
     "dataUsage": "auto",
+    "dataSharingOpted": false,
     "notifications": [],
     "movies": [
       {

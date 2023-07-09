@@ -1,6 +1,6 @@
 import "./switch.scss";
 
-export default function Switch({ name, text }) {
+export default function Switch({ name, text, checked, onChangeFunction }) {
   return (
     <span>
       <label
@@ -14,6 +14,8 @@ export default function Switch({ name, text }) {
         name={`switch-${name}`}
         id={`switch-${name}`}
         className="switch-input"
+        checked={checked}
+        onChange={onChangeFunction}
       />
     </span>
   );

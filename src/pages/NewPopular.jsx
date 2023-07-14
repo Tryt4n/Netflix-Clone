@@ -1,3 +1,10 @@
+import Navbar from "../layout/Navbar/Navbar";
+
 export default function NewPopular() {
-  return <h1>NewPopular</h1>;
+  return (
+    <>
+      <Navbar />
+      <h1>NewPopular</h1>
+    </>
+  );
 }

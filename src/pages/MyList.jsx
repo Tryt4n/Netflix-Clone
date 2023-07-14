@@ -1,3 +1,10 @@
+import Navbar from "../layout/Navbar/Navbar";
+
 export default function MyList() {
-  return <h1>MyList</h1>;
+  return (
+    <>
+      <Navbar />
+      <h1>MyList</h1>
+    </>
+  );
 }

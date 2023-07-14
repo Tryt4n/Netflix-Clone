@@ -1,3 +1,10 @@
+import Navbar from "../layout/Navbar/Navbar";
+
 export default function Movies() {
-  return <h1>Movies</h1>;
+  return (
+    <>
+      <Navbar />
+      <h1>Movies</h1>
+    </>
+  );
 }

@@ -1,20 +1,21 @@
-import { Link } from "react-router-dom";
-
-import "./userSelectPage.scss";
-import { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import UserContext from "../../context/UserContext";
+
 import SelectProfilItem from "../../components/SelectProfilItem.jsx/SelectProfilItem";
 
 import CloseIcon from "../../icons/CloseIcon";
 
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import "./userSelectPage.scss";
 
 export default function UserSelectPage() {
   const { t } = useTranslation();
 
   const { users, currentEditingProfile, setCurrentEditingProfile } = useContext(UserContext);
   const [isErrorVisible, setIsErrorVisible] = useState(false);
-  const [isCorrectPIN, setIsCorrectPIN] = useState(true);
+  const [isCorrectPINMessage, setIsCorrectPINMessage] = useState(true);
+  const [isCorrectPIN, setIsCorrectPIN] = useState(false);
 
   const userRef = useRef(null);
   const lockModalRef = useRef(null);
@@ -30,7 +31,7 @@ export default function UserSelectPage() {
     lockModalRef.current.close();
     setCurrentEditingProfile("");
     setIsErrorVisible(false);
-    setIsCorrectPIN(true);
+    setIsCorrectPINMessage(true);
   }
 
   function handleFormFocus() {
@@ -42,7 +43,8 @@ export default function UserSelectPage() {
         (input, index) => input.value === currentEditingProfile.PIN[index]
       );
 
-      setIsCorrectPIN(hasEmptyValue || isValid);
+      setIsCorrectPINMessage(hasEmptyValue || isValid);
+      setIsCorrectPIN(isValid);
       setIsErrorVisible(!hasFocus && hasEmptyValue);
     }
   }
@@ -53,6 +55,11 @@ export default function UserSelectPage() {
     if (value.length === 1) {
       const inputs = Array.from(lockModalRef.current.getElementsByTagName("input"));
       const currentIndex = inputs.findIndex((input) => input.name === name);
+      //* if PIN is correct input loses focus to redirect page
+      if (inputs.length === 4) {
+        inputs[1].focus();
+        inputs[3].focus();
+      }
       if (currentIndex < inputs.length - 1) {
         inputs[currentIndex + 1].focus();
       }
@@ -93,7 +100,10 @@ export default function UserSelectPage() {
             ref={userRef}
             onClick={user.lock ? () => openLockModal(user) : null}
           >
-            <SelectProfilItem user={user} />
+            <SelectProfilItem
+              user={user}
+              isCorrectPIN={isCorrectPIN}
+            />
           </li>
         ))}
       </ul>
@@ -108,8 +118,10 @@ export default function UserSelectPage() {
         >
           <hgroup>
             <p className="choose-profile__lock-subheading">{t("LockON")}</p>
-            <h2 className={`choose-profile__lock-heading${!isCorrectPIN ? " incorrect" : ""}`}>
-              {isCorrectPIN ? t("enterPinHeading") : t("enterPinHeadingWrong")}
+            <h2
+              className={`choose-profile__lock-heading${!isCorrectPINMessage ? " incorrect" : ""}`}
+            >
+              {isCorrectPINMessage ? t("enterPinHeading") : t("enterPinHeadingWrong")}
             </h2>
           </hgroup>
           <form
@@ -117,67 +129,36 @@ export default function UserSelectPage() {
             aria-errormessage="lock-modal-error-message"
           >
             <div className="choose-profile__pin-wrapper">
-              <label
-                htmlFor="first-digit"
-                className="visually-hidden"
-              >
-                {t("enterFirstDigit")}
-              </label>
-              <input
-                type="password"
-                name="first-digit"
-                id="first-digit"
-                maxLength={1}
-                onBlur={handleFormFocus}
-                onChange={handleInputChange}
-                onKeyDown={handleInputKeyDown}
-                autoFocus
-              />
-              <label
-                htmlFor="second-digit"
-                className="visually-hidden"
-              >
-                {t("enterSecondDigit")}
-              </label>
-              <input
-                type="password"
-                name="second-digit"
-                id="second-digit"
-                maxLength={1}
-                onBlur={handleFormFocus}
-                onChange={handleInputChange}
-                onKeyDown={handleInputKeyDown}
-              />
-              <label
-                htmlFor="third-digit"
-                className="visually-hidden"
-              >
-                {t("enterThirdDigit")}
-              </label>
-              <input
-                type="password"
-                name="third-digit"
-                id="third-digit"
-                maxLength={1}
-                onBlur={handleFormFocus}
-                onChange={handleInputChange}
-                onKeyDown={handleInputKeyDown}
-              />
-              <label
-                htmlFor="fourth-digit"
-                className="visually-hidden"
-              >
-                {t("enterFourthDigit")}
-              </label>
-              <input
-                type="password"
-                name="fourth-digit"
-                id="fourth-digit"
-                maxLength={1}
-                onBlur={handleFormFocus}
-                onChange={handleInputChange}
-                onKeyDown={handleInputKeyDown}
-              />
+              {[1, 2, 3, 4].map((index) => (
+                <React.Fragment key={index}>
+                  <label
+                    htmlFor={`digit-${index}`}
+                    className="visually-hidden"
+                  >
+                    {t(
+                      `enter${
+                        index === 1
+                          ? "First"
+                          : index === 2
+                          ? "Second"
+                          : index === 3
+                          ? "Third"
+                          : "Fourth"
+                      }Digit`
+                    )}
+                  </label>
+                  <input
+                    type="password"
+                    name={`digit-${index}`}
+                    id={`digit-${index}`}
+                    maxLength={1}
+                    onBlur={handleFormFocus}
+                    onChange={handleInputChange}
+                    onKeyDown={handleInputKeyDown}
+                    autoFocus={index === 1}
+                  />
+                </React.Fragment>
+              ))}
             </div>
             {isErrorVisible && (
               <p

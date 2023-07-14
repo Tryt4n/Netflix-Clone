@@ -10,7 +10,7 @@ const UserContext = createContext();
 export function UserProvider({ children }) {
   const [users, setUsers, removeUsers] = useLocalStorage("usersData", usersData);
   const [user, setUser] = useState("");
-  const [editingProfile, setEditingProfile] = useState({});
+  const [selectedUser, setSelectedUser] = useState({});
 
   const [editingUserLanguage, setEditingUserLanguage] = useState(null);
   const [editingProfilePictureSrc, setEditingProfilePictureSrc] = useState(null);
@@ -91,8 +91,8 @@ export function UserProvider({ children }) {
         setUsers: setUsers,
         user: user,
         setUser: setUser,
-        editingProfile: editingProfile,
-        setEditingProfile: setEditingProfile,
+        selectedUser: selectedUser,
+        setSelectedUser: setSelectedUser,
         currentLanguageCode: currentLanguageCode,
         editingUserLanguage: editingUserLanguage,
         setEditingUserLanguage: setEditingUserLanguage,

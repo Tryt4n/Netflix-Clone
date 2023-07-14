@@ -1,3 +1,10 @@
+import Navbar from "../layout/Navbar/Navbar";
+
 export default function Kids() {
-  return <h1>Kids</h1>;
+  return (
+    <>
+      <Navbar />
+      <h1>Kids</h1>
+    </>
+  );
 }

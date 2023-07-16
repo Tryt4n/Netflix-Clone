@@ -86,7 +86,7 @@
     transition: v.$main-transition;
     z-index: 10;
     opacity: 0;
-    visibility: 0;
+    visibility: hidden;
 
     & > ul {
       padding: 0.75em;
@@ -109,7 +109,7 @@
 
     &.expanded {
       opacity: 1;
-      visibility: 1;
+      visibility: visible;
     }
   }
 

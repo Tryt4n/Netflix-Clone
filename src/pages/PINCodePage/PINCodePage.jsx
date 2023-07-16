@@ -135,13 +135,13 @@ export default function PINCodePage() {
               type="checkbox"
               name="pin-checkbox"
               id="pin-checkbox"
-              className="checkbox-light"
+              className="checkbox-account"
               checked={isLockedUser}
               onChange={handleInputChange}
             />
             <label
               htmlFor="pin-checkbox"
-              className="checkbox-light-label pin-page__label"
+              className="pin-page__label"
             >
               {t("requirePIN")} {currentEditingProfile?.username}
               {i18n.language === "en" ? `'s ${t("profile")}` : ""}.

@@ -1,3 +1,10 @@
+import Navbar from "../layout/Navbar/Navbar";
+
 export default function BrowseLanguages() {
-  return <h1>BrowseLanguages</h1>;
+  return (
+    <>
+      <Navbar />
+      <h1>Browse by Languages</h1>
+    </>
+  );
 }

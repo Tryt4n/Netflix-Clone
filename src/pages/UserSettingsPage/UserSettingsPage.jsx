@@ -23,6 +23,7 @@ export default function UserSettingsPage() {
     editingProfilePictureSrc,
     setEditingProfilePictureSrc,
     setCurrentEditingProfile,
+    setSelectedUser,
   } = useContext(UserContext);
 
   const currentUser = users.find((user) => user.username === params.id);
@@ -60,10 +61,8 @@ export default function UserSettingsPage() {
 
   const autoplayNextInputRef = useRef(true);
   const autoplayPreviousInputRef = useRef(true);
-  //!
-  const languageBtnRef = useRef(null); //?
+  const languageBtnRef = useRef(null);
   const firstLanguageOnListRef = useRef(null);
-  //!
 
   const isDuplicate = users.some((user) => user.username.toLowerCase() === username.toLowerCase());
 
@@ -433,6 +432,7 @@ export default function UserSettingsPage() {
               to={"/settings/viewing-restriction"}
               className="user-settings__maturity-edit-btn"
               aria-label={t("editLabel")}
+              onClick={() => setSelectedUser(currentUser)}
             >
               {t("edit")}
             </Link>
@@ -507,7 +507,7 @@ export default function UserSettingsPage() {
         >
           {t("cancel")}
         </Link>
-        {currentUser.id !== 1 && (
+        {currentUser.id !== users[0].id && (
           <Link
             to="/ManageProfiles"
             className="user-settings__confirmation-btn"

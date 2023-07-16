@@ -8,7 +8,7 @@ import EditIcon from "../../icons/EditIcon";
 import HelpCenterIcon from "../../icons/HelpCenterIcon";
 import TransferProfileIcon from "../../icons/TransferProfileIcon";
 
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./navbar.scss";
 
@@ -19,16 +19,14 @@ export default function Navbar() {
 
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
 
-  const navigate = useNavigate();
   const location = useLocation();
-  const notAllowedLocations = ["/account", "/settings/*", "/reportproblem"];
+  const notAllowedLocations = ["/account", "/settings", "/reportproblem"];
 
-  //* if user isn't selected then redirect to UserSelectPage
   useEffect(() => {
     if (Object.keys(selectedUser).length === 0) {
-      navigate("/");
+      setSelectedUser(users[0]);
     }
-  }, []);
+  });
 
   function changeSelectedUser(user) {
     if (isMenuExpanded) {

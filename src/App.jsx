@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
 import TVShows from "./pages/TVShows";
@@ -21,8 +21,15 @@ import SubtitlesAppearancePage from "./pages/SubtitlesAppearancePage/SubtitlesAp
 import PlaybackPage from "./pages/PlaybackPage/PlaybackPage";
 import CommunicationPage from "./pages/CommunicationPage/CommunicationPage";
 import PrivacyAndDataPage from "./pages/PrivacyAndDataPage/PrivacyAndDataPage";
+import { useEffect } from "react";
 
 export default function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <>
       <Routes>

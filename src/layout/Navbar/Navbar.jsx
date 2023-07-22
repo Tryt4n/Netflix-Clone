@@ -18,21 +18,42 @@ export default function Navbar() {
   const { users, selectedUser, setSelectedUser } = useContext(UserContext);
 
   const [isMenuExpanded, setIsMenuExpanded] = useState(false);
+  const [isNotificationsExpanded, setIsNotificationsExpanded] = useState(false);
 
   const location = useLocation();
   const notAllowedLocations = ["/account", "/settings", "/reportproblem"];
-
-  useEffect(() => {
-    if (Object.keys(selectedUser).length === 0) {
-      setSelectedUser(users[0]);
-    }
-  });
 
   function changeSelectedUser(user) {
     if (isMenuExpanded) {
       setIsMenuExpanded(false);
     }
     setSelectedUser(user);
+  }
+
+  function expandNotifications() {
+    setIsMenuExpanded(false);
+    setIsNotificationsExpanded(true);
+  }
+  function closeNotifications() {
+    setIsNotificationsExpanded(false);
+  }
+  function closeNotificationsOnEscape(e) {
+    if (e.key === "Escape") {
+      closeNotifications();
+    }
+  }
+
+  function expandSettings() {
+    setIsNotificationsExpanded(false);
+    setIsMenuExpanded(true);
+  }
+  function closeSettings() {
+    setIsMenuExpanded(false);
+  }
+  function closeSettingsOnEscape(e) {
+    if (e.key === "Escape") {
+      closeSettings();
+    }
   }
 
   return (
@@ -81,27 +102,69 @@ export default function Navbar() {
               <span className="visually-hidden">Searchbar</span>
               <Magnifier />
             </button>
-            <button
-              aria-label="Notifications"
-              aria-haspopup="true"
-              aria-expanded="false"
-              onFocus={() => setIsMenuExpanded(false)}
-            >
-              <span className="visually-hidden">Notifications List</span>
-              <NotificationBell />
-            </button>
+
+            <div className="navbar__notifications-wrapper">
+              <button
+                aria-label="Notifications"
+                aria-haspopup="true"
+                aria-expanded={isNotificationsExpanded}
+                aria-controls="notifications-list"
+                onClick={expandNotifications}
+                onMouseEnter={expandNotifications}
+              >
+                <span className="visually-hidden">Notifications List</span>
+                <NotificationBell />
+              </button>
+
+              <div
+                id="notifications-list"
+                className={`navbar__notifications-list${
+                  isNotificationsExpanded ? " expanded" : ""
+                }`}
+                onClick={closeNotifications}
+                onMouseLeave={closeNotifications}
+                onKeyDown={closeNotificationsOnEscape}
+              >
+                <ul>
+                  {selectedUser.notifications.map((notification) => (
+                    <li
+                      key={notification.id}
+                      className="navbar__notifications-list-item"
+                    >
+                      <a
+                        href="#"
+                        className="navbar__notifications-list-item-link"
+                      >
+                        <img
+                          src={notification.image}
+                          alt={notification.name}
+                          className="navbar__notifications-list-item-img"
+                        />
+                        <div className="navbar__notifications-list-item-text-wrapper">
+                          <div>
+                            <span>{notification.text}</span>
+                            <span>{notification.name}</span>
+                          </div>
+                          <time>{notification.time}</time>
+                        </div>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </>
         )}
 
         <div className="navbar__menu-wrapper">
           <button
             className="navbar__profiles-btn"
+            aria-label={`${selectedUser.username} Account & Settings`}
             aria-haspopup="true"
             aria-expanded={isMenuExpanded}
-            aria-label={`${selectedUser.username} Account & Settings`}
-            onMouseEnter={() => setIsMenuExpanded(true)}
-            onTouchMove={() => setIsMenuExpanded(true)}
-            onFocus={() => setIsMenuExpanded(true)}
+            aria-controls="settings-list"
+            onClick={expandSettings}
+            onMouseEnter={expandSettings}
           >
             <img
               src={selectedUser.profileImage}
@@ -115,17 +178,18 @@ export default function Navbar() {
           </button>
 
           <div
+            id="settings-list"
             className={`navbar__menu-list${isMenuExpanded ? " expanded" : ""}`}
-            role="menu"
-            onMouseLeave={() => setIsMenuExpanded(false)}
-            onTouchEnd={() => setIsMenuExpanded(false)}
+            onClick={closeSettings}
+            onMouseLeave={closeSettings}
+            onKeyDown={closeSettingsOnEscape}
           >
-            <ul role="list">
+            <ul>
               {users.map((user) => {
                 if (user.id !== selectedUser.id) {
                   return (
                     <React.Fragment key={user.id}>
-                      <li role="listitem">
+                      <li>
                         <Link
                           className="navbar__profile-link"
                           onClick={() => changeSelectedUser(user)}
@@ -143,7 +207,7 @@ export default function Navbar() {
                   );
                 }
               })}
-              <li role="listitem">
+              <li>
                 <Link
                   to="/ManageProfiles"
                   tabIndex={isMenuExpanded ? 0 : -1}
@@ -156,7 +220,7 @@ export default function Navbar() {
                   <span>Manage Profiles</span>
                 </Link>
               </li>
-              <li role="listitem">
+              <li>
                 <Link tabIndex={isMenuExpanded ? 0 : -1}>
                   {!notAllowedLocations.some((path) => location.pathname.includes(path)) && (
                     <div className="navbar__icon-wrapper">
@@ -166,7 +230,7 @@ export default function Navbar() {
                   <span>Transfer Profile</span>
                 </Link>
               </li>
-              <li role="listitem">
+              <li>
                 <Link
                   to="/account"
                   tabIndex={isMenuExpanded ? 0 : -1}
@@ -179,7 +243,7 @@ export default function Navbar() {
                   <span>Account</span>
                 </Link>
               </li>
-              <li role="listitem">
+              <li>
                 <Link tabIndex={isMenuExpanded ? 0 : -1}>
                   {!notAllowedLocations.some((path) => location.pathname.includes(path)) && (
                     <div className="navbar__icon-wrapper">
@@ -193,7 +257,7 @@ export default function Navbar() {
             <a
               href="#"
               className="navbar__menu-list-item-sign-out"
-              onBlur={() => setIsMenuExpanded(false)}
+              onBlur={closeSettings}
             >
               Sign out of Netflix
             </a>

@@ -42,6 +42,11 @@ On this page you can change your username, create a nickname in Game Handle, cha
 Language Select List was created with accessibility in mind. Keyboard navigation with all arrows keys and ESC, Enter, Space, Home and End keys.  
 ![Changing Language for user](/public/screenshots/profile-language-select.png)
 
+By clicking _Learn more_ will appear multistep modal
+![Multistep Modal - 1](/public/screenshots/edit-profile-modal_1.png)
+![Multistep Modal - 2](/public/screenshots/edit-profile-modal_2.png)
+![Multistep Modal - 3](/public/screenshots/edit-profile-modal_3.png)
+
 By clicking in _Edit_ button in **Maturity Settings** you will be redirected to viewing restrictions page, but firstly you will need to enter your account password (password is **NOT** set, just enter anything and press continue)
 
 By clicking avatar change button (where the blue arrow is pointed) you will be redirected to the **_avatar selection page_**.  
@@ -122,6 +127,10 @@ A message will appear each time the input changes.
 
 # Navbar
 
-So far the only functionalities in the navbar are changing the profile and "Manage Profiles" and "Account" (yellow ones).
+Only functionalities in the Navbar Settings are changing the profile and "Manage Profiles" and "Account" (yellow ones).
 
 ![Navbar](/public/screenshots/navbar-profiles-settings.png)
+
+Notifications
+
+![Notifications](/public/screenshots/navbar-notifications.png)

@@ -33,35 +33,35 @@
     },
     "notifications": [
       {
-        "id": 1,
+        "id": "B80E71AI65XN6LU4R3TW",
         "name": "Fubar",
         "text": "New Arrival",
         "time": "1 day ago",
         "image": "/images/notifications/fubar.jpg"
       },
       {
-        "id": 2,
+        "id": "E640DBQ6NROWY8NOV2YI",
         "name": "Mother's Day",
         "text": "New Arrival",
         "time": "1 week ago",
         "image": "/images/notifications/mother's_day.jpg"
       },
       {
-        "id": 3,
+        "id": "T6KYUM8FFEH727S10CEG",
         "name": "Muted",
         "text": "New Arrival",
         "time": "1 week ago",
         "image": "/images/notifications/muted.jpg"
       },
       {
-        "id": 4,
+        "id": "AS2XM9BP9CMT7H8YHXWF",
         "name": "The Mother",
         "text": "New Arrival",
         "time": "2 weeks ago",
         "image": "/images/notifications/the_mother.jpg"
       },
       {
-        "id": 5,
+        "id": "3F58Q8GBOM2HYSQYAKZQ",
         "name": "Welcome to Eden",
         "text": "Now Available",
         "time": "1 month ago",
@@ -317,21 +317,21 @@
     "dataSharingOpted": false,
     "notifications": [
       {
-        "id": 1,
+        "id": "XDAUVIWZ5YKQQPT9DI3C",
         "name": "Fubar",
         "text": "New Arrival",
         "time": "1 day ago",
         "image": "/images/notifications/fubar.jpg"
       },
       {
-        "id": 2,
+        "id": "CNQRM3D8XLM1KOXVJSAA",
         "name": "Muted",
         "text": "New Arrival",
         "time": "1 week ago",
         "image": "/images/notifications/muted.jpg"
       },
       {
-        "id": 3,
+        "id": "TZ7R4Q7J1JRN0O4S0419",
         "name": "The Mother",
         "text": "New Arrival",
         "time": "2 weeks ago",
@@ -515,14 +515,14 @@
     "dataSharingOpted": false,
     "notifications": [
       {
-        "id": 2,
+        "id": "LV128PL57TXBG9VSSRUK",
         "name": "Mother's Day",
         "text": "New Arrival",
         "time": "1 week ago",
         "image": "/images/notifications/mother's_day.jpg"
       },
       {
-        "id": 2,
+        "id": "PU5ONYRTN5PA9WO2WPZ6",
         "name": "Welcome to Eden",
         "text": "Now Available",
         "time": "1 month ago",
@@ -620,7 +620,7 @@
     "dataSharingOpted": false,
     "notifications": [
       {
-        "id": 1,
+        "id": "UULL4AJ2G1IV3VTP1ZF4",
         "name": "The Mother",
         "text": "New Arrival",
         "time": "2 weeks ago",

@@ -10,7 +10,6 @@ const UserContext = createContext();
 export function UserProvider({ children }) {
   const [users, setUsers, removeUsers] = useLocalStorage("usersData", usersData);
   const [user, setUser] = useState("");
-  // const [selectedUser, setSelectedUser] = useState({});
   const [selectedUser, setSelectedUser] = useSessionStorage("selectedProfile", {});
 
   const [editingUserLanguage, setEditingUserLanguage] = useState(null);

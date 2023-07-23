@@ -77,7 +77,11 @@ Both lists are fully accessibly with keyboard navigation.
 
 You can search for titles both by entering their title and the actors playing in them  
 ![Viewing Restrictions List](/public/screenshots/viewing-restriction-list.png)
-![Viewing Restrictions List By Actor](/public/screenshots/viewing-restriction-list-by-actor.png)  
+![Viewing Restrictions List By Actor](/public/screenshots/viewing-restriction-list-by-actor.png)
+
+You can also search for titles in any of the available languages.  
+![Viewing Restrictions List By Multilingual Searching](/public/screenshots/viewing-restriction-multilingual-searching.png)
+
 **The only titles available are:**
 
 - Fubar

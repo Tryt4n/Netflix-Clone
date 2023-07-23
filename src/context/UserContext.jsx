@@ -93,6 +93,7 @@ export function UserProvider({ children }) {
         setUser: setUser,
         selectedUser: selectedUser,
         setSelectedUser: setSelectedUser,
+        languageCodes: languageCodes,
         currentLanguageCode: currentLanguageCode,
         editingUserLanguage: editingUserLanguage,
         setEditingUserLanguage: setEditingUserLanguage,

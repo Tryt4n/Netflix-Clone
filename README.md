@@ -77,7 +77,7 @@ Both lists are fully accessibly with keyboard navigation.
 
 You can search for titles both by entering their title and the actors playing in them  
 ![Viewing Restrictions List](/public/screenshots/viewing-restriction-list.png)
-![Viewing Restrictions List](/public/screenshots/viewing-restriction-list-by-actor.png)  
+![Viewing Restrictions List By Actor](/public/screenshots/viewing-restriction-list-by-actor.png)  
 **The only titles available are:**
 
 - Fubar
@@ -86,20 +86,26 @@ You can search for titles both by entering their title and the actors playing in
 - The Mother
 - all parts of Shrek
 
+If it is not the main profile, you can set this profile as the children's profile. The age category will be changed automatically.  
+![Viewing Restriction Kids Profile](/public/screenshots/viewing-restrictions-kids-profile.png)
+
+If this is the default account for children, the possibility of changing the age category to higher than 10+ will be blocked.
+![Viewing Restriction Default Kids Profile](/public/screenshots/viewing-restrictions-default-kids-profile.png)
+
 # Profile Lock Page
 
 After pressing the checkbox, a pin `input` will appear in which you must enter the PIN  
 ![Profile Lock Page](/public/screenshots/profile-lock.png)
-![Profile Lock Page](/public/screenshots/profile-lock-tooltip.png)
+![Profile Lock Page Tooltip](/public/screenshots/profile-lock-tooltip.png)
 
 # Viewing Activity and Rating Activity
 
 Any title can be deleted from viewing history or can be reported. By clicking "Hide all" all history will be deleted. By clicking "Download all" all history will be downloaded in `.txt` file.  
 ![Viewing Activity](/public/screenshots/viewing-activity.png)  
 By clicking on "Hide series?" the whole series will be deleted from viewing history.  
-![Viewing Activity](/public/screenshots/viewing-activity-hide-series.png)  
+![Viewing Activity Hide Series](/public/screenshots/viewing-activity-hide-series.png)  
 Rating can be modified by clicking different rating button. When you press the same rating button, that rating will be deleted.  
-![Viewing Activity](/public/screenshots/rating-activity.png)
+![Rating Activity](/public/screenshots/rating-activity.png)
 
 After clicking on "Report a problem" you will be redirected to **Report a problem Page**.  
 The height of `textarea` is set automatically.  

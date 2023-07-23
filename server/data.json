@@ -9,7 +9,16 @@
       "title": "/images/videos/Fubar/title.webp",
       "verticalImage": "/images/videos/Fubar/image-vertical.jpg"
     },
-    "description": "When a father and daughter discover they both secretly work for the CIA, an already dicey undercover mission turns into a dysfunctional family affair.",
+    "translation": {
+      "name": {
+        "en": "Fubar",
+        "pl": "Fubar"
+      },
+      "description": {
+        "en": "When a father and daughter discover they both secretly work for the CIA, an already dicey undercover mission turns into a dysfunctional family affair.",
+        "pl": "Gdy ojciec i córka dowiadują się, że oboje są tajnymi agentami CIA, ich zadanie — już i tak ryzykowne — staje się wewnętrznym problemem dysfunkcyjnej rodziny."
+      }
+    },
     "episodes": [
       {
         "seasons": {
@@ -17,57 +26,121 @@
             {
               "id": "WQZ7VUMCVAJTGSIL3VTP",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_1.jpg",
-              "title": "Take Your Daughter to Work Day",
-              "description": "With his retirement from the CIA imminent, Luke prepares for his next adventure, but revelations at home and an urgent matter at work upend his plans.",
+              "translation": {
+                "title": {
+                  "en": "Take Your Daughter to Work Day",
+                  "pl": "Dzień zabierania córek do pracy"
+                },
+                "description": {
+                  "en": "With his retirement from the CIA imminent, Luke prepares for his next adventure, but revelations at home and an urgent matter at work upend his plans.",
+                  "pl": "Agent CIA szykuje się do następnej misji – i na emeryturę – ale wydarzenia w domu oraz pilna sprawa w pracy rujnują mu plany."
+                }
+              },
               "duration": 55
             },
             {
               "id": "20FVCGDLNXCDKRN7IV9N",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_2.jpg",
-              "title": "Stole Train",
-              "description": "Forced to team up in order to take down Boro, Luke and Emma realize their newly strained relationship is only the start of their problems.",
+              "translation": {
+                "title": {
+                  "en": "Stole Train",
+                  "pl": "Pociąg do obrobienia"
+                },
+                "description": {
+                  "en": "Forced to team up in order to take down Boro, Luke and Emma realize their newly strained relationship is only the start of their problems.",
+                  "pl": "Zmuszeni do połączenia sił, by schwytać Bora, Luke i Emma zdają sobie sprawę, że ich trudne relacje to zaledwie początek ich problemów."
+                }
+              },
               "duration": 46
             },
             {
               "id": "JBX3436WRWHQP135ZHRM",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_3.jpg",
-              "title": "Honeyplot",
-              "description": "The team goes from averting an international crisis to seeking sensitive intel in Moldova, where Emma offers to lure a target when complications arise.",
+              "translation": {
+                "title": {
+                  "en": "Honeyplot",
+                  "pl": "Nie pozwolę córce zbierać miodku"
+                },
+                "description": {
+                  "en": "The team goes from averting an international crisis to seeking sensitive intel in Moldova, where Emma offers to lure a target when complications arise.",
+                  "pl": "Zespół zapobiega kryzysowi na skalę międzynarodową, a następnie usiłuje zdobyć ważne informacje w Mołdawii, gdzie w obliczu komplikacji Emma oferuje się zwabić cel."
+                }
+              },
               "duration": 55
             },
             {
               "id": "BY0EY1BIW6XN6ML4S4UX",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_4.jpg",
-              "title": "Armed & Dane-gerous",
-              "description": "After receiving reassurance from Luke, Emma comes home to a startling surprise. In Greece, the team takes on a risky mission to break out a trusted ally.",
+              "translation": {
+                "title": {
+                  "en": "Armed & Dane-gerous",
+                  "pl": "Duńczyk"
+                },
+                "description": {
+                  "en": "After receiving reassurance from Luke, Emma comes home to a startling surprise. In Greece, the team takes on a risky mission to break out a trusted ally.",
+                  "pl": "Po zapewnieniach Luke’a Emma wraca do domu, gdzie czeka na nią niespodzianka. W Grecji zespół podejmuje się ryzykownej misji, aby odbić zaufanego sojusznika."
+                }
+              },
               "duration": 57
             },
             {
               "id": "FX50DBR6NHFNZ9OFM2YJ",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_5.jpg",
-              "title": "Here Today, Gone To-Marrow",
-              "description": "Amid a devastating family emergency, Luke finds the lines of his double life becoming blurry as he deals with a distracted Emma and a demanding Boro.",
+              "translation": {
+                "title": {
+                  "en": "Here Today, Gone To-Marrow",
+                  "pl": "Wyciągnijmy to z ciebie"
+                },
+                "description": {
+                  "en": "Amid a devastating family emergency, Luke finds the lines of his double life becoming blurry as he deals with a distracted Emma and a demanding Boro.",
+                  "pl": "Podczas wstrząsającego kryzysu rodzinnego granica rozdzielająca dwa życia Luke’a zaczyna się zacierać, a on musi sobie radzić z rozproszoną Emmą i chytrym Boro."
+                }
+              },
               "duration": 57
             },
             {
               "id": "K7LOUN9FFEIY27S11CEG",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_6.jpg",
-              "title": "Royally Flushed",
-              "description": "Barry and Tina infiltrate a private, high-stakes card game in hopes of inching closer to Boro. Emotions boil over when the team gets trapped in a bunker.",
+              "translation": {
+                "title": {
+                  "en": "Royally Flushed",
+                  "pl": "Poker królewski"
+                },
+                "description": {
+                  "en": "Barry and Tina infiltrate a private, high-stakes card game in hopes of inching closer to Boro. Emotions boil over when the team gets trapped in a bunker.",
+                  "pl": "Barry i Tina dostają się na prywatną grę w karty o wysoką stawkę w nadziei na zbliżenie się do Boro. Emocje sięgają zenitu, gdy zespół zostaje uwięziony w bunkrze."
+                }
+              },
               "duration": 59
             },
             {
               "id": "SPHVOIRZNME4N2BL8KAD",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_7.jpg",
-              "title": "Urine Luck",
-              "description": "While closing in on Boro, Luke and Emma juggle relationship drama and a highly delicate situation. A life-or-death matter forces Roo to find a release.",
+              "translation": {
+                "title": {
+                  "en": "Urine Luck",
+                  "pl": "Płynne złoto"
+                },
+                "description": {
+                  "en": "While closing in on Boro, Luke and Emma juggle relationship drama and a highly delicate situation. A life-or-death matter forces Roo to find a release.",
+                  "pl": "Podczas obławy na Boro Luke i Emma zostają postawieni w nadzwyczaj delikatnej sytuacji. Sprawa życia i śmierci zmusza Roo do rozluźnienia się."
+                }
+              },
               "duration": 51
             },
             {
               "id": "BS2XMABQ9DMK8HZZIOWG",
               "thumbnailLink": "/images/videos/Fubar/episodes/season_1/episode_8.jpg",
-              "title": "That's It and That's All",
-              "description": "With the clock ticking, Luke and Emma make tough choices to finish the mission and stay alive. A big day for the Brunner family spirals out of control.",
+              "translation": {
+                "title": {
+                  "en": "That's It and That's All",
+                  "pl": "I kropka"
+                },
+                "description": {
+                  "en": "With the clock ticking, Luke and Emma make tough choices to finish the mission and stay alive. A big day for the Brunner family spirals out of control.",
+                  "pl": "Czas ucieka, a Luke i Emma dokonują trudnych wyborów, aby zakończyć misję i pozostać przy życiu. Wielki dzień dla rodziny Brunnerów wymyka się spod kontroli."
+                }
+              },
               "duration": 45
             }
           ]
@@ -118,12 +191,29 @@
       "Aparna Brielle",
       "Andy Buckley"
     ],
-    "genres": ["TV Dramas", "TV Comedies", "TV Action & Adventure", "US TV Shows"],
-    "showIs": ["irreverent", "exciting"],
+    "genres": {
+      "en": ["TV Dramas", "TV Comedies", "TV Action & Adventure", "US TV Shows"],
+      "pl": [
+        "Seriale dramatyczne",
+        "Seriale komediowe",
+        "Seriale przygodowe",
+        "Seriale amerykańskie"
+      ]
+    },
+    "showIs": {
+      "en": ["irreverent", "exciting"],
+      "pl": ["Satyryczny", "Emocjonujący"]
+    },
     "maturityRating": {
       "badge": "16+",
-      "description": ["violence", "language"],
-      "recommendation": "Recommended for ages 16 and up"
+      "description": {
+        "en": ["violence", "language"],
+        "pl": ["przemoc", "wulgarny język"]
+      },
+      "recommendation": {
+        "en": "Recommended for ages 16 and up",
+        "pl": "Odpowiednie dla widzów od 16 roku życia"
+      }
     }
   },
 
@@ -137,7 +227,16 @@
       "title": "/images/videos/Bridgerton/title.webp",
       "verticalImage": "/images/videos/Bridgerton/image-vertical.jpg"
     },
-    "description": "Daphne debuts on London's marriage market as a new gossip sheet sets high society atwitter and Simon, the eligible Duke of Hastings, returns to town.",
+    "translation": {
+      "name": {
+        "en": "Bridgerton",
+        "pl": "Bridgertonowie"
+      },
+      "description": {
+        "en": "Daphne debuts on London's marriage market as a new gossip sheet sets high society atwitter and Simon, the eligible Duke of Hastings, returns to town.",
+        "pl": "Ewidentne zaloty Simona wobec Daphne wprawiają jej brata Anthony’ego w złość i zagrażają jego planom. Marina wyznaje coś ciekawskiej Penelope."
+      }
+    },
     "episodes": [
       {
         "seasons": {
@@ -145,57 +244,121 @@
             {
               "id": "GRTVP7HC1PQ4OR1ZNWEE",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_1.jpg",
-              "title": "Diamond of the First Water",
-              "description": "Daphne debuts on London's marriage market as a new gossip sheet sets high society atwitter and Simon, the eligible Duke of Hastings, returns to town.",
+              "translation": {
+                "title": {
+                  "en": "Diamond of the First Water",
+                  "pl": "Najpiękniejsza"
+                },
+                "description": {
+                  "en": "Daphne debuts on London's marriage market as a new gossip sheet sets high society atwitter and Simon, the eligible Duke of Hastings, returns to town.",
+                  "pl": "Daphne debiutuje na londyńskim rynku matrymonialnym, podczas gdy pewien brukowiec rozpala wyobraźnię wyższych sfer. Simon, prawowity książę Hastings, wraca do miasta."
+                }
+              },
               "duration": 58
             },
             {
               "id": "X2BV8UBN5NVR3S7W485D",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_2.jpg",
-              "title": "Shock and Delight",
-              "description": "Simon’s apparent courtship of Daphne angers her brother Anthony and threatens to ruin the arrangements he made. Marina opens up to a curious Penelope.",
+              "translation": {
+                "title": {
+                  "en": "Shock and Delight",
+                  "pl": "Szok i zachwyt"
+                },
+                "description": {
+                  "en": "Simon’s apparent courtship of Daphne angers her brother Anthony and threatens to ruin the arrangements he made. Marina opens up to a curious Penelope.",
+                  "pl": "Ewidentne zaloty Simona wobec Daphne wprawiają jej brata Anthony’ego w złość i zagrażają jego planom. Marina wyznaje coś ciekawskiej Penelope."
+                }
+              },
               "duration": 61
             },
             {
               "id": "PZ45CSP9AX1FKDZWWVYO",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_3.jpg",
-              "title": "Art of the Swoon",
-              "description": "After Daphne catches the eye of a royal suitor, she turns to Simon for relationship advice. Lady Featherington tries to browbeat Marina into marriage.",
+              "translation": {
+                "title": {
+                  "en": "Art of the Swoon",
+                  "pl": "Sztuka omdlewania"
+                },
+                "description": {
+                  "en": "After Daphne catches the eye of a royal suitor, she turns to Simon for relationship advice. Lady Featherington tries to browbeat Marina into marriage.",
+                  "pl": "Gdy Daphne wpada w oko adoratorowi z rodziny królewskiej, zwraca się do Simona po radę w kwestii związków. Lady Featherington próbuje zmusić Marinę do małżeństwa."
+                }
+              },
               "duration": 57
             },
             {
               "id": "TY9SR2VXR9TED0S60T3A",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_4.jpg",
-              "title": "An Affair of Honor",
-              "description": "Daphne receives a stunning gift from Prince Friedrich but soon courts scandal at a ball. Eloise searches for clues to Lady Whistledown's identity.",
+              "translation": {
+                "title": {
+                  "en": "An Affair of Honor",
+                  "pl": "Sprawa honoru"
+                },
+                "description": {
+                  "en": "Daphne receives a stunning gift from Prince Friedrich but soon courts scandal at a ball. Eloise searches for clues to Lady Whistledown's identity.",
+                  "pl": "Daphne dostaje imponujący prezent od księcia Fryderyka, po czym wywołuje skandal podczas balu. Eloise robi wszystko, by dowiedzieć się, kim jest lady Whistledown."
+                }
+              },
               "duration": 61
             },
             {
               "id": "YYPP8EN6K5MY7YXS53J8",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_5.jpg",
-              "title": "The Duke and I",
-              "description": "To fend off rumors about their garden escapade, Simon and Daphne must make a personal appeal to the queen. Marina's wedlock scheme dismays Penelope.",
+              "translation": {
+                "title": {
+                  "en": "The Duke and I",
+                  "pl": "Mój książę"
+                },
+                "description": {
+                  "en": "To fend off rumors about their garden escapade, Simon and Daphne must make a personal appeal to the queen. Marina's wedlock scheme dismays Penelope.",
+                  "pl": "Aby uciszyć plotki o ich wspólnej wyprawie do ogrodu, Simon i Daphne muszą zwrócić się bezpośrednio do królowej. Ślubny plan Mariny budzi konsternację Penelope."
+                }
+              },
               "duration": 61
             },
             {
               "id": "FJGO01GHN4RBM8DQWOA7",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_6.jpg",
-              "title": "Swish",
-              "description": "On her honeymoon, Daphne discovers just how uninformed she is about the physical aspects of the marital bed. Colin comes to a decision about Marina.",
+              "translation": {
+                "title": {
+                  "en": "Swish",
+                  "pl": "Szelest"
+                },
+                "description": {
+                  "en": "On her honeymoon, Daphne discovers just how uninformed she is about the physical aspects of the marital bed. Colin comes to a decision about Marina.",
+                  "pl": "Podczas miesiąca miodowego Daphne odkrywa, jak mało wie o fizycznej stronie pożycia małżeńskiego. Colin podejmuje decyzję w sprawie Mariny."
+                }
+              },
               "duration": 57
             },
             {
               "id": "76AZUZK3T4783K4PEB3I",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_7.jpg",
-              "title": "Oceans Apart",
-              "description": "Amid accusations of lies and betrayal, a rift forms between the newlyweds, while a deception of another kind could besmirch the Bridgerton family name.",
+              "translation": {
+                "title": {
+                  "en": "Oceans Apart",
+                  "pl": "Tyle nas dzieli"
+                },
+                "description": {
+                  "en": "Amid accusations of lies and betrayal, a rift forms between the newlyweds, while a deception of another kind could besmirch the Bridgerton family name.",
+                  "pl": "Oskarżenia o kłamstwa i zdradę prowadzą do rozłamu między nowożeńcami, zaś reputacji rodziny Bridgertonów zagraża nieoczekiwana nowina."
+                }
+              },
               "duration": 61
             },
             {
               "id": "B5EL990RAPY8V7X0IA84",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_1/episode_8.jpg",
-              "title": "After the Rain",
-              "description": "The duke and duchess's season-ending ball signals a turning point for their marriage — and ushers in changes of fortune and fate to those around them.",
+              "translation": {
+                "title": {
+                  "en": "After the Rain",
+                  "pl": "Po deszczu"
+                },
+                "description": {
+                  "en": "The duke and duchess's season-ending ball signals a turning point for their marriage — and ushers in changes of fortune and fate to those around them.",
+                  "pl": "Ostatni bal sezonu u księcia i księżnej staje się punktem zwrotnym nie tylko w ich małżeństwie, lecz również w losach osób z ich otoczenia."
+                }
+              },
               "duration": 72
             }
           ],
@@ -203,57 +366,121 @@
             {
               "id": "HEU9QUS02CRSZ62MXAO1",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_1.jpg",
-              "title": "Capital R Rake",
-              "description": "Anthony begins his search for a wife, Eloise braves her society debut, and Lady Danbury helps the queen choose a diamond among the season's debutantes.",
+              "translation": {
+                "title": {
+                  "en": "Capital R Rake",
+                  "pl": "Rozpustnik"
+                },
+                "description": {
+                  "en": "Anthony begins his search for a wife, Eloise braves her society debut, and Lady Danbury helps the queen choose a diamond among the season's debutantes.",
+                  "pl": "Anthony zaczyna szukać żony. Eloise denerwuje się przed swoim debiutem towarzyskim. Lady Danbury pomaga królowej wybrać spośród debiutantek brylant."
+                }
+              },
               "duration": 70
             },
             {
               "id": "QDFTDGQXBLC2L10J6I9C",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_2.jpg",
-              "title": "Off to the Races",
-              "description": "Facing heated competition and a prickly foe, Anthony steps up his courtship game. Eloise makes a Lady Whistledown discovery as a family member returns.",
+              "translation": {
+                "title": {
+                  "en": "Off to the Races",
+                  "pl": "Wyścig — start!"
+                },
+                "description": {
+                  "en": "Facing heated competition and a prickly foe, Anthony steps up his courtship game. Eloise makes a Lady Whistledown discovery as a family member returns.",
+                  "pl": "W obliczu silnej konkurencji i ostrej przeciwniczki Anthony poważniej bierze się do zalotów. Wraca członek rodziny. Eloise dokonuje odkrycia."
+                }
+              },
               "duration": 53
             },
             {
               "id": "TCJFSQ6L2WU2DO3U1HDY",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_3.jpg",
-              "title": "A Bee in Your Bonnet",
-              "description": "The Sharmas arrive at the Bridgerton's country estate, where Anthony seeks to win Kate's good opinion amid bad memories and a ruthless game of pall-mall.",
+              "translation": {
+                "title": {
+                  "en": "A Bee in Your Bonnet",
+                  "pl": "Jak natrętna pszczoła"
+                },
+                "description": {
+                  "en": "The Sharmas arrive at the Bridgerton's country estate, where Anthony seeks to win Kate's good opinion amid bad memories and a ruthless game of pall-mall.",
+                  "pl": "Panie Sharma przybywają do posiadłości Bridgertonów. Dręczony bolesnymi wspomnieniami Anthony usiłuje zdobyć przychylność Kate. Pall mall okazuje się bezlitosną grą."
+                }
+              },
               "duration": 68
             },
             {
               "id": "ZMZ392NUUTWCHM7GGRTV",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_4.jpg",
-              "title": "Victory",
-              "description": "As guests gather for the Bridgerton's ball, Anthony and Kate clash during a hunting party, Colin revisits the past, and Lady Featherington sets a trap.",
+              "translation": {
+                "title": {
+                  "en": "Victory",
+                  "pl": "Zwycięstwo"
+                },
+                "description": {
+                  "en": "As guests gather for the Bridgerton's ball, Anthony and Kate clash during a hunting party, Colin revisits the past, and Lady Featherington sets a trap.",
+                  "pl": "Na bal u Bridgertonów przybywają goście. Na przyjęciu dochodzi do konfrontacji Anthony’ego i Kate. Colin rozmyśla o przeszłości. Lady Featherington zastawia pułapkę."
+                }
+              },
               "duration": 58
             },
             {
               "id": "P7HC1PQ4OR1ZNWEEX2BV",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_5.jpg",
-              "title": "An Unthinkable Fate",
-              "description": "Rattled by Anthony's hasty nuptial plans, Kate receives advice from Lady Danbury. Eloise spars with a new ally. Emotions run high during a dinner party.",
+              "translation": {
+                "title": {
+                  "en": "An Unthinkable Fate",
+                  "pl": "Nie do pomyślenia"
+                },
+                "description": {
+                  "en": "Rattled by Anthony's hasty nuptial plans, Kate receives advice from Lady Danbury. Eloise spars with a new ally. Emotions run high during a dinner party.",
+                  "pl": "Wstrząśnięta małżeńskimi planami Anthony’ego Kate dostaje radę od lady Danbury. Eloise przekomarza się z nowym sojusznikiem. Proszona kolacja wyzwala silne emocje."
+                }
+              },
               "duration": 58
             },
             {
               "id": "8UBN5NVR3S7W485DPZ45",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_6.jpg",
-              "title": "The Choice",
-              "description": "Anthony's duty to his family wars with his desire for Kate. Edwina ponders her future — and impresses the queen. Eloise's rendezvous stirs suspicion.",
+              "translation": {
+                "title": {
+                  "en": "The Choice",
+                  "pl": "Wybór"
+                },
+                "description": {
+                  "en": "Anthony's duty to his family wars with his desire for Kate. Edwina ponders her future — and impresses the queen. Eloise's rendezvous stirs suspicion.",
+                  "pl": "Anthony jest rozdarty między obowiązkiem wobec rodziny i uczuciem do Kate. Edwina rozmyśla o przyszłości i robi wrażenie na królowej. Schadzka Eloise budzi podejrzenia."
+                }
+              },
               "duration": 69
             },
             {
               "id": "CSP9AX1FKDZWWVYOTY9S",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_7.jpg",
-              "title": "Harmony",
-              "description": "Scandalous rumors swirl around the Bridgertons and the Sharmas. The queen’s ire over Lady Whistledown lands Eloise and Penelope in a quandary.",
+              "translation": {
+                "title": {
+                  "en": "Harmony",
+                  "pl": "W harmonii"
+                },
+                "description": {
+                  "en": "Scandalous rumors swirl around the Bridgertons and the Sharmas. The queen’s ire over Lady Whistledown lands Eloise and Penelope in a quandary.",
+                  "pl": "Wokół Bridgertonów i Sharmów robi się aż gęsto od skandalicznych plotek. Eloise i Penelope mają dylemat, gdy tajemnicza Lady Whistledown popada w niełaskę u królowej."
+                }
+              },
               "duration": 59
             },
             {
               "id": "R2VXR9TED0S60T3AYYPP",
               "thumbnailLink": "/images/videos/Bridgerton/episodes/season_2/episode_8.jpg",
-              "title": "The Viscount Who Loved Me",
-              "description": "Anthony lashes out as he awaits news of Kate, while Eloise turns to Theo for help in her Lady Whistledown hunt and Lady Featherington plans a grand ball.",
+              "translation": {
+                "title": {
+                  "en": "The Viscount Who Loved Me",
+                  "pl": "Ktoś mnie pokochał"
+                },
+                "description": {
+                  "en": "Anthony lashes out as he awaits news of Kate, while Eloise turns to Theo for help in her Lady Whistledown hunt and Lady Featherington plans a grand ball.",
+                  "pl": "Anthony wybucha, oczekując wieści o Kate. Eloise zwraca się do Theo z prośbą o pomoc w poszukiwaniach lady Whistledown, a lady Featherington planuje wielki bal."
+                }
+              },
               "duration": 72
             }
           ]
@@ -329,18 +556,36 @@
       "Calam Lynch",
       "Rupert Young"
     ],
-    "genres": [
-      "Romantic TV Dramas",
-      "TV Dramas",
-      "TV Shows Based on Books",
-      "Period Pieces",
-      "US TV Shows"
-    ],
-    "showIs": ["swoonworthy", "witty", "emotional"],
+    "genres": {
+      "en": [
+        "Romantic TV Dramas",
+        "TV Dramas",
+        "TV Shows Based on Books",
+        "Period Pieces",
+        "US TV Shows"
+      ],
+      "pl": [
+        "Romantyczne dramaty telewizyjne",
+        "Seriale dramatyczne",
+        "Serialowe adaptacje książek",
+        "Kostiumowe",
+        "Seriale amerykańskie"
+      ]
+    },
+    "showIs": {
+      "en": ["swoonworthy", "witty", "emotional"],
+      "pl": ["Chwytający za serce", "Błyskotliwy", "Wzruszający"]
+    },
     "maturityRating": {
       "badge": "16+",
-      "description": ["sex", "nudity", "sexual violence"],
-      "recommendation": "Recommended for ages 16 and up"
+      "description": {
+        "en": ["sex", "nudity", "sexual violence"],
+        "pl": ["seks", "nagość", "przemoc seksualna"]
+      },
+      "recommendation": {
+        "en": "Recommended for ages 16 and up",
+        "pl": "Odpowiednie dla widzów od 16 roku życia"
+      }
     }
   },
 
@@ -354,7 +599,16 @@
       "title": "/images/videos/Wednesday/title.webp",
       "verticalImage": "/images/videos/Wednesday/image-vertical.jpg"
     },
-    "description": "Kooky Uncle Fester pays a visit and shares his theory about the monster. Wednesday begrudgingly agrees to a date with Tyler at Crackstone's crypt.",
+    "translation": {
+      "name": {
+        "en": "Wednesday",
+        "pl": "Wednesday"
+      },
+      "description": {
+        "en": "Kooky Uncle Fester pays a visit and shares his theory about the monster. Wednesday begrudgingly agrees to a date with Tyler at Crackstone's crypt.",
+        "pl": "Makabrycznie bystra i sarkastyczna Wednesday Addams prowadzi śledztwo w sprawie serii zabójstw, przysparzając sobie nowych przyjaciół — i wrogów — w Akademii Nevermore."
+      }
+    },
     "episodes": [
       {
         "seasons": {
@@ -362,57 +616,121 @@
             {
               "id": "EUQBCZDGMF1776AQUZKT",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_1.jpg",
-              "title": "Wednesday's Child Is Full of Woe",
-              "description": "When a deliciously wicked prank gets Wednesday expelled, her parents ship her off to Nevermore Academy, the boarding school where they fell in love.",
+              "translation": {
+                "title": {
+                  "en": "Wednesday's Child Is Full of Woe",
+                  "pl": "Najbardziej nieszczęśliwe dziecko"
+                },
+                "description": {
+                  "en": "When a deliciously wicked prank gets Wednesday expelled, her parents ship her off to Nevermore Academy, the boarding school where they fell in love.",
+                  "pl": "Gdy Wednesday zostaje usunięta ze szkoły za złośliwy żart, rodzice wysyłają ją do Akademii Nevermore — szkoły z internatem, w której się poznali."
+                }
+              },
               "duration": 59
             },
             {
               "id": "T4683KUPE23I15EC09RR",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_2.jpg",
-              "title": "Woe Is the Loneliest Number",
-              "description": "The sheriff questions Wednesday about the night's strange happenings. Later, Wednesday faces off against a fierce rival in the cutthroat Poe Cup race.",
+              "translation": {
+                "title": {
+                  "en": "Woe Is the Loneliest Number",
+                  "pl": "Samotniczka"
+                },
+                "description": {
+                  "en": "The sheriff questions Wednesday about the night's strange happenings. Later, Wednesday faces off against a fierce rival in the cutthroat Poe Cup race.",
+                  "pl": "Szeryf wypytuje Wednesday o dziwne wydarzenia, które zaszły w nocy. Wednesday mierzy się z zaciekłą rywalką w bezwzględnym Pucharze Poego."
+                }
+              },
               "duration": 48
             },
             {
               "id": "AGO8L7O0I084G5L9HLIQ",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_3.jpg",
-              "title": "Friend or Woe",
-              "description": "Wednesday stumbles on a secret society. During Outreach Day, Nevermore's outcasts mingle with Jericho's normies in Pilgrim World. Fudge, anyone?",
+              "translation": {
+                "title": {
+                  "en": "Friend or Woe",
+                  "pl": "Przyjaciel czy wróg?"
+                },
+                "description": {
+                  "en": "Wednesday stumbles on a secret society. During Outreach Day, Nevermore's outcasts mingle with Jericho's normies in Pilgrim World. Fudge, anyone?",
+                  "pl": "Wednesday natyka się na tajne stowarzyszenie. W Dniu Pomocy dziwolągi z Nevermore spotykają się z normalnymi z Jericho w Świecie Pielgrzyma. Komu karmelka?"
+                }
+              },
               "duration": 48
             },
             {
               "id": "2CIJP52MOAESXQC998B1",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_4.jpg",
-              "title": "Woe What a Night",
-              "description": "Wednesday asks Xavier to the Rave'N dance, sparking Tyler's jealousy — but Thing's got something up his sleeve. Meanwhile, Eugene stakes out the cave.",
+              "translation": {
+                "title": {
+                  "en": "Woe What a Night",
+                  "pl": "Niezapomniany wieczór"
+                },
+                "description": {
+                  "en": "Wednesday asks Xavier to the Rave'N dance, sparking Tyler's jealousy — but Thing's got something up his sleeve. Meanwhile, Eugene stakes out the cave.",
+                  "pl": "Wednesday zaprasza Xaviera na Kruczą Imprezę, co budzi zazdrość Tylera, ale Rączka ma asa w rękawie. Eugene czai się koło jaskini."
+                }
+              },
               "duration": 49
             },
             {
               "id": "6BM54F8A4M6RQD5JD6GN",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_5.jpg",
-              "title": "You Reap What You Woe",
-              "description": "During Parents Weekend, Wednesday digs into her family's past — and accidentally gets her dad arrested. Enid feels the pressure to 'wolf out.'",
+              "translation": {
+                "title": {
+                  "en": "You Reap What You Woe",
+                  "pl": "Kto po zasianym wietrze zbierze burzę?"
+                },
+                "description": {
+                  "en": "During Parents Weekend, Wednesday digs into her family's past — and accidentally gets her dad arrested. Enid feels the pressure to 'wolf out.'",
+                  "pl": "Podczas weekendu rodziców Wednesday zgłębia rodzinną przeszłość i przypadkowo doprowadza do aresztowania swojego taty. Enid czuje, że rodzice chcą, by stała się wilczycą."
+                }
+              },
               "duration": 52
             },
             {
               "id": "BB22LR0JXIZBKCA6IGWL",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_6.jpg",
-              "title": "Quid Pro Woe",
-              "description": "Wednesday's friends throw her a surprise birthday party. They mean well... but she'd much rather mark the miserable occasion by solving the murders.",
+              "translation": {
+                "title": {
+                  "en": "Quid Pro Woe",
+                  "pl": "Coś za coś"
+                },
+                "description": {
+                  "en": "Wednesday's friends throw her a surprise birthday party. They mean well... but she'd much rather mark the miserable occasion by solving the murders.",
+                  "pl": "Przyjaciele Wednesday urządzają jej urodzinowe przyjęcie niespodziankę. Chcieli dobrze, ale jubilatka wolałaby uczcić ten okropny dzień rozwiązaniem sprawy morderstw."
+                }
+              },
               "duration": 50
             },
             {
               "id": "SWU2DETU0H4OZLQ391NK",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_7.jpg",
-              "title": "If You Don't Woe Me by Now",
-              "description": "Kooky Uncle Fester pays a visit and shares his theory about the monster. Wednesday begrudgingly agrees to a date with Tyler at Crackstone's crypt.",
+              "translation": {
+                "title": {
+                  "en": "If You Don't Woe Me by Now",
+                  "pl": "Kim naprawdę jesteś?"
+                },
+                "description": {
+                  "en": "Kooky Uncle Fester pays a visit and shares his theory about the monster. Wednesday begrudgingly agrees to a date with Tyler at Crackstone's crypt.",
+                  "pl": "Wujek Fester przyjeżdża i dzieli się własną teorią na temat potwora. Wednesday bardzo niechętnie zgadza się na randkę z Tylerem w krypcie Crackstone’a."
+                }
+              },
               "duration": 47
             },
             {
               "id": "KJNC8DYG6HKMGXH3SPHV",
               "thumbnailLink": "/images/videos/Wednesday/episodes/season_1/episode_8.jpg",
-              "title": "A Murder of Woes",
-              "description": "Wednesday lands in trouble with Principal Weems, but that's just the start of her problems. To fight an ancient evil, she'll need all her friends’ help.",
+              "translation": {
+                "title": {
+                  "en": "A Murder of Woes",
+                  "pl": "Mordercza konfrontacja"
+                },
+                "description": {
+                  "en": "Wednesday lands in trouble with Principal Weems, but that's just the start of her problems. To fight an ancient evil, she'll need all her friends’ help.",
+                  "pl": "Wednesday trafia na dywanik do dyrektor Weems, ale tak naprawdę to dopiero początek… Aby stawić czoła pradawnemu złu, będzie jej potrzebna pomoc wszystkich przyjaciół."
+                }
+              },
               "duration": 52
             }
           ]
@@ -466,12 +784,26 @@
       "Catherine Zeta-Jones",
       "Luis Guzmán"
     ],
-    "genres": ["Teen TV Shows", "TV Mysteries", "TV Comedies", "Crime TV Shows", "US TV Shows"],
-    "showIs": ["deadpan"],
+    "genres": {
+      "en": ["Teen TV Shows", "TV Mysteries", "TV Comedies", "Crime TV Shows", "US TV Shows"],
+      "pl": [
+        "Seriale młodzieżowe",
+        "Seriale sensacyjne",
+        "Seriale komediowe",
+        "Seriale kryminalne",
+        "Seriale amerykańskie"
+      ]
+    },
+    "showIs": {
+      "en": ["deadpan"],
+      "pl": ["Udawana powaga"]
+    },
     "maturityRating": {
       "badge": "13+",
-      "description": [],
-      "recommendation": "Recommended for ages 13 and up"
+      "recommendation": {
+        "en": "Recommended for ages 13 and up",
+        "pl": "Zalecane dla widzów od 13 roku życia"
+      }
     }
   },
 
@@ -485,7 +817,16 @@
       "title": "/images/videos/TheMother/title.webp",
       "verticalImage": "/images/videos/TheMother/image-vertical.jpg"
     },
-    "description": "A military-trained assassin comes out of hiding to protect the daughter she's never met from ruthless criminals gunning for revenge.",
+    "translation": {
+      "name": {
+        "en": "The Mother",
+        "pl": "Matka"
+      },
+      "description": {
+        "en": "A military-trained assassin comes out of hiding to protect the daughter she's never met from ruthless criminals gunning for revenge.",
+        "pl": "Uciekająca przed śmiertelnymi wrogami samotna morderczyni (Jennifer Lopez) wychodzi z ukrycia, żeby nauczyć nigdy niewidzianą córkę, co trzeba robić, żeby przeżyć."
+      }
+    },
     "episodes": [],
     "duration": 117,
     "match": 90,
@@ -523,12 +864,24 @@
       "Edie Falco"
     ],
     "writer": ["Misha Green", "Andrea Berloff", "Peter Craig"],
-    "genres": ["Drama Movies", "Action & Adventure Movies"],
-    "showIs": ["gritty", "understated", "suspenseful"],
+    "genres": {
+      "en": ["Drama Movies", "Action & Adventure Movies"],
+      "pl": ["Dramaty", "Filmy akcji i przygodowe"]
+    },
+    "showIs": {
+      "en": ["gritty", "understated", "suspenseful"],
+      "pl": ["Mocny", "Oszczędny w środkach", "Trzymający w napięciu"]
+    },
     "maturityRating": {
       "badge": "16+",
-      "description": ["violence"],
-      "recommendation": "Recommended for ages 16 and up"
+      "description": {
+        "en": ["violence"],
+        "pl": ["przemoc"]
+      },
+      "recommendation": {
+        "en": "Recommended for ages 16 and up",
+        "pl": "Odpowiednie dla widzów od 16 roku życia"
+      }
     }
   },
 
@@ -543,7 +896,16 @@
       "title": "/images/videos/Shrek/title.webp",
       "verticalImage": "/images/videos/Shrek/image-vertical.jpg"
     },
-    "description": "On a mission to retrieve a princess from a fire-breathing dragon, gruff ogre Shrek teams up with an unlikely compatriot — a wisecracking donkey.",
+    "translation": {
+      "name": {
+        "en": "Shrek",
+        "pl": "Shrek"
+      },
+      "description": {
+        "en": "On a mission to retrieve a princess from a fire-breathing dragon, gruff ogre Shrek teams up with an unlikely compatriot — a wisecracking donkey.",
+        "pl": "Niezwykły duet składający się z nieokrzesanego ogra i gadatliwego osła rusza na ratunek księżniczce pilnowanej przez ziejącego ogniem smoka."
+      }
+    },
     "episodes": [],
     "duration": 90,
     "match": 96,
@@ -571,18 +933,32 @@
       "Michael Galasso"
     ],
     "writer": ["Ted Elliott", "Terry Rossio", "Joe Stillman", "Roger S.H. Schulman"],
-    "genres": [
-      "Family Movies",
-      "Kids & Family Movies",
-      "Satires",
-      "Comedy Movies",
-      "Movies Based on Books"
-    ],
-    "showIs": ["witty", "feel-good"],
+    "genres": {
+      "en": [
+        "Family Movies",
+        "Kids & Family Movies",
+        "Satires",
+        "Comedy Movies",
+        "Movies Based on Books"
+      ],
+      "pl": [
+        "Filmy familijne",
+        "Filmy familijne i dla dzieci",
+        "Filmy satyryczne",
+        "Filmy komediowe",
+        "Adaptacje filmowe"
+      ]
+    },
+    "showIs": {
+      "en": ["witty", "feel-good"],
+      "pl": ["Błyskotliwy", "Pogodny"]
+    },
     "maturityRating": {
       "badge": "7+",
-      "description": [],
-      "recommendation": "Recommended for ages 7 and up"
+      "recommendation": {
+        "en": "Recommended for ages 7 and up",
+        "pl": "Zalecane dla widzów od 7 roku życia"
+      }
     }
   },
 
@@ -597,7 +973,16 @@
       "title": "/images/videos/Shrek2/title.webp",
       "verticalImage": "/images/videos/Shrek2/image-vertical.jpg"
     },
-    "description": "Back in Far Far Away, Shrek and Fiona share news of their marriage. But a sinister plan involving Prince Charming threatens their \"happily ever after.\"",
+    "translation": {
+      "name": {
+        "en": "Shrek 2",
+        "pl": "Shrek 2"
+      },
+      "description": {
+        "en": "Back in Far Far Away, Shrek and Fiona share news of their marriage. But a sinister plan involving Prince Charming threatens their \"happily ever after.\"",
+        "pl": "Shrek i Fiona jadą do Zasiedmiogórogrodu jako szczęśliwi nowożeńcy. Ich przyszłości zagraża jednak wredny plan Księcia z Bajki."
+      }
+    },
     "episodes": [],
     "duration": 92,
     "match": 94,
@@ -619,12 +1004,25 @@
       "Jennifer Saunders"
     ],
     "writer": ["Andrew Adamson", "Joe Stillman", "J. David Stem", "David N. Weiss"],
-    "genres": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
-    "showIs": ["witty", "feel-good"],
+    "genres": {
+      "en": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
+      "pl": [
+        "Filmy familijne",
+        "Filmy familijne i dla dzieci",
+        "Filmy komediowe",
+        "Adaptacje filmowe"
+      ]
+    },
+    "showIs": {
+      "en": ["witty", "feel-good"],
+      "pl": ["Błyskotliwy", "Pogodny"]
+    },
     "maturityRating": {
       "badge": "7+",
-      "description": [],
-      "recommendation": "Recommended for ages 7 and up"
+      "recommendation": {
+        "en": "Recommended for ages 7 and up",
+        "pl": "Zalecane dla widzów od 7 roku życia"
+      }
     }
   },
 
@@ -639,7 +1037,16 @@
       "title": "/images/videos/Shrek3/title.webp",
       "verticalImage": "/images/videos/Shrek3/image-vertical.jpg"
     },
-    "description": "With the kingdom in need of an heir, Shrek, Donkey and Puss set sail on a search to find one — just as Shrek learns he's about to become a father.",
+    "translation": {
+      "name": {
+        "en": "Shrek The Third",
+        "pl": "Shrek Trzeci"
+      },
+      "description": {
+        "en": "With the kingdom in need of an heir, Shrek, Donkey and Puss set sail on a search to find one — just as Shrek learns he's about to become a father.",
+        "pl": "Shrek, Osioł i Kot wyruszają na poszukiwanie dziedzica do tronu królestwa, gdy okazuje się, że Shrek zostanie ojcem."
+      }
+    },
     "episodes": [],
     "duration": 93,
     "match": 96,
@@ -665,12 +1072,25 @@
       "Cheri Oteri"
     ],
     "writer": [],
-    "genres": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
-    "showIs": ["witty", "feel-good"],
+    "genres": {
+      "en": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
+      "pl": [
+        "Filmy familijne",
+        "Filmy familijne i dla dzieci",
+        "Filmy komediowe",
+        "Adaptacje filmowe"
+      ]
+    },
+    "showIs": {
+      "en": ["witty", "feel-good"],
+      "pl": ["Błyskotliwy", "Pogodny"]
+    },
     "maturityRating": {
       "badge": "7+",
-      "description": [],
-      "recommendation": "Recommended for ages 7 and up"
+      "recommendation": {
+        "en": "Recommended for ages 7 and up",
+        "pl": "Zalecane dla widzów od 7 roku życia"
+      }
     }
   },
 
@@ -685,7 +1105,16 @@
       "title": "/images/videos/ShrekTheHalls/title.webp",
       "verticalImage": "/images/videos/ShrekTheHalls/image-vertical.jpg"
     },
-    "description": "Just when Shrek thought he could finally relax and enjoy his happily-ever-after with his new family, the most joyous of all holidays arrives.",
+    "translation": {
+      "name": {
+        "en": "Shrek The Halls",
+        "pl": "Pada Shrek"
+      },
+      "description": {
+        "en": "Just when Shrek thought he could finally relax and enjoy his happily-ever-after with his new family, the most joyous of all holidays arrives.",
+        "pl": "Gdy Shrek miał już nadzieję, że w końcu nacieszy się szczęściem rodzinnym, nadeszły najradośniejsze święta w roku."
+      }
+    },
     "episodes": [],
     "duration": 28,
     "match": "",
@@ -698,12 +1127,25 @@
     "creators": ["Gary Trousdale"],
     "cast": ["Mike Myers", "Eddie Murphy", "Cameron Diaz", "Antonio Banderas"],
     "writer": [],
-    "genres": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
-    "showIs": ["heartfelt", "feel-good", "goofy"],
+    "genres": {
+      "en": ["Family Movies", "Kids & Family Movies", "Comedy Movies", "Movies Based on Books"],
+      "pl": [
+        "Filmy familijne",
+        "Filmy familijne i dla dzieci",
+        "Filmy komediowe",
+        "Adaptacje filmowe"
+      ]
+    },
+    "showIs": {
+      "en": ["heartfelt", "feel-good", "goofy"],
+      "pl": ["Uczuciowy", "Pogodny", "Zwariowany"]
+    },
     "maturityRating": {
       "badge": "7+",
-      "description": [],
-      "recommendation": "Recommended for ages 7 and up"
+      "recommendation": {
+        "en": "Recommended for ages 7 and up",
+        "pl": "Zalecane dla widzów od 7 roku życia"
+      }
     }
   },
 
@@ -718,7 +1160,16 @@
       "title": "/images/videos/ShreksSwampStories/title.webp",
       "verticalImage": "/images/videos/ShrekSwampStories/image-vertical.jpg"
     },
-    "description": "Shrek celebrates Halloween, Puss in Boots is captured by soldiers, and the gang participates in a kingdom-wide singing competition.",
+    "translation": {
+      "name": {
+        "en": "Shrek's Swamp Stories",
+        "pl": "Shrek Opowieści z Bagien"
+      },
+      "description": {
+        "en": "Shrek celebrates Halloween, Puss in Boots is captured by soldiers, and the gang participates in a kingdom-wide singing competition.",
+        "pl": "Shrek świętuje Halloween, Kot w butach zostaje pojmany przez żołnierzy, a gang bierze udział w konkursie wokalnym."
+      }
+    },
     "episodes": [
       {
         "seasons": {
@@ -726,29 +1177,61 @@
             {
               "id": "XAO1XQCIJILB6BW54FIK",
               "thumbnailLink": "/images/videos/ShreksSwampStories/episodes/season_1/episode_1.webp",
-              "title": "Play All Three: Shrek's Swamp Stories",
-              "description": "Shrek celebrates Halloween with his friends, Puss in Boots is sent on a mission to recover a stolen ruby, and the gang competes in a singing contest.",
+              "translation": {
+                "title": {
+                  "en": "Play All Three: Shrek's Swamp Stories",
+                  "pl": "Wszystkie trzy odcinki: Shrek — opowieści z bagien "
+                },
+                "description": {
+                  "en": "Shrek celebrates Halloween with his friends, Puss in Boots is sent on a mission to recover a stolen ruby, and the gang competes in a singing contest.",
+                  "pl": "Shrek świętuje Halloween z przyjaciółmi, a Kot w butach udaje się na misję, by odzyskać skradziony rubin. Ekipa bierze udział w konkursie muzycznym."
+                }
+              },
               "duration": 48
             },
             {
               "id": "EV61QDFTDGQXBLC2L10J",
               "thumbnailLink": "/images/videos/ShreksSwampStories/episodes/season_1/episode_2.webp",
-              "title": "Scared Shrekless",
-              "description": "When Halloween arrives, Shrek challenges the gang to spend the night in Lord Farquaad's haunted castle telling spooky stories.",
+              "translation": {
+                "title": {
+                  "en": "Scared Shrekless",
+                  "pl": "Shrek ma wielkie oczy"
+                },
+                "description": {
+                  "en": "When Halloween arrives, Shrek challenges the gang to spend the night in Lord Farquaad's haunted castle telling spooky stories.",
+                  "pl": "Z okazji Halloween Shrek wpada na pomysł, by z całą ekipą spędzić noc w nawiedzonym zamku lorda Farquaada. Każdy ma opowiedzieć jakąś przerażającą historię."
+                }
+              },
               "duration": 25
             },
             {
               "id": "6I9CTCJFSQ6L2WU2DO3U",
               "thumbnailLink": "/images/videos/ShreksSwampStories/episodes/season_1/episode_3.webp",
-              "title": "Puss in Boots: The Three Diablos",
-              "description": "After Puss in Boots is captured by soldiers, he is enlisted to recover a priceless ruby stolen by the notorious villain known as the Whisperer.",
+              "translation": {
+                "title": {
+                  "en": "Puss in Boots: The Three Diablos",
+                  "pl": "Kot w butach: Trzy diabły"
+                },
+                "description": {
+                  "en": "After Puss in Boots is captured by soldiers, he is enlisted to recover a priceless ruby stolen by the notorious villain known as the Whisperer.",
+                  "pl": "Po schwytaniu przez żołnierzy Kot w butach zostaje wysłany na misję, by odzyskać bezcenny rubin, skradziony przez złoczyńcę znanego jako Szeptający."
+                }
+              },
               "duration": 13
             },
             {
               "id": "1HDYZMZ392NUUTWCHM7G",
               "thumbnailLink": "/images/videos/ShreksSwampStories/episodes/season_1/episode_4.webp",
-              "title": "Far Far Away Idol",
-              "description": "Puss in Boots, Donkey and the rest of the Far Far Away kingdom battle it out in a singers' showdown.",
+              "translation": {
+                "title": {
+                  "en": "Far Far Away Idol",
+                  "pl": "Idol Zasiedmiogórogrodu"
+                },
+                "description": {
+                  "en": "Puss in Boots, Donkey and the rest of the Far Far Away kingdom battle it out in a singers' showdown.",
+                  "pl": "Kot w butach, Osioł i reszta mieszkańców Zasiedmiogórogrodu w muzycznej walce na najlepsze kawałki."
+                }
+              },
               "duration": 9
             }
           ]
@@ -778,18 +1261,32 @@
       "Conrad Vernon"
     ],
     "writer": [],
-    "genres": [
-      "Kid's TV",
-      "Family Watch Together TV",
-      "TV Shows Based on Books",
-      "TV Comedies",
-      "TV Cartoons"
-    ],
-    "showIs": ["heartfelt", "feel-good", "goofy"],
+    "genres": {
+      "en": [
+        "Kid's TV",
+        "Family Watch Together TV",
+        "TV Shows Based on Books",
+        "TV Comedies",
+        "TV Cartoons"
+      ],
+      "pl": [
+        "Seriale dla dzieci",
+        "Seriale familijne",
+        "Serialowe adaptacje książek",
+        "Seriale komediowe",
+        "Kreskówki"
+      ]
+    },
+    "showIs": {
+      "en": ["heartfelt", "feel-good", "goofy"],
+      "pl": ["Uczuciowy", "Pogodny", "Zwariowany"]
+    },
     "maturityRating": {
       "badge": "7+",
-      "description": [],
-      "recommendation": "Recommended for ages 7 and up"
+      "recommendation": {
+        "en": "Recommended for ages 7 and up",
+        "pl": "Zalecane dla widzów od 7 roku życia"
+      }
     }
   },
 
@@ -804,7 +1301,16 @@
       "title": "/images/videos/ShrekSpookyStories/title.webp",
       "verticalImage": "/images/videos/ShrekSpookyStories/image-vertical.jpg"
     },
-    "description": "Shrek dares his friends to bring on the scary with ghost stories told in a haunted castle. Later, Ginormica and the Monsters face alien pumpkins.",
+    "translation": {
+      "name": {
+        "en": "Spooky Stories",
+        "pl": "Opowieści z dreszczykiem"
+      },
+      "description": {
+        "en": "Shrek dares his friends to bring on the scary with ghost stories told in a haunted castle. Later, Ginormica and the Monsters face alien pumpkins.",
+        "pl": "Słynny ogr i jego przyjaciele opowiadają sobie przerażające opowieści. Shrek zmaga się z duchem, a Susan i potwory walczą ze zmutowanymi, kosmicznymi dyniami."
+      }
+    },
     "episodes": [
       {
         "seasons": {
@@ -812,29 +1318,61 @@
             {
               "id": "990RAPY8V7X0IA84HEU9",
               "thumbnailLink": "/images/videos/ShrekSpookyStories/episodes/season_1/episode_1.webp",
-              "title": "Play All Three: DreamWorks Spooky Stories",
-              "description": "In three Halloween tales, Shrek and his friends tell scary stories, Ginormica and the Monsters fight mutant alien pumpkins, and Shrek battles a ghost.",
+              "translation": {
+                "title": {
+                  "en": "Play All Three: DreamWorks Spooky Stories",
+                  "pl": "Wszystkie trzy odcinki: Opowieści z dreszczykiem"
+                },
+                "description": {
+                  "en": "In three Halloween tales, Shrek and his friends tell scary stories, Ginormica and the Monsters fight mutant alien pumpkins, and Shrek battles a ghost.",
+                  "pl": "Słynny ogr i jego przyjaciele opowiadają sobie przerażające opowieści. Shrek zmaga się z duchem, a Susan i potwory walczą ze zmutowanymi, kosmicznymi dyniami."
+                }
+              },
               "duration": 65
             },
             {
               "id": "QUS02CRSZ62MXAO1XQCI",
               "thumbnailLink": "/images/videos/ShrekSpookyStories/episodes/season_1/episode_2.webp",
-              "title": "Scared Shrekless",
-              "description": "Shrek challenges Fiona, Donkey, Puss in Boots and the others to spend the night in Lord Farquaad's haunted castle telling scary stories.",
+              "translation": {
+                "title": {
+                  "en": "Scared Shrekless",
+                  "pl": "Shrek ma wielkie oczy"
+                },
+                "description": {
+                  "en": "Shrek challenges Fiona, Donkey, Puss in Boots and the others to spend the night in Lord Farquaad's haunted castle telling scary stories.",
+                  "pl": "Z okazji Halloween Shrek wpada na pomysł, by z całą ekipą spędzić noc w nawiedzonym zamku lorda Farquaada. Każdy ma opowiedzieć jakąś przerażającą historię."
+                }
+              },
               "duration": 25
             },
             {
               "id": "JILB6BW54FIKEV61QDFT",
               "thumbnailLink": "/images/videos/ShrekSpookyStories/episodes/season_1/episode_3.webp",
-              "title": "The Ghost of Lord Farquaad",
-              "description": "Join Donkey and Shrek as they rescue Fiona from the evil ghost of Lord Farquaad and embark on a bone-chilling adventure.",
+              "translation": {
+                "title": {
+                  "en": "The Ghost of Lord Farquaad",
+                  "pl": "Duch lorda Faraquaada"
+                },
+                "description": {
+                  "en": "Join Donkey and Shrek as they rescue Fiona from the evil ghost of Lord Farquaad and embark on a bone-chilling adventure.",
+                  "pl": "Osioł i Shrek pędzą na ratunek Fionie porwanej przez wrogiego ducha Lorda Farquaada. Na tym przygody się nie kończą!"
+                }
+              },
               "duration": 12
             },
             {
               "id": "DGQXBLC2L10J6I9CTCJF",
               "thumbnailLink": "/images/videos/ShrekSpookyStories/episodes/season_1/episode_4.webp",
-              "title": "Monsters vs. Aliens: Mutant Pumpkins from Outer Space",
-              "description": "When an alien presence is detected in Susan Murphy's hometown right before Halloween, she and the Monsters are dispatched to investigate.",
+              "translation": {
+                "title": {
+                  "en": "Monsters vs. Aliens: Mutant Pumpkins from Outer Space",
+                  "pl": "Potwory kontra Obcy: Dynie-mutanty z kosmosu"
+                },
+                "description": {
+                  "en": "When an alien presence is detected in Susan Murphy's hometown right before Halloween, she and the Monsters are dispatched to investigate.",
+                  "pl": "W rodzinnym mieście Susan Murphy zaraz przed Halloween wykryto obecność kosmitów. Susan i potwory muszą się tym zająć!"
+                }
+              },
               "duration": 27
             }
           ]
@@ -859,12 +1397,20 @@
       "Dean Edwards"
     ],
     "writer": [],
-    "genres": ["Kid's TV", "Family Watch Together TV", "TV Comedies", "TV Cartoons"],
-    "showIs": ["goofy"],
+    "genres": {
+      "en": ["Kid's TV", "Family Watch Together TV", "TV Comedies", "TV Cartoons"],
+      "pl": ["Seriale dla dzieci", "Seriale familijne", "Seriale komediowe", "Kreskówki"]
+    },
+    "showIs": {
+      "en": ["goofy"],
+      "pl": ["Zwariowany"]
+    },
     "maturityRating": {
       "badge": "7+",
-      "description": [],
-      "recommendation": "Recommended for ages 7 and up"
+      "recommendation": {
+        "en": "Recommended for ages 7 and up",
+        "pl": "Zalecane dla widzów od 7 roku życia"
+      }
     }
   }
 ]

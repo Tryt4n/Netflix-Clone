@@ -3,13 +3,14 @@ import UserContext from "../../context/UserContext";
 import { useTranslation } from "react-i18next";
 
 import Divider from "../../components/Divider/Divider";
-import CloseIcon from "../../icons/CloseIcon";
+import CheckboxAccount from "../../components/CheckboxAccount/CheckboxAccount";
 import PasswordConfirmation from "../../layout/PasswordConfirmation/PasswordConfirmation";
 import BtnsWrapperAccount from "../../layout/BtnsWrapperAccount/BtnsWrapperAccount";
-
-import moviesData from "../../../server/data.json";
 import CommonAccountLayout from "../../layout/CommonAccountLayout/CommonAccountLayout";
 
+import CloseIcon from "../../icons/CloseIcon";
+
+import moviesData from "../../../server/data.json";
 import "./restrictionPage.scss";
 
 export default function RestrictionPage() {
@@ -23,6 +24,7 @@ export default function RestrictionPage() {
     setDisplayedSavedMessage,
     passwordConfirmationPassed,
     resetPasswordConfirmationSettings,
+    languageCodes,
   } = useContext(UserContext);
 
   const [selectedRating, setSelectedRating] = useState(currentEditingProfile.maturityRating);
@@ -30,8 +32,9 @@ export default function RestrictionPage() {
   const [listOfBlockedMovies, setListOfBlockedMovies] = useState(
     currentEditingProfile.blockedMovies !== undefined ? currentEditingProfile.blockedMovies : []
   );
-  const saveBtnRef = useRef(null);
+  const [isForKidsProfile, setIsForKidsProfile] = useState(currentEditingProfile?.kidsProfile);
   const blockedInputRef = useRef(null);
+
   const ratings = [
     { id: "all", label: t("all") },
     { id: "7+", label: "7+" },
@@ -40,19 +43,37 @@ export default function RestrictionPage() {
     { id: "16+", label: "16+" },
     { id: "18+", label: "18+" },
   ];
+  const allowedRatingsForKidsProfile = ["all", "7+", "10+"];
+
+  const currentProfileLanguageCode = languageCodes[currentEditingProfile.language];
 
   //* List of movies in the searching list excluding those that are already blocked
-  const filteredMovies = moviesData.filter(
-    (item) =>
-      !listOfBlockedMovies.some((blockedItem) => blockedItem.name === item.name) &&
-      //* Searching by movie name
-      (item.name.toLowerCase().includes(searchedBlockedValue.toLowerCase()) ||
+  const filteredMovies = moviesData.filter((item) => {
+    const translatedNames = Object.values(item.translation.name); //* Get all translated movie names
+    //* Searching by movie name in any language
+    const translatedValue = translatedNames.find((name) =>
+      name.toLowerCase().includes(searchedBlockedValue.toLowerCase())
+    );
+
+    return (
+      !listOfBlockedMovies.some((blockedItem) => translatedNames.includes(blockedItem.name)) &&
+      (translatedValue ||
         //* Searching by movie cast
         item.cast.some((actor) => actor.toLowerCase().includes(searchedBlockedValue.toLowerCase())))
-  );
+    );
+  });
 
   function handleRatingChange(e) {
     setSelectedRating(e.target.id);
+
+    if (!allowedRatingsForKidsProfile.includes(e.target.id)) {
+      setIsForKidsProfile(false);
+    }
+  }
+
+  function handleRatingChangeForKidsProfile() {
+    setSelectedRating("10+");
+    setIsForKidsProfile(!isForKidsProfile);
   }
 
   function changeRestriction() {
@@ -62,6 +83,7 @@ export default function RestrictionPage() {
           ...user,
           maturityRating: selectedRating,
           blockedMovies: listOfBlockedMovies,
+          kidsProfile: isForKidsProfile === true ? true : false,
         };
       }
       return user;
@@ -156,6 +178,7 @@ export default function RestrictionPage() {
       e.currentTarget.parentElement.parentElement.firstChild.querySelector("button");
     const lastListElement =
       e.currentTarget.parentElement.parentElement.lastChild.querySelector("button");
+    console.log(lastListElement);
 
     if (e.key === "ArrowDown") {
       const nextListElement =
@@ -194,7 +217,11 @@ export default function RestrictionPage() {
         if (nextListElement) {
           nextListElement.focus();
         } else {
-          saveBtnRef.current.focus();
+          const nextFocusableElement =
+            e.currentTarget.parentElement.parentElement.parentElement.parentElement.nextElementSibling.querySelector(
+              "a"
+            );
+          nextFocusableElement.focus();
         }
       }
     }
@@ -215,6 +242,11 @@ export default function RestrictionPage() {
             <legend className="restriction-confirmation__subheading">
               {t("profileMaturityRatingFor")} {currentEditingProfile.username}
             </legend>
+            {currentEditingProfile.defaultKidsProfile === true && (
+              <div className="restriction-confirmation__default-kids-profile-information">
+                <em>{t("defaultKidsProfileInformation")}</em>
+              </div>
+            )}
             <p className="restriction-confirmation__description-text">
               {selectedRating === "18+" ? (
                 t("showTitles-18+")
@@ -273,6 +305,10 @@ export default function RestrictionPage() {
                           isChecked ? "active" : ""
                         }`}
                         checked={isChecked}
+                        disabled={
+                          currentEditingProfile.defaultKidsProfile === true &&
+                          !allowedRatingsForKidsProfile.includes(rating.id)
+                        }
                         onChange={handleRatingChange}
                       />
                     </div>
@@ -290,6 +326,24 @@ export default function RestrictionPage() {
           </fieldset>
 
           <Divider />
+
+          {currentEditingProfile.id !== users[0].id &&
+            !currentEditingProfile.defaultKidsProfile && (
+              <>
+                <fieldset>
+                  <legend className="restriction-confirmation__subheading">
+                    {t("kidsProfile")}
+                  </legend>
+                  <CheckboxAccount
+                    name="kids-profile"
+                    checked={isForKidsProfile}
+                    onChangeFunction={handleRatingChangeForKidsProfile}
+                    text={t("displayTitlesForKids")}
+                  />
+                </fieldset>
+                <Divider />
+              </>
+            )}
 
           <fieldset>
             <legend className="restriction-confirmation__subheading">
@@ -338,7 +392,12 @@ export default function RestrictionPage() {
                         onClick={() => addToBlockedList(item)}
                         onKeyDown={(e) => handleKeyboardNavigationOnSearchingList(e)}
                       >
-                        {item.name} ({item.productionYear})
+                        {item.translation.name[currentProfileLanguageCode]
+                          ? item.translation.name[currentProfileLanguageCode]
+                          : item.translation.name.en}
+                        {" ("}
+                        {item.productionYear}
+                        {")"}
                       </button>
                     </li>
                   ))}

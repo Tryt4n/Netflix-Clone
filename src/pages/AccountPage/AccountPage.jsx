@@ -351,12 +351,12 @@ export default function AccountPage() {
                         className="account__profile-img"
                         src={user.profileImage}
                         alt={`${t("profileAvatar")} ${
-                          user.kidsProfile ? t("Kids") : user.username
+                          user.defaultKidsProfile ? t("Kids") : user.username
                         } `}
                       />
                       <div className="account__profile-heading-wrapper">
                         <h2 className="account__profile-heading account__profile-heading--bold">
-                          {user.kidsProfile ? t("Kids") : user.username}
+                          {user.defaultKidsProfile ? t("Kids") : user.username}
                         </h2>
                         <p
                           className={`account__profile-heading-description${
@@ -449,7 +449,7 @@ export default function AccountPage() {
                             <span className="account__profile-accent-text">{t("change")}</span>
                           </Link>
                         </li>
-                        {!user.kidsProfile && (
+                        {!user.defaultKidsProfile && (
                           <li className="account__profile-list-item-wrapper">
                             <a
                               href="#"
@@ -544,7 +544,7 @@ export default function AccountPage() {
                           </li>
                         )}
 
-                        {!user.kidsProfile && (
+                        {!user.defaultKidsProfile && (
                           <li className="account__profile-list-item-wrapper">
                             <Link
                               to="/settings/privacy"

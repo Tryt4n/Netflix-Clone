@@ -792,6 +792,7 @@
     "PIN": "",
     "gameHandle": "",
     "maturityRating": "10+",
+    "defaultKidsProfile": true,
     "kidsProfile": true,
     "autoplayNext": true,
     "autoplayPreviews": true,

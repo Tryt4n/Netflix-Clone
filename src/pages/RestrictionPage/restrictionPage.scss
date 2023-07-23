@@ -12,6 +12,16 @@
     text-wrap: balance;
   }
 
+  &__default-kids-profile-information {
+    font-weight: normal;
+    width: 100%;
+    padding: 1.25em;
+    border: func.rem(1) solid #999;
+    & em {
+      font-style: normal;
+    }
+  }
+
   &__description-text {
     margin-block: 1em;
     font-size: v.$font-base;
@@ -98,6 +108,11 @@
     display: block;
     @media screen and (width < b.$mobile-account) {
       translate: calc(-50% + (v.$restrictions-border-width * 2));
+    }
+    &:disabled {
+      cursor: not-allowed;
+      background-color: #eee;
+      border-color: #ddd;
     }
   }
 

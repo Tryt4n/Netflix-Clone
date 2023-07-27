@@ -22,6 +22,7 @@ $edit-profile-icon-border-radius: 0.5rem;
 $edit-profile-slider-margin-block: 0.25rem;
 $edit-profile-slider-margin-inline: 0.1rem;
 
+$profile-settings-header: clamp(2rem, (0.4rem + 8vw), 4rem);
 $user-settings-checkbox-gap: 0.5em;
 $user-settings-checkbox-size: clamp(1.56rem, calc(0.81rem + 3.75vw), 2.5rem);
 $user-settings-checkbox-mark-size: clamp(1.75rem, calc(0.75rem + 5vw), 3rem);

@@ -22,7 +22,7 @@
   }
 
   &__header {
-    font-size: clamp(2rem, (0.4rem + 8vw), 4rem);
+    font-size: v.$profile-settings-header;
     font-weight: 500;
     color: c.$white;
     margin-bottom: 0.1em;
@@ -266,6 +266,8 @@
     border: 1px solid c.$gray-text;
     padding: 0.5em 1.5em;
     outline: none;
+    background-color: transparent;
+    cursor: pointer;
     &:where(:hover, :focus-visible) {
       color: c.$white;
       border-color: c.$white;
@@ -274,6 +276,7 @@
   &__confirmation-btn {
     font-size: v.$font-size-user-settings-page-section-heading;
     margin-right: 1em;
+    font: inherit;
   }
   &__confirmation-btn--accent {
     background-color: c.$white;
@@ -289,6 +292,92 @@
       outline: auto;
       outline-color: c.$black;
       outline-offset: 0;
+    }
+  }
+
+  &__modal {
+    margin-block: auto;
+    margin-inline: auto;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: hsl(0, 0%, 8%);
+    color: c.$white;
+    overflow: visible;
+    @media screen and (width >= b.$desktop-account) {
+      width: clamp(18.75rem, calc(0rem + 100vw), 53.75rem);
+      max-width: 35%;
+    }
+    @media screen and (width < b.$desktop-account) {
+      width: func.rem(275);
+    }
+
+    &::backdrop {
+      background-color: hsl(0, 0%, 8%);
+    }
+
+    & h2 {
+      margin-bottom: 0;
+      line-height: 100%;
+      font-weight: normal;
+      @media screen and (width >= b.$desktop-account) {
+        font-size: clamp(2.56rem, calc(0.02rem + 3.97vw), 6.38rem);
+      }
+      @media screen and (width < b.$desktop-account) {
+        font-size: func.rem(40);
+      }
+    }
+
+    & figure {
+      margin: 0;
+    }
+
+    & figcaption {
+      margin-top: 0.6em;
+      text-align: center;
+      color: c.$gray-text;
+    }
+  }
+
+  &__modal-text-wrapper {
+    @include flex(row, flex-start, center);
+    @media screen and (width >= b.$desktop-account) {
+      gap: 1.8em;
+    }
+    @media screen and (width < b.$desktop-account) {
+      gap: 1em;
+    }
+
+    & p {
+      text-wrap: balance;
+      @media screen and (width >= b.$desktop-account) {
+        font-size: clamp(1rem, calc(0.26rem + 1.16vw), 1.75rem);
+      }
+      @media screen and (width < b.$desktop-account) {
+        font-size: clamp(0.88rem, calc(0.82rem + 0.28vw), 1rem);
+      }
+    }
+  }
+
+  &__modal-img {
+    max-width: func.rem(180);
+    min-width: func.rem(80);
+    width: 8vw;
+    white-space: nowrap;
+    border-radius: func.rem(4);
+  }
+
+  &__modal-btn-wrapper {
+    & a,
+    & button {
+      margin-top: 1em;
+      font-weight: 500;
+      @media screen and (width >= b.$desktop-account) {
+        font-size: clamp(1rem, calc(0.26rem + 1.16vw), 1.75rem);
+      }
+      @media screen and (width < b.$desktop-account) {
+        font-size: 13px;
+      }
     }
   }
 }
@@ -311,4 +400,8 @@ hr {
   border-color: #fff transparent transparent;
   border-style: solid;
   border-width: 5px 5px 0;
+}
+
+body.open-modal {
+  overflow: hidden;
 }

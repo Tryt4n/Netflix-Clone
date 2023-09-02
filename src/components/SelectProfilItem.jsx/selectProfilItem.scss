@@ -17,7 +17,7 @@
   & .padlock-icon {
     width: func.rem(20);
     aspect-ratio: 1/1;
-    color: hsl(0, 0%, 40%);
+    color: c.$profile-edit-create-game-handle-bg;
   }
 
   &__img-wrapper {
@@ -44,9 +44,9 @@
 
   &__profile-img {
     position: relative;
-    width: 10vw;
     max-width: func.rem(200);
     min-width: func.rem(84);
+    width: 10vw;
     aspect-ratio: 1/1;
   }
 
@@ -64,11 +64,16 @@
 }
 
 .select-profil-item:where(:hover, :focus-visible) .select-profil-item__img-wrapper::after,
-.select-profil-item:where(:hover, :focus-visible) .select-profil-item__username {
+.select-profil-item:where(:hover, :focus-visible) .select-profil-item__username,
+.select-profil-item:where(:hover, :focus-visible) .padlock-icon {
   border-color: c.$main-text-color;
   color: c.$main-text-color;
 }
 
 .select-profil-item:where(:hover, :focus-visible) .select-profil-item__username {
   color: c.$white;
+}
+
+.select-profil-item:where(:hover, :focus-visible) .add-new-profile-icon {
+  background-color: c.$main-text-color;
 }

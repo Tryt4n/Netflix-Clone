@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
 import UserContext from "../../context/UserContext";
@@ -12,6 +13,12 @@ export default function ManageProfilesPage() {
 
   const { users, currentLanguageCode, setEditingProfilePictureSrc } = useContext(UserContext);
 
+  const navigate = useNavigate();
+
+  function selectUser(user) {
+    navigate(`./${user.username}`);
+  }
+
   return (
     <main className="choose-profile">
       <h1 className="choose-profile__header">{t("manageProfiles")}:</h1>
@@ -20,15 +27,26 @@ export default function ManageProfilesPage() {
         className="choose-profile__list"
         aria-label={t("chooseProfil")}
       >
-        {users.map((user) => (
-          <li key={user.id}>
-            <Link to={`./${user.username}`}>
+        {users.map((user, index) => (
+          <React.Fragment key={user.id}>
+            <li key={user.id}>
               <SelectProfilItem
                 user={user}
                 isEdit
+                selectUser={selectUser}
               />
-            </Link>
-          </li>
+            </li>
+
+            {index === users.length - 1 && users.length < 5 && (
+              <li>
+                <SelectProfilItem
+                  user={user}
+                  isEdit
+                  areAllUsers
+                />
+              </li>
+            )}
+          </React.Fragment>
         ))}
       </ul>
 

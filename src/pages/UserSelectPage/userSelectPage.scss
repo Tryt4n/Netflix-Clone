@@ -51,9 +51,8 @@
       border-color: c.$main-text-color;
     }
     &:where(:focus-visible) {
-      outline-color: inherit;
-      outline-style: dotted;
-      outline-offset: 1rem;
+      outline-offset: func.rem(-1);
+      border-radius: 0.25em;
     }
   }
 

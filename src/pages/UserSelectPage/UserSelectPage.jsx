@@ -5,7 +5,7 @@ import SelectProfilItem from "../../components/SelectProfilItem.jsx/SelectProfil
 
 import CloseIcon from "../../icons/CloseIcon";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./userSelectPage.scss";
 
@@ -82,6 +82,18 @@ export default function UserSelectPage() {
     }
   }
 
+  const navigate = useNavigate();
+  const { setSelectedUser } = useContext(UserContext);
+  function selectUser(user) {
+    if (user.PIN === "") {
+      setSelectedUser(user);
+      navigate("/home");
+    } else if (user.PIN !== "" && isCorrectPIN) {
+      setSelectedUser(user);
+      navigate("/home");
+    }
+  }
+
   useEffect(() => {
     setCurrentEditingProfile("");
   }, []);
@@ -94,17 +106,30 @@ export default function UserSelectPage() {
         className="choose-profile__list"
         aria-label="Choose Profile"
       >
-        {users.map((user) => (
-          <li
-            key={user.id}
-            ref={userRef}
-            onClick={user.lock ? () => openLockModal(user) : null}
-          >
-            <SelectProfilItem
-              user={user}
-              isCorrectPIN={isCorrectPIN}
-            />
-          </li>
+        {users.map((user, index) => (
+          <React.Fragment key={user.id}>
+            <li
+              key={user.id}
+              ref={userRef}
+              onClick={user.lock ? () => openLockModal(user) : null}
+            >
+              <SelectProfilItem
+                user={user}
+                isCorrectPIN={isCorrectPIN}
+                selectUser={selectUser}
+              />
+            </li>
+
+            {index === users.length - 1 && users.length < 5 && (
+              <li>
+                <SelectProfilItem
+                  user={user}
+                  isCorrectPIN={isCorrectPIN}
+                  areAllUsers
+                />
+              </li>
+            )}
+          </React.Fragment>
         ))}
       </ul>
 

@@ -1,4 +1,5 @@
 @use "../../abstracts/colors" as c;
+@use "../../base/functions" as func;
 
 .manage-profile__done {
   background-color: c.$white;
@@ -8,5 +9,6 @@
     background-color: c.$netflix-red;
     border-color: c.$netflix-red;
     color: c.$white;
+    outline-offset: func.rem(2);
   }
 }

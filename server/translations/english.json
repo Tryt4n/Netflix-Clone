@@ -321,5 +321,14 @@
   "optAll2": "Opt Out of Data Sharing",
   "optModalHeading": "Do you want to opt this profile out of all?",
   "optModalDescription": "This control opts your profile out of all data sharing.",
-  "confirm": "Confirm"
+  "confirm": "Confirm",
+  "addProfile": "Add Profile",
+  "addProfileDescription": "Add a profile for another person watching Netflix.",
+  "newAccountDescription": "New Account Avatar",
+  "enterName": "Enter name for new Profile",
+  "name": "Name",
+  "kid": "Kid",
+  "pleaseEnterName": "Please enter a name",
+  "nameToLong": "Name is too long",
+  "kidsTooltip": "If selected, this profile will only see TV shows and movies rated for ages 12 and under."
 }

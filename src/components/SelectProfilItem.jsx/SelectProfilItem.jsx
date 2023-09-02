@@ -6,7 +6,7 @@ import AddNewProfile from "../AddNewProfile/AddNewProfile";
 import EditIcon from "../../icons/EditIcon";
 import PadlockIcon from "../../icons/PadlockIcon";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./selectProfilItem.scss";
 
@@ -31,12 +31,15 @@ export default function SelectProfilItem({ user, isEdit, isCorrectPIN, areAllUse
   return (
     <>
       {areAllUsers ? (
-        <button className="select-profil-item">
+        <Link
+          to={"/add-new-profile"}
+          className="select-profil-item"
+        >
           <div className="select-profil-item__img-wrapper add-new-profile-icon">
             <AddNewProfile styles={`select-profil-item__profile-img${isEdit ? " edit" : ""}`} />
           </div>
           <span className="select-profil-item__username">Add Profile</span>
-        </button>
+        </Link>
       ) : (
         <button
           className="select-profil-item"

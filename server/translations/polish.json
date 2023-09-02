@@ -321,5 +321,15 @@
   "optAll2": "Zrezygnuj z udostępniania danych",
   "optModalHeading": "Czy chcesz wyłączyć wszystkie ustawienia na tym profilu?",
   "optModalDescription": "Potwierdzenie spowoduje wyłączenie wszystkich ustawień udostępniania danych na tym profilu.",
-  "confirm": "Potwierdź"
+  "confirm": "Potwierdź",
+
+  "addProfile": "Dodaj profil",
+  "addProfileDescription": "Dodaj profil kolejnej osoby korzystającej z serwisu Netflix",
+  "newAccountDescription": "Nowy avatar profilu",
+  "enterName": "Wprowadź nazwę dla nowego profilu",
+  "name": "Imię",
+  "kid": "Dziecko",
+  "pleaseEnterName": "Wprowadź nazwę",
+  "nameToLong": "Nazwa jest zbyt długa",
+  "kidsTooltip": "Po wybraniu tej opcji na profilu dostępne będą tylko filmy, seriale i programy dla dzieci w wieku 12 lat i młodszych."
 }

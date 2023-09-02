@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -21,7 +22,7 @@ import SubtitlesAppearancePage from "./pages/SubtitlesAppearancePage/SubtitlesAp
 import PlaybackPage from "./pages/PlaybackPage/PlaybackPage";
 import CommunicationPage from "./pages/CommunicationPage/CommunicationPage";
 import PrivacyAndDataPage from "./pages/PrivacyAndDataPage/PrivacyAndDataPage";
-import { useEffect } from "react";
+import AddNewProfilePage from "./pages/AddNewProfilePage/AddNewProfilePage";
 
 export default function App() {
   const location = useLocation();
@@ -80,6 +81,10 @@ export default function App() {
         <Route
           path="Account"
           element={<AccountPage />}
+        />
+        <Route
+          path="add-new-profile"
+          element={<AddNewProfilePage />}
         />
         <Route path="settings">
           <Route

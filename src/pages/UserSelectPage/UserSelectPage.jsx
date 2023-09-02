@@ -12,13 +12,16 @@ import "./userSelectPage.scss";
 export default function UserSelectPage() {
   const { t } = useTranslation();
 
-  const { users, currentEditingProfile, setCurrentEditingProfile } = useContext(UserContext);
+  const { users, currentEditingProfile, setCurrentEditingProfile, setSelectedUser } =
+    useContext(UserContext);
   const [isErrorVisible, setIsErrorVisible] = useState(false);
   const [isCorrectPINMessage, setIsCorrectPINMessage] = useState(true);
   const [isCorrectPIN, setIsCorrectPIN] = useState(false);
 
   const userRef = useRef(null);
   const lockModalRef = useRef(null);
+
+  const navigate = useNavigate();
 
   function openLockModal(userData) {
     setCurrentEditingProfile(userData);
@@ -82,8 +85,6 @@ export default function UserSelectPage() {
     }
   }
 
-  const navigate = useNavigate();
-  const { setSelectedUser } = useContext(UserContext);
   function selectUser(user) {
     if (user.PIN === "") {
       setSelectedUser(user);

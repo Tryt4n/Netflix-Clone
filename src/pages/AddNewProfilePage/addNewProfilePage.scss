@@ -1,0 +1,220 @@
+@use "../../abstracts/colors" as c;
+@use "../../abstracts/variables" as v;
+@use "../../abstracts/mixins" as *;
+@use "../../base/functions" as func;
+@use "../../base/breakpoints" as b;
+
+.add-new-profile {
+  justify-items: left;
+
+  &__subheader {
+    color: c.$profile-edit-create-game-handle-bg;
+  }
+
+  & > hr {
+    width: 100%;
+  }
+
+  &__form {
+    @include flex(row, space-between, center);
+    width: 100%;
+  }
+
+  &__img-wrapper {
+    margin-right: 1.5vw;
+    max-width: func.rem(180);
+    min-width: func.rem(80);
+    white-space: nowrap;
+    width: 8vw;
+  }
+
+  &__img {
+    border-radius: func.rem(4);
+    animation-name: scaleUp;
+    animation-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    height: 8vw;
+    max-height: func.rem(180);
+    max-width: func.rem(180);
+    min-height: func.rem(80);
+    min-width: func.rem(80);
+    width: 8vw;
+  }
+
+  &__wrapper {
+    @include flex(column);
+    gap: 0.5em;
+    width: 100%;
+    margin-left: 0.5rem;
+  }
+
+  &__inner-wrapper {
+    @include flex(row, left, center);
+    flex-wrap: wrap;
+    gap: 0.5em;
+
+    & > :first-child {
+      flex-grow: 1;
+    }
+
+    & > :last-child {
+      @include flex(row, left, center);
+      gap: 0.25em;
+    }
+  }
+
+  &__text-input {
+    width: 100%;
+    padding: 0.2em 0.6em;
+    border: func.rem(1) solid transparent;
+    background-color: c.$profile-edit-create-game-handle-bg;
+    font: inherit;
+    color: c.$white;
+    outline: none;
+
+    &::placeholder {
+      color: c.$gray-light;
+    }
+
+    &[aria-invalid="true"] {
+      border-color: c.$error-message;
+    }
+  }
+
+  &__checkbox-tooltip-wrapper {
+    position: relative;
+    cursor: pointer;
+
+    & > * {
+      cursor: inherit;
+    }
+  }
+
+  &__checkbox-input {
+    position: relative;
+    height: func.rem(21);
+    aspect-ratio: 1;
+    appearance: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: func.rem(1) solid c.$profile-edit-maturity-ratings-bg;
+      background-color: transparent;
+    }
+
+    &::after {
+      content: "✓";
+      position: absolute;
+      padding-left: 0.1em;
+      font-size: 1.35rem;
+      line-height: 1;
+      color: #9aa2a7;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    &:checked::after {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @media screen and (width > b.$desktop-account) {
+      height: calc(1.3vw * 1.7);
+      &::after {
+        font-size: calc(1.3vw * 1.7);
+      }
+    }
+  }
+
+  &__checkbox-tooltip {
+    position: absolute;
+    width: 18em;
+    left: -6em;
+    bottom: 3em;
+    padding: 0.8em;
+    background: c.$white;
+    font-size: 0.75em;
+    color: c.$black;
+    text-align: center;
+    transition: opacity 0.3s linear 50ms, z-index 1ms linear 0.35s;
+    opacity: 0;
+    z-index: -1;
+
+    @media screen and (width > b.$desktop-account) {
+      font-size: 1vw;
+    }
+  }
+
+  &__warning-info {
+    font-size: v.$font-size-header-mobile;
+    color: c.$error-message;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    &.invalid {
+      visibility: visible;
+      opacity: 1;
+      display: initial;
+    }
+  }
+
+  &__btns-wrapper {
+    margin-top: 0.5em;
+  }
+
+  &__btn {
+    margin-right: 1.5em;
+    padding: 0.5em 1.5em;
+    background-color: c.$white;
+    border: func.rem(1) solid c.$white;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: c.$black;
+    cursor: pointer;
+
+    &--basic {
+      background-color: transparent;
+      color: c.$gray-text;
+      border-color: c.$gray-text;
+      &:where(:hover, :focus-visible) {
+        border-color: c.$white;
+        color: c.$white;
+      }
+    }
+    &--accent {
+      &:where(:hover, :focus-visible) {
+        background-color: c.$netflix-red;
+        border-color: c.$netflix-red;
+        color: c.$white;
+      }
+    }
+  }
+
+  @media screen and (width > b.$desktop-account) {
+    &__subheader,
+    &__inner-wrapper,
+    &__btn {
+      font-size: 1.3vw;
+    }
+  }
+}
+
+.add-new-profile__checkbox-tooltip-wrapper:hover .add-new-profile__checkbox-tooltip {
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.3s linear 0.4s, z-index 1ms linear;
+}
+
+@keyframes scaleUp {
+  from {
+    scale: 0.6;
+    opacity: 0;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}

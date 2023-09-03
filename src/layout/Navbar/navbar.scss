@@ -226,6 +226,12 @@
     padding-block: 0.35em !important;
   }
 
+  &__username-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   &__icon-wrapper {
     width: $profile-img-size;
     aspect-ratio: 1;

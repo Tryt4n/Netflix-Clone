@@ -5,6 +5,10 @@
 @use "../../base/functions" as func;
 
 .select-profil-item {
+  $img-max-width: func.rem(200);
+  $img-min-width: func.rem(84);
+  $img-width: 10vw;
+
   @include flex(column, space-between, center);
   padding: 0;
   border: 0;
@@ -46,9 +50,9 @@
 
   &__profile-img {
     position: relative;
-    max-width: func.rem(200);
-    min-width: func.rem(84);
-    width: 10vw;
+    max-width: $img-max-width;
+    min-width: $img-min-width;
+    width: $img-width;
     aspect-ratio: 1/1;
   }
 
@@ -56,6 +60,15 @@
     color: c.$gray-text;
     margin-top: 0.6em;
     margin-bottom: 1em;
+    text-align: center;
+    //? Adding ... if it's too long
+    max-width: $img-max-width;
+    min-width: $img-min-width;
+    width: $img-width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    //?
     @media screen and (width > b.$mobile) {
       font-size: 1.3vw;
     }

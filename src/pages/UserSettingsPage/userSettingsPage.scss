@@ -5,6 +5,10 @@
 @use "../../abstracts/mixins" as *;
 
 .user-settings {
+  $img-max-width: func.rem(180);
+  $img-min-width: func.rem(80);
+  $img-width: 8vw;
+
   &__wrapper {
     max-width: func.rem(720);
     margin-inline: auto;
@@ -40,9 +44,9 @@
   }
 
   &__img {
-    width: 8vw;
-    max-width: func.rem(180);
-    min-width: func.rem(80);
+    max-width: $img-max-width;
+    min-width: $img-min-width;
+    width: $img-width;
     aspect-ratio: 1/1;
     border-radius: 0.25em;
   }
@@ -51,20 +55,20 @@
     position: absolute;
     width: 30%;
     bottom: 0;
+    padding: func.rem(6);
     border: none;
-    padding: 6px;
-    background-color: transparent;
-    color: c.$white;
     border-radius: 50%;
     outline: none;
+    background-color: transparent;
+    color: c.$white;
     cursor: pointer;
     & svg {
       width: 100%;
-      min-width: 18px;
+      min-width: func.rem(18);
       aspect-ratio: 1/1;
       background-color: c.$black;
-      border-radius: 50%;
       padding: 0.1rem;
+      border-radius: 50%;
       outline-offset: 0.15rem;
     }
     &:focus svg {
@@ -99,10 +103,9 @@
   }
 
   &__section-heading {
+    margin-block: 1em;
     font-size: v.$font-size-user-settings-page-section-heading;
     font-weight: 500;
-    margin-top: 1em;
-    margin-bottom: 1em;
     color: c.$bg;
   }
 
@@ -112,16 +115,16 @@
 
   &__language-label-btn {
     position: relative;
+    margin-bottom: v.$font-size-user-settings-page-section-heading;
+    padding-left: 0.65em;
+    padding-right: calc(0.65em * 5);
     background-color: c.$black;
-    color: c.$white;
     border-color: c.$white;
     font: inherit;
     font-weight: 500;
-    cursor: pointer;
-    padding-left: 0.65em;
-    padding-right: calc(0.65em * 5);
     line-height: 1.5em;
-    margin-bottom: v.$font-size-user-settings-page-section-heading;
+    color: c.$white;
+    cursor: pointer;
     &:where(:hover, :focus-visible) {
       background-color: hsla(0, 0%, 100%, 0.1);
     }
@@ -129,17 +132,17 @@
 
   &__language-select-list {
     position: absolute;
-    translate: 0 calc(v.$font-size-user-settings-page-section-heading * -1);
+    margin-right: 1rem;
+    padding-block: func.rem(6);
+    padding-inline: func.rem(10);
+    border: func.rem(1) solid c.$language-select-border;
+    background-color: c.$language-select-bg;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1.5em;
     row-gap: 0.35em;
-    margin-right: 1rem;
-    padding-block: 6px;
-    padding-inline: 10px;
-    background-color: c.$language-select-bg;
-    border: 1px solid c.$language-select-border;
     color: c.$white;
+    translate: 0 calc(v.$font-size-user-settings-page-section-heading * -1);
   }
 
   &__language-select-list-item {
@@ -151,14 +154,14 @@
   }
 
   &__learn-more-btn {
-    font: inherit;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: inherit;
     padding: 0;
-    font-weight: 500;
+    border: none;
     outline-offset: 0.25em;
+    background: none;
+    font: inherit;
+    font-weight: 500;
+    color: inherit;
+    cursor: pointer;
   }
 
   &__game-handle-section {
@@ -170,10 +173,10 @@
   }
 
   &__game-handle-warning-info-container {
+    margin-bottom: v.$font-size-user-settings-page-section-heading;
     @include flex(row, space-between, center);
     gap: 0.5rem;
     font-size: v.$font-size-user-settings-page-warning-text;
-    margin-bottom: v.$font-size-user-settings-page-section-heading;
     color: c.$white;
     & > * {
       flex-grow: 1;
@@ -197,9 +200,9 @@
   }
 
   &__text-box {
-    background-color: c.$profile-edit-maturity-ratings-bg;
-    padding: func.rem(7) func.rem(10);
     margin-bottom: 1em;
+    padding: func.rem(7) func.rem(10);
+    background-color: c.$profile-edit-maturity-ratings-bg;
     text-transform: capitalize;
   }
 
@@ -226,10 +229,10 @@
       position: absolute;
       content: "";
       width: v.$user-settings-checkbox-size;
-      translate: 0 -50%;
       aspect-ratio: 1/1;
+      border: func.rem(1) solid c.$gray-text;
+      translate: 0 -50%;
       background-color: transparent;
-      border: 1px solid c.$gray-text;
     }
     &::after {
       position: absolute;
@@ -256,17 +259,17 @@
   &__confirmation-section {
     margin-top: calc(v.$font-size-user-settings-page-section-heading * 1.5);
     @include flex();
-    flex-wrap: wrap;
     row-gap: 1rem;
+    flex-wrap: wrap;
   }
 
   &__confirmation-btn,
   &__maturity-edit-btn {
-    color: c.$gray-text;
-    border: 1px solid c.$gray-text;
     padding: 0.5em 1.5em;
+    border: func.rem(1) solid c.$gray-text;
     outline: none;
     background-color: transparent;
+    color: c.$gray-text;
     cursor: pointer;
     &:where(:hover, :focus-visible) {
       color: c.$white;
@@ -274,9 +277,9 @@
     }
   }
   &__confirmation-btn {
-    font-size: v.$font-size-user-settings-page-section-heading;
     margin-right: 1em;
     font: inherit;
+    font-size: v.$font-size-user-settings-page-section-heading;
   }
   &__confirmation-btn--accent {
     background-color: c.$white;
@@ -284,8 +287,8 @@
     font-weight: 500;
     color: c.$black;
     &:where(:hover, :focus-visible) {
-      color: c.$white;
       background-color: c.$netflix-red;
+      color: c.$white;
       border-color: c.$netflix-red;
     }
     &:focus {
@@ -336,6 +339,14 @@
       margin-top: 0.6em;
       text-align: center;
       color: c.$gray-text;
+      //? Adding ... if it's too long
+      max-width: $img-max-width;
+      min-width: $img-min-width;
+      width: $img-width;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      //?
     }
   }
 
@@ -360,9 +371,9 @@
   }
 
   &__modal-img {
-    max-width: func.rem(180);
-    min-width: func.rem(80);
-    width: 8vw;
+    max-width: $img-max-width;
+    min-width: $img-min-width;
+    width: $img-width;
     white-space: nowrap;
     border-radius: func.rem(4);
   }
@@ -376,7 +387,7 @@
         font-size: clamp(1rem, calc(0.26rem + 1.16vw), 1.75rem);
       }
       @media screen and (width < b.$desktop-account) {
-        font-size: 13px;
+        font-size: v.$font-size-body;
       }
     }
   }
@@ -395,11 +406,11 @@ hr {
   position: absolute;
   height: 0;
   width: 0;
-  right: 10px;
   top: 44%;
+  right: func.rem(10);
   border-color: #fff transparent transparent;
   border-style: solid;
-  border-width: 5px 5px 0;
+  border-width: func.rem(5) func.rem(5) 0;
 }
 
 body.open-modal {

@@ -297,7 +297,7 @@ export default function Navbar() {
                               alt={`${user.username} ${t("avatar")}`}
                               className="navbar__profile-img"
                             />
-                            <span>{user.username}</span>
+                            <span className="navbar__username-text">{user.username}</span>
                           </Link>
                         </li>
                       </React.Fragment>

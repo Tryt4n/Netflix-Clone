@@ -9,7 +9,7 @@ import { UserProvider } from "./context/UserContext";
 
 import "./i18next";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <UserProvider>
       <BrowserRouter>

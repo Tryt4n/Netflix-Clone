@@ -237,11 +237,15 @@
 
   &__profile-heading-wrapper {
     flex-grow: 1;
+    overflow: hidden;
   }
 
   &__profile-heading {
     font-size: inherit;
     font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &--bold {
       font-weight: 500;
     }

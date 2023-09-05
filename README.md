@@ -36,6 +36,16 @@ To edit profiles settings click button Manage Profiles and then choose profile t
 
 ![Manage Profile](/public/screenshots/manage-profiles.png)
 
+# Adding New Profile
+
+If there are less than 5 currently created profiles, there is an option to create a new profile.
+
+![Adding New Profile Button](/public/screenshots/adding-new-profile_1.png)
+
+After clicking on button user will be navigate to create new account page.
+
+![Adding New Profile](/public/screenshots/adding-new-profile_2.png)
+
 # Profile Settings
 
 On this page you can change your username, create a nickname in Game Handle, change your profile avatar by pressing the edit button in the current avatar or change user interface language. Username and nick inputs have error states if something isn't correct.
